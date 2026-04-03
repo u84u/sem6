@@ -1,6 +1,4 @@
 # Mobile Application Development — Practicals
-**Course:** BCA Semester 6 | Parul University
-**Subject Code:** 05010106DS02
 
 ---
 
