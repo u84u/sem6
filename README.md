@@ -1,1615 +1,452 @@
-# Mobile Application Development — Practicals
+# Software Engineering
 
 ---
 
-## Practical 1 — Hello Flutter Emoji App
+## Practical 1: Study and Comparison of Software Process Models
 
-```dart
-import 'dart:math';
-import 'package:flutter/material.dart';
+### Q1: What is a Software Process Model?
+A structured framework that defines how software is planned, developed, tested, and maintained. It organizes development activities into phases to improve efficiency, quality, and risk management.
 
-void main() {
-  runApp(const EmojiApp());
-}
+### Q2: What are the phases of the Waterfall Model?
+Requirements → Design → Implementation → Testing → Deployment → Maintenance. Each phase must complete before the next begins — it's strictly linear.
 
-class EmojiApp extends StatelessWidget {
-  const EmojiApp({super.key});
+### Q3: What are the advantages of the Waterfall Model?
+Simple and easy to understand, well-defined stages with clear documentation, and suitable for small projects with stable, fixed requirements.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Emoji App',
-      home: const EmojiHome(),
-    );
-  }
-}
+### Q4: What are the disadvantages of the Waterfall Model?
+No feedback loops between phases, poor handling of requirement changes, and testing happens late — bugs found late are expensive to fix.
 
-class EmojiHome extends StatefulWidget {
-  const EmojiHome({super.key});
+### Q5: When should you use the Waterfall Model?
+For well-defined projects with fixed requirements that won't change, such as payroll systems or simple utility applications.
 
-  @override
-  State<EmojiHome> createState() => _EmojiHomeState();
-}
+### Q6: What is the Incremental Model?
+Software is built and delivered in small increments, where each increment adds more functionality. Users get working modules early rather than waiting for the complete system.
 
-class _EmojiHomeState extends State<EmojiHome> {
-  final List<String> emojis = [
-    '😀', '😂', '😍', '🤔', '😎', '🥳', '😴', '🤩', '😇'
-  ];
+### Q7: What are the advantages of the Incremental Model?
+Early delivery of working modules, flexibility to accommodate requirement changes between increments, and easier risk management since problems are caught early.
 
-  String currentEmoji = '😀';
-  final Random random = Random();
+### Q8: What are the disadvantages of the Incremental Model?
+Requires good upfront planning and the system architecture must be designed to support incremental development from the start.
 
-  void changeEmoji() {
-    setState(() {
-      currentEmoji = emojis[random.nextInt(emojis.length)];
-    });
-  }
+### Q9: When should you use the Incremental Model?
+For medium-sized projects where requirements are partially clear and can be delivered in stages.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hello Emoji App'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              currentEmoji,
-              style: const TextStyle(fontSize: 120),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: changeEmoji,
-              child: const Text(
-                'Tap Me',
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q10: What is the Spiral Model?
+Combines iterative development with systematic risk analysis. Each spiral cycle includes four phases: planning, risk evaluation, development, and review.
 
----
+### Q11: What are the advantages of the Spiral Model?
+Best model for high-risk projects, provides frequent customer feedback at each cycle, and is both flexible and scalable.
 
-## Practical 2 — Simple Login UI (No Backend)
+### Q12: What are the disadvantages of the Spiral Model?
+Expensive and complex to implement, and requires expertise in risk management to be effective.
 
-```dart
-import 'package:flutter/material.dart';
+### Q13: When should you use the Spiral Model?
+For large, critical, and complex systems like aerospace or defense projects where risk management is essential.
 
-void main() {
-  runApp(const LoginApp());
-}
+### Q14: What is the Agile Model?
+An iterative, customer-centric approach with short development cycles called sprints. It focuses on collaboration, adaptability, and rapid delivery of working software.
 
-class LoginApp extends StatelessWidget {
-  const LoginApp({super.key});
+### Q15: What are the advantages of the Agile Model?
+Highly flexible and adaptive to changes, continuous customer feedback throughout development, and working software is delivered frequently.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Login Screen',
-      home: const LoginScreen(),
-    );
-  }
-}
+### Q16: What are the disadvantages of the Agile Model?
+Requires an experienced team, documentation may be minimal, and it's difficult to manage for large distributed teams.
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+### Q17: When should you use the Agile Model?
+For projects with frequently changing requirements, start-ups, and fast-evolving applications.
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
+### Q18: What is the V-Model (Verification & Validation Model)?
+An extension of Waterfall that emphasizes testing at each development stage. Every development phase has a corresponding testing phase planned in parallel.
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+### Q19: What are the advantages of the V-Model?
+Testing is planned early in the lifecycle, highly structured and disciplined approach, and suitable for safety-critical systems.
 
-  void login() {
-    if (usernameController.text.isNotEmpty &&
-        passwordController.text.isNotEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Welcome!'),
-          backgroundColor: Colors.green,
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter all fields'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
+### Q20: What are the disadvantages of the V-Model?
+Rigid and not flexible to changes, and requirement changes are costly once development begins.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Screen'),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: usernameController,
-              decoration: const InputDecoration(
-                labelText: 'Username',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: login,
-              child: const Text('Login'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q21: When should you use the V-Model?
+For medical devices, embedded systems, and other safety-critical applications where thorough testing is mandatory.
+
+### Q22: Which models are best for stable requirements?
+Waterfall and V-Model are ideal for stable and safety-critical environments where requirements are well-understood upfront.
+
+### Q23: Which models are best for evolving requirements?
+Incremental and Agile work well when requirements evolve during development.
+
+### Q24: Which model is best for risk management?
+The Spiral Model is best when risk management is the primary concern.
 
 ---
 
-## Practical 3 — Email Validation
+## Practical 2: Preparation of SRS Document
 
-```dart
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+### Q1: What is an SRS document?
+A Software Requirement Specification describes all functional and non-functional requirements, system features, constraints, and overall system behavior. It serves as a baseline for design, development, and testing.
 
-void main() {
-  runApp(const SmartLoginApp());
-}
+### Q2: Who uses the SRS document?
+Developers, testers, project managers, and stakeholders — it acts as a common reference and contract between all parties.
 
-class SmartLoginApp extends StatelessWidget {
-  const SmartLoginApp({super.key});
+### Q3: What is the "Purpose" section of an SRS?
+It describes why the SRS document exists — to define the requirements for the system and specify who will use the document.
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginForm(),
-    );
-  }
-}
+### Q4: What is the "Scope" section of an SRS?
+It defines what the system will do and for whom. For example, OFOS allows customers to browse restaurants, place orders, make payments, and track delivery.
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+### Q5: What goes in the "Definitions, Acronyms & Abbreviations" section?
+A glossary of terms used in the document — e.g., OFOS (Online Food Ordering System), UI (User Interface), DBMS (Database Management System), OTP (One-Time Password).
 
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
+### Q6: What is "Product Perspective" in SRS?
+It describes how the system fits into the larger context — whether it's standalone or part of a larger system, and its main components (Customer Interface, Restaurant Dashboard, Admin Panel, Centralized Database).
 
-class _LoginFormState extends State<LoginForm> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+### Q7: What are "Product Functions"?
+A list of all major features the system provides — e.g., User Registration & Login, Browse Restaurants & Menus, Add Items to Cart, Place Order, Payment, Order Tracking, Restaurant Menu Management, Admin Management.
 
-  bool isButtonEnabled = false;
+### Q8: What are "User Classes and Characteristics"?
+Different types of users who will interact with the system — e.g., Customers (casual users), Restaurant Owners (business users), Delivery Persons (operational users), and Admins (system managers).
 
-  void validateForm() {
-    setState(() {
-      isButtonEnabled =
-          emailController.text.contains('@') &&
-          passwordController.text.length >= 6;
-    });
-  }
+### Q9: What is "Operating Environment"?
+The technical platform the system runs on — Web browser / Android / iOS, backend in Java/Python/PHP/Node.js, database in MySQL/PostgreSQL, OS: Windows/Linux.
 
-  void showToast() {
-    Fluttertoast.showToast(
-      msg: "Great! You typed a real email! 😊",
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.green,
-      textColor: Colors.white,
-      fontSize: 16,
-    );
-  }
+### Q10: What are "Design and Implementation Constraints"?
+Limitations the system must work within — must follow online payment security standards, requires internet connection, and must use responsive UI design.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Smart Login Form"),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: emailController,
-              onChanged: (_) => validateForm(),
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: passwordController,
-              onChanged: (_) => validateForm(),
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: isButtonEnabled ? showToast : null,
-              child: const Text("Login"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q11: What are "Assumptions and Dependencies"?
+Conditions assumed to be true — users have valid mobile/email, restaurants provide correct pricing, and payment gateway is available.
+
+### Q12: What are Functional Requirements?
+Specific behaviors the system must perform — e.g., "User shall register using email/mobile and password" (F1.1), "System shall validate credentials during login" (F1.2).
+
+### Q13: What are Non-Functional Requirements (NFRs)?
+Quality attributes describing how the system should perform — including performance, security, reliability, usability, and scalability.
+
+### Q14: What are Performance Requirements?
+System should handle 1000+ concurrent users and response time must be under 3 seconds.
+
+### Q15: What are Security Requirements?
+Data encryption for passwords, secure payment integration, and role-based access control to ensure only authorized users access specific features.
+
+### Q16: What are Reliability Requirements?
+System uptime must be 99% and backup/recovery must be supported to prevent data loss.
+
+### Q17: What are Usability Requirements?
+Easy-to-use UI for both customers and restaurants — the interface should be intuitive and require minimal training.
+
+### Q18: What are Scalability Requirements?
+The system should support adding more restaurants and users without performance degradation.
+
+### Q19: What are External Interface Requirements?
+Descriptions of how the system interacts with users (UI requirements), hardware (mobile devices, payment gateway devices), and software (database, payment gateway APIs, SMS/Email APIs).
+
+### Q20: What is a Use Case Table?
+A structured description of a system interaction including use case ID, name, actors, description, preconditions, main flow, alternate flows, exceptions, and postconditions.
+
+### Q21: What is a Data Flow Diagram (DFD)?
+A diagram showing how data flows through the system. Level 0 (context diagram) shows the system as a single process. Level 1 breaks it into modules like User Module, Restaurant Module, Order Processing, and Payment Processing.
+
+### Q22: What are "Other Requirements" in SRS?
+Future considerations like integration with coupons, offers, wallet systems, and multi-language interface support.
 
 ---
 
-## Practical 4 — Theme Color Changer
+## Practical 3: Structured vs. Object-Oriented Analysis
 
-```dart
-import 'package:flutter/material.dart';
+### Q1: What is Structured Analysis?
+A process-centric approach that focuses on how data flows through the system. It uses DFDs (Data Flow Diagrams) and ER Diagrams to model system behavior.
 
-void main() {
-  runApp(const ThemeChangerApp());
-}
+### Q2: What are the key components of Structured Analysis?
+Processes (User Management, Browse Restaurants, Cart & Order, Payment Processing), Data Stores (Users, Restaurants, Orders, Payments), and data flow between them.
 
-class ThemeChangerApp extends StatelessWidget {
-  const ThemeChangerApp({super.key});
+### Q3: What is Object-Oriented Analysis (OOA)?
+An object-centric approach that models real-world entities as classes with attributes, methods, and relationships using UML diagrams.
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ThemeChangerScreen(),
-    );
-  }
-}
+### Q4: What are the key components of OOA?
+Objects/Classes (Customer, Restaurant, Menu, Item, Order, Payment, Admin), their interactions, responsibilities, behavior, and relationships.
 
-class ThemeChangerScreen extends StatefulWidget {
-  const ThemeChangerScreen({super.key});
+### Q5: What is the fundamental difference between Structured and OOA?
+Structured Analysis answers "what the system does" (process-centric), while OOA answers "what the system is and how it behaves" (object-centric).
 
-  @override
-  State<ThemeChangerScreen> createState() => _ThemeChangerScreenState();
-}
+### Q6: Why is OOA preferred for modern systems?
+It models real-world entities (Customer, Restaurant, Delivery) and their interactions, making maintenance, scalability, and enhancements easier than process-centric approaches.
 
-class _ThemeChangerScreenState extends State<ThemeChangerScreen> {
-  Color backgroundColor = Colors.white;
+### Q7: What is a DFD (Data Flow Diagram)?
+A diagram showing the flow of information through a system — how data moves from external entities through processes to data stores.
 
-  void changeColor(Color color) {
-    setState(() {
-      backgroundColor = color;
-    });
-  }
+### Q8: What is an ER Diagram?
+An Entity-Relationship Diagram showing data entities, their attributes, and relationships between them — used primarily in database design.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: AppBar(
-        title: const Text("Theme Color Changer"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-              ),
-              onPressed: () => changeColor(Colors.blue.shade100),
-              child: const Text("Blue"),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-              ),
-              onPressed: () => changeColor(Colors.orange.shade100),
-              child: const Text("Orange"),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-              ),
-              onPressed: () => changeColor(Colors.green.shade100),
-              child: const Text("Green"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q9: How does data flow in the OFOS structured analysis?
+Customer → System → Restaurant → Delivery → Admin — showing the sequential flow of information through the system.
+
+### Q10: How do objects interact in the OFOS OOA?
+Customer places Order → triggers Payment → Restaurant updates Order → Delivery updates Status — showing object-to-object interactions.
 
 ---
 
-## Practical 5 — Counter with Auto Increment
+## Practical 4: Project Planning and Estimation (W5HH & COCOMO)
 
-```dart
-import 'dart:async';
-import 'package:flutter/material.dart';
+### Q1: What is the W5HH principle?
+A project planning framework that answers: Who (team), What (objectives), When (timeline), Where (location/platform), Why (justification), How (methodology), and How Much (budget/effort).
 
-void main() {
-  runApp(const CounterApp());
-}
+### Q2: What does "Who" in W5HH identify?
+The team members and their roles — frontend developers, backend developers, database developers, project manager, and testers.
 
-class CounterApp extends StatelessWidget {
-  const CounterApp({super.key});
+### Q3: What does "What" in W5HH identify?
+The project objectives and deliverables — e.g., design and implement a system for customers to order food online.
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CounterScreen(),
-    );
-  }
-}
+### Q4: What does "When" in W5HH identify?
+The project timeline and milestones — typically represented as a Gantt chart showing weekly tasks and sprint iterations.
 
-class CounterScreen extends StatefulWidget {
-  const CounterScreen({super.key});
+### Q5: What does "Where" in W5HH identify?
+The deployment platform and development environment — web, mobile, cloud servers, and development tools used.
 
-  @override
-  State<CounterScreen> createState() => _CounterScreenState();
-}
+### Q6: What does "How" in W5HH identify?
+The methodology and approach — e.g., Agile with weekly sprints, using specific technologies and frameworks.
 
-class _CounterScreenState extends State<CounterScreen> {
-  int counter = 0;
-  Timer? timer;
+### Q7: What does "How Much" in W5HH identify?
+The budget, effort, and resource requirements — including team size, development time, and cost estimation.
 
-  void startCounter() {
-    timer ??= Timer.periodic(
-      const Duration(seconds: 1),
-      (Timer t) {
-        setState(() {
-          counter++;
-        });
-      },
-    );
-  }
+### Q8: What is the COCOMO model?
+Constructive Cost Model — estimates software effort, time, and cost based on project size measured in KLOC (thousands of lines of code).
 
-  void pauseCounter() {
-    timer?.cancel();
-    timer = null;
-  }
+### Q9: What are the three COCOMO project types?
+Organic (small team, well-understood application), Semi-detached (medium team, mixed experience), and Embedded (tight constraints, complex systems).
 
-  void resetCounter() {
-    pauseCounter();
-    setState(() {
-      counter = 0;
-    });
-  }
+### Q10: What is the Basic COCOMO formula for effort?
+Effort (Person-Months) = a × (KLOC)^b. For Organic projects: a = 2.4, b = 1.05.
 
-  @override
-  void dispose() {
-    timer?.cancel();
-    super.dispose();
-  }
+### Q11: What is the Basic COCOMO formula for development time?
+Time (Months) = c × (Effort)^d. For Organic projects: c = 2.5, d = 0.38.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Auto Increment Counter"),
-        centerTitle: true,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            counter.toString(),
-            style: const TextStyle(
-              fontSize: 80,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 40),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: startCounter,
-                child: const Text("Start"),
-              ),
-              ElevatedButton(
-                onPressed: pauseCounter,
-                child: const Text("Pause"),
-              ),
-              ElevatedButton(
-                onPressed: resetCounter,
-                child: const Text("Reset"),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-```
+### Q12: How do you estimate project size in KLOC?
+By summing up lines of code for each component — e.g., Frontend: 2000 LOC + Backend: 3000 LOC + Database scripts: 500 LOC = 5500 LOC = 5.5 KLOC.
+
+### Q13: How is team size estimated from COCOMO?
+Team Size = Effort / Development Time. For 14.33 PM effort over 6.85 months ≈ 2.1, rounded to 3 people. Recommended: 3–5 members.
+
+### Q14: What is a Gantt Chart?
+A visual timeline showing project tasks, their durations, start/end dates, and dependencies — useful for scheduling and tracking progress across weeks or months.
+
+### Q15: What is the difference between Basic, Intermediate, and Detailed COCOMO?
+Basic uses only KLOC for estimation. Intermediate adds cost drivers (complexity, reliability, experience). Detailed adds phase-sensitive multipliers for each development phase.
 
 ---
 
-## Practical 6 — Loading Screen (Progress Bar)
+## Practical 5: Risk Management and Quality Planning
 
-```dart
-import 'dart:async';
-import 'package:flutter/material.dart';
+### Q1: What is Risk Management in software engineering?
+The process of identifying, analyzing, and mitigating risks throughout the software development lifecycle to minimize project failures, delays, and cost overruns.
 
-void main() {
-  runApp(const LoadingApp());
-}
+### Q2: What is Risk Identification?
+The process of finding potential risks that could affect the project — including technical risks, schedule risks, resource risks, requirement risks, and security risks.
 
-class LoadingApp extends StatelessWidget {
-  const LoadingApp({super.key});
+### Q3: What is Risk Analysis?
+Evaluating each identified risk by assessing its probability (likelihood of occurrence) and impact (severity of consequences) to prioritize mitigation efforts.
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoadingScreen(),
-    );
-  }
-}
+### Q4: What is Risk Mitigation?
+Developing strategies to reduce the probability or impact of identified risks — e.g., using proven technology to reduce technical risk, or adding buffer time to reduce schedule risk.
 
-class LoadingScreen extends StatefulWidget {
-  const LoadingScreen({super.key});
+### Q5: What is a Risk Register?
+A document that tracks all identified risks, their probability, impact, mitigation strategies, current status, and assigned risk owners.
 
-  @override
-  State<LoadingScreen> createState() => _LoadingScreenState();
-}
+### Q6: What is Risk Monitoring?
+Continuously tracking risks throughout the project — maintaining the Risk Register, conducting weekly risk review meetings, and assigning risk owners for each critical risk.
 
-class _LoadingScreenState extends State<LoadingScreen> {
-  double progress = 0.0;
-  String message = "";
-  Timer? timer;
+### Q7: What is Quality Planning?
+Defining the quality standards, objectives, and activities to ensure the software meets functional and non-functional requirements, is reliable, maintainable, and satisfies end-users.
 
-  void startLoading() {
-    setState(() {
-      progress = 0.0;
-      message = "Loading your awesome content...";
-    });
-    timer?.cancel();
-    timer = Timer.periodic(const Duration(milliseconds: 100), (Timer t) {
-      setState(() {
-        progress += 0.01;
-        if (progress >= 1.0) {
-          progress = 1.0;
-          message = "Finished! 🎉";
-          t.cancel();
-        }
-      });
-    });
-  }
+### Q8: What are Quality Objectives?
+Specific, measurable quality goals — e.g., zero critical bugs at release, 99% uptime, response time under 3 seconds, and 100% test case coverage for critical modules.
 
-  @override
-  void dispose() {
-    timer?.cancel();
-    super.dispose();
-  }
+### Q9: What is Quality Assurance (QA)?
+Process-focused activities that prevent defects — including code reviews, process audits, following coding standards, and using version control practices.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Loading Screen"),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            LinearProgressIndicator(
-              value: progress,
-              minHeight: 20,
-              color: Colors.blue,
-              backgroundColor: Colors.grey.shade300,
-            ),
-            const SizedBox(height: 20),
-            Text(
-              message,
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: startLoading,
-              child: const Text("Start Loading"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q10: What is Quality Control (QC)?
+Product-focused activities that detect defects — including testing (unit, integration, system), inspections, and verifying the final product meets requirements.
+
+### Q11: What is the difference between QA and QC?
+QA is proactive and process-oriented (preventing defects). QC is reactive and product-oriented (finding defects in the finished product).
+
+### Q12: What tools are used for Quality Assurance?
+GitHub/GitLab (version control), Selenium/JUnit/Postman (testing), Jira/Trello (project management), OWASP ZAP/Burp Suite (security testing), Apache JMeter (performance testing).
+
+### Q13: What are Quality Standards and Metrics?
+Measurable criteria to assess quality — code coverage percentage, defect density, mean time to failure, customer satisfaction scores, and compliance with coding standards.
 
 ---
 
-## Practical 7 — Reminder App (Simple Notifications)
+## Practical 6: Use Case Modeling and Diagrams
 
-**pubspec.yaml dependency:**
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  flutter_local_notifications: ^17.0.0
-```
+### Q1: What is a Use Case?
+A description of how an actor interacts with the system to achieve a specific goal, including the main flow of events, alternate flows, and exceptions.
 
-**AndroidManifest.xml** (inside `<application>` tag):
-```xml
-<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-```
+### Q2: What is an Actor in UML?
+An external entity (person, system, or device) that interacts with the system. In OFOS: Customer, Restaurant Staff, Delivery Person, and Admin.
 
-**main.dart:**
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+### Q3: What are the components of a Use Case Description?
+Use Case ID, name, actors, description, preconditions, main flow (normal path), alternate flows (variations), exceptions (error conditions), and postconditions (system state after completion).
 
-void main() {
-  runApp(const ReminderApp());
-}
+### Q4: What is a Use Case Diagram?
+A UML diagram showing actors (stick figures), use cases (ovals), and their relationships — providing a visual overview of all system functionality from the user's perspective.
 
-class ReminderApp extends StatelessWidget {
-  const ReminderApp({super.key});
+### Q5: What is the «include» relationship?
+A mandatory relationship where one use case always includes another. E.g., "Place Order" always includes "Payment" — the included use case is required for the base use case to complete.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Reminder App',
-      home: const ReminderScreen(),
-    );
-  }
-}
+### Q6: What is the «extend» relationship?
+An optional relationship where one use case may extend another under certain conditions. E.g., "Apply Coupon" extends "Place Order" — it only happens if the user chooses to apply a coupon.
 
-class ReminderScreen extends StatefulWidget {
-  const ReminderScreen({super.key});
+### Q7: What are preconditions in a use case?
+Conditions that must be true before the use case can begin — e.g., "User must be logged in" before placing an order.
 
-  @override
-  State<ReminderScreen> createState() => _ReminderScreenState();
-}
+### Q8: What are postconditions in a use case?
+The state of the system after the use case completes successfully — e.g., "Order is created and sent to restaurant" after placing an order.
 
-class _ReminderScreenState extends State<ReminderScreen> {
-  final TextEditingController _controller = TextEditingController();
-  FlutterLocalNotificationsPlugin notificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+### Q9: What is the main flow in a use case?
+The normal, expected sequence of steps — the "happy path" where everything goes as planned without errors or exceptions.
 
-  @override
-  void initState() {
-    super.initState();
-    initializeNotification();
-  }
+### Q10: What are alternate flows in a use case?
+Variations of the main flow that handle different but valid scenarios — e.g., user chooses Cash on Delivery instead of online payment.
 
-  void initializeNotification() async {
-    const AndroidInitializationSettings androidSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
-    const InitializationSettings settings =
-        InitializationSettings(android: androidSettings);
-    await notificationsPlugin.initialize(settings);
-  }
+### Q11: What are exceptions in a use case?
+Error conditions or unexpected events — e.g., payment gateway failure, restaurant rejects order, or user enters invalid data.
 
-  void showNotification(String message) async {
-    const AndroidNotificationDetails androidDetails =
-        AndroidNotificationDetails(
-      'reminder_channel',
-      'Reminders',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
-    const NotificationDetails notificationDetails =
-        NotificationDetails(android: androidDetails);
-    await notificationsPlugin.show(
-      0,
-      'Reminder 🔔',
-      message,
-      notificationDetails,
-    );
-  }
-
-  void setReminder() {
-    String message = _controller.text;
-    if (message.isEmpty) return;
-    Future.delayed(const Duration(seconds: 5), () {
-      showNotification(message);
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Reminder set for 5 seconds')),
-    );
-    _controller.clear();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Simple Reminder App'),
-        backgroundColor: Colors.blue,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                labelText: 'Enter reminder message',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: setReminder,
-              child: const Text('Set Reminder'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q12: How many actors are in the OFOS system?
+Four — Customer (browses, orders, tracks), Restaurant Staff (accepts/rejects orders, manages menu), Delivery Person (updates order status), and Admin (manages users/restaurants, generates reports).
 
 ---
 
-## Practical 8 — Prime Number Finder
+## Practical 7: Design UML Diagrams (Class, Sequence, Activity)
 
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+### Q1: What is a Class Diagram?
+A UML diagram showing the static structure of a system — classes, their attributes, methods, and relationships (association, inheritance, aggregation, composition, dependency).
 
-void main() {
-  runApp(const PrimeApp());
-}
+### Q2: What are the components of a class in UML?
+Three sections: class name (top), attributes/properties (middle), and methods/operations (bottom). E.g., User class has attributes (username, password) and methods (login(), logout()).
 
-class PrimeApp extends StatelessWidget {
-  const PrimeApp({super.key});
+### Q3: What is Association in a Class Diagram?
+A relationship between two classes indicating they are connected. E.g., User is associated with Account — a user has an account.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const PrimeScreen(),
-    );
-  }
-}
+### Q4: What is Dependency in a Class Diagram?
+A "uses" relationship where one class depends on another. E.g., Login class depends on User class to validate credentials.
 
-class PrimeScreen extends StatefulWidget {
-  const PrimeScreen({super.key});
+### Q5: What is a Sequence Diagram?
+A UML diagram showing how objects interact over time through messages. It illustrates the order of operations in a specific scenario using lifelines and message arrows.
 
-  @override
-  State<PrimeScreen> createState() => _PrimeScreenState();
-}
+### Q6: What are lifelines in a Sequence Diagram?
+Vertical dashed lines representing each object's existence over time. Messages flow horizontally between lifelines showing the sequence of interactions.
 
-class _PrimeScreenState extends State<PrimeScreen> {
-  final TextEditingController lowerController = TextEditingController();
-  final TextEditingController upperController = TextEditingController();
+### Q7: What is the login sequence in the OFOS example?
+User → Login: enterCredentials() → Login → Database: authenticateUser() → Database → Login: authenticationResult → Login → User: displayDashboard() or displayError().
 
-  List<int> primes = [];
-  bool isLoading = false;
+### Q8: What is an Activity Diagram?
+A UML diagram showing the flow of activities or steps in a process, including start/end nodes, activities, decision points (diamonds), and flow arrows.
 
-  FlutterLocalNotificationsPlugin notificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+### Q9: What is the login activity flow?
+Start → Enter Username & Password → Decision: Are credentials valid? → Yes → Redirect to Dashboard → End. No → Display Error → End.
 
-  @override
-  void initState() {
-    super.initState();
-    initializeNotification();
-  }
+### Q10: What are decision nodes in an Activity Diagram?
+Diamond-shaped symbols representing branching points where the flow splits based on a condition — e.g., "Are credentials valid?" with Yes/No paths.
 
-  void initializeNotification() async {
-    const AndroidInitializationSettings androidSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
-    const InitializationSettings settings =
-        InitializationSettings(android: androidSettings);
-    await notificationsPlugin.initialize(settings);
-  }
-
-  Future<void> showNotification() async {
-    const AndroidNotificationDetails androidDetails =
-        AndroidNotificationDetails(
-      'prime_channel',
-      'Prime Finder',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
-    const NotificationDetails details =
-        NotificationDetails(android: androidDetails);
-    await notificationsPlugin.show(
-      0,
-      'Prime Calculation Done ✅',
-      'Prime numbers are ready to view',
-      details,
-    );
-  }
-
-  bool isPrime(int n) {
-    if (n <= 1) return false;
-    for (int i = 2; i <= n ~/ 2; i++) {
-      if (n % i == 0) return false;
-    }
-    return true;
-  }
-
-  Future<void> findPrimesAsync(int low, int high) async {
-    setState(() {
-      isLoading = true;
-      primes.clear();
-    });
-    await Future.delayed(const Duration(seconds: 1));
-    List<int> result = [];
-    for (int i = low; i <= high; i++) {
-      if (isPrime(i)) {
-        result.add(i);
-      }
-    }
-    setState(() {
-      primes = result;
-      isLoading = false;
-    });
-    showNotification();
-  }
-
-  void startCalculation() {
-    int low = int.parse(lowerController.text);
-    int high = int.parse(upperController.text);
-    findPrimesAsync(low, high);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Prime Number Finder'),
-        backgroundColor: Colors.green,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: lowerController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Lower Range',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: upperController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Upper Range',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: startCalculation,
-              child: const Text('Find Primes'),
-            ),
-            const SizedBox(height: 20),
-            if (isLoading)
-              const CircularProgressIndicator()
-            else
-              Expanded(
-                child: ListView.builder(
-                  itemCount: primes.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(primes[index].toString()),
-                    );
-                  },
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q11: What is the difference between Class, Sequence, and Activity diagrams?
+Class diagrams show static structure (what the system is). Sequence diagrams show dynamic interactions over time (how objects communicate). Activity diagrams show process flow (how work gets done).
 
 ---
 
-## Practical 9 — Contacts Viewer
+## Practical 8: Software Testing – Test Case Design and Verification
 
-```dart
-import 'package:flutter/material.dart';
+### Q1: What is Black Box Testing?
+Testing that focuses on inputs and expected outputs without considering internal code structure. It tests what the system does from the user's perspective.
 
-void main() {
-  runApp(const ContactsApp());
-}
+### Q2: What is White Box Testing?
+Testing that examines internal code logic, branches, conditions, and paths. It tests how the system works internally by verifying all code paths are executed.
 
-class ContactsApp extends StatelessWidget {
-  const ContactsApp({super.key});
+### Q3: What should a test case include?
+Test case ID, description, input data, expected output, actual output (filled after execution), and pass/fail status.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const ContactsScreen(),
-    );
-  }
-}
+### Q4: What is Equivalence Partitioning?
+A Black Box technique that divides input data into valid and invalid partitions, then tests one representative value from each partition to reduce the number of test cases.
 
-class ContactsScreen extends StatelessWidget {
-  const ContactsScreen({super.key});
+### Q5: What is Boundary Value Analysis?
+A Black Box technique that tests values at the boundaries of input ranges (minimum, maximum, just below, just above) since errors often occur at edges.
 
-  final List<Map<String, String>> contacts = const [
-    {'name': 'Ravi Patel', 'number': '9876543210'},
-    {'name': 'Neha Shah', 'number': '9123456789'},
-    {'name': 'Amit Kumar', 'number': '9988776655'},
-    {'name': 'Priya Mehta', 'number': '9012345678'},
-  ];
+### Q6: What is Statement Coverage in White Box Testing?
+A metric measuring what percentage of code statements have been executed during testing. 100% statement coverage means every line of code has been run at least once.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Contacts Viewer'),
-        backgroundColor: Colors.blue,
-      ),
-      body: ListView.builder(
-        itemCount: contacts.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: const Icon(Icons.person),
-            title: Text(contacts[index]['name']!),
-            subtitle: Text(contacts[index]['number']!),
-          );
-        },
-      ),
-    );
-  }
-}
-```
+### Q7: What is Branch Coverage in White Box Testing?
+A metric ensuring every branch (if/else, switch case) in the code has been executed at least once — both true and false paths must be tested.
+
+### Q8: What is the difference between Black Box and White Box testing?
+Black Box focuses on expected behavior regardless of code paths (external testing). White Box focuses on testing all possible branches and paths in the code (internal testing).
+
+### Q9: What is the login module test scenario in Practical 8?
+User enters username and password. If credentials are correct, access is granted. If empty or invalid, appropriate error messages are displayed.
+
+### Q10: What are common Black Box test cases for login?
+Valid credentials (should succeed), empty username (should error), empty password (should error), invalid credentials (should error), SQL injection attempt (should reject), special characters in input (should handle safely).
 
 ---
 
-## Practical 10 — Dynamic Cards Generator
+## Practical 9: Software Testing Levels and Execution Report
 
-```dart
-import 'dart:math';
-import 'package:flutter/material.dart';
+### Q1: What is Unit Testing?
+Testing individual components or functions in isolation. In the login module: testing validateUsername(), validatePassword(), and authenticateUser() separately.
 
-void main() {
-  runApp(const CardApp());
-}
+### Q2: What is Integration Testing?
+Testing interactions between integrated modules. In the login module: verifying the login module correctly communicates with the Database Module to fetch and match credentials.
 
-class CardApp extends StatelessWidget {
-  const CardApp({super.key});
+### Q3: What is System Testing?
+Testing the complete, integrated system to ensure it meets all requirements. In the login module: testing the full workflow including UI, backend authentication, and security checks like SQL injection prevention.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const InputScreen(),
-    );
-  }
-}
+### Q4: What is Acceptance Testing?
+Testing conducted by end users or stakeholders to verify the system meets business requirements and is ready for deployment. It confirms users can log in successfully and see user-friendly error messages.
 
-class InputScreen extends StatefulWidget {
-  const InputScreen({super.key});
+### Q5: What is the difference between the four testing levels?
+Unit tests individual functions. Integration tests module interactions. System tests the complete application. Acceptance tests from the user's business perspective.
 
-  @override
-  State<InputScreen> createState() => _InputScreenState();
-}
+### Q6: What is a Test Execution Report?
+A document showing each test case's expected vs actual output, with pass/fail status after testing. It tracks testing progress and documents quality status.
 
-class _InputScreenState extends State<InputScreen> {
-  final TextEditingController controller = TextEditingController();
+### Q7: What information does a Test Execution Report contain?
+Test case ID, description, expected output, actual output, status (Pass/Fail), and any remarks or defect references for failed tests.
 
-  void goToCardsPage() {
-    int count = int.parse(controller.text);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CardsScreen(cardCount: count),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dynamic Cards Generator'),
-        backgroundColor: Colors.blue,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: controller,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Enter number of cards',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: goToCardsPage,
-              child: const Text('Generate Cards'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CardsScreen extends StatelessWidget {
-  final int cardCount;
-  CardsScreen({super.key, required this.cardCount});
-
-  final Random random = Random();
-
-  Color getRandomColor() {
-    return Color.fromARGB(
-      255,
-      random.nextInt(256),
-      random.nextInt(256),
-      random.nextInt(256),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Generated Cards'),
-        backgroundColor: Colors.green,
-      ),
-      body: ListView.builder(
-        itemCount: cardCount,
-        itemBuilder: (context, index) {
-          return Card(
-            color: getRandomColor(),
-            margin: const EdgeInsets.all(10),
-            elevation: 6,
-            child: ListTile(
-              title: Text(
-                'Card ${index + 1}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-```
+### Q8: Why is the execution report important?
+It provides evidence that testing was performed, shows which tests passed or failed, and helps track defect resolution before release.
 
 ---
 
-## Practical 11 — Fake Dialer
+## Practical 10: Demonstration of CASE Tools
 
-```dart
-import 'package:flutter/material.dart';
+### Q1: What are CASE Tools?
+Computer-Aided Software Engineering tools that help developers model, design, and document software systems efficiently. Examples: StarUML, Visual Paradigm, Rational Rose, Enterprise Architect.
 
-void main() {
-  runApp(const FakeDialerApp());
-}
+### Q2: What features do CASE tools provide?
+UML diagram creation (Class, Sequence, Activity, etc.), code generation from UML models, documentation support (export diagrams and reports), and consistency checks to ensure model correctness.
 
-class FakeDialerApp extends StatelessWidget {
-  const FakeDialerApp({super.key});
+### Q3: How do you create a new project in StarUML?
+Open StarUML → File → New Project → UML → Choose UML 2.x model → Name the project (e.g., OnlineBankingSystem).
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const DialerScreen(),
-    );
-  }
-}
+### Q4: How do you create a Class Diagram in StarUML?
+Add a Class Diagram to the model → Create classes (User, Login, Account) → Add attributes and methods → Define relationships (Association between User and Account, Dependency between Login and User).
 
-class DialerScreen extends StatefulWidget {
-  const DialerScreen({super.key});
+### Q5: How do you create a Sequence Diagram in StarUML?
+Add a Sequence Diagram → Add participants (User, Login, Database) → Draw message arrows showing the flow: enterCredentials() → validateUser() → authenticateUser() → displayDashboard()/displayError().
 
-  @override
-  State<DialerScreen> createState() => _DialerScreenState();
-}
+### Q6: How do you create an Activity Diagram in StarUML?
+Add an Activity Diagram → Define activities (Enter credentials → Validate → Authenticate) → Add decision nodes for valid/invalid credentials → Connect with flow arrows to success/error end nodes.
 
-class _DialerScreenState extends State<DialerScreen> {
-  final TextEditingController phoneController = TextEditingController();
+### Q7: What is code generation in CASE tools?
+Automatically creating skeleton code from UML models. Select a class → Right-click → Generate Code → Choose language (Java, C#, Python). It generates class definitions with attributes and empty methods.
 
-  void showCallDialog() {
-    String number = phoneController.text;
-    if (number.isEmpty) return;
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Calling'),
-        content: Text('📞 Calling $number...'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('End Call'),
-          ),
-        ],
-      ),
-    );
-  }
+### Q8: How do you export diagrams from StarUML?
+File → Export → Diagram as Image (PNG, SVG) for reports. You can also generate HTML or PDF reports for comprehensive project documentation.
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fake Dialer'),
-        backgroundColor: Colors.green,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: phoneController,
-              keyboardType: TextInputType.phone,
-              decoration: const InputDecoration(
-                labelText: 'Enter phone number',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.phone),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: showCallDialog,
-              icon: const Icon(Icons.call),
-              label: const Text('Call'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q9: What are the deliverables for a CASE tool practical?
+StarUML .mdj project file (editable), PNG/SVG diagrams (Class, Sequence, Activity), optionally generated skeleton code, and optionally HTML/PDF documentation.
 
----
+### Q10: What are the benefits of using CASE tools?
+Speeds up design with drag-and-drop UML modeling, maintains consistency between diagrams and code, supports team collaboration by sharing models, and is useful for educational, professional, and documentation purposes.
 
-## Practical 12 — Basic Messaging Mock App
+### Q11: What is the .mdj file format?
+StarUML's project file format (Model Diagram JSON) — an editable file that stores all diagrams, classes, relationships, and model data that can be reopened and modified in StarUML.
 
-```dart
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MessagingApp());
-}
-
-class MessagingApp extends StatelessWidget {
-  const MessagingApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const ChatScreen(),
-    );
-  }
-}
-
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
-
-  @override
-  State<ChatScreen> createState() => _ChatScreenState();
-}
-
-class _ChatScreenState extends State<ChatScreen> {
-  final TextEditingController messageController = TextEditingController();
-  final List<String> messages = [];
-
-  void sendMessage() {
-    if (messageController.text.isEmpty) return;
-    setState(() {
-      messages.add(messageController.text);
-    });
-    messageController.clear();
-  }
-
-  void clearMessages() {
-    setState(() {
-      messages.clear();
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Messaging Mock App'),
-        backgroundColor: Colors.teal,
-        actions: [
-          IconButton(
-            onPressed: clearMessages,
-            icon: const Icon(Icons.delete),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                return Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    margin: const EdgeInsets.all(8),
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.teal.shade300,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Text(
-                      messages[index],
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: messageController,
-                    decoration: const InputDecoration(
-                      hintText: 'Type a message...',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                ElevatedButton(
-                  onPressed: sendMessage,
-                  child: const Text('Send'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-```
-
----
-
-## Practical 13 — File Save (Text File) — Notes App
-
-```dart
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-
-void main() {
-  runApp(const NotesApp());
-}
-
-class NotesApp extends StatelessWidget {
-  const NotesApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const NotesScreen(),
-    );
-  }
-}
-
-class NotesScreen extends StatefulWidget {
-  const NotesScreen({super.key});
-
-  @override
-  State<NotesScreen> createState() => _NotesScreenState();
-}
-
-class _NotesScreenState extends State<NotesScreen> {
-  final TextEditingController noteController = TextEditingController();
-  String savedNote = '';
-
-  Future<String> getFilePath() async {
-    final directory = await getApplicationDocumentsDirectory();
-    return '${directory.path}/note.txt';
-  }
-
-  Future<void> saveNote() async {
-    final path = await getFilePath();
-    final file = File(path);
-    await file.writeAsString(noteController.text);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Note Saved Successfully')),
-    );
-    noteController.clear();
-  }
-
-  Future<void> readNote() async {
-    try {
-      final path = await getFilePath();
-      final file = File(path);
-      String content = await file.readAsString();
-      setState(() {
-        savedNote = content;
-      });
-    } catch (e) {
-      setState(() {
-        savedNote = 'No saved note found';
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notes App'),
-        backgroundColor: Colors.blueGrey,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: noteController,
-              maxLines: 4,
-              decoration: const InputDecoration(
-                labelText: 'Enter your note',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: saveNote,
-                  child: const Text('Save Note'),
-                ),
-                ElevatedButton(
-                  onPressed: readNote,
-                  child: const Text('Read Note'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'Saved Note:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Text(savedNote),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
-
----
-
-## Practical 14 — Dark Mode Toggle (Shared Preferences)
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool isDarkMode = false;
-
-  @override
-  void initState() {
-    super.initState();
-    loadTheme();
-  }
-
-  Future<void> loadTheme() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isDarkMode = prefs.getBool('darkMode') ?? false;
-    });
-  }
-
-  Future<void> saveTheme(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('darkMode', value);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: isDarkMode ? ThemeData.dark() : ThemeData.light(),
-      home: HomeScreen(
-        isDarkMode: isDarkMode,
-        onThemeChanged: (value) {
-          setState(() {
-            isDarkMode = value;
-          });
-          saveTheme(value);
-        },
-      ),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  final bool isDarkMode;
-  final Function(bool) onThemeChanged;
-
-  const HomeScreen({
-    super.key,
-    required this.isDarkMode,
-    required this.onThemeChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dark Mode Toggle'),
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Light'),
-            Switch(
-              value: isDarkMode,
-              onChanged: onThemeChanged,
-            ),
-            const Text('Dark'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
-
----
-
-## Practical 15 — Mini Student Records (SQLite)
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
-
-void main() {
-  runApp(const StudentApp());
-}
-
-class StudentApp extends StatelessWidget {
-  const StudentApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: StudentScreen(),
-    );
-  }
-}
-
-class StudentScreen extends StatefulWidget {
-  const StudentScreen({super.key});
-
-  @override
-  State<StudentScreen> createState() => _StudentScreenState();
-}
-
-class _StudentScreenState extends State<StudentScreen> {
-  Database? database;
-  List<Map<String, dynamic>> students = [];
-
-  final idController = TextEditingController();
-  final nameController = TextEditingController();
-  final addressController = TextEditingController();
-  final contactController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    initDB();
-  }
-
-  Future<void> initDB() async {
-    database = await openDatabase(
-      join(await getDatabasesPath(), 'students.db'),
-      version: 1,
-      onCreate: (db, version) async {
-        await db.execute(
-          '''CREATE TABLE students(
-            id INTEGER PRIMARY KEY,
-            name TEXT,
-            address TEXT,
-            contact TEXT
-          )''',
-        );
-      },
-    );
-    fetchStudents();
-  }
-
-  Future<void> fetchStudents() async {
-    final data = await database!.query('students');
-    setState(() {
-      students = data;
-    });
-  }
-
-  Future<void> addStudent() async {
-    await database!.insert('students', {
-      'id': int.parse(idController.text),
-      'name': nameController.text,
-      'address': addressController.text,
-      'contact': contactController.text,
-    });
-    clearFields();
-    fetchStudents();
-  }
-
-  Future<void> updateStudent() async {
-    await database!.update(
-      'students',
-      {
-        'name': nameController.text,
-        'address': addressController.text,
-        'contact': contactController.text,
-      },
-      where: 'id = ?',
-      whereArgs: [int.parse(idController.text)],
-    );
-    clearFields();
-    fetchStudents();
-  }
-
-  Future<void> deleteStudent(int id) async {
-    await database!.delete(
-      'students',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-    fetchStudents();
-  }
-
-  void clearFields() {
-    idController.clear();
-    nameController.clear();
-    addressController.clear();
-    contactController.clear();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Student Records (SQLite)'),
-        backgroundColor: Colors.indigo,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            TextField(
-              controller: idController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Student ID'),
-            ),
-            TextField(
-              controller: nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-            ),
-            TextField(
-              controller: addressController,
-              decoration: const InputDecoration(labelText: 'Address'),
-            ),
-            TextField(
-              controller: contactController,
-              decoration: const InputDecoration(labelText: 'Contact'),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: addStudent,
-                  child: const Text('Add'),
-                ),
-                ElevatedButton(
-                  onPressed: updateStudent,
-                  child: const Text('Update'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: ListView.builder(
-                itemCount: students.length,
-                itemBuilder: (context, index) {
-                  final student = students[index];
-                  return Card(
-                    elevation: 4,
-                    margin: const EdgeInsets.all(6),
-                    child: ListTile(
-                      leading: const Icon(Icons.school),
-                      title: Text(student['name']),
-                      subtitle: Text(
-                        'ID: ${student['id']}\n'
-                        'Address: ${student['address']}\n'
-                        'Contact: ${student['contact']}',
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.red),
-                        onPressed: () => deleteStudent(student['id']),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
+### Q12: What is traceability in CASE tools?
+Maintaining links between requirements, design diagrams, and implementation code — ensuring every requirement is covered by design and every design element is implemented in code.
