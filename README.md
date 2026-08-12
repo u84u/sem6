@@ -1,452 +1,631 @@
-# Software Engineering
+# Software Testing and Automation — Complete Study Guide
+### Consolidated from Module 1, 2 & 3 | Parul University | Yadagiri Rama Deepak
 
 ---
 
-## Practical 1: Study and Comparison of Software Process Models
+## Table of Contents
 
-### Q1: What is a Software Process Model?
-A structured framework that defines how software is planned, developed, tested, and maintained. It organizes development activities into phases to improve efficiency, quality, and risk management.
+**Module 1 — Introduction to Software Testing**
+1. What is Software Testing
+2. Verification & Validation (V&V)
+3. Market Scenario & Importance of V&V
+4. Career Opportunities
+5. Why Should We Test Software
+6. Independent V&V (IV&V)
+7. Phases of Software Testing (STLC)
+8. Software Development Process Models
+9. Introduction to Selenium
+10. Application Testing vs Product Testing
 
-### Q2: What are the phases of the Waterfall Model?
-Requirements → Design → Implementation → Testing → Deployment → Maintenance. Each phase must complete before the next begins — it's strictly linear.
+**Module 2 — Software Testing Techniques**
+11. Static vs Dynamic Testing
+12. White Box vs Black Box Testing
+13. User Interface Testing Overview
+14. Form-Level Validation & Inter-Form Dependencies
+15. Field-Level Validation & Inter-Field Dependencies
+16. Error Message Validation
+17. UI Testing — Form, Field & Dependency Checks
+18. Common UI Testing Checks & Tools
+19. Automated Test Execution with Selenium (How It Works)
 
-### Q3: What are the advantages of the Waterfall Model?
-Simple and easy to understand, well-defined stages with clear documentation, and suitable for small projects with stable, fixed requirements.
+**Module 3 — Software Testing Levels & Types**
+20. Types of Software Testing (Manual vs Automation Overview)
+21. Functional vs Non-Functional Testing
+22. Regression Testing
+23. Testing Levels: Unit → Integration → System → UAT
+24. Performance & Load Testing
+25. Acceptance Testing
+26. Localization Testing
+27. Topics Named But Not Detailed in Source Slides
 
-### Q4: What are the disadvantages of the Waterfall Model?
-No feedback loops between phases, poor handling of requirement changes, and testing happens late — bugs found late are expensive to fix.
-
-### Q5: When should you use the Waterfall Model?
-For well-defined projects with fixed requirements that won't change, such as payroll systems or simple utility applications.
-
-### Q6: What is the Incremental Model?
-Software is built and delivered in small increments, where each increment adds more functionality. Users get working modules early rather than waiting for the complete system.
-
-### Q7: What are the advantages of the Incremental Model?
-Early delivery of working modules, flexibility to accommodate requirement changes between increments, and easier risk management since problems are caught early.
-
-### Q8: What are the disadvantages of the Incremental Model?
-Requires good upfront planning and the system architecture must be designed to support incremental development from the start.
-
-### Q9: When should you use the Incremental Model?
-For medium-sized projects where requirements are partially clear and can be delivered in stages.
-
-### Q10: What is the Spiral Model?
-Combines iterative development with systematic risk analysis. Each spiral cycle includes four phases: planning, risk evaluation, development, and review.
-
-### Q11: What are the advantages of the Spiral Model?
-Best model for high-risk projects, provides frequent customer feedback at each cycle, and is both flexible and scalable.
-
-### Q12: What are the disadvantages of the Spiral Model?
-Expensive and complex to implement, and requires expertise in risk management to be effective.
-
-### Q13: When should you use the Spiral Model?
-For large, critical, and complex systems like aerospace or defense projects where risk management is essential.
-
-### Q14: What is the Agile Model?
-An iterative, customer-centric approach with short development cycles called sprints. It focuses on collaboration, adaptability, and rapid delivery of working software.
-
-### Q15: What are the advantages of the Agile Model?
-Highly flexible and adaptive to changes, continuous customer feedback throughout development, and working software is delivered frequently.
-
-### Q16: What are the disadvantages of the Agile Model?
-Requires an experienced team, documentation may be minimal, and it's difficult to manage for large distributed teams.
-
-### Q17: When should you use the Agile Model?
-For projects with frequently changing requirements, start-ups, and fast-evolving applications.
-
-### Q18: What is the V-Model (Verification & Validation Model)?
-An extension of Waterfall that emphasizes testing at each development stage. Every development phase has a corresponding testing phase planned in parallel.
-
-### Q19: What are the advantages of the V-Model?
-Testing is planned early in the lifecycle, highly structured and disciplined approach, and suitable for safety-critical systems.
-
-### Q20: What are the disadvantages of the V-Model?
-Rigid and not flexible to changes, and requirement changes are costly once development begins.
-
-### Q21: When should you use the V-Model?
-For medical devices, embedded systems, and other safety-critical applications where thorough testing is mandatory.
-
-### Q22: Which models are best for stable requirements?
-Waterfall and V-Model are ideal for stable and safety-critical environments where requirements are well-understood upfront.
-
-### Q23: Which models are best for evolving requirements?
-Incremental and Agile work well when requirements evolve during development.
-
-### Q24: Which model is best for risk management?
-The Spiral Model is best when risk management is the primary concern.
+**Quick-Revision Cheat Sheet** (at the end)
 
 ---
 
-## Practical 2: Preparation of SRS Document
+# MODULE 1 — INTRODUCTION TO SOFTWARE TESTING
 
-### Q1: What is an SRS document?
-A Software Requirement Specification describes all functional and non-functional requirements, system features, constraints, and overall system behavior. It serves as a baseline for design, development, and testing.
+## 1. What is Software Testing?
 
-### Q2: Who uses the SRS document?
-Developers, testers, project managers, and stakeholders — it acts as a common reference and contract between all parties.
+Software Testing is the process of **evaluating a system to detect defects**. It ensures:
+- **Quality**
+- **Reliability**
+- **Performance**
+- **Security**
 
-### Q3: What is the "Purpose" section of an SRS?
-It describes why the SRS document exists — to define the requirements for the system and specify who will use the document.
-
-### Q4: What is the "Scope" section of an SRS?
-It defines what the system will do and for whom. For example, OFOS allows customers to browse restaurants, place orders, make payments, and track delivery.
-
-### Q5: What goes in the "Definitions, Acronyms & Abbreviations" section?
-A glossary of terms used in the document — e.g., OFOS (Online Food Ordering System), UI (User Interface), DBMS (Database Management System), OTP (One-Time Password).
-
-### Q6: What is "Product Perspective" in SRS?
-It describes how the system fits into the larger context — whether it's standalone or part of a larger system, and its main components (Customer Interface, Restaurant Dashboard, Admin Panel, Centralized Database).
-
-### Q7: What are "Product Functions"?
-A list of all major features the system provides — e.g., User Registration & Login, Browse Restaurants & Menus, Add Items to Cart, Place Order, Payment, Order Tracking, Restaurant Menu Management, Admin Management.
-
-### Q8: What are "User Classes and Characteristics"?
-Different types of users who will interact with the system — e.g., Customers (casual users), Restaurant Owners (business users), Delivery Persons (operational users), and Admins (system managers).
-
-### Q9: What is "Operating Environment"?
-The technical platform the system runs on — Web browser / Android / iOS, backend in Java/Python/PHP/Node.js, database in MySQL/PostgreSQL, OS: Windows/Linux.
-
-### Q10: What are "Design and Implementation Constraints"?
-Limitations the system must work within — must follow online payment security standards, requires internet connection, and must use responsive UI design.
-
-### Q11: What are "Assumptions and Dependencies"?
-Conditions assumed to be true — users have valid mobile/email, restaurants provide correct pricing, and payment gateway is available.
-
-### Q12: What are Functional Requirements?
-Specific behaviors the system must perform — e.g., "User shall register using email/mobile and password" (F1.1), "System shall validate credentials during login" (F1.2).
-
-### Q13: What are Non-Functional Requirements (NFRs)?
-Quality attributes describing how the system should perform — including performance, security, reliability, usability, and scalability.
-
-### Q14: What are Performance Requirements?
-System should handle 1000+ concurrent users and response time must be under 3 seconds.
-
-### Q15: What are Security Requirements?
-Data encryption for passwords, secure payment integration, and role-based access control to ensure only authorized users access specific features.
-
-### Q16: What are Reliability Requirements?
-System uptime must be 99% and backup/recovery must be supported to prevent data loss.
-
-### Q17: What are Usability Requirements?
-Easy-to-use UI for both customers and restaurants — the interface should be intuitive and require minimal training.
-
-### Q18: What are Scalability Requirements?
-The system should support adding more restaurants and users without performance degradation.
-
-### Q19: What are External Interface Requirements?
-Descriptions of how the system interacts with users (UI requirements), hardware (mobile devices, payment gateway devices), and software (database, payment gateway APIs, SMS/Email APIs).
-
-### Q20: What is a Use Case Table?
-A structured description of a system interaction including use case ID, name, actors, description, preconditions, main flow, alternate flows, exceptions, and postconditions.
-
-### Q21: What is a Data Flow Diagram (DFD)?
-A diagram showing how data flows through the system. Level 0 (context diagram) shows the system as a single process. Level 1 breaks it into modules like User Module, Restaurant Module, Order Processing, and Payment Processing.
-
-### Q22: What are "Other Requirements" in SRS?
-Future considerations like integration with coupons, offers, wallet systems, and multi-language interface support.
+> Testing answers one core question: **"Does the software meet user expectations?"**
 
 ---
 
-## Practical 3: Structured vs. Object-Oriented Analysis
+## 2. Verification & Validation (V&V)
 
-### Q1: What is Structured Analysis?
-A process-centric approach that focuses on how data flows through the system. It uses DFDs (Data Flow Diagrams) and ER Diagrams to model system behavior.
+These are the two pillars of quality assurance, and they answer two *different* questions:
 
-### Q2: What are the key components of Structured Analysis?
-Processes (User Management, Browse Restaurants, Cart & Order, Payment Processing), Data Stores (Users, Restaurants, Orders, Payments), and data flow between them.
+| Aspect | Verification | Validation |
+|---|---|---|
+| Question answered | "Are we building the product **right**?" | "Are we building the **right** product?" |
+| Nature | Static process | Dynamic process |
+| Method | Reviews & inspections | Execution of code |
+| Code execution | Not required | Required |
+| Timing | Done early (docs, design, code review) | Done after development |
+| Checks | Work products (docs, design, code) meet specifications | Final software meets **user needs** |
 
-### Q3: What is Object-Oriented Analysis (OOA)?
-An object-centric approach that models real-world entities as classes with attributes, methods, and relationships using UML diagrams.
-
-### Q4: What are the key components of OOA?
-Objects/Classes (Customer, Restaurant, Menu, Item, Order, Payment, Admin), their interactions, responsibilities, behavior, and relationships.
-
-### Q5: What is the fundamental difference between Structured and OOA?
-Structured Analysis answers "what the system does" (process-centric), while OOA answers "what the system is and how it behaves" (object-centric).
-
-### Q6: Why is OOA preferred for modern systems?
-It models real-world entities (Customer, Restaurant, Delivery) and their interactions, making maintenance, scalability, and enhancements easier than process-centric approaches.
-
-### Q7: What is a DFD (Data Flow Diagram)?
-A diagram showing the flow of information through a system — how data moves from external entities through processes to data stores.
-
-### Q8: What is an ER Diagram?
-An Entity-Relationship Diagram showing data entities, their attributes, and relationships between them — used primarily in database design.
-
-### Q9: How does data flow in the OFOS structured analysis?
-Customer → System → Restaurant → Delivery → Admin — showing the sequential flow of information through the system.
-
-### Q10: How do objects interact in the OFOS OOA?
-Customer places Order → triggers Payment → Restaurant updates Order → Delivery updates Status — showing object-to-object interactions.
+**Why both matter:** Using Verification *and* Validation together ensures the product is accurate, reliable, and genuinely user-friendly — verification alone can produce a spec-compliant product that still doesn't solve the user's real problem.
 
 ---
 
-## Practical 4: Project Planning and Estimation (W5HH & COCOMO)
+## 3. Market Scenario & Importance
 
-### Q1: What is the W5HH principle?
-A project planning framework that answers: Who (team), What (objectives), When (timeline), Where (location/platform), Why (justification), How (methodology), and How Much (budget/effort).
+The global software testing market is growing rapidly, driven by:
+- **Cloud computing**
+- **Mobile applications**
+- **AI & IoT systems**
 
-### Q2: What does "Who" in W5HH identify?
-The team members and their roles — frontend developers, backend developers, database developers, project manager, and testers.
-
-### Q3: What does "What" in W5HH identify?
-The project objectives and deliverables — e.g., design and implement a system for customers to order food online.
-
-### Q4: What does "When" in W5HH identify?
-The project timeline and milestones — typically represented as a Gantt chart showing weekly tasks and sprint iterations.
-
-### Q5: What does "Where" in W5HH identify?
-The deployment platform and development environment — web, mobile, cloud servers, and development tools used.
-
-### Q6: What does "How" in W5HH identify?
-The methodology and approach — e.g., Agile with weekly sprints, using specific technologies and frameworks.
-
-### Q7: What does "How Much" in W5HH identify?
-The budget, effort, and resource requirements — including team size, development time, and cost estimation.
-
-### Q8: What is the COCOMO model?
-Constructive Cost Model — estimates software effort, time, and cost based on project size measured in KLOC (thousands of lines of code).
-
-### Q9: What are the three COCOMO project types?
-Organic (small team, well-understood application), Semi-detached (medium team, mixed experience), and Embedded (tight constraints, complex systems).
-
-### Q10: What is the Basic COCOMO formula for effort?
-Effort (Person-Months) = a × (KLOC)^b. For Organic projects: a = 2.4, b = 1.05.
-
-### Q11: What is the Basic COCOMO formula for development time?
-Time (Months) = c × (Effort)^d. For Organic projects: c = 2.5, d = 0.38.
-
-### Q12: How do you estimate project size in KLOC?
-By summing up lines of code for each component — e.g., Frontend: 2000 LOC + Backend: 3000 LOC + Database scripts: 500 LOC = 5500 LOC = 5.5 KLOC.
-
-### Q13: How is team size estimated from COCOMO?
-Team Size = Effort / Development Time. For 14.33 PM effort over 6.85 months ≈ 2.1, rounded to 3 people. Recommended: 3–5 members.
-
-### Q14: What is a Gantt Chart?
-A visual timeline showing project tasks, their durations, start/end dates, and dependencies — useful for scheduling and tracking progress across weeks or months.
-
-### Q15: What is the difference between Basic, Intermediate, and Detailed COCOMO?
-Basic uses only KLOC for estimation. Intermediate adds cost drivers (complexity, reliability, experience). Detailed adds phase-sensitive multipliers for each development phase.
+This is pushing the industry toward:
+- **Automation testing**
+- **Continuous testing (CI/CD)**
+- **AI-assisted testing**
 
 ---
 
-## Practical 5: Risk Management and Quality Planning
+## 4. Career Opportunities in Software Testing
 
-### Q1: What is Risk Management in software engineering?
-The process of identifying, analyzing, and mitigating risks throughout the software development lifecycle to minimize project failures, delays, and cost overruns.
+**Common roles:**
+- Manual Test Engineer
+- Automation Test Engineer
+- QA Analyst
+- Performance Tester
+- Security Tester
+- Test Architect
+- DevOps Test Engineer
 
-### Q2: What is Risk Identification?
-The process of finding potential risks that could affect the project — including technical risks, schedule risks, resource risks, requirement risks, and security risks.
-
-### Q3: What is Risk Analysis?
-Evaluating each identified risk by assessing its probability (likelihood of occurrence) and impact (severity of consequences) to prioritize mitigation efforts.
-
-### Q4: What is Risk Mitigation?
-Developing strategies to reduce the probability or impact of identified risks — e.g., using proven technology to reduce technical risk, or adding buffer time to reduce schedule risk.
-
-### Q5: What is a Risk Register?
-A document that tracks all identified risks, their probability, impact, mitigation strategies, current status, and assigned risk owners.
-
-### Q6: What is Risk Monitoring?
-Continuously tracking risks throughout the project — maintaining the Risk Register, conducting weekly risk review meetings, and assigning risk owners for each critical risk.
-
-### Q7: What is Quality Planning?
-Defining the quality standards, objectives, and activities to ensure the software meets functional and non-functional requirements, is reliable, maintainable, and satisfies end-users.
-
-### Q8: What are Quality Objectives?
-Specific, measurable quality goals — e.g., zero critical bugs at release, 99% uptime, response time under 3 seconds, and 100% test case coverage for critical modules.
-
-### Q9: What is Quality Assurance (QA)?
-Process-focused activities that prevent defects — including code reviews, process audits, following coding standards, and using version control practices.
-
-### Q10: What is Quality Control (QC)?
-Product-focused activities that detect defects — including testing (unit, integration, system), inspections, and verifying the final product meets requirements.
-
-### Q11: What is the difference between QA and QC?
-QA is proactive and process-oriented (preventing defects). QC is reactive and product-oriented (finding defects in the finished product).
-
-### Q12: What tools are used for Quality Assurance?
-GitHub/GitLab (version control), Selenium/JUnit/Postman (testing), Jira/Trello (project management), OWASP ZAP/Burp Suite (security testing), Apache JMeter (performance testing).
-
-### Q13: What are Quality Standards and Metrics?
-Measurable criteria to assess quality — code coverage percentage, defect density, mean time to failure, customer satisfaction scores, and compliance with coding standards.
+**Skills required:**
+- SDLC & STLC knowledge
+- Familiarity with testing tools
+- Programming basics
+- Analytical thinking
 
 ---
 
-## Practical 6: Use Case Modeling and Diagrams
+## 5. Why Should We Test Software?
 
-### Q1: What is a Use Case?
-A description of how an actor interacts with the system to achieve a specific goal, including the main flow of events, alternate flows, and exceptions.
+Testing exists to:
+- Find defects **before release**
+- Avoid business losses
+- Ensure user satisfaction
+- Improve software quality
+- Verify requirements compliance
 
-### Q2: What is an Actor in UML?
-An external entity (person, system, or device) that interacts with the system. In OFOS: Customer, Restaurant Staff, Delivery Person, and Admin.
-
-### Q3: What are the components of a Use Case Description?
-Use Case ID, name, actors, description, preconditions, main flow (normal path), alternate flows (variations), exceptions (error conditions), and postconditions (system state after completion).
-
-### Q4: What is a Use Case Diagram?
-A UML diagram showing actors (stick figures), use cases (ovals), and their relationships — providing a visual overview of all system functionality from the user's perspective.
-
-### Q5: What is the «include» relationship?
-A mandatory relationship where one use case always includes another. E.g., "Place Order" always includes "Payment" — the included use case is required for the base use case to complete.
-
-### Q6: What is the «extend» relationship?
-An optional relationship where one use case may extend another under certain conditions. E.g., "Apply Coupon" extends "Place Order" — it only happens if the user chooses to apply a coupon.
-
-### Q7: What are preconditions in a use case?
-Conditions that must be true before the use case can begin — e.g., "User must be logged in" before placing an order.
-
-### Q8: What are postconditions in a use case?
-The state of the system after the use case completes successfully — e.g., "Order is created and sent to restaurant" after placing an order.
-
-### Q9: What is the main flow in a use case?
-The normal, expected sequence of steps — the "happy path" where everything goes as planned without errors or exceptions.
-
-### Q10: What are alternate flows in a use case?
-Variations of the main flow that handle different but valid scenarios — e.g., user chooses Cash on Delivery instead of online payment.
-
-### Q11: What are exceptions in a use case?
-Error conditions or unexpected events — e.g., payment gateway failure, restaurant rejects order, or user enters invalid data.
-
-### Q12: How many actors are in the OFOS system?
-Four — Customer (browses, orders, tracks), Restaurant Staff (accepts/rejects orders, manages menu), Delivery Person (updates order status), and Admin (manages users/restaurants, generates reports).
+> **Key fact to remember:** Fixing a defect *after release* costs **10x more** than fixing it during development. This is the economic argument for testing early and often.
 
 ---
 
-## Practical 7: Design UML Diagrams (Class, Sequence, Activity)
+## 6. Independent Verification & Validation (IV&V)
 
-### Q1: What is a Class Diagram?
-A UML diagram showing the static structure of a system — classes, their attributes, methods, and relationships (association, inheritance, aggregation, composition, dependency).
+IV&V means testing is performed by a team that is **independent** of the development team.
 
-### Q2: What are the components of a class in UML?
-Three sections: class name (top), attributes/properties (middle), and methods/operations (bottom). E.g., User class has attributes (username, password) and methods (login(), logout()).
+**Benefits:**
+- Ensures unbiased assessment
+- Improves objectivity (no "too close to the code" blind spots)
 
-### Q3: What is Association in a Class Diagram?
-A relationship between two classes indicating they are connected. E.g., User is associated with Account — a user has an account.
-
-### Q4: What is Dependency in a Class Diagram?
-A "uses" relationship where one class depends on another. E.g., Login class depends on User class to validate credentials.
-
-### Q5: What is a Sequence Diagram?
-A UML diagram showing how objects interact over time through messages. It illustrates the order of operations in a specific scenario using lifelines and message arrows.
-
-### Q6: What are lifelines in a Sequence Diagram?
-Vertical dashed lines representing each object's existence over time. Messages flow horizontally between lifelines showing the sequence of interactions.
-
-### Q7: What is the login sequence in the OFOS example?
-User → Login: enterCredentials() → Login → Database: authenticateUser() → Database → Login: authenticationResult → Login → User: displayDashboard() or displayError().
-
-### Q8: What is an Activity Diagram?
-A UML diagram showing the flow of activities or steps in a process, including start/end nodes, activities, decision points (diamonds), and flow arrows.
-
-### Q9: What is the login activity flow?
-Start → Enter Username & Password → Decision: Are credentials valid? → Yes → Redirect to Dashboard → End. No → Display Error → End.
-
-### Q10: What are decision nodes in an Activity Diagram?
-Diamond-shaped symbols representing branching points where the flow splits based on a condition — e.g., "Are credentials valid?" with Yes/No paths.
-
-### Q11: What is the difference between Class, Sequence, and Activity diagrams?
-Class diagrams show static structure (what the system is). Sequence diagrams show dynamic interactions over time (how objects communicate). Activity diagrams show process flow (how work gets done).
+**Typically used in:**
+- Safety-critical systems
+- Banking & healthcare applications (domains where an undetected bug has serious real-world consequences)
 
 ---
 
-## Practical 8: Software Testing – Test Case Design and Verification
+## 7. Phases of Software Testing (STLC)
 
-### Q1: What is Black Box Testing?
-Testing that focuses on inputs and expected outputs without considering internal code structure. It tests what the system does from the user's perspective.
+The Software Testing Life Cycle has six sequential phases:
 
-### Q2: What is White Box Testing?
-Testing that examines internal code logic, branches, conditions, and paths. It tests how the system works internally by verifying all code paths are executed.
-
-### Q3: What should a test case include?
-Test case ID, description, input data, expected output, actual output (filled after execution), and pass/fail status.
-
-### Q4: What is Equivalence Partitioning?
-A Black Box technique that divides input data into valid and invalid partitions, then tests one representative value from each partition to reduce the number of test cases.
-
-### Q5: What is Boundary Value Analysis?
-A Black Box technique that tests values at the boundaries of input ranges (minimum, maximum, just below, just above) since errors often occur at edges.
-
-### Q6: What is Statement Coverage in White Box Testing?
-A metric measuring what percentage of code statements have been executed during testing. 100% statement coverage means every line of code has been run at least once.
-
-### Q7: What is Branch Coverage in White Box Testing?
-A metric ensuring every branch (if/else, switch case) in the code has been executed at least once — both true and false paths must be tested.
-
-### Q8: What is the difference between Black Box and White Box testing?
-Black Box focuses on expected behavior regardless of code paths (external testing). White Box focuses on testing all possible branches and paths in the code (internal testing).
-
-### Q9: What is the login module test scenario in Practical 8?
-User enters username and password. If credentials are correct, access is granted. If empty or invalid, appropriate error messages are displayed.
-
-### Q10: What are common Black Box test cases for login?
-Valid credentials (should succeed), empty username (should error), empty password (should error), invalid credentials (should error), SQL injection attempt (should reject), special characters in input (should handle safely).
+1. **Requirement Analysis** — understand what needs to be tested
+2. **Test Planning** — define scope, strategy, resources, schedule
+3. **Test Case Design** — write the actual test cases
+4. **Test Environment Setup** — prepare hardware/software/data needed for execution
+5. **Test Execution** — run the tests, log defects
+6. **Test Closure** — evaluate results, document learnings, close the cycle
 
 ---
 
-## Practical 9: Software Testing Levels and Execution Report
+## 8. Software Development Process Models
 
-### Q1: What is Unit Testing?
-Testing individual components or functions in isolation. In the login module: testing validateUsername(), validatePassword(), and authenticateUser() separately.
+These models describe *how* a software project moves from requirements to delivery — and each has direct implications for when and how testing happens.
 
-### Q2: What is Integration Testing?
-Testing interactions between integrated modules. In the login module: verifying the login module correctly communicates with the Database Module to fetch and match credentials.
+### 8.1 Waterfall Model
+A **linear, sequential** breakdown of activities: Requirements → Design → Development → Testing → Deployment → Maintenance. Each phase depends fully on the deliverables of the one before it.
+- **Example use case:** Online Banking system
+- **Drawback:** Difficult to accommodate change requests once a phase is complete
 
-### Q3: What is System Testing?
-Testing the complete, integrated system to ensure it meets all requirements. In the login module: testing the full workflow including UI, backend authentication, and security checks like SQL injection prevention.
+### 8.2 V-Model (Verification and Validation Model)
+Demonstrates the direct relationship between each **development** phase and its corresponding **testing** phase — the next phase only starts once the previous one is complete.
 
-### Q4: What is Acceptance Testing?
-Testing conducted by end users or stakeholders to verify the system meets business requirements and is ready for deployment. It confirms users can log in successfully and see user-friendly error messages.
+Development side → matching Testing side:
+- Requirement Analysis ↔ Acceptance Testing
+- System Design ↔ System Testing
+- Architecture Design ↔ Integration Testing
+- Module Design ↔ Unit Testing
+- Coding (center of the "V")
 
-### Q5: What is the difference between the four testing levels?
-Unit tests individual functions. Integration tests module interactions. System tests the complete application. Acceptance tests from the user's business perspective.
+**Definitions reinforced here:**
+- *Verification* = checking the product is built right (bug-free, meets requirements) — examining the process
+- *Validation* = checking the right product was built to meet user needs — examining the outcome
 
-### Q6: What is a Test Execution Report?
-A document showing each test case's expected vs actual output, with pass/fail status after testing. It tracks testing progress and documents quality status.
+**Pros:**
+- Highly disciplined, phases completed one at a time
+- Good for small projects with clear requirements
+- Simple to understand and use
+- Focuses on V&V activities early in the life cycle
 
-### Q7: What information does a Test Execution Report contain?
-Test case ID, description, expected output, actual output, status (Pass/Fail), and any remarks or defect references for failed tests.
+**Cons:**
+- Not good for complex or object-oriented projects
+- Not suitable when requirements are unclear or likely to change
+- Time-consuming
 
-### Q8: Why is the execution report important?
-It provides evidence that testing was performed, shows which tests passed or failed, and helps track defect resolution before release.
+### 8.3 Incremental Process Model
+A simple working system with only a few basic features is built first and delivered. Successive **increments/versions** are then built and delivered until the full system is complete. Each iteration passes through requirements → design → coding → testing, and each release adds functionality onto the last. It combines the Waterfall model's structure with prototyping's iterative philosophy.
+
+**Advantages:**
+- Prepares working software fast
+- Clients get a clear, early idea of the project
+- Changes are easier to implement
+- Better risk-handling support due to iterations
+
+**Disadvantages:**
+- Requires a good team and well-planned execution
+- Continuous iterations increase overall cost
+
+### 8.4 Iterative Model
+Does **not** attempt to start with a full specification of requirements. It combines the sequential structure of Waterfall with the flexibility of iterative design.
+
+**Cycle:** Requirements Gathering → Design → Implementation → Testing → Deployment → Review & Improvement → (repeat)
+
+Each iteration builds on the last, allowing continuous improvement until the product satisfies business needs.
+
+**Drawbacks (of the "Iterative Waterfall" variant):**
+- Difficult to incorporate change requests
+- Risk handling not well supported
+
+### 8.5 Evolutionary Process Model
+Essentially: **Iterative + Incremental = Evolutionary Model.**
+The development process is broken into smaller, manageable iterations, and each iteration delivers a working subset of requirements — enabling continuous testing, feedback, and refinement.
+
+### 8.6 RAD Model (Rapid Application Development)
+Emphasizes **quick, iterative release cycles**, focusing on delivering working software in shorter timelines. Designed to flex around user feedback and changing requirements.
+
+**Phases:**
+1. **Requirements Planning** — brainstorming, task analysis, form analysis, user scenarios, FAST (Facilitated Application Development Technique); produces a structured plan for the critical data and how to process it
+2. **User Description** — user feedback drives prototype building; data collected earlier is re-examined and validated
+3. **Construction** — the prototype is refined and delivered using powerful automated tools; modifications/enhancements happen here
+4. **Cutover** — interfaces between independently-built modules (often built by separate teams in parallel) are tested thoroughly, followed by user acceptance testing
+
+### 8.7 Prototype Model
+Used when input/output requirement details **cannot be fully identified upfront** — a working program is built quickly to clarify them.
+
+**Phases:**
+1. **Communication** — client and developer meet to discuss the main objective
+2. **Quick Design** — implement key visible aspects (input/output format); focus is on what the user *sees*, not the deep internal plan
+3. **Modelling Quick Design** — a clearer build-state emerges; developer better understands basic requirements
+4. **Construction of Prototype** — customer evaluates the prototype
+5. **Deployment, Delivery, Feedback** — if the client is unsatisfied, the developer revises and repeats until satisfaction is reached; final product is then built from the accepted prototype
 
 ---
 
-## Practical 10: Demonstration of CASE Tools
+## 9. Introduction to Selenium
 
-### Q1: What are CASE Tools?
-Computer-Aided Software Engineering tools that help developers model, design, and document software systems efficiently. Examples: StarUML, Visual Paradigm, Rational Rose, Enterprise Architect.
+**Selenium** is a popular **open-source software testing framework** used for automating web applications.
 
-### Q2: What features do CASE tools provide?
-UML diagram creation (Class, Sequence, Activity, etc.), code generation from UML models, documentation support (export diagrams and reports), and consistency checks to ensure model correctness.
+- Widely used for **functional testing, regression testing, and performance testing**
+- Supports multiple programming languages: **Java, C#, Python, Ruby**
+- This broad language support makes it accessible to a wide range of developers
 
-### Q3: How do you create a new project in StarUML?
-Open StarUML → File → New Project → UML → Choose UML 2.x model → Name the project (e.g., OnlineBankingSystem).
+---
 
-### Q4: How do you create a Class Diagram in StarUML?
-Add a Class Diagram to the model → Create classes (User, Login, Account) → Add attributes and methods → Define relationships (Association between User and Account, Dependency between Login and User).
+## 10. Application Testing vs Product Testing
 
-### Q5: How do you create a Sequence Diagram in StarUML?
-Add a Sequence Diagram → Add participants (User, Login, Database) → Draw message arrows showing the flow: enterCredentials() → validateUser() → authenticateUser() → displayDashboard()/displayError().
+### Application Testing
+Focuses on testing **a specific software application** built to meet a particular customer or business's requirements.
 
-### Q6: How do you create an Activity Diagram in StarUML?
-Add an Activity Diagram → Define activities (Enter credentials → Validate → Authenticate) → Add decision nodes for valid/invalid credentials → Connect with flow arrows to success/error end nodes.
+**Purpose:**
+- Ensure the app meets functional & non-functional requirements
+- Detect defects before release
+- Verify usability, performance, and security
 
-### Q7: What is code generation in CASE tools?
-Automatically creating skeleton code from UML models. Select a class → Right-click → Generate Code → Choose language (Java, C#, Python). It generates class definitions with attributes and empty methods.
+**Key characteristics:**
+- Built for **customized software**
+- Limited scope — one application
+- Customer-specific requirements
+- Testing ends after deployment and acceptance
 
-### Q8: How do you export diagrams from StarUML?
-File → Export → Diagram as Image (PNG, SVG) for reports. You can also generate HTML or PDF reports for comprehensive project documentation.
+**Examples:** College ERP system, Hospital Management System, Banking web application, Mobile apps
 
-### Q9: What are the deliverables for a CASE tool practical?
-StarUML .mdj project file (editable), PNG/SVG diagrams (Class, Sequence, Activity), optionally generated skeleton code, and optionally HTML/PDF documentation.
+**Common test types applied:** Functional, Integration, System, User Acceptance (UAT), Regression
 
-### Q10: What are the benefits of using CASE tools?
-Speeds up design with drag-and-drop UML modeling, maintains consistency between diagrams and code, supports team collaboration by sharing models, and is useful for educational, professional, and documentation purposes.
+### Product Testing
+Focuses on testing **a software product** built for **multiple customers or the open market**.
 
-### Q11: What is the .mdj file format?
-StarUML's project file format (Model Diagram JSON) — an editable file that stores all diagrams, classes, relationships, and model data that can be reopened and modified in StarUML.
+**Purpose:**
+- Ensure the product is stable, reliable, scalable, and market-ready
+- Validate features across different environments and users
 
-### Q12: What is traceability in CASE tools?
-Maintaining links between requirements, design diagrams, and implementation code — ensuring every requirement is covered by design and every design element is implemented in code.
+**Key characteristics:**
+- Generic software
+- Broad scope
+- Market-driven requirements
+- **Continuous** testing even after release (patches, new versions)
+
+**Examples:** Operating systems, Browsers, Antivirus software, Accounting software (e.g., Tally)
+
+**Common test types applied:** Functional, Compatibility, Performance, Security, Usability, Beta Testing
+
+---
+
+# MODULE 2 — SOFTWARE TESTING TECHNIQUES
+
+## 11. Static vs Dynamic Testing
+
+| | Static Testing | Dynamic Testing |
+|---|---|---|
+| Definition | Finds defects **without executing** the code | Tests the **dynamic behavior** by actually executing the code |
+| Purpose | Catch errors early in the development cycle, reducing fix costs | Test the app with dynamic inputs — some allowed (**positive testing**), some disallowed (**negative testing**) |
+| Example activities | Reviews, inspections, walkthroughs | Running the application, executing test cases |
+
+---
+
+## 12. White Box vs Black Box Testing
+
+### Black Box Testing
+The tester analyzes the software **against requirements only** — treating the internal code as an opaque "black box." Input goes in, output is checked, and defects/bugs are sent back to the development team without reference to how the code works internally.
+
+```
+Input → [ Black Box ] → Output
+```
+
+### White Box Testing
+Also known as **clear box / glass box / structural / open box testing**. It analyzes the **inner functioning** of the system — the code, logic paths, and structure are visible and examined directly.
+
+```
+Input → [ White Box: internal logic visible ] → Output
+```
+
+**Advantages of White Box Testing:**
+- Can be performed at the initial stages of development
+- Allows discovery of hidden defects
+- Helps with code optimization
+
+---
+
+## 13. User Interface (UI) Testing — Overview
+
+UI testing is a technique used to identify defects in a product/software **through its Graphical User Interface (GUI)** — i.e., testing how a real user would interact with the screen.
+
+---
+
+## 14. Form-Level Validation & Inter-Form Dependencies
+
+**Form validation** ensures data submitted through web forms is **accurate, consistent, and conforms to predefined rules**. If requirements aren't met, the form data is rejected — not accepted or stored.
+
+It acts as the **first line of defense** for a business against:
+- Erroneous data entry
+- Malicious users injecting harmful code/viruses through forms
+- Spam
+
+**Three fundamental aspects form validation covers:**
+1. **Data Accuracy** — ensures collected data is accurate and complete (important for data-driven business decisions)
+2. **Security** — prevents malicious users from submitting harmful data or code, protecting the site and its users from attacks
+3. **User Experience** — prevents submission of error-filled forms and tells users exactly what needs fixing, saving time and frustration
+
+**Ways of performing form validation:**
+1. **Before Submission (Inline Validation)** — checks happen as the user types/moves between fields
+2. **After Submission Validation** — checks happen once the "submit" action is triggered
+
+---
+
+## 15. Field-Level Validation & Inter-Field Dependencies
+
+### Field-Level Validation
+Rules applied directly to a **single field** to ensure data matches required formats, ranges, or types:
+- **Data Type & Format:** e.g., checking a valid email, phone number, or date
+- **Required vs. Optional:** ensuring mandatory fields are filled
+- **Range Checks:** validating numeric values fall within an expected range
+- **Instant Feedback:** commonly performed "on blur" (when the user leaves the field) for immediate, user-friendly feedback rather than waiting for full form submission
+
+### Inter-Field Dependencies (Dependent Behavior)
+Rules that govern how fields **interact with each other**:
+- **Controlling/Dependent Picklists:** a primary field (e.g., "Insurance Type") determines the available options in a dependent field (e.g., "Subtype")
+- **Visibility and Read-Only:** a field becomes visible or mandatory only if another field has a specific value (e.g., "Reason for Leaving" appears only if "Status" = "Inactive")
+- **Dynamic Updating:** clearing or updating a second field automatically when the first field changes
+
+**Quick example set:**
+- Email field → accepts only valid email format
+- Age field → accepts numbers within a defined range
+
+---
+
+## 16. Error Message Validation
+
+Error messages provide crucial information to the user — vague default messages should be customized to give as much actionable detail as possible.
+
+**Validation methods that allow custom messages:**
+- Regular Expression Validation
+- Single Field Script Validation
+- Multi-field Script Validation
+
+**Example of why customization matters:**
+- Default message: *"Field item does not match any of the given expressions."* → gives no specific guidance
+- Better, customized message (for a customer number requiring 7 digits + 2 letters):
+  *"The Customer Number entered does not meet the required format of 7 digits followed by 2 letters. Please try again."*
+
+The improved message describes **both the problem and the solution**, so the user knows exactly how to fix their input.
+
+---
+
+## 17. UI Testing — Form, Field & Dependency Checks
+
+### 17.1 Form Testing
+Validates **complete forms** used for user input.
+
+**What to test:**
+- All mandatory fields clearly marked (*)
+- Correct submission with valid data
+- Error messages for invalid/missing inputs
+- Reset/Clear button functionality
+- Form submission via keyboard (Enter key)
+- Form behavior on refresh/back navigation
+- Proper alignment and layout of form elements
+
+**Examples:** Registration form, Login form, Feedback form
+
+### 17.2 Field Testing
+Focuses on **individual input elements** inside a form.
+
+**What to test:**
+- Field type validation (text, number, email, password, date)
+- Minimum and maximum length
+- Allowed / disallowed characters
+- Default values and placeholders
+- Read-only and disabled fields
+- Field focus, tab order, cursor behavior
+- Boundary value testing
+
+### 17.3 Dependency Testing
+Ensures correct behavior when **one UI element depends on another**.
+
+**What to test:**
+- Enable/disable behavior based on selection
+- Dynamic field visibility (show/hide)
+- Dropdown dependencies (parent–child)
+- Conditional validation rules
+- API/data-driven UI changes
+
+**Examples:**
+- Selecting Country = India enables the State dropdown
+- Choosing Payment = Credit Card reveals card-detail fields
+- "Submit" button only enables after accepting Terms & Conditions
+
+---
+
+## 18. Common UI Testing Checks & Tools
+
+**Checks to always include in a UI test pass:**
+- Consistency in fonts, colors, labels
+- Responsiveness (desktop, tablet, mobile)
+- Cross-browser compatibility
+- Accessibility (labels, contrast, keyboard navigation)
+- Error message clarity and placement
+
+**Tools commonly used:**
+- Manual UI Testing
+- Automation: **Selenium, Cypress, Playwright**
+- Visual Testing: **Percy, Applitools**
+
+---
+
+## 19. Automated Test Execution with Selenium
+
+**What Selenium does:** automates browser interactions — clicking buttons, entering text, selecting dropdowns, submitting forms — across different browsers.
+
+### The Basic Flow of Automated Test Execution
+
+Instead of manually testing a web app, Selenium executes **test scripts** that automatically perform actions and verify results.
+
+1. **Write Test Script** — using languages like Java, Python, or C#; each test step represents a real user action
+2. **WebDriver Launches Browser** — Selenium WebDriver opens Chrome, Firefox, Edge, etc.
+3. **Locate UI Elements** — by ID, Name, XPath, CSS Selector, etc.
+4. **Perform Actions** — enter text, click buttons, select values
+5. **Validation (Assertions)** — check expected output vs actual output (e.g., verifying a "login successful" message appears)
+6. **Test Result** — pass/fail is recorded
+
+---
+
+# MODULE 3 — SOFTWARE TESTING LEVELS & TYPES
+
+## 20. Types of Software Testing — Manual vs Automation
+
+At the top level, software testing splits into two families:
+
+```
+                Types of Software Testing
+                /                        \
+         Manual Testing            Automation Testing
+        /      |       \
+   White Box Black Box  Grey Box
+              /        \
+      Functional     Non-Functional
+       Testing          Testing
+      /    |    \            \
+   Unit  Integ  System    Performance / Usability / Compatibility
+         /   \                  /    |      \        \
+   Incremental Non-Incr.     Load  Stress  Scalability Stability
+     /    \
+  Top-down Bottom-up
+```
+
+### 20.1 Manual Testing
+Test cases are executed **manually by testers, without automation tools**.
+
+**Strengths:**
+- Accurate visual feedback — good at catching UI/UX issues like layout, design, and text problems
+- Cost-effective — no need for expensive tools or advanced technical skill
+- No coding required — beginner-friendly
+- Flexible for changes — easily adapts to frequent or unplanned application changes
+
+### 20.2 Automation Testing
+Test cases are executed **using scripts and automation tools**. Best suited for repetitive, time-consuming tasks — improves efficiency, accuracy, and test coverage.
+
+---
+
+## 21. Functional vs Non-Functional Testing
+
+### Functional Testing
+A type of **black box testing** that verifies whether the application works according to specified requirements — by providing inputs and validating the expected outputs.
+- Focuses on testing features and functions
+- Validates input/output behavior of the system
+- Doesn't require knowledge of internal code
+- Ensures the application meets **business requirements**
+
+### Non-Functional Testing
+A type of **black box testing** that evaluates performance, usability, reliability, and other non-functional qualities.
+- Focuses on performance, usability, reliability
+- Checks system behavior under load and stress
+- Improves user experience and system efficiency
+- Ensures stability and scalability
+
+---
+
+## 22. Regression Testing
+
+A type of **black box testing** that ensures **new code changes or updates do not break existing functionality**. Performed after modifications, to verify previously working features still work correctly.
+
+- Ensures existing features work after code changes
+- Performed after bug fixes, updates, or enhancements
+- Helps detect unintended side effects
+- Maintains overall stability and reliability
+
+---
+
+## 23. Testing Levels: Unit → Integration → System → UAT
+
+These four levels form a natural progression — from the smallest piece of code up to the full, user-facing product.
+
+### 23.1 Unit Testing
+Tests **individual units or components** in isolation. Typically done by developers, usually automated, and designed to test specific functions/methods. It's the **lowest level** of testing in the development process.
+
+### 23.2 Integration Testing
+Tests **how different units/components interact with each other**, identifying and resolving issues that arise when units are combined. Done **after unit testing, before functional/system testing** — verifies the units genuinely work together as intended.
+
+### 23.3 System Testing
+Performed on the **fully integrated software system** to evaluate overall functionality, performance, and compliance with specified requirements. Conducted **after integration testing, before acceptance testing** — uses the components already verified in integration testing to confirm the system as a whole is correct and ready for delivery.
+
+### 23.4 User Acceptance Testing (UAT)
+Ensures the software meets **business requirements** and is ready for **deployment**, by validating functionality in a real-world environment.
+
+**Advantages:**
+- Surfaces further requirements directly from users (since users are directly involved)
+- Supports automated test execution
+- Builds client confidence and satisfaction (they're directly part of testing)
+- Easier for users to describe their actual requirements when testing hands-on
+
+---
+
+## 24. Performance & Load Testing
+
+### Performance Testing
+Ensures software applications **perform properly under expected workload**. Determines system performance in terms of **sensitivity, reactivity, and stability** under a particular workload.
+
+**Advantages:**
+- Confirms speed, load capability, accuracy, and other performance qualities
+- Identifies, monitors, and resolves performance issues as they occur
+
+### Load Testing (a sub-type of Performance Testing)
+Ensures the application can handle the **expected number of concurrent users or transactions** without performance degradation.
+
+> **Note:** Load Testing is typically classified as a type of Performance Testing, and by extension also falls under the broader category of Non-Functional Testing.
+
+---
+
+## 25. Acceptance Testing
+
+Performed **by the customers** to check whether delivered products perform the desired tasks as stated in the requirements. **Object-Oriented Testing** is used for discussing test plans and executing projects in this context.
+
+**Advantages:**
+- Surfaces further user requirements directly (users are directly involved)
+- Supports automated test execution
+- Builds client confidence — they're directly part of the testing process
+
+---
+
+## 26. Localization Testing
+
+A type of software testing performed to **verify the quality of a product for a specific culture or locale**. It is performed only on the **local/regional version** of the product.
+
+**Advantages:**
+- Reduces overall testing cost
+- Reduces overall support cost
+- Reduces testing time
+- Adds flexibility and scalability to the testing process
+
+---
+
+## 27. Topics Named But Not Detailed in the Source Slides
+
+Module 3's title slide lists a broader syllabus than the content slides actually cover. The following were named in the module outline but **did not have dedicated content slides** in the uploaded PDF, so they aren't detailed above — flagging this so you know to source them separately if needed for exam prep:
+
+- Overview of Security Testing
+- Usability Testing
+- Exploratory Testing
+- Compatibility Testing
+- Role-Based Access Testing
+- Mobility Testing
+- Automation support for regression testing using Selenium (beyond the general Selenium flow covered in Module 2)
+
+---
+
+# QUICK-REVISION CHEAT SHEET
+
+**V&V in one line:** Verification = right *process* (static, no execution). Validation = right *product* (dynamic, executes code).
+
+**Testing pyramid (bottom → top):** Unit → Integration → System → UAT
+
+**Black Box vs White Box:** Black box = requirements-driven, no code knowledge needed. White box = internal logic visible, finds hidden defects, enables code optimization.
+
+**Static vs Dynamic:** Static = no execution (reviews). Dynamic = execution (positive + negative testing).
+
+**Process models memory hooks:**
+- Waterfall → strictly linear, hard to change
+- V-Model → each dev phase mirrored by a test phase
+- Incremental → ship small, add features release by release
+- Iterative → repeat full cycles, refining each time
+- Evolutionary → Iterative + Incremental combined
+- RAD → speed-focused, prototype-heavy, parallel team modules
+- Prototype → build fast when requirements are unclear, refine via client feedback loops
+
+**Functional vs Non-Functional:** Functional = *what* it does (features). Non-functional = *how well* it does it (speed, usability, reliability).
+
+**Regression testing trigger:** any code change → re-verify nothing else broke.
+
+**Performance testing family:** Performance (umbrella) → Load, Stress, Scalability, Stability (sub-types).
+
+**Selenium in one line:** Open-source, multi-language (Java/C#/Python/Ruby) browser automation framework — write script → WebDriver launches browser → locate elements → perform actions → assert results.
+
+**Form vs Field validation:** Form validation = whole-submission rules (accuracy, security, UX). Field validation = single-field rules (type, format, range), often triggered "on blur."
+
+**10x Rule:** A defect fixed after release costs roughly 10x more than the same defect fixed during development — the core economic reason testing exists.
