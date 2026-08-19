@@ -1,285 +1,506 @@
-# Research Methodology
+# List of Practical
 
-MCQ/MSQ answer key for the **Research Methodology** course on **SWAYAM**, covering Week 1 through Week 5.
+## 1. Familiarization with Raspberry Pi and perform necessary software installation.
 
-## Overview
+**Answer:**
 
-| Week      | Questions | Format                 | Status      |
-| --------- | --------: | ---------------------- | ----------- |
-| Week 1    |        10 | MCQ / MSQ / True-False | Complete    |
-| Week 2    |        10 | MCQ / MSQ              | Complete    |
-| Week 3    |        10 | MCQ / MSQ              | Complete    |
-| Week 4    |        10 | MCQ / MSQ / True-False | Complete    |
-| Week 5    |        10 | MCQ / MSQ / True-False | Complete    |
-| **Total** |    **50** |                        | **50 / 50** |
+### 1. Download and Install Raspberry Pi Imager 2.0
 
-> **Notation:** Questions with multiple accepted options are marked **MSQ**. Questions with one accepted option are marked **MCQ**.
+Go to the official website (raspberrypi.com/software) and download the latest version of Raspberry Pi Imager for your operating system (Windows, macOS, or Linux).
 
----
+Run the installer, follow the on-screen prompts, and launch the program.
 
-## Week 1
+### 2. Prepare Your SD Card
 
-### 1. What sets a PhD apart from other degrees? **MSQ**
+Insert a microSD card (minimum 32GB, Class 10 or faster recommended).
 
-* Development of critical thinking and analytical abilities.
-* Preparation to guide others in pursuing a PhD.
+For best performance, use official Raspberry Pi cards, SanDisk Ultra, or SanDisk Extreme.
 
-### 2. What distinguishes a research-based degree from a typical undergraduate degree? **MCQ**
+### 3. Launch the Imager and Start the Wizard
 
-* Opportunities for continuous discovery and learning.
+Open Raspberry Pi Imager 2.0. The new interface guides you through each step sequentially.
 
-### 3. What is the importance of attitude and communication in the student-advisor relationship? **MCQ**
+### 4. Select Your Raspberry Pi Device
 
-* Attitude, inclination to learn, and effective communication with the advisor are crucial.
+Choose the exact model you are using (e.g., Raspberry Pi 5, Raspberry Pi 4, etc.).
 
-### 4. What makes research challenging for first-time researchers? **MCQ**
+This helps the tool apply the correct default settings.
 
-* The sudden shift in patterns from coursework to research.
+### 5. Choose the Operating System
 
-### 5. What is one advantage of research when dealing with failure? **MCQ**
+Select Raspberry Pi OS.
 
-* Research allows for changing initial assumptions and exploring different approaches.
+- Choose the 64-bit version for better performance (recommended for Raspberry Pi 4 and 5).
+- Choose the 32-bit version for maximum software compatibility on older models.
 
-### 6. When conducting experiments and analysing results in research: **MCQ**
+You can also select Lite versions or other operating systems if needed.
 
-* Small steps are taken, and over time they contribute to something significant.
+### 6. Select the Storage Device (SD Card)
 
-### 7. Technologies in use today have life span of decades. **True/False**
+Choose your inserted microSD card from the list.
 
-* False
+Important: Double-check that you have selected the SD card and not your computer’s hard drive. Enable the “exclude system drives” option if available.
 
-### 8. Engineers aim to reduce the number of parts in a product. **True/False**
+All data on the selected card will be erased.
 
-* True
+### 7. Configure System Settings (New Feature)
 
-### 9. Global warming is only a theoretical phenomenon. **True/False**
+Complete the following configuration steps in the wizard:
 
-* False
+- Set Location & Language: Choose your country, language, and time zone.
+- Set Hostname: Give your Raspberry Pi a custom network name (example: raspberrypi-desk).
+- Create User Account: Set a new username and a strong password. (There is no longer a default “pi” user.)
+- Configure Wi-Fi: Enter your wireless network name (SSID) and password so the Pi connects automatically on first boot.
+- Enable Remote Access: Turn on SSH for command-line remote access. Choose password or public-key authentication.
+- Set Up Raspberry Pi Connect: Create or sign in to a Raspberry Pi account to enable easy cloud-based remote desktop access without port forwarding.
 
-### 10. Carbon dioxide in the atmosphere contributes to global warming. **True/False**
+### 8. Review and Write the Image
 
-* True
+Review all your settings.
 
----
+Click Write. The Imager will download the OS (if needed), write it to the SD card, and verify the data. This may take several minutes.
 
-## Week 2
+### 9. Complete the Process
 
-### 1. Experimental data generated from a setup must validate the theoretical predictions or models designed for that setup. **MCQ**
+Then the writing
 
-* Sometimes
+## 2. Run python program on Pi having problem statement: word and character count of a given string.
 
-### 2. Literature survey is important because: **MSQ**
+**Answer: Python Program**
 
-* It helps in getting a summary of work that has been done till date in some particular research area.
-* It is helpful in ensuring that a research work is not getting repeated.
-* It is helpful in understanding the approaches taken by scientists and what are the gaps in the processes.
-* It is helpful in clarifying the controversial results that one can get.
+```python
+# Word and Character Count Program
 
-### 3. Which method of searching for literature is suitable to identify the earliest contributor of a scientific outcome? **MCQ**
+text = input("Enter a string: ")
 
-* Back reference based search following a keyword based search.
+# Count words
+word_count = len(text.split())
+char_count = len(text)
 
-### 4. Which bibliographic detail is sufficient and unique to locate an article in an archival journal? **MCQ**
+print("Number of Words:", word_count)
+print("Number of Characters:", char_count)
+```
 
-* DOI
+### Sample Output
 
-### 5. Which of the following is always true for an open access journal? **MCQ**
+```text
+Enter a string: Welcome to Raspberry Pi
+Number of Words: 4
+Number of Characters: 23
+```
 
-* Articles in such a journal are freely available for download.
+### To Run on Raspberry Pi
 
-### 6. Which is NOT a recommended practice to identify publications that need to be listed under references of an article? **MCQ**
+1. Open Terminal.
+2. Create a file:
+3. `nano word_char_count.py`
+4. Paste the code and save (Ctrl + X, Y, Enter).
+5. Run the program:
 
-* Latest publications by the editor of the journal.
-
-### 7. Which index is considered a measure of the impact of a particular author in their specialization? **MCQ**
-
-* Hirsch index of the author.
-
-### 8. The following are categorized as primary source for literature survey: **MSQ**
-
-* Periodicals & research reports.
-* Conference proceedings & official publications.
-
-### 9. The abstracting databases for systematic manual searches include: **MSQ**
-
-* INSPEC and COMPENDEX.
-* PubMed.
-* Chemical Abstract (CA) service.
-
-### 10. Which resources can be considered as archival references for inclusion in a publication? **MCQ**
-
-* Only 3, 5 and 6.
-
----
-
-## Week 3
-
-### 1. Common laboratory and industrial safety hazards include: **MSQ**
-
-* Sources of heat.
-* Chemicals (Acids, Bases etc.).
-* Pressurized gas cylinders.
-* Electricity and water source.
-
-### 2. Which statistic is used to quantify errors in parameter estimates? **MCQ**
-
-* Standard deviation.
-
-### 3. A malfunctioning temperature sensor produced higher readings. What conclusion can be drawn? **MCQ**
-
-* The data obtained cannot be reliable because these are not true data from the system but the malfunctioned one.
-
-### 4. Which can be treated as deterministic signals? **MCQ**
-
-* A sine wave corrupted by a rectangular pulse.
-
-### 5. Identify the incorrect statement(s) regarding non-linear models. **MSQ**
-
-* Linearization involves mere discarding of the non-linear terms in a model.
-* A non-linear model can never yield a zero-valued output to a non-zero input.
-* Estimates of linear models have smaller errors than those of non-linear models.
-
-### 6. Which transform is used to detect periodic (oscillatory) components in a signal? **MCQ**
-
-* Fourier transform.
-
-### 7. Ratio of errors in parameter estimates for data sets with SNR 9 and 100: **MCQ**
-
-* 10 : 3
-
-### 8. Which statement is true concerning a parameter estimate? **MCQ**
-
-* It is a mathematical function of the observations.
-
-### 9. Which statements are true? **MSQ**
-
-* Deterministic phenomena produce outcomes that can be predicted accurately.
-* A process can produce a mix of deterministic and stochastic effects.
-
-### 10. An estimator is said to be most efficient when: **MCQ**
-
-* Standard error in the parameter estimates is lowest when compared to that of all other estimators.
-
----
-
-## Week 4
-
-### 1. The title of a paper is “Battery design and its impact”. This title: **MSQ**
-
-* Identifies the area of research clearly.
-* Does not indicate what is unique about the research.
-
-### 2. In images: **MCQ**
-
-* High magnification does not necessarily imply high resolution.
-
-### 3. Tables are preferred over graphs: **MCQ**
-
-* Only when exact values need to be indicated.
-
-### 4. The length of a document: **MSQ**
-
-* Does not indicate anything about your knowledge.
-* Does not indicate anything about the reader's knowledge.
-
-### 5. The title of a paper should indicate the area of work as well as what is unique about the work. **True/False**
-
-* True
-
-### 6. In scientific documents sentences should be relatively short and to the point. **True/False**
-
-* True
-
-### 7. In an article, the image of a car engine must: **MSQ**
-
-* Show the level of detail required for the discussion in the article.
-* Have a marker bar indicating scale.
-
-### 8. Strategies one can use in the middle of a document include: **MSQ**
-
-* Chronological strategy.
-* Spatial strategy.
-* Following a variable.
-
-### 9. While working with electricity only the voltage poses a danger to the users. **True/False**
-
-* False
-
-### 10. “Pouring rain results in clogged drains, and slippery roads. These clogged drains spill further water on to the roads.” Use of “these” is ambiguous. **True/False**
-
-* True
-
----
-
-## Week 5
-
-### 1. According to Sternberg's theories of intelligence practical intelligence relates to: **MCQ**
-
-* How one relates to the environment around them.
-
-### 2. Collaborating researchers publish data independently without agreement. Is it ethical? **MCQ**
-
-* No, all authors should know and agree with the publication.
-
-### 3. Creativity is seen in: **MSQ**
-
-* Drama.
-* Science fiction.
-* Engineering.
-* All of the above.
-
-### 4. A good researcher is often well read in many areas. **True/False**
-
-* True
-
-### 5. We can work to the best of our potential when we are: **MCQ**
-
-* Eustressed.
-
-### 6. The measure of a successful researcher is that the work of the researcher should be: **MSQ**
-
-* Recognized by peers at an international level.
-* Typically published in peer reviewed Journals.
-
-### 7. Creative people are: **MSQ**
-
-* Less likely to follow societal restrictions.
-* More likely to come up with a surprisingly new solution to a problem.
-
-### 8. A PhD usually makes you: **MCQ**
-
-* A specialist in one narrow area.
-
-### 9. To become a good researcher, one must usually: **MSQ**
-
-* Have good communication skills.
-* Have mastery over specific techniques.
-* Have a line of investigation.
-* Be aware of recent advances in the field.
-
-### 10. The following can be attributed to a fully professional researcher: **MSQ**
-
-* They have some fundamental concepts that their peers (international) might be interested in.
-* They have command over their area.
-* They are aware of situations where they can make significant contribution.
-
----
-
-## Compact Answer Key
-
-| Week  | Answers                                                                                                                                                                                                                                                                                                                               |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1** | 1. Critical thinking + guiding others; 2. Continuous discovery; 3. Attitude + learning + communication; 4. Shift from coursework to research; 5. Change assumptions/explore approaches; 6. Small steps accumulate; 7. False; 8. True; 9. False; 10. True                                                                              |
-| **2** | 1. Sometimes; 2. All four; 3. Back-reference search; 4. DOI; 5. Freely downloadable; 6. Latest editor publications; 7. h-index; 8. Periodicals/reports + conference/official publications; 9. INSPEC/COMPENDEX + PubMed + CA; 10. 3, 5, 6                                                                                             |
-| **3** | 1. All listed hazards; 2. Standard deviation; 3. Malfunctioned data unreliable; 4. Sine wave + rectangular pulse; 5. Statements 1, 3, 4; 6. Fourier transform; 7. 10:3; 8. Mathematical function of observations; 9. Statements 1 and 3; 10. Lowest standard error                                                                    |
-| **4** | 1. Area clear + uniqueness not indicated; 2. Magnification ≠ necessarily resolution; 3. Exact values; 4. Says nothing about your/readers' knowledge; 5. True; 6. True; 7. Required detail + scale bar; 8. Chronological + spatial + following variable; 9. False; 10. True                                                            |
-| **5** | 1. Relation to environment; 2. No, all authors must agree; 3. All of the above; 4. True; 5. Eustressed; 6. International peer recognition + peer-reviewed publication; 7. Less restriction + novel solutions; 8. Narrow specialist; 9. All four; 10. Fundamental concepts + command of area + awareness of contribution opportunities |
-
----
-
-## Notes
-
-* The course is **Research Methodology** on **SWAYAM**.
-* The assignments contain both single-answer MCQs and multiple-select questions.
-* For multiple-select questions, every listed accepted option is required to reproduce the full accepted answer set.
-* Week 4 and Week 5 answer sets follow the corresponding NPTEL/SWAYAM Research Methodology answer key where the same question set appears.
+```bash
+python3 word_char_count.py
+```
+
+## 3. Exercise on working principle of Raspberry Pi.with 40 PIN Interface component.
+
+Reference Link: https://wokwi.com/projects/393048863616453633
+
+**Solution:**
+
+```cpp
+void setup() {
+    pinMode(15,INPUT);
+    Serial1.begin(115200);
+    Serial1.println("Hello, Raspberry Pi Pico!");
+}
+
+void loop(){
+    int pir = digitalRead(15);
+    if(pir == HIGH)
+    {
+        Serial1.println("MOVEMENT DECTECTED");
+        delay(500);
+    }
+    else
+    {
+        Serial1.println("NO MOVEMENT DECTECTED");
+        delay(500);
+    }
+}
+```
+
+## 4. To interface Bluetooth with Raspberry Pi and write a program to turn LED ON/OFF when 1/0 is received form smartphone using Bluetooth
+
+**Note: Required Physical Device**
+
+Reference Link: https://iot-amrt.vlabs.ac.in/exp/bluetooth-led-control-pi/index.html
+
+### Connection
+
+- Connect VCC of HC-05 Bluetooth module to VBUS (5V) of Raspberry Pi Pico.
+- Connect TXD of HC-05 to GP0 of Raspberry Pi Pico.
+- Connect RXD of HC-05 to GP1 of Raspberry Pi Pico.
+- Connect GND of HC-05 to GND of Raspberry Pi Pico.
+- Connect the positive terminal of the LED to the resistor.
+- Connect the other terminal of the resistor to GP19 of Raspberry Pi Pico.
+- Connect the negative terminal of the LED to GND of Raspberry Pi Pico.
+- Click the Bluetooth icon on the smartphone to enable Bluetooth.
+- Turn on Bluetooth by clicking the switch on the smartphone screen.
+- Select Raspberry Pi from available devices to pair.
+- After pairing, use the smartphone buttons to turn the LED on or off.
+
+### Python Program
+
+```python
+from machine import Pin, UART
+
+uart = UART(0, 9600)
+led = Pin(19, Pin.OUT)
+
+while True:
+    if uart.any():
+        command = uart.readline()
+        if command == b'ON':
+            led.high()
+            print("LED ON")
+        elif command == b'OFF':
+            led.low()
+            print("LED OFF")
+```
+
+**Devices:** Raspberry Pi Pico, HC-05, Resistor, LED, Smartphone
+
+## 5. Connect with the Available Wi-Fi Using Arduino
+
+**Note: Required Physical Device**
+
+Reference Link: https://wokwi.com/projects/356552645200576513
+
+```cpp
+#include <WiFi.h>
+
+// Replace with your network credentials (STATION)
+#define ssid "Wokwi-GUEST"
+#define password ""
+
+void initWiFi() {
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(ssid, password);
+    // WiFi.begin("Wokwi-GUEST", "");
+    Serial.print("Connecting to WiFi ..");
+    while (WiFi.status() != WL_CONNECTED) {
+        Serial.println(WiFi.status());
+        Serial.print('.');
+        delay(1000);
+    }
+    Serial.println("Connected");
+    Serial.println(WiFi.status());
+    Serial.println(WiFi.localIP());
+    Serial.print("RRSI: ");
+    Serial.println(WiFi.RSSI());
+}
+
+void setup() {
+    Serial.begin(115200);
+    initWiFi();
+}
+
+void loop() {
+    // put your main code here, to run repeatedly:
+}
+```
+
+## 6. Write a program on Raspberry Pi to retrieve temperature and humidity data from thingspeak cloud
+
+New: https://wokwi.com/projects/469089414257926145
+
+```python
+import network, urequests, time
+
+# ---------- WiFi ----------
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect("Wokwi-GUEST", "")
+while not wlan.isconnected():
+    time.sleep(0.5)
+print("WiFi connected\n")
+
+# ---------- ThingSpeak settings ----------
+# Public demo channel (works out of the box, no key needed)
+CHANNEL_ID = "12397"
+READ_KEY = ""
+TEMP_FIELD = "field4" # temperature on demo channel
+HUM_FIELD = "field3" # humidity on demo channel
+
+# ---------- Build the READ url (do not change) ----------
+URL = "https://api.thingspeak.com/channels/" + CHANNEL_ID + "/feeds/last.json"
+if READ_KEY:
+    URL += "?api_key=" + READ_KEY
+
+# ---------- Main loop ----------
+
+while True:
+    try:
+        r = urequests.get(URL)
+        data = r.json()
+        r.close()
+
+        if isinstance(data, dict):
+            print("Time :", data.get("created_at"))
+            print("Temp :", data.get(TEMP_FIELD))
+            print("Humidity:", data.get(HUM_FIELD))
+            print("-" * 30)
+        else:
+            print("Bad channel ID / key, server said:", data)
+    except Exception as e:
+        print("Network error:", e)
+
+    time.sleep(20)
+```
+
+## 7. Write a program on Raspberry Pi to publish temperature data to MQTT broker.
+
+Reference Link: https://wokwi.com/projects/322577683855704658
+
+```python
+import network
+import time
+from machine import Pin
+import dht
+import ujson
+from umqtt.simple import MQTTClient
+
+# MQTT Server Parameters
+MQTT_CLIENT_ID = "micropython-weather-demo"
+MQTT_BROKER = "broker.mqttdashboard.com"
+MQTT_USER = ""
+MQTT_PASSWORD = ""
+MQTT_TOPIC = "wokwi-weather"
+
+sensor = dht.DHT22(Pin(15))
+
+print("Connecting to WiFi", end="")
+sta_if = network.WLAN(network.STA_IF)
+sta_if.active(True)
+sta_if.connect('Wokwi-GUEST', '')
+
+while not sta_if.isconnected():
+    print(".", end="")
+    time.sleep(0.1)
+
+print(" Connected!")
+
+print("Connecting to MQTT server... ", end="")
+client = MQTTClient(MQTT_CLIENT_ID, MQTT_BROKER, user=MQTT_USER,
+                    password=MQTT_PASSWORD)
+client.connect()
+
+print("Connected!")
+
+prev_weather = ""
+
+while True:
+    print("Measuring weather conditions... ", end="")
+    sensor.measure()
+    message = ujson.dumps({
+        "temp": sensor.temperature(),
+        "humidity": sensor.humidity(),
+    })
+
+    if message != prev_weather:
+        print("Updated!")
+        print("Reporting to MQTT topic {}: {}".format(MQTT_TOPIC, message))
+        client.publish(MQTT_TOPIC, message)
+        prev_weather = message
+    else:
+        print("No change")
+
+    time.sleep(1)
+```
+
+## 8. Connect Raspberry Pi with your existing system components.
+
+Reference Link: https://wokwi.com/projects/357627199664450561
+
+```python
+# Project objective: To test a passive buzzer to play an alarm sound at one second interval
+#
+# Hardware and connections used:
+# Passive buzzer GND to Raspberry Pi Pico GND
+# Passive buzzer + Pin to GPIO Pin 15
+#
+# Programmer: Adrian Josele G. Quional
+
+# if passive buzzer is used, import the Speaker class from picozero
+from picozero import Speaker
+from time import sleep
+
+# creating a Speaker object
+speaker = Speaker(15)
+
+# continuously beep at 1 sec interval while the board has power
+# note: a passive buzzer can also be used to play different tones
+while True:
+    speaker.on()
+    sleep(1)
+    speaker.off()
+    sleep(1)
+```
+
+## 9. IoT based DC motor speed control using Arduino/Raspberry Pi.
+
+Reference Link: https://wokwi.com/projects/462024572818446337
+
+```python
+from machine import Pin, PWM, ADC
+import time
+
+# 1. DC Motor Setup (GP15)
+dc_motor = PWM(Pin(15))
+dc_motor.freq(1000)
+
+# 2. Servo Setup (GP16)
+servo = PWM(Pin(16))
+servo.freq(50) # Servos require exactly 50Hz
+
+# 3. Potentiometer (GP26)
+pot = ADC(26)
+
+# Servo pulse helper
+def set_servo_duty(angle):
+    # Map 0-180 degrees to ~1638-8192 duty (0.5ms to 2.5ms)
+    duty = int(((angle / 180) * 6554) + 1638)
+    servo.duty_u16(duty)
+
+current_angle = 0
+step_direction = 1
+
+while True:
+    # Read Potentiometer
+    pot_val = pot.read_u16()
+
+    # 1. Update DC Motor Speed
+    dc_motor.duty_u16(pot_val)
+
+    # 2. Calculate Servo "Speed" (Delay)
+    # Mapping pot to a delay between 0.001s (Fast) and 0.05s (Slow)
+    # Note: If pot is 0, we stop the servo
+    speed_delay = (65535 - pot_val) / 1000000 + 0.001
+
+    if pot_val > 1000:
+        # Move servo one step
+        current_angle += step_direction
+        if current_angle >= 180 or current_angle <= 0:
+            step_direction *= -1 # Reverse direction at boundaries
+
+        set_servo_duty(current_angle)
+
+        speed_percent = int((pot_val / 65535) * 100)
+        print(f"DC Speed: {speed_percent}% | Servo Speed: {speed_percent}%", end="\r")
+    else:
+        print("Motors Stopped...        ", end="\r")
+
+    time.sleep(speed_delay)
+```
+
+## 10. To study of IoT Data Logging using Beaglebone Black and Thingspeak
+
+Reference Link: https://wokwi.com/projects/460072555056502785
+
+### Hardware Required
+
+| Sr. No. | Component | Quantity |
+|---:|---|---:|
+| 1 | BeagleBone Black | 1 |
+| 2 | USB Cable | 1 |
+| 3 | Breadboard | 1 |
+| 4 | Light Dependent Resistor (LDR) | 1 |
+| 5 | 10 kΩ Resistor | 1 |
+| 6 | Connecting Wires | As required |
+| 7 | PC/Laptop with Internet | 1 |
+
+### Software Required
+
+- Debian Linux on BeagleBone Black
+- Python
+- Adafruit_BBIO Library
+- Internet Connection
+- ThingSpeak Account
+- SSH Terminal (PuTTY)
+
+### Algorithm
+
+1. Start the BeagleBone Black.
+2. Connect BBB to the Internet.
+3. Create a ThingSpeak account and a new channel.
+4. Note the **Write API Key**.
+5. Connect the LDR circuit to the analog input.
+6. Initialize the ADC using the Adafruit_BBIO library.
+7. Read the analog sensor value.
+8. Convert the ADC reading into voltage.
+9. Send the voltage value to ThingSpeak using an HTTP POST request.
+10. Wait for approximately 15–20 seconds before sending the next reading.
+11. Repeat the process continuously.
+12. Observe the real-time graph on ThingSpeak.
+
+### Program (Python)
+
+```python
+import Adafruit_BBIO.ADC as ADC
+import time
+import httplib, urllib
+
+sensor_pin = "P9_40"
+
+ADC.setup()
+
+while True:
+    reading = ADC.read(sensor_pin)
+    voltage = reading * 1.8
+
+    params = urllib.urlencode({
+        'field1': voltage,
+        'key': 'YOUR_WRITE_API_KEY'
+    })
+
+    headers = {
+        "Content-type": "application/x-www-form-urlencoded",
+        "Accept": "text/plain"
+    }
+
+    conn = httplib.HTTPConnection("api.thingspeak.com:80")
+    conn.request("POST", "/update", params, headers)
+
+    response = conn.getresponse()
+
+    print("ADC Reading :", reading)
+    print("Voltage :", voltage)
+
+    time.sleep(16)
+```
+
+Replace `YOUR_WRITE_API_KEY` with the Write API Key obtained from your ThingSpeak channel. (noobtechiespeaks.blogspot.com)
+
+### Working
+
+1. The LDR senses the surrounding light intensity.
+2. The voltage across the LDR changes according to light intensity.
+3. BeagleBone Black reads this voltage through its Analog-to-Digital Converter (ADC).
+4. The Python program converts the ADC value into voltage.
+5. The measured value is uploaded to the ThingSpeak cloud using an HTTP POST request.
+6. ThingSpeak stores the data and automatically generates graphs for visualization.
+7. The graph updates every 15–20 seconds with new sensor readings. (noobtechiespeaks.blogspot.com)
+
+### Sample Output
+
+```text
+ADC Reading : 0.412
+Voltage : 0.7416 V
+HTTP Response : 200 OK
+
+Data uploaded successfully.
+```
+
+### Result
+
+The analog sensor data was successfully acquired using BeagleBone Black and uploaded to the ThingSpeak cloud platform. The sensor readings were stored and displayed as real-time graphs, demonstrating successful IoT-based cloud data logging.
