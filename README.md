@@ -1,506 +1,1036 @@
-# List of Practical
+# React Native Practical Exam: Complete Guide
 
-## 1. Familiarization with Raspberry Pi and perform necessary software installation.
+A cleaned-up, consistently formatted version of your guide is below. I also fixed the Markdown structure and code formatting while keeping the actual practical content intact.
 
-**Answer:**
+## React Native Practical Exam
 
-### 1. Download and Install Raspberry Pi Imager 2.0
+This guide covers all 15 practical topics. Complete **Step 0** once. For each practical afterward, replace the contents of `App.js` with the provided code and run the app.
 
-Go to the official website (raspberrypi.com/software) and download the latest version of Raspberry Pi Imager for your operating system (Windows, macOS, or Linux).
+At the end, there is a quick cheat sheet for the exam.
 
-Run the installer, follow the on-screen prompts, and launch the program.
+---
 
-### 2. Prepare Your SD Card
+# Step 0: One-Time Setup
 
-Insert a microSD card (minimum 32GB, Class 10 or faster recommended).
+Complete this once before starting the practicals.
 
-For best performance, use official Raspberry Pi cards, SanDisk Ultra, or SanDisk Extreme.
+### 1. Open VS Code
 
-### 3. Launch the Imager and Start the Wizard
+Open VS Code on the college computer.
 
-Open Raspberry Pi Imager 2.0. The new interface guides you through each step sequentially.
+### 2. Open the Terminal
 
-### 4. Select Your Raspberry Pi Device
+In VS Code, go to:
 
-Choose the exact model you are using (e.g., Raspberry Pi 5, Raspberry Pi 4, etc.).
+**Terminal → New Terminal**
 
-This helps the tool apply the correct default settings.
+A terminal will appear at the bottom of the window.
 
-### 5. Choose the Operating System
+### 3. Check Node.js
 
-Select Raspberry Pi OS.
-
-- Choose the 64-bit version for better performance (recommended for Raspberry Pi 4 and 5).
-- Choose the 32-bit version for maximum software compatibility on older models.
-
-You can also select Lite versions or other operating systems if needed.
-
-### 6. Select the Storage Device (SD Card)
-
-Choose your inserted microSD card from the list.
-
-Important: Double-check that you have selected the SD card and not your computer’s hard drive. Enable the “exclude system drives” option if available.
-
-All data on the selected card will be erased.
-
-### 7. Configure System Settings (New Feature)
-
-Complete the following configuration steps in the wizard:
-
-- Set Location & Language: Choose your country, language, and time zone.
-- Set Hostname: Give your Raspberry Pi a custom network name (example: raspberrypi-desk).
-- Create User Account: Set a new username and a strong password. (There is no longer a default “pi” user.)
-- Configure Wi-Fi: Enter your wireless network name (SSID) and password so the Pi connects automatically on first boot.
-- Enable Remote Access: Turn on SSH for command-line remote access. Choose password or public-key authentication.
-- Set Up Raspberry Pi Connect: Create or sign in to a Raspberry Pi account to enable easy cloud-based remote desktop access without port forwarding.
-
-### 8. Review and Write the Image
-
-Review all your settings.
-
-Click Write. The Imager will download the OS (if needed), write it to the SD card, and verify the data. This may take several minutes.
-
-### 9. Complete the Process
-
-Then the writing
-
-## 2. Run python program on Pi having problem statement: word and character count of a given string.
-
-**Answer: Python Program**
-
-```python
-# Word and Character Count Program
-
-text = input("Enter a string: ")
-
-# Count words
-word_count = len(text.split())
-char_count = len(text)
-
-print("Number of Words:", word_count)
-print("Number of Characters:", char_count)
-```
-
-### Sample Output
-
-```text
-Enter a string: Welcome to Raspberry Pi
-Number of Words: 4
-Number of Characters: 23
-```
-
-### To Run on Raspberry Pi
-
-1. Open Terminal.
-2. Create a file:
-3. `nano word_char_count.py`
-4. Paste the code and save (Ctrl + X, Y, Enter).
-5. Run the program:
+Run:
 
 ```bash
-python3 word_char_count.py
+node -v
 ```
 
-## 3. Exercise on working principle of Raspberry Pi.with 40 PIN Interface component.
-
-Reference Link: https://wokwi.com/projects/393048863616453633
-
-**Solution:**
-
-```cpp
-void setup() {
-    pinMode(15,INPUT);
-    Serial1.begin(115200);
-    Serial1.println("Hello, Raspberry Pi Pico!");
-}
-
-void loop(){
-    int pir = digitalRead(15);
-    if(pir == HIGH)
-    {
-        Serial1.println("MOVEMENT DECTECTED");
-        delay(500);
-    }
-    else
-    {
-        Serial1.println("NO MOVEMENT DECTECTED");
-        delay(500);
-    }
-}
-```
-
-## 4. To interface Bluetooth with Raspberry Pi and write a program to turn LED ON/OFF when 1/0 is received form smartphone using Bluetooth
-
-**Note: Required Physical Device**
-
-Reference Link: https://iot-amrt.vlabs.ac.in/exp/bluetooth-led-control-pi/index.html
-
-### Connection
-
-- Connect VCC of HC-05 Bluetooth module to VBUS (5V) of Raspberry Pi Pico.
-- Connect TXD of HC-05 to GP0 of Raspberry Pi Pico.
-- Connect RXD of HC-05 to GP1 of Raspberry Pi Pico.
-- Connect GND of HC-05 to GND of Raspberry Pi Pico.
-- Connect the positive terminal of the LED to the resistor.
-- Connect the other terminal of the resistor to GP19 of Raspberry Pi Pico.
-- Connect the negative terminal of the LED to GND of Raspberry Pi Pico.
-- Click the Bluetooth icon on the smartphone to enable Bluetooth.
-- Turn on Bluetooth by clicking the switch on the smartphone screen.
-- Select Raspberry Pi from available devices to pair.
-- After pairing, use the smartphone buttons to turn the LED on or off.
-
-### Python Program
-
-```python
-from machine import Pin, UART
-
-uart = UART(0, 9600)
-led = Pin(19, Pin.OUT)
-
-while True:
-    if uart.any():
-        command = uart.readline()
-        if command == b'ON':
-            led.high()
-            print("LED ON")
-        elif command == b'OFF':
-            led.low()
-            print("LED OFF")
-```
-
-**Devices:** Raspberry Pi Pico, HC-05, Resistor, LED, Smartphone
-
-## 5. Connect with the Available Wi-Fi Using Arduino
-
-**Note: Required Physical Device**
-
-Reference Link: https://wokwi.com/projects/356552645200576513
-
-```cpp
-#include <WiFi.h>
-
-// Replace with your network credentials (STATION)
-#define ssid "Wokwi-GUEST"
-#define password ""
-
-void initWiFi() {
-    WiFi.mode(WIFI_STA);
-    WiFi.begin(ssid, password);
-    // WiFi.begin("Wokwi-GUEST", "");
-    Serial.print("Connecting to WiFi ..");
-    while (WiFi.status() != WL_CONNECTED) {
-        Serial.println(WiFi.status());
-        Serial.print('.');
-        delay(1000);
-    }
-    Serial.println("Connected");
-    Serial.println(WiFi.status());
-    Serial.println(WiFi.localIP());
-    Serial.print("RRSI: ");
-    Serial.println(WiFi.RSSI());
-}
-
-void setup() {
-    Serial.begin(115200);
-    initWiFi();
-}
-
-void loop() {
-    // put your main code here, to run repeatedly:
-}
-```
-
-## 6. Write a program on Raspberry Pi to retrieve temperature and humidity data from thingspeak cloud
-
-New: https://wokwi.com/projects/469089414257926145
-
-```python
-import network, urequests, time
-
-# ---------- WiFi ----------
-wlan = network.WLAN(network.STA_IF)
-wlan.active(True)
-wlan.connect("Wokwi-GUEST", "")
-while not wlan.isconnected():
-    time.sleep(0.5)
-print("WiFi connected\n")
-
-# ---------- ThingSpeak settings ----------
-# Public demo channel (works out of the box, no key needed)
-CHANNEL_ID = "12397"
-READ_KEY = ""
-TEMP_FIELD = "field4" # temperature on demo channel
-HUM_FIELD = "field3" # humidity on demo channel
-
-# ---------- Build the READ url (do not change) ----------
-URL = "https://api.thingspeak.com/channels/" + CHANNEL_ID + "/feeds/last.json"
-if READ_KEY:
-    URL += "?api_key=" + READ_KEY
-
-# ---------- Main loop ----------
-
-while True:
-    try:
-        r = urequests.get(URL)
-        data = r.json()
-        r.close()
-
-        if isinstance(data, dict):
-            print("Time :", data.get("created_at"))
-            print("Temp :", data.get(TEMP_FIELD))
-            print("Humidity:", data.get(HUM_FIELD))
-            print("-" * 30)
-        else:
-            print("Bad channel ID / key, server said:", data)
-    except Exception as e:
-        print("Network error:", e)
-
-    time.sleep(20)
-```
-
-## 7. Write a program on Raspberry Pi to publish temperature data to MQTT broker.
-
-Reference Link: https://wokwi.com/projects/322577683855704658
-
-```python
-import network
-import time
-from machine import Pin
-import dht
-import ujson
-from umqtt.simple import MQTTClient
-
-# MQTT Server Parameters
-MQTT_CLIENT_ID = "micropython-weather-demo"
-MQTT_BROKER = "broker.mqttdashboard.com"
-MQTT_USER = ""
-MQTT_PASSWORD = ""
-MQTT_TOPIC = "wokwi-weather"
-
-sensor = dht.DHT22(Pin(15))
-
-print("Connecting to WiFi", end="")
-sta_if = network.WLAN(network.STA_IF)
-sta_if.active(True)
-sta_if.connect('Wokwi-GUEST', '')
-
-while not sta_if.isconnected():
-    print(".", end="")
-    time.sleep(0.1)
-
-print(" Connected!")
-
-print("Connecting to MQTT server... ", end="")
-client = MQTTClient(MQTT_CLIENT_ID, MQTT_BROKER, user=MQTT_USER,
-                    password=MQTT_PASSWORD)
-client.connect()
-
-print("Connected!")
-
-prev_weather = ""
-
-while True:
-    print("Measuring weather conditions... ", end="")
-    sensor.measure()
-    message = ujson.dumps({
-        "temp": sensor.temperature(),
-        "humidity": sensor.humidity(),
-    })
-
-    if message != prev_weather:
-        print("Updated!")
-        print("Reporting to MQTT topic {}: {}".format(MQTT_TOPIC, message))
-        client.publish(MQTT_TOPIC, message)
-        prev_weather = message
-    else:
-        print("No change")
-
-    time.sleep(1)
-```
-
-## 8. Connect Raspberry Pi with your existing system components.
-
-Reference Link: https://wokwi.com/projects/357627199664450561
-
-```python
-# Project objective: To test a passive buzzer to play an alarm sound at one second interval
-#
-# Hardware and connections used:
-# Passive buzzer GND to Raspberry Pi Pico GND
-# Passive buzzer + Pin to GPIO Pin 15
-#
-# Programmer: Adrian Josele G. Quional
-
-# if passive buzzer is used, import the Speaker class from picozero
-from picozero import Speaker
-from time import sleep
-
-# creating a Speaker object
-speaker = Speaker(15)
-
-# continuously beep at 1 sec interval while the board has power
-# note: a passive buzzer can also be used to play different tones
-while True:
-    speaker.on()
-    sleep(1)
-    speaker.off()
-    sleep(1)
-```
-
-## 9. IoT based DC motor speed control using Arduino/Raspberry Pi.
-
-Reference Link: https://wokwi.com/projects/462024572818446337
-
-```python
-from machine import Pin, PWM, ADC
-import time
-
-# 1. DC Motor Setup (GP15)
-dc_motor = PWM(Pin(15))
-dc_motor.freq(1000)
-
-# 2. Servo Setup (GP16)
-servo = PWM(Pin(16))
-servo.freq(50) # Servos require exactly 50Hz
-
-# 3. Potentiometer (GP26)
-pot = ADC(26)
-
-# Servo pulse helper
-def set_servo_duty(angle):
-    # Map 0-180 degrees to ~1638-8192 duty (0.5ms to 2.5ms)
-    duty = int(((angle / 180) * 6554) + 1638)
-    servo.duty_u16(duty)
-
-current_angle = 0
-step_direction = 1
-
-while True:
-    # Read Potentiometer
-    pot_val = pot.read_u16()
-
-    # 1. Update DC Motor Speed
-    dc_motor.duty_u16(pot_val)
-
-    # 2. Calculate Servo "Speed" (Delay)
-    # Mapping pot to a delay between 0.001s (Fast) and 0.05s (Slow)
-    # Note: If pot is 0, we stop the servo
-    speed_delay = (65535 - pot_val) / 1000000 + 0.001
-
-    if pot_val > 1000:
-        # Move servo one step
-        current_angle += step_direction
-        if current_angle >= 180 or current_angle <= 0:
-            step_direction *= -1 # Reverse direction at boundaries
-
-        set_servo_duty(current_angle)
-
-        speed_percent = int((pot_val / 65535) * 100)
-        print(f"DC Speed: {speed_percent}% | Servo Speed: {speed_percent}%", end="\r")
-    else:
-        print("Motors Stopped...        ", end="\r")
-
-    time.sleep(speed_delay)
-```
-
-## 10. To study of IoT Data Logging using Beaglebone Black and Thingspeak
-
-Reference Link: https://wokwi.com/projects/460072555056502785
-
-### Hardware Required
-
-| Sr. No. | Component | Quantity |
-|---:|---|---:|
-| 1 | BeagleBone Black | 1 |
-| 2 | USB Cable | 1 |
-| 3 | Breadboard | 1 |
-| 4 | Light Dependent Resistor (LDR) | 1 |
-| 5 | 10 kΩ Resistor | 1 |
-| 6 | Connecting Wires | As required |
-| 7 | PC/Laptop with Internet | 1 |
-
-### Software Required
-
-- Debian Linux on BeagleBone Black
-- Python
-- Adafruit_BBIO Library
-- Internet Connection
-- ThingSpeak Account
-- SSH Terminal (PuTTY)
-
-### Algorithm
-
-1. Start the BeagleBone Black.
-2. Connect BBB to the Internet.
-3. Create a ThingSpeak account and a new channel.
-4. Note the **Write API Key**.
-5. Connect the LDR circuit to the analog input.
-6. Initialize the ADC using the Adafruit_BBIO library.
-7. Read the analog sensor value.
-8. Convert the ADC reading into voltage.
-9. Send the voltage value to ThingSpeak using an HTTP POST request.
-10. Wait for approximately 15–20 seconds before sending the next reading.
-11. Repeat the process continuously.
-12. Observe the real-time graph on ThingSpeak.
-
-### Program (Python)
-
-```python
-import Adafruit_BBIO.ADC as ADC
-import time
-import httplib, urllib
-
-sensor_pin = "P9_40"
-
-ADC.setup()
-
-while True:
-    reading = ADC.read(sensor_pin)
-    voltage = reading * 1.8
-
-    params = urllib.urlencode({
-        'field1': voltage,
-        'key': 'YOUR_WRITE_API_KEY'
-    })
-
-    headers = {
-        "Content-type": "application/x-www-form-urlencoded",
-        "Accept": "text/plain"
-    }
-
-    conn = httplib.HTTPConnection("api.thingspeak.com:80")
-    conn.request("POST", "/update", params, headers)
-
-    response = conn.getresponse()
-
-    print("ADC Reading :", reading)
-    print("Voltage :", voltage)
-
-    time.sleep(16)
-```
-
-Replace `YOUR_WRITE_API_KEY` with the Write API Key obtained from your ThingSpeak channel. (noobtechiespeaks.blogspot.com)
-
-### Working
-
-1. The LDR senses the surrounding light intensity.
-2. The voltage across the LDR changes according to light intensity.
-3. BeagleBone Black reads this voltage through its Analog-to-Digital Converter (ADC).
-4. The Python program converts the ADC value into voltage.
-5. The measured value is uploaded to the ThingSpeak cloud using an HTTP POST request.
-6. ThingSpeak stores the data and automatically generates graphs for visualization.
-7. The graph updates every 15–20 seconds with new sensor readings. (noobtechiespeaks.blogspot.com)
-
-### Sample Output
+If you see a version number such as:
 
 ```text
-ADC Reading : 0.412
-Voltage : 0.7416 V
-HTTP Response : 200 OK
-
-Data uploaded successfully.
+v18.17.0
 ```
 
-### Result
+Node.js is installed.
 
-The analog sensor data was successfully acquired using BeagleBone Black and uploaded to the ThingSpeak cloud platform. The sensor readings were stored and displayed as real-time graphs, demonstrating successful IoT-based cloud data logging.
+If you get a `"not recognized"` error, contact the lab administrator or invigilator.
+
+### 4. Create the Expo Project
+
+Run:
+
+```bash
+npx create-expo-app MyPractical
+```
+
+Wait for the project to finish downloading and installing.
+
+### 5. Enter the Project Directory
+
+```bash
+cd MyPractical
+```
+
+### 6. Open the Project in VS Code
+
+Go to:
+
+**File → Open Folder → MyPractical → Select Folder**
+
+VS Code will reload with the project files visible in the sidebar.
+
+### 7. Install Expo Go
+
+On your phone, install **Expo Go** from the Play Store or App Store.
+
+You can use Expo Go to preview your React Native application on your phone.
+
+### 8. Start the Development Server
+
+Run:
+
+```bash
+npm start
+```
+
+A QR code will appear.
+
+Open **Expo Go** on your phone and scan the QR code.
+
+Alternatively, press:
+
+```text
+w
+```
+
+in the terminal to open the application in a web browser.
+
+> **Setup complete.**
+
+For every practical below, you only need to modify `App.js`.
+
+---
+
+# How to Replace the Code
+
+For each practical:
+
+1. Open `App.js` in VS Code.
+2. Press `Ctrl + A`.
+3. Press `Delete`.
+4. Paste the code for the practical.
+5. Press `Ctrl + S`.
+6. Check your phone or browser.
+
+Expo should automatically reload the application.
+
+---
+
+# Practical 1: Installation & Setup
+
+This practical is already completed in **Step 0**.
+
+If you are asked to demonstrate installation, show:
+
+* The `create-expo-app` command.
+* The project directory.
+* The running Expo development server.
+* The application running on Expo Go or the browser.
+
+The alternative React Native CLI approach exists:
+
+```bash
+npx react-native init MyPractical
+```
+
+However, Expo is simpler for this practical setup.
+
+---
+
+# Practical 2: Basic App
+
+### Text, Image, and Button
+
+Replace `App.js` with:
+
+```tsx
+import React from 'react';
+import { Alert, Button, Image, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Text>Hello React Native</Text>
+
+      <Image
+        source={{
+          uri: 'https://reactnative.dev/img/tiny_logo.png',
+        }}
+        style={{
+          width: 100,
+          height: 100,
+        }}
+      />
+
+      <Button
+        title="Click Me"
+        onPress={() => Alert.alert('Pressed')}
+      />
+    </View>
+  );
+}
+```
+
+### Expected Result
+
+You should see:
+
+* Text saying **Hello React Native**
+* A React Native logo
+* A **Click Me** button
+* An alert when the button is pressed
+
+---
+
+# Practical 3: UI Design Using Core Components
+
+### ScrollView
+
+```tsx
+import React from 'react';
+import { ScrollView, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <ScrollView>
+      <View style={{ padding: 20 }}>
+        <Text>Item 1</Text>
+        <Text>Item 2</Text>
+        <Text>Item 3</Text>
+      </View>
+    </ScrollView>
+  );
+}
+```
+
+---
+
+# Practical 4: Styling Using StyleSheet and Flexbox
+
+```tsx
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Styled Text</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  text: {
+    fontSize: 20,
+    color: 'blue',
+  },
+});
+```
+
+---
+
+# Practical 5: User Input Form Creation
+
+```tsx
+import React, { useState } from 'react';
+import { Alert, Button, TextInput, View } from 'react-native';
+
+export default function App() {
+  const [name, setName] = useState('');
+
+  return (
+    <View style={{ padding: 40 }}>
+      <TextInput
+        placeholder="Enter Name"
+        value={name}
+        onChangeText={setName}
+        style={{
+          borderWidth: 1,
+          marginBottom: 10,
+          padding: 8,
+        }}
+      />
+
+      <Button
+        title="Submit"
+        onPress={() => Alert.alert(name)}
+      />
+    </View>
+  );
+}
+```
+
+### Expected Result
+
+Enter a name and press **Submit**.
+
+The entered name will appear in an alert.
+
+---
+
+# Practical 6: Props and State in Functional Components
+
+```tsx
+import React from 'react';
+import { Text, View } from 'react-native';
+
+const Child = ({ message }) => {
+  return <Text>{message}</Text>;
+};
+
+export default function App() {
+  return (
+    <View style={{ padding: 40 }}>
+      <Child message="Hello from Parent" />
+    </View>
+  );
+}
+```
+
+### Key Concept
+
+The parent component passes data to the child using **props**:
+
+```tsx
+<Child message="Hello from Parent" />
+```
+
+The child receives it using:
+
+```tsx
+const Child = ({ message }) => {
+```
+
+---
+
+# Practical 7: Counter App Using State
+
+```tsx
+import React, { useState } from 'react';
+import { Button, Text, View } from 'react-native';
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Text style={{ fontSize: 24 }}>{count}</Text>
+
+      <Button
+        title="Increase"
+        onPress={() => setCount(count + 1)}
+      />
+    </View>
+  );
+}
+```
+
+### Key Concept
+
+`useState()` stores the counter value:
+
+```tsx
+const [count, setCount] = useState(0);
+```
+
+The value is increased using:
+
+```tsx
+setCount(count + 1);
+```
+
+---
+
+# Practical 8: Stack Navigation
+
+## Step 1: Install Navigation
+
+Run this inside the project directory:
+
+```bash
+npx expo install @react-navigation/native @react-navigation/stack react-native-screens react-native-safe-area-context
+```
+
+## Step 2: Replace `App.js`
+
+```tsx
+import React from 'react';
+import { Button, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+function Home({ navigation }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Button
+        title="Go"
+        onPress={() => navigation.navigate('Details')}
+      />
+    </View>
+  );
+}
+
+function Details() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+        />
+
+        <Stack.Screen
+          name="Details"
+          component={Details}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+### Expected Result
+
+The app starts on the **Home** screen.
+
+Pressing **Go** navigates to the **Details** screen.
+
+---
+
+# Practical 9: Tab Navigation
+
+## Step 1: Install Bottom Tabs
+
+```bash
+npx expo install @react-navigation/bottom-tabs
+```
+
+## Step 2: Replace `App.js`
+
+```tsx
+import React from 'react';
+import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
+function Home() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Text>Home Tab</Text>
+    </View>
+  );
+}
+
+function Profile() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Text>Profile Tab</Text>
+    </View>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Home"
+          component={Home}
+        />
+
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+### Expected Result
+
+Two tabs appear at the bottom:
+
+* Home
+* Profile
+
+Tap either tab to switch screens.
+
+---
+
+# Practical 10: Passing Data Between Screens
+
+This practical uses the Stack Navigator from Practical 8.
+
+If necessary, install the navigation packages again:
+
+```bash
+npx expo install @react-navigation/native @react-navigation/stack react-native-screens react-native-safe-area-context
+```
+
+### `App.js`
+
+```tsx
+import React from 'react';
+import { Button, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+function Home({ navigation }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Button
+        title="Send Name"
+        onPress={() =>
+          navigation.navigate('Details', {
+            name: 'John',
+          })
+        }
+      />
+    </View>
+  );
+}
+
+function Details({ route }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Text>
+        Received: {route.params.name}
+      </Text>
+    </View>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+        />
+
+        <Stack.Screen
+          name="Details"
+          component={Details}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+### Key Concept
+
+Data is passed during navigation:
+
+```tsx
+navigation.navigate('Details', {
+  name: 'John',
+});
+```
+
+The receiving screen accesses it through:
+
+```tsx
+route.params.name
+```
+
+---
+
+# Practical 11: Global State Using Context API
+
+```tsx
+import React, {
+  createContext,
+  useContext,
+  useState,
+} from 'react';
+import { Text, View } from 'react-native';
+
+const MyContext = createContext();
+
+function Child() {
+  const user = useContext(MyContext);
+
+  return <Text>User: {user}</Text>;
+}
+
+export default function App() {
+  const [user] = useState('John');
+
+  return (
+    <MyContext.Provider value={user}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Child />
+      </View>
+    </MyContext.Provider>
+  );
+}
+```
+
+### Key Concept
+
+The `Provider` makes the value available to child components:
+
+```tsx
+<MyContext.Provider value={user}>
+```
+
+The child accesses it using:
+
+```tsx
+useContext(MyContext);
+```
+
+---
+
+# Practical 12: API Integration Using Fetch
+
+```tsx
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+import {
+  FlatList,
+  Text,
+  View,
+} from 'react-native';
+
+export default function App() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((res) => res.json())
+      .then((data) => setPosts(data.slice(0, 10)));
+  }, []);
+
+  return (
+    <View
+      style={{
+        padding: 20,
+        marginTop: 30,
+      }}
+    >
+      <FlatList
+        data={posts}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <Text>{item.title}</Text>
+        )}
+      />
+    </View>
+  );
+}
+```
+
+### Expected Result
+
+The application fetches data from the internet and displays the first 10 post titles.
+
+> **Internet access is required for this practical.**
+
+---
+
+# Practical 13: Form Validation
+
+```tsx
+import React, { useState } from 'react';
+import {
+  Alert,
+  Button,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+
+export default function App() {
+  const [name, setName] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = () => {
+    if (name === '') {
+      setError('Name is required');
+    } else {
+      setError('');
+      Alert.alert('Submitted: ' + name);
+    }
+  };
+
+  return (
+    <View style={{ padding: 40 }}>
+      <TextInput
+        placeholder="Enter Name"
+        value={name}
+        onChangeText={setName}
+        style={{
+          borderWidth: 1,
+          marginBottom: 10,
+          padding: 8,
+        }}
+      />
+
+      {error !== '' && (
+        <Text style={{ color: 'red' }}>
+          {error}
+        </Text>
+      )}
+
+      <Button
+        title="Submit"
+        onPress={handleSubmit}
+      />
+    </View>
+  );
+}
+```
+
+### Expected Result
+
+If the input is empty and **Submit** is pressed:
+
+```text
+Name is required
+```
+
+appears in red.
+
+If a name is entered, an alert displays the submitted name.
+
+---
+
+# Practical 14: Firebase Authentication
+
+This practical requires a Firebase project and internet access.
+
+It is more setup-heavy than the other practicals.
+
+## Step 1: Install Firebase
+
+```bash
+npx expo install firebase
+```
+
+## Step 2: Create a Firebase Project
+
+Open:
+
+[Firebase Console](https://console.firebase.google.com/?utm_source=chatgpt.com)
+
+Then:
+
+1. Create a Firebase project.
+2. Open **Project Settings**.
+3. Add a **Web App**.
+4. Copy the Firebase configuration.
+5. Enable **Authentication**.
+6. Open **Sign-in method**.
+7. Enable **Email/Password**.
+
+## Step 3: Replace `App.js`
+
+```tsx
+import React, { useState } from 'react';
+import {
+  Button,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import { initializeApp } from 'firebase/app';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+} from 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: 'YOUR_API_KEY',
+  authDomain: 'YOUR_PROJECT.firebaseapp.com',
+  projectId: 'YOUR_PROJECT',
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+export default function App() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSignUp = () => {
+    createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    )
+      .then(() => {
+        setMessage('Account created!');
+      })
+      .catch((err) => {
+        setMessage(err.message);
+      });
+  };
+
+  return (
+    <View
+      style={{
+        padding: 40,
+        marginTop: 40,
+      }}
+    >
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={{
+          borderWidth: 1,
+          marginBottom: 10,
+          padding: 8,
+        }}
+      />
+
+      <TextInput
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={{
+          borderWidth: 1,
+          marginBottom: 10,
+          padding: 8,
+        }}
+      />
+
+      <Button
+        title="Sign Up"
+        onPress={handleSignUp}
+      />
+
+      <Text>{message}</Text>
+    </View>
+  );
+}
+```
+
+> If the exam only requires explaining or showing the Firebase authentication implementation rather than demonstrating a live Firebase project, the code and configuration steps may be sufficient. Confirm the exact requirement with the examiner.
+
+---
+
+# Practical 15: AsyncStorage
+
+AsyncStorage provides local persistent storage for simple key-value data.
+
+## Step 1: Install AsyncStorage
+
+```bash
+npx expo install @react-native-async-storage/async-storage
+```
+
+## Step 2: Replace `App.js`
+
+```tsx
+import React, { useState } from 'react';
+import {
+  Button,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export default function App() {
+  const [name, setName] = useState('');
+  const [saved, setSaved] = useState('');
+
+  const saveName = async () => {
+    await AsyncStorage.setItem('name', name);
+    setSaved('Saved!');
+  };
+
+  const loadName = async () => {
+    const value = await AsyncStorage.getItem('name');
+    setSaved('Stored value: ' + value);
+  };
+
+  return (
+    <View
+      style={{
+        padding: 40,
+        marginTop: 40,
+      }}
+    >
+      <TextInput
+        placeholder="Enter Name"
+        value={name}
+        onChangeText={setName}
+        style={{
+          borderWidth: 1,
+          marginBottom: 10,
+          padding: 8,
+        }}
+      />
+
+      <Button
+        title="Save"
+        onPress={saveName}
+      />
+
+      <Button
+        title="Load"
+        onPress={loadName}
+      />
+
+      <Text>{saved}</Text>
+    </View>
+  );
+}
+```
+
+### Expected Result
+
+1. Enter a name.
+2. Press **Save**.
+3. Press **Load**.
+4. The stored value appears.
+
+The data is stored locally, so an internet connection is not required.
+
+---
+
+# Quick Exam Cheat Sheet
+
+| Task                 | Command / Action                  |
+| -------------------- | --------------------------------- |
+| Open terminal        | `Ctrl + ~`                        |
+| Start app            | `npm start`                       |
+| Open web preview     | Press `w`                         |
+| Use Expo Go          | Scan the QR code                  |
+| Stop server          | `Ctrl + C`                        |
+| Save file            | `Ctrl + S`                        |
+| Select all code      | `Ctrl + A`                        |
+| Install Expo package | `npx expo install <package>`      |
+| Create Expo project  | `npx create-expo-app MyPractical` |
+| Enter project        | `cd MyPractical`                  |
+| Git stage files      | `git add .`                       |
+| Git commit           | `git commit -m "message"`         |
+| Push to GitHub       | `git push`                        |
+
+---
+
+# Practical-to-Concept Map
+
+| Practical | Main Concept                   |
+| --------- | ------------------------------ |
+| 1         | Installation and Expo setup    |
+| 2         | Text, Image, Button            |
+| 3         | ScrollView and core components |
+| 4         | StyleSheet and Flexbox         |
+| 5         | TextInput and forms            |
+| 6         | Props                          |
+| 7         | State with `useState`          |
+| 8         | Stack Navigation               |
+| 9         | Tab Navigation                 |
+| 10        | Passing data between screens   |
+| 11        | Context API                    |
+| 12        | API integration with `fetch`   |
+| 13        | Form validation                |
+| 14        | Firebase Authentication        |
+| 15        | AsyncStorage                   |
+
+## The basic exam workflow
+
+```text
+Create project
+     ↓
+npm start
+     ↓
+Open App.js
+     ↓
+Ctrl + A
+     ↓
+Paste practical code
+     ↓
+Ctrl + S
+     ↓
+Check Expo Go / Browser
+     ↓
+Demonstrate result
+     ↓
+Move to next practical
+```
