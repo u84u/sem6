@@ -1,2083 +1,2075 @@
-# Computer Vision: Final-Semester Study Guide
+# Software Testing and Automation
+## Final-Semester Examination Study Guide
 
-**Six lecture files combined into one exam-focused reference**
-
-These notes use simple language and give enough detail to build full answers for short-answer and long-answer questions. They follow the six supplied PDFs: Unit 1, Unit 2, Unit 3, Image Segmentation, Unit 5, and Unit 6. The guide explains the idea first, then gives the working steps, advantages, limitations, applications, and exam points.
-
-## Contents
-
-1. [Unit 1: Computer Vision Foundations](#unit-1-computer-vision-foundations)
-2. [Unit 2: Image Processing Fundamentals](#unit-2-image-processing-fundamentals)
-3. [Unit 3: Feature Detection and Extraction](#unit-3-feature-detection-and-extraction)
-4. [Additional Lecture: Image Segmentation and Related Methods](#additional-lecture-image-segmentation-and-related-methods)
-5. [Unit 5: Deep Learning in Computer Vision](#unit-5-deep-learning-in-computer-vision)
-6. [Unit 6: Motion Analysis and Applications](#unit-6-motion-analysis-and-applications)
-7. [Comparison Tables for Fast Revision](#comparison-tables-for-fast-revision)
-8. [Important Formulas and Terms](#important-formulas-and-terms)
-9. [Final-Exam Practice Questions](#final-exam-practice-questions)
-10. [Quick Revision Sheet](#quick-revision-sheet)
-
-## How to study from this guide
-
-For a **2-mark answer**, write a clear definition and one important point or example. For a **5-mark answer**, explain the definition, principle, steps, and one or two advantages or applications. For a **long answer**, add a labelled flowchart or kernel where relevant, explain each step in order, compare the method with alternatives, and finish with applications and limitations.
-
-When a question asks you to *differentiate* two topics, use a table. When it asks you to *explain an algorithm*, write the steps in order. When it asks you to *discuss applications*, connect each application to what the method actually does. Memorising only the one-line definitions will not prepare you for long-answer questions.
+**Based on the six modules in `PPT_1-6.zip`**  
+**Style:** simple explanations, exam-ready definitions, step-by-step processes, comparison tables, examples, and revision questions.
 
 ---
 
-# Unit 1: Computer Vision Foundations
+## How to use this guide
 
-## 1.1 What is Computer Vision?
+Read each topic until you can explain it in your own words. For an exam answer, use this simple structure:
 
-**Computer Vision (CV)** is a field of Artificial Intelligence that helps computers interpret and understand images, video frames, and other visual data. It converts pixel values into useful information, such as object labels, locations, movement, or decisions.
+1. **Definition:** Explain what the term means.
+2. **Purpose:** State why testers use it.
+3. **Steps or types:** Explain the process or list the main categories.
+4. **Example:** Connect it to a login page, shopping cart, booking system, or another familiar application.
+5. **Advantages and limitations:** Include these when the question asks for discussion or evaluation.
 
-A computer does not understand an image merely because it can store or display it. Computer Vision applies algorithms to work out what the image contains and what that information means.
+For a short 2-mark answer, give a clear definition and one key point. For a 5-mark answer, add the purpose, important features, and an example. For a long answer, include a heading, definition, process or diagram, detailed explanation, advantages, limitations, and a conclusion. Match the length to the question and the marks available.
 
-**Example:** A camera captures an image of a road. A Computer Vision system can identify cars, pedestrians, lane markings, and traffic signs. A vehicle can then use these results to make driving decisions.
+**Source note:** The material below follows the six module PDFs included in the ZIP. Some topics appear only in the module outline, without a detailed explanation in the slides. The guide identifies those gaps instead of inventing course-specific details. Numerical targets and cost estimates quoted from the slides represent the lecture examples, not universal rules for every project.
 
-### Why is Computer Vision important?
+# Module 1: Introduction to Software Testing and Automation
 
-- It automates tasks that normally require visual inspection.
-- It can process large numbers of images and video frames.
-- It supports robotics, healthcare, surveillance, autonomous vehicles, manufacturing, agriculture, retail, and augmented reality.
-- It can recognize patterns that are difficult to describe with simple hand-written rules.
+## 1.1 What is software testing?
 
-## 1.2 Computer Vision, Image Processing, and Artificial Intelligence
+**Software testing** is the process of evaluating software to find defects and check whether the system meets its requirements and user expectations. Testing helps teams assess software quality, reliability, performance, and security.
 
-**Image Processing** changes or improves an image. **Computer Vision** uses visual information to understand what is present. Image Processing often prepares an image before a Computer Vision model analyzes it. Both are commonly parts of one system.
+A simple example is a login page. A tester checks whether a registered user can sign in with the correct password, whether the page rejects an incorrect password, and whether it displays a useful error message instead of crashing.
 
-| Point | Image Processing | Computer Vision |
-|---|---|---|
-| Main purpose | Improve, transform, restore, or prepare an image | Interpret visual content and produce meaningful information |
-| Typical input | An image | An image, video, or other visual data |
-| Typical output | Another image | Labels, coordinates, masks, motion estimates, or decisions |
-| Common techniques | Filtering, sharpening, denoising, thresholding, enhancement | Detection, classification, feature analysis, tracking, machine learning, deep learning |
-| Example | Make a dark CCTV frame clearer | Detect a person in that frame |
+### Why do we test software?
 
-**Example of both working together:** First, software removes noise from a night-time camera image and improves its contrast. A vision model then detects a person near a door. The first stage improves the pixels; the second interprets them.
+Software testing helps a team:
 
-Computer Vision is related to several other fields:
+- Find defects before the product reaches users.
+- Reduce business losses caused by incorrect or unreliable software.
+- Improve software quality and user satisfaction.
+- Check whether the software follows its requirements.
+- Build confidence that the product works under the conditions the team expects.
 
-- **Machine Learning and Deep Learning:** provide models that learn patterns from data.
-- **Pattern Recognition:** studies how to classify patterns and assign categories.
-- **Computer Graphics:** creates images from models, while Computer Vision studies images to infer information about the scene.
-- **Robotics:** uses vision to perceive the environment, navigate, and manipulate objects.
+The slides stress that defects generally cost more to fix when they escape into production. One slide estimates that a production fix may cost around ten times as much as a fix during development; another module gives a more detailed cost model that rises to 100 times in production. Treat these as lecture illustrations of the same principle: **find and fix defects early**.
 
-## 1.3 Human Vision versus Computer Vision
+## 1.2 Verification and validation (V&V)
 
-| Aspect | Human Vision | Computer Vision |
-|---|---|---|
-| Input | Light sensed by the eyes and retina | Pixel data from a camera or image file |
-| Processing | Biological neural pathways and the brain | Algorithms running on a CPU, GPU, or specialised hardware |
-| Learning | Develops through experience and context | Uses programmed rules and models trained on data |
-| Handling changes | Often handles lighting, partial obstruction, and unfamiliar scenes well | Can fail when lighting, viewpoint, or data differs from training conditions |
-| Scale | A person usually attends to a limited scene at a time | A system can process many images automatically and in parallel |
+Verification and validation are related, but they ask different questions.
 
-Human vision is not identical to Computer Vision. A computer may process a very large number of images quickly, but it can still misunderstand an unfamiliar scene or an image with poor lighting.
+### Verification
 
-## 1.4 Evolution of Computer Vision
+**Verification asks: “Are we building the product right?”** It checks whether documents, designs, code, and other work products follow the specified requirements. The slides describe verification as a **static process**, because reviewers can examine work without running the software.
 
-| Period | Main development described in the lecture notes |
+Examples include reviewing a requirements document, inspecting a design, or reviewing code for errors.
+
+### Validation
+
+**Validation asks: “Are we building the right product?”** It checks whether the finished software meets the user's needs. The slides describe validation as a **dynamic process**, because testers execute the software and observe its behaviour.
+
+For a payment app, verification might check that the design follows the stated payment rules. Validation might run a payment scenario and confirm that the correct account receives the money.
+
+| Verification | Validation |
 |---|---|
-| 1960s | Early research tried to describe scenes symbolically as part of Artificial Intelligence. |
-| 1970s to 1980s | Researchers developed edge detectors, basic feature extraction, and early stereo-vision methods. |
-| 1990s | Statistical methods, Eigenfaces for face detection/recognition research, and feature descriptors became important. |
-| 2000s | Hand-crafted features such as SIFT and HOG were combined with classifiers such as SVMs. |
-| 2012 onward | Deep learning became a major turning point after AlexNet achieved strong results on ImageNet. |
-| 2015 to 2020 | Region-based object detectors, segmentation networks, and real-time detectors such as YOLO and SSD became prominent. |
-| 2020 onward | Vision Transformers, self-supervised learning, and multimodal vision-language models expanded the field. |
+| Checks work products against specifications | Checks whether the product meets user needs |
+| Usually static | Usually dynamic |
+| Can use reviews and inspections | Requires executing the software in the slide's description |
+| Can begin early in development | Often checks the working product against real needs |
+| Question: “Are we building it right?” | Question: “Are we building the right product?” |
 
-**Main idea to remember:** Earlier systems relied heavily on features that people designed manually. Modern deep-learning systems can learn useful visual representations from training data.
+**Exam tip:** Memorize the two questions first. They provide an easy way to explain the difference.
 
-## 1.5 Core Tasks in Computer Vision
+## 1.3 Independent Verification and Validation (IV&V)
 
-### Image classification
-Classification assigns a label to an entire image. For example, a model may classify an image as *cat*, *dog*, or *car*. It does not necessarily say where the object appears.
+**Independent Verification and Validation (IV&V)** means a separate, independent team evaluates the software. The team provides an assessment that does not rely entirely on the developers' own judgment.
 
-### Object detection
-Detection identifies objects and estimates their locations. It typically returns a class label, a confidence score, and a bounding box for every detected object.
+The slides identify these benefits:
 
-### Semantic segmentation
-Semantic segmentation assigns a class label to every pixel. For example, it may label pixels as road, sky, tree, or pedestrian. It does not necessarily distinguish two separate objects that belong to the same class.
+- It improves objectivity.
+- It reduces the chance that the team overlooks defects because it is too close to its own work.
+- It supports independent assessment of product quality.
 
-### Instance segmentation
-Instance segmentation labels object pixels and separates individual objects. For example, it can label Person 1 and Person 2 as separate instances.
+The slides list safety-critical systems, banking applications, and healthcare applications as places where IV&V can be useful.
 
-### Object tracking
-Tracking follows an object across multiple video frames and tries to maintain its identity as it moves.
+## 1.4 Software testing market and career paths
 
-### Other tasks
+The slides describe rising demand for testing as cloud computing, mobile applications, AI systems, and Internet of Things (IoT) systems grow. They also identify automation testing, continuous testing through CI/CD, and AI-assisted testing as important directions.
 
-- **Pose estimation:** estimates the position or orientation of an object, or the locations of human body joints.
-- **Action recognition:** identifies an action or activity from visual data over time.
-- **3D vision and depth estimation:** estimates depth or reconstructs three-dimensional structure from visual observations.
-- **Image registration:** aligns two or more images, such as medical images captured at different times.
-- **Image generation and synthesis:** creates or modifies visual content, including inpainting, style transfer, and super-resolution.
+The listed career roles are:
 
-## 1.6 Scope of Computer Vision
+- **Manual Test Engineer:** Executes test cases without automation scripts.
+- **Automation Test Engineer:** Writes and maintains scripts that execute tests automatically.
+- **QA Analyst:** Reviews requirements, plans testing, and assesses quality.
+- **Performance Tester:** Studies speed, stability, and behaviour under workload.
+- **Security Tester:** Looks for security weaknesses.
+- **Test Architect:** Designs the overall testing approach and supporting structure.
+- **DevOps Test Engineer:** Connects testing with build, deployment, and delivery workflows.
 
-The technical scope can be grouped into four levels:
+The slides identify SDLC and STLC knowledge, familiarity with testing tools, programming basics, and analytical thinking as useful skills.
 
-1. **Low-level vision:** improves or describes raw image information. Examples include filtering, denoising, enhancement, edge detection, and feature extraction.
-2. **Mid-level vision:** groups image information and estimates structure or movement. Examples include segmentation, motion estimation, and geometric reconstruction.
-3. **High-level vision:** interprets objects and scenes. Examples include object recognition, scene understanding, and semantic interpretation.
-4. **Cross-modal vision:** combines visual information with text, audio, or other sensor data.
+## 1.5 Software Testing Life Cycle (STLC)
 
-## 1.7 Applications of Computer Vision
+The **Software Testing Life Cycle (STLC)** describes the main phases that organize testing work.
 
-- **Healthcare:** analyze X-rays, MRI, CT, ultrasound, retinal images, and pathology slides; support tumour detection, screening, surgical guidance, and patient monitoring.
-- **Autonomous vehicles:** detect lanes, traffic signs, pedestrians, vehicles, and obstacles.
-- **Robotics:** recognize objects, navigate, estimate position, and guide robotic arms.
-- **Security and surveillance:** detect people, monitor restricted areas, track vehicles, and identify unusual activity.
-- **Retail:** support visual search, automated checkout, inventory monitoring, and virtual try-on.
-- **Manufacturing:** inspect products, identify defects, check component alignment, and guide robot picking.
-- **Agriculture:** monitor crop health and identify possible weeds, pests, or disease patterns.
-- **AR/VR:** track features and camera motion so virtual objects stay aligned with the real environment.
-- **Remote sensing:** analyze satellite images for land-cover classification and change detection.
+1. **Requirement analysis:** Study the requirements and identify what the team must test. Ask questions when a requirement is missing or unclear.
+2. **Test planning:** Decide the testing scope, approach, people, tools, schedule, risks, and completion criteria.
+3. **Test case design:** Write test conditions, test data, steps, and expected results.
+4. **Test environment setup:** Prepare the hardware, software, browser, database, accounts, and data needed for testing.
+5. **Test execution:** Run the test cases, compare actual results with expected results, record pass/fail status, and report defects.
+6. **Test closure:** Review the results, prepare the test summary, record remaining risks, and document lessons learned.
 
-### Computer Vision in healthcare
+**Memory sequence:** Requirements → Plan → Design → Environment → Execute → Close.
 
-Computer Vision can assist healthcare professionals by extracting useful patterns from medical images. Examples from the lecture notes include:
+## 1.6 Software development process models
 
-- **Radiology:** detect suspicious patterns in X-rays and other scans, such as possible tumours, fractures, or pneumonia.
-- **Retinal screening:** analyze retinal photographs for signs of eye disease.
-- **Digital pathology:** inspect digitized microscope slides and support the analysis of tissue samples.
-- **Surgical assistance:** track surgical instruments or support image-guided procedures.
-- **Patient monitoring:** analyze movement, posture, or falls.
-- **Research:** analyze biological images and experimental results.
+A **software process model** organizes how a team plans, builds, tests, and releases software. The slides name Waterfall, V-Model, Incremental, RAD, Agile, Iterative, Spiral, and Prototype models. The slides explain some models in detail and only name Agile and Spiral in the overview list.
 
-Healthcare models need careful validation, representative data, privacy protection, and suitable human oversight. The model should support qualified professionals, not automatically replace clinical judgement.
+### Waterfall model
 
-## 1.8 Computer Vision in Surveillance
+The **Waterfall model** divides development into sequential phases. Each phase depends on the output of the previous phase. A team normally completes one phase before moving to the next.
 
-A surveillance system uses cameras to observe a place. A smart surveillance system adds Computer Vision so software can analyze the video and detect events without requiring a person to watch every frame.
+**Example from the slides:** An online banking system.
 
-### Main stages of a smart-surveillance system
+**Main limitation:** It is difficult to accommodate change requests once the team has moved through earlier phases. This can make Waterfall less flexible when requirements change.
 
-1. **Image acquisition:** capture video using CCTV, IP, thermal, infrared, or drone cameras, depending on the environment.
-2. **Image preprocessing:** reduce noise, adjust contrast, resize frames, and convert color spaces when useful.
-3. **Motion detection:** identify changes with frame differencing, background subtraction, or optical flow.
-4. **Object detection:** locate people, vehicles, or other target objects and draw bounding boxes around them.
-5. **Object tracking:** connect detections across frames so the system can follow the same person or vehicle.
-6. **Face detection:** find face regions in images or video frames.
-7. **Face recognition:** extract facial features and compare them with stored data when the system has an authorized identification task.
-8. **Human activity recognition:** analyze movement over time to classify activities or predefined actions.
-9. **Crowd analysis:** estimate crowd size, density, flow, or unusual crowding.
-10. **Automatic number-plate recognition (ANPR):** locate a vehicle, find its number plate, separate or read the plate characters using OCR, and optionally compare the result with a database.
-11. **Decision and output:** create an alert, event log, report, or control signal when the system detects a defined event.
+**Exam-ready explanation:** Waterfall is a linear, sequential development model in which each phase follows the previous one. It provides a clear sequence of work, but late requirement changes can be difficult to handle.
 
-### Example: restricted-area intrusion detection
+### V-Model
 
-A camera captures a video frame. Preprocessing improves the image if necessary. Motion detection identifies a change, an object detector locates the person, and a tracker follows the person across frames. If the tracked person enters a restricted region, the system generates an alert. The alert depends on multiple stages, so an error in detection or tracking can affect the final decision.
+The **V-Model**, also called the Verification and Validation model, connects each development phase with a related testing phase. Its central idea is to plan testing alongside development instead of leaving all testing until the end.
 
-### Applications and challenges
+The slides describe requirements gathering and analysis, design, implementation, testing, deployment, and maintenance. The key testing idea is that development decisions should have corresponding checks that establish whether those decisions meet specifications and user needs.
 
-Surveillance supports intrusion detection, traffic monitoring, vehicle tracking, abandoned-object detection, crowd monitoring, and industrial safety. Common challenges include poor lighting, shadows, weather, occlusion, camera motion, compute requirements, privacy, and bias. Automated results should be evaluated carefully, especially when they affect people.
+**Advantages listed in the slides:**
 
-## 1.9 Key Challenges in Computer Vision
+- Clear and disciplined phases.
+- Simple to understand and use.
+- Useful for smaller projects with clear requirements.
+- Encourages verification and validation activities early in the life cycle.
 
-- **Variation in appearance:** the same object can look different because of scale, viewpoint, lighting, or deformation.
-- **Occlusion:** another object may hide part of the target.
-- **Data requirements:** many deep-learning methods need large, accurately labelled datasets.
-- **Generalization and domain shift:** a model trained in one setting may perform poorly in a different environment.
-- **Computational cost:** high-accuracy systems may require substantial processing power.
-- **Adversarial vulnerability:** small changes to an image may mislead a model.
-- **Ethical concerns:** privacy, surveillance misuse, unfair bias, and unequal error rates require attention.
+**Limitations listed in the slides:**
 
-## 1.10 Components of a Computer Vision System
+- Not well suited to complex or object-oriented projects, according to the lecture notes.
+- Not suitable when requirements are unclear or likely to change frequently.
+- Can be time-consuming.
 
-A vision system uses hardware and software to capture an image, prepare it, interpret it, and act on the result.
+### Incremental model
 
-| Component | Purpose | Example |
+The **Incremental model** delivers the system in small working parts. The team first releases a basic version, then adds features through successive versions until the product meets its requirements.
+
+Each increment passes through activities such as requirements, design, coding, and testing. A later release extends the previous release rather than replacing the whole idea with a completely new product.
+
+**Advantages listed in the slides:**
+
+- The team can prepare an initial working version quickly.
+- Customers can see progress and gain a clearer idea of the product.
+- The team can implement changes more easily than in a strictly sequential approach.
+- Repeated increments help the team identify and manage risks.
+
+**Limitations listed in the slides:**
+
+- The process requires good planning and a capable team.
+- Repeated iterations can increase cost.
+
+### Iterative model
+
+The **Iterative model** develops and improves the system through repeated cycles. A team does not have to define every detail of the final requirements before starting. It builds an initial version, tests it, reviews the result, and improves the next version.
+
+The slides illustrate a cycle of requirements gathering, design, implementation, testing, deployment, review, and improvement. The cycle repeats until the product meets the project's goals.
+
+**Limitation noted in the slides for the iterative waterfall approach:** It can be difficult to incorporate change requests, and the slide says risk handling is not supported. Keep this limitation attached to the model wording used by the lecture rather than applying it to every possible iterative method.
+
+### Rapid Application Development (RAD)
+
+**RAD** emphasizes quick development cycles and rapid delivery of working software. It uses prototypes and user feedback to refine the product and aims to respond to changing needs.
+
+The slides list four phases:
+
+1. **Requirements planning:** Collect and refine requirements through methods such as brainstorming, task analysis, forms analysis, and user scenarios.
+2. **User description:** Gather user feedback, review the collected information, and define relevant data and features.
+3. **Construction:** Refine prototypes and turn the data and process models into a working product, using development tools.
+4. **Cutover:** Test the connections between modules, carry out acceptance testing, and prepare the system for use.
+
+### Evolutionary process model
+
+The slides describe the evolutionary model as combining **iterative and incremental** ideas. The project is split into manageable parts. Each part adds functionality and creates an opportunity for testing, feedback, and refinement.
+
+### Prototype model
+
+A **prototype** is an early model of a product that helps users and developers clarify what the finished system should do. The slides present this model as useful when the exact inputs, outputs, or requirements are not yet clear.
+
+The phases shown are:
+
+1. **Communication:** The client and developer discuss the project's main objective.
+2. **Quick design:** Create a simple design focused on visible features and input/output behaviour.
+3. **Modelling the quick design:** Develop the initial working representation so the team can understand the basic requirements.
+4. **Construction of prototype:** Build a prototype for the customer to evaluate.
+5. **Deployment, delivery, and feedback:** Collect the customer's feedback and repeat changes until the client is satisfied. The final product then uses the approved prototype as a basis.
+
+### Process-model comparison
+
+| Model | Main idea in the slides | Main point to remember |
 |---|---|---|
-| Camera or image-acquisition device | Captures the scene | A camera records fruit on a conveyor belt. |
-| Lighting system | Makes important details visible | Backlighting makes cracks in a glass bottle easier to see. |
-| Lens | Focuses light onto the sensor | A magnifying lens helps inspect small electronic parts. |
-| Image sensor | Converts incoming light into a signal and image data | CCD or CMOS sensor |
-| Frame grabber / capture hardware | Transfers, buffers, or synchronizes image data | High-speed industrial image capture |
-| Processing unit | Runs the algorithms | CPU, GPU, FPGA, or embedded processor |
-| Image-processing software | Improves or prepares the image | Denoising, resizing, contrast enhancement, thresholding |
-| Feature extraction / image analysis | Measures useful image properties | Shape, size, color, texture, edges, and corners |
-| Pattern-recognition module | Classifies or recognizes what appears | Template matching, machine learning, or deep learning |
-| Communication interface | Sends information to other devices | Ethernet, USB, Wi-Fi, or industrial interfaces |
-| Output / control system | Acts on the result | Alarm, robot control, or product rejection |
-| Database and storage | Keeps images, results, and logs | Quality-control records and model-training data |
+| Waterfall | Complete phases in sequence | Late changes are difficult |
+| V-Model | Link development phases with testing phases | Plan verification and validation early |
+| Incremental | Deliver functionality in small releases | Each release adds to the product |
+| Iterative | Improve the product through repeated cycles | Feedback guides each improvement |
+| RAD | Use rapid cycles and prototypes | Quick delivery and user feedback |
+| Evolutionary | Combine iterative and incremental ideas | Build, test, learn, and refine in parts |
+| Prototype | Build an early model to clarify requirements | Customer feedback helps define the final system |
 
-### Block diagram to practise
+**Coverage note:** The slides name Agile and Spiral models in the list of process models, but the provided slide text does not give a detailed explanation of either one.
 
-```text
-Object / Scene
-      ↓
-Lighting System
-      ↓
-Lens
-      ↓
-Camera + Image Sensor
-      ↓
-Frame Grabber / Image Capture
-      ↓
-Processing Unit
-      ↓
-Image Processing
-      ↓
-Feature Extraction
-      ↓
-Pattern Recognition
-      ↓
-Decision Making
-      ↓
-Output / Control System
-```
+## 1.7 Application testing and product testing
 
-**Example: automatic fruit sorting**
+### Application testing
 
-1. Fruit moves along a conveyor belt.
-2. A camera captures its image under suitable lighting.
-3. Software cleans or prepares the image.
-4. The system extracts color, shape, and size.
-5. A recognition module identifies the fruit type.
-6. A control system directs the fruit into the correct container.
+**Application testing** focuses on a specific software application created for a customer or business. The goal is to confirm that the application meets its functional and non-functional requirements and to find defects before release.
 
-## 1.11 Digital Image Fundamentals
+Characteristics from the slides:
 
-A digital image represents a scene using numerical values. A common mathematical notation is `I(x, y)`, where `x` is the horizontal position, `y` is the vertical position, and the value stores brightness or color.
+- Often tests customized software.
+- Has a limited scope focused on one application.
+- Uses customer-specific requirements.
+- The slides describe testing as ending after deployment and acceptance.
 
-### Pixel
-A **pixel** is the smallest picture element in a digital image. A digital image arranges pixels in rows and columns.
+Examples include a college ERP system, hospital management system, banking web application, and mobile app.
 
-In a common 8-bit grayscale image, pixel values range from 0 to 255:
+The listed test types are functional testing, integration testing, system testing, user acceptance testing, and regression testing.
 
-- `0` means black.
-- `255` means white.
-- Values between them represent shades of gray.
+### Product testing
 
-### Types of digital images
+**Product testing** evaluates a software product intended for many customers or the open market. It checks whether the product is stable, reliable, scalable, and ready for a broad range of users and environments.
 
-- **Binary image:** uses two values, usually 0 and 1. Applications include document processing and barcode recognition.
-- **Grayscale image:** stores brightness rather than separate color channels.
-- **Color image:** commonly stores red, green, and blue channel values for each pixel.
+Characteristics from the slides:
 
-### Resolution
-Image resolution describes the number of pixels in the image, usually written as width × height. For example, an image with dimensions 1920 × 1080 contains 1920 columns and 1080 rows of pixels. More pixels can preserve more spatial detail, but they also increase storage and processing requirements.
+- Tests generic software for many users.
+- Has a broader scope than one customized application.
+- Responds to market-driven requirements.
+- Continues after release as the vendor delivers patches and new versions.
 
-**DPI** means dots per inch and describes a print or output density. Do not confuse physical print density with the pixel dimensions of an image file.
+Examples include operating systems, browsers, antivirus programs, and accounting software.
 
-### Color models
+The slides list functional, compatibility, performance, security, usability, and beta testing.
 
-| Model | Meaning | Typical use |
-|---|---|---|
-| RGB | Red, Green, Blue channels | Digital cameras, monitors, phones, and displays |
-| Grayscale | One brightness value per pixel | Medical images and many inspection tasks |
-| HSV | Hue, Saturation, Value | Color-based analysis where separating color from brightness can help |
-| CMYK | Cyan, Magenta, Yellow, Black | Printing and publishing |
-| YCbCr | Luma/brightness plus blue- and red-difference chroma information | Image and video compression and broadcasting |
-
-Common RGB examples for 8-bit channels are `(255, 0, 0)` for red, `(0, 255, 0)` for green, `(0, 0, 255)` for blue, `(255, 255, 255)` for white, and `(0, 0, 0)` for black. RGB combines light, while CMYK combines printer inks.
-
-## 1.12 Pinhole Camera Model: Source Coverage Note
-
-The Unit 1 topic list mentions **image formation and the pinhole camera model**, but the supplied PDF text does not provide a full explanation, diagram, or equations for that topic. These consolidated notes therefore do not invent a detailed derivation. Review the corresponding classroom slides or textbook pages if your syllabus expects a detailed pinhole-camera answer.
-
----
-
-# Unit 2: Image Processing Fundamentals
-
-## 2.1 What is Image Processing?
-
-Image Processing applies operations to an image to improve its appearance or prepare it for further analysis. It can reduce noise, adjust contrast, sharpen details, transform geometry, detect edges, or separate regions.
-
-A common pipeline is:
-
-```text
-Input Image → Preprocessing / Enhancement → Filtering or Transformation → Analysis or Output
-```
-
-## 2.2 Image Representation, Sampling, and Quantization
-
-### Image representation
-A digital image stores pixel intensity or color values in a two-dimensional grid. A grayscale pixel stores brightness; a color pixel often stores separate RGB channel values.
-
-### Sampling
-**Sampling** converts a continuous visual scene into a discrete grid of pixel locations. It mainly determines the spatial resolution.
-
-- Too few samples can remove fine details and distort shapes.
-- More samples generally preserve more detail, but require more storage and processing.
-
-### Quantization
-**Quantization** assigns a finite set of intensity values to each sampled pixel. It determines how finely the system represents brightness or color intensity.
-
-If a pixel channel uses `b` bits, the number of possible levels is `2^b`. For example, 8-bit grayscale has 256 possible levels, numbered 0 through 255. With fewer levels, smooth brightness changes may appear as visible bands. The difference caused by mapping an actual value to an allowed level is called **quantization error**.
-
-| Point | Sampling | Quantization |
-|---|---|---|
-| Main question | Where should the image measure values? | Which values can each pixel store? |
-| Controls | Spatial resolution | Intensity resolution |
-| Common unit | Pixel dimensions | Bits or intensity levels |
-| Too little | Loss of spatial detail | Coarse brightness levels and banding |
-
-**Example:** `1920 × 1080` describes the sampled pixel grid. `8-bit grayscale` describes the available brightness levels for each pixel.
-
-## 2.3 Image Enhancement
-
-Image enhancement makes important image information easier to see or use. Different methods solve different problems.
-
-### Contrast enhancement
-Contrast enhancement increases the difference between darker and brighter image regions. It can make hidden details easier to distinguish.
-
-### Histogram equalization
-An image histogram shows how many pixels have each intensity. Histogram equalization redistributes intensities to make better use of the available range. It can improve global contrast, especially when many pixels occupy a narrow intensity range.
-
-### Noise reduction
-Noise reduction removes unwanted pixel variations introduced by sensors, low light, or transmission. Gaussian smoothing and median filtering are common examples.
-
-### Sharpening
-Sharpening emphasizes edges and fine details. It can improve clarity, but it may also make noise more visible.
-
-## 2.4 Image Transformations
-
-Geometric transformations change the positions or dimensions of image content.
-
-| Transformation | Simple meaning | Example use |
-|---|---|---|
-| Scaling | Increase or decrease image size | Resize an image before analysis |
-| Rotation | Turn an image around a selected point | Correct a tilted document |
-| Translation | Shift an image horizontally or vertically | Align two images |
-| Affine transformation | Combine rotation, scaling, translation, and shearing | Correct certain geometric changes while preserving parallel lines |
-| Perspective / projective transformation | Change the apparent viewpoint or perspective | Straighten a photographed page or planar object |
-
-Resizing and rotation often need **interpolation**, which estimates pixel values at locations that do not coincide with original pixels. The notes name nearest-neighbor and bilinear interpolation as examples.
-
-## 2.5 Pixel-Based Transformations
-
-A pixel transformation changes pixel values directly. In a point transformation, each output pixel depends on the corresponding input pixel, rather than on a whole neighborhood.
-
-### Linear transformation
-A common form is:
-
-`g(x, y) = a f(x, y) + b`
-
-- `f(x, y)` is the original pixel value.
-- `g(x, y)` is the output pixel value.
-- `a` controls contrast scaling.
-- `b` shifts brightness.
-
-**Worked example:** if the original pixel is 100, `a = 2`, and `b = 20`, then the new value is `(100 × 2) + 20 = 220`. Real systems must keep values within the allowed intensity range.
-
-### Non-linear transformations
-
-- **Image negative:** reverses light and dark intensity levels.
-- **Log transformation:** expands details in darker intensity regions and compresses higher values.
-- **Gamma / power-law correction:** changes the intensity mapping non-linearly; the gamma parameter controls how strongly the mapping changes dark and bright values.
-- **Histogram equalization:** uses the intensity distribution of the image to improve contrast.
-- **Thresholding:** assigns pixels to different groups based on intensity.
-
-## 2.6 Spatial-Domain Filtering
-
-The **spatial domain** is the ordinary image grid. A spatial filter operates directly on pixel values. The general idea can be written as:
-
-`g(x, y) = T[f(x, y)]`
-
-Here, `f` is the input image, `g` is the output image, and `T` is the operation applied at or around pixel `(x, y)`.
-
-### Point processing versus neighborhood processing
-
-- **Point processing:** uses only the current pixel. Examples include negative, gamma correction, and thresholding.
-- **Neighborhood processing:** uses a small area around the current pixel. Examples include mean, Gaussian, median, and edge-detection filters.
-
-### What is a kernel or mask?
-
-A **kernel** is a small matrix of numbers that moves over the image. At each location, the algorithm combines the kernel values with the underlying pixel values. This produces the output for that location.
-
-A 3 × 3 kernel covers nine pixels. A smoothing kernel may average them, while an edge kernel responds to intensity differences.
-
-### Correlation and convolution
-
-- **Correlation:** slides the kernel over the image without rotating the kernel first.
-- **Convolution:** rotates the kernel by 180 degrees before applying it.
-
-Symmetric kernels, such as many smoothing kernels, can produce the same result in both operations. In image-processing explanations, always state which convention you use if the exact kernel signs matter.
-
-### Padding at image boundaries
-
-A kernel can extend beyond an image edge. Padding defines what the algorithm should assume outside the image.
-
-- **Zero padding:** treats outside pixels as zero. It can create dark borders.
-- **Replicate padding:** copies the nearest border pixel.
-- **Mirror/reflect padding:** reflects the image content across the border.
-- **Cropping:** calculates only where the full kernel fits, so the output becomes smaller.
-
-### Main classes of spatial filters
-
-Filters can be classified in two ways:
-
-1. **By operation:** linear filters combine weighted pixel values; non-linear filters use other rules such as sorting neighborhood values.
-2. **By effect:** smoothing filters reduce local variation; sharpening filters emphasize rapid changes and details.
-
-## 2.7 Smoothing Filters
-
-Smoothing reduces noise and small variations. It can also blur edges and remove fine detail, so the choice of filter matters.
-
-### Mean or box filter
-The mean filter replaces the center pixel with the average of the pixels in its neighborhood. For a 3 × 3 box filter, all nine pixels receive equal weight, usually `1/9` each.
-
-**Advantages:** simple and fast; useful for general smoothing.
-
-**Limitations:** blurs edges and fine detail because it averages unlike values together.
-
-### Weighted-average filter
-A weighted-average filter gives different importance to different pixels. The source shows this 3 × 3 kernel, scaled by `1/16`:
-
-```text
-1  2  1
-2  4  2
-1  2  1
-```
-
-The center receives the greatest weight. This can smooth the image while reducing some of the excessive blurring associated with a uniform box filter.
-
-### Gaussian filter
-The Gaussian filter assigns weights according to a Gaussian distribution. Pixels near the center receive larger weights; distant pixels receive smaller weights. The standard deviation, often written as `σ`, controls the amount of smoothing. Larger `σ` generally produces stronger blur.
-
-Gaussian smoothing often serves as a preprocessing step before edge detection because noise can otherwise create false edges.
-
-### Median filter
-The median filter sorts the neighborhood's pixel values and replaces the center with the middle value. It does not compute a weighted average.
-
-It works particularly well for **salt-and-pepper noise**, where some pixels suddenly become very bright or very dark. Because it rejects extreme outlier values instead of averaging them, it often preserves edges better than a mean filter.
-
-### Maximum and minimum filters
-
-- **Maximum filter:** replaces the center with the largest neighborhood value. It can suppress dark impulse noise and emphasize bright points.
-- **Minimum filter:** replaces the center with the smallest neighborhood value. It can suppress bright impulse noise and emphasize dark points.
-
-### Smoothing-filter comparison
-
-| Filter | How it works | Best-known use | Main limitation |
-|---|---|---|---|
-| Mean | Average of neighborhood | Simple general smoothing | Strong edge blur |
-| Weighted average | Weighted sum, with greater weight near the center | Smoother result than a uniform average of similar size | Still blurs edges |
-| Gaussian | Gaussian-shaped weighted average | Smooth preprocessing and Gaussian-like noise | Can remove fine detail |
-| Median | Middle value after sorting | Salt-and-pepper noise | May remove small details when the neighborhood or noise level is too large |
-| Maximum | Largest neighborhood value | Reduce dark specks, emphasize bright features | Expands bright regions or details |
-| Minimum | Smallest neighborhood value | Reduce bright specks, emphasize dark features | Shrinks bright regions or details |
-
-## 2.8 Sharpening Filters
-
-Sharpening makes edges and fine detail more visible. It works by emphasizing rapid intensity changes. The same process can also strengthen noise because noise also creates rapid changes.
-
-### First and second derivatives
-
-- **First-order derivatives** respond to changes in intensity and often produce broader edge responses.
-- **Second-order derivatives** respond strongly to fine detail, thin lines, isolated points, and noise. They can create two responses around a sharp step edge, with a zero-crossing near the edge location.
-
-### Laplacian operator
-The Laplacian is a second-order derivative operator. It emphasizes locations where intensity changes quickly. The source gives two common digital masks.
-
-**4-neighbour Laplacian:**
-
-```text
- 0   1   0
- 1  -4   1
- 0   1   0
-```
-
-**8-neighbour Laplacian:**
-
-```text
- 1   1   1
- 1  -8   1
- 1   1   1
-```
-
-The 4-neighbour mask considers pixels above, below, left, and right of the center. The 8-neighbour version also includes diagonal neighbors. The Laplacian response can be combined with the original image to sharpen it. Whether the response is added or subtracted depends on the mask's sign convention.
-
-### Unsharp masking
-The name can be confusing: unsharp masking sharpens an image by first creating a blurred version.
-
-Steps:
-1. Blur the original image.
-2. Subtract the blurred image from the original to obtain a detail mask.
-3. Add the detail mask back to the original image.
-
-The mask contains high-frequency detail such as edges and fine structures.
-
-### High-boost filtering
-High-boost filtering adds a stronger amount of the detail mask back to the original. In the lecture notes, `k = 1` corresponds to standard unsharp masking, `k > 1` increases sharpening, and `0 < k < 1` reduces the sharpening effect.
-
-### Gradient-based sharpening
-Gradient operators estimate the rate of intensity change in horizontal and vertical directions. Combining those responses highlights places where the image changes rapidly.
-
-### Smoothing versus sharpening
-
-| Smoothing | Sharpening |
+| Application testing | Product testing |
 |---|---|
-| Reduces rapid local changes | Emphasizes rapid local changes |
-| Can reduce some noise | Can amplify noise |
-| Often softens edges | Often makes edges look clearer |
-| Uses mean, weighted-average, Gaussian, and median filters | Uses Laplacian, unsharp masking, high-boost, and gradient methods |
+| Focuses on a specific application | Focuses on a product for many customers |
+| Often uses customer-specific requirements | Uses broader, market-driven requirements |
+| Example: hospital management system | Example: browser or antivirus product |
+| Scope centres on the application | Scope includes different users and environments |
+| Slides associate it with deployment and acceptance | Slides describe testing continuing through patches and versions |
 
-## 2.9 Frequency-Domain Filtering
+## 1.8 Introduction to Selenium
 
-Spatial filters work directly on pixel values. Frequency-domain methods first describe the image in terms of its spatial frequencies, meaning how quickly intensity changes across the image.
+The slides describe **Selenium** as an open-source framework for automating web applications. It supports several programming languages, including Java, C#, Python, and Ruby, and appears in functional and regression testing workflows.
 
-- **Low frequencies:** represent slowly changing areas, smooth backgrounds, and broad brightness variation.
-- **High frequencies:** represent rapid changes, fine details, edges, and some kinds of noise.
+A basic Selenium test follows this pattern:
 
-### Fourier Transform
-The Fourier Transform converts the image from the spatial domain into a frequency representation. The Inverse Fourier Transform converts the processed frequency data back into an ordinary image.
+1. Write a test script that describes user actions.
+2. Start a browser using WebDriver.
+3. Locate page elements such as fields and buttons.
+4. Perform actions such as typing and clicking.
+5. Compare the actual result with the expected result.
 
-### Frequency-domain filtering workflow
+The slides in Module 1 mention Selenium in connection with performance testing, while later modules distinguish browser automation with Selenium from load/performance testing with JMeter. See the source note near the end of this guide.
 
-1. Apply the Fast Fourier Transform (FFT) to the image.
-2. Shift the zero-frequency component to the center if needed for convenient viewing or filtering.
-3. Multiply the frequency representation by a selected filter mask `H(u, v)`.
-4. Shift the spectrum back if it was shifted.
-5. Apply the Inverse FFT to return to the spatial domain.
-6. Use the real part or magnitude of the result as appropriate to form the output image.
+### Module 1 revision questions
 
-### Types of frequency filters
-
-| Filter | What it passes or removes | Main use |
-|---|---|---|
-| Low-pass filter | Keeps low frequencies and reduces high frequencies | Smoothing or reducing high-frequency noise |
-| High-pass filter | Keeps high frequencies and reduces low frequencies | Emphasizing edges and fine detail |
-| Band-pass filter | Keeps a selected range of frequencies | Isolating a frequency range or texture pattern |
-| Notch filter | Removes selected narrow frequency components | Removing particular periodic interference |
-| Band-reject filter | Rejects a chosen frequency band | Suppressing unwanted frequency ranges |
-
-**Exam point:** A sharp edge contains high-frequency information. Excessive low-pass filtering can blur that edge. High-pass filtering can make edges clearer but may also emphasize noise.
-
-## 2.10 Image Noise and Noise Reduction
-
-**Image noise** means unwanted changes in pixel values that do not represent the true scene. Noise can enter during image capture or transmission.
-
-| Noise type | Appearance or cause | Method mentioned in the notes |
-|---|---|---|
-| Gaussian noise | Fine random variation associated with sensor/electronic noise | Gaussian or mean smoothing can reduce it |
-| Salt-and-pepper noise | Scattered black and white pixels | Median filtering; minimum/maximum filters can target particular impulses |
-| Poisson or shot noise | Signal-dependent variation linked to photon counting | The source names the noise but does not give one universal filter for it |
-| Speckle noise | Grainy, often multiplicative pattern in systems such as ultrasound or radar | Requires a method suited to the imaging model; the source does not prescribe one universal solution |
-| Periodic noise | Repeating interference pattern | Notch or band-reject filtering in the frequency domain |
-
-Other methods named in the source include:
-
-- **Bilateral filter:** reduces noise while trying to preserve edges. It generally costs more computation than simple smoothing.
-- **Wiener filter:** uses information about signal and noise to address noise and blur; it works best when those characteristics can be estimated.
-- **Low-pass frequency filtering:** reduces high-frequency content, including some noise, but can remove fine details too.
-
-### How to choose a denoising method
-
-1. Identify the noise pattern.
-2. Decide whether a spatial or frequency method suits it.
-3. Choose a filter that reduces that noise while preserving the details needed for the next task.
-4. Check the output because stronger filtering does not always mean a better image.
-
-## 2.11 Edge Detection
-
-An **edge** is a location where image intensity changes sharply. Edges often indicate the boundary between objects or regions. Edge detection helps locate shapes, lines, boundaries, and other structures.
-
-The horizontal and vertical intensity changes are commonly represented as `Gx` and `Gy`. Together they describe the strength and orientation of the intensity change.
-
-### Roberts Cross operator
-Roberts Cross uses small 2 × 2 diagonal-difference masks. It is fast and simple, but very sensitive to noise because the small kernel provides little smoothing.
-
-### Prewitt operator
-Prewitt uses 3 × 3 masks. The masks apply uniform weights to estimate horizontal and vertical changes.
-
-```text
-Gx:                 Gy:
--1   0   1         -1  -1  -1
--1   0   1          0   0   0
--1   0   1          1   1   1
-```
-
-### Sobel operator
-Sobel also uses 3 × 3 masks, but it gives extra weight to the center row or column. That weighting adds some smoothing during gradient estimation and usually makes Sobel less sensitive to noise than Prewitt.
-
-```text
-Gx:                 Gy:
--1   0   1         -1  -2  -1
--2   0   2          0   0   0
--1   0   1          1   2   1
-```
-
-### Canny edge detector
-Canny is a multi-stage method designed to find edges accurately, place them close to true boundaries, and avoid multiple responses for one edge.
-
-1. **Noise reduction:** smooth the image with a Gaussian filter.
-2. **Gradient calculation:** calculate intensity-change strength and direction, often using Sobel operators.
-3. **Non-maximum suppression:** keep only local maxima along the gradient direction. This makes wide responses thinner.
-4. **Double thresholding:** use a high and a low threshold to classify pixels as strong edges, weak edges, or non-edges.
-5. **Edge tracking by hysteresis:** keep weak edge pixels when they connect to strong edges; discard isolated weak responses.
-
-### Edge-operator comparison
-
-| Method | Kernel | Main strength | Main limitation |
-|---|---|---|---|
-| Roberts | 2 × 2 | Very fast | Highly sensitive to noise |
-| Prewitt | 3 × 3, uniform weights | Simple gradient estimate | More noise-sensitive than Sobel |
-| Sobel | 3 × 3, center-weighted | Adds some smoothing while estimating gradients | Can still return noisy or thick edges |
-| Canny | Multi-stage pipeline | Produces thin, comparatively clean, connected edges | More steps and computation |
-
-Applications include lane-line detection, PCB inspection, medical-image boundary analysis, and document cropping or perspective correction.
-
-## 2.12 Morphological Operations
-
-**Morphological operations** change the shape or structure of objects in an image. They commonly operate on binary images and use a small pattern called a **structuring element**.
-
-- **Erosion:** shrinks the foreground, often shown as white pixels. It can remove small isolated white details and narrow object boundaries.
-- **Dilation:** expands the foreground. It can fill small gaps and connect nearby regions, but can also enlarge noise.
-
-The two operations can be combined to clean images before segmentation or shape analysis. Remember the direction of the change: erosion shrinks; dilation grows.
+1. Define software testing and state five reasons for testing.
+2. Explain verification and validation with an example.
+3. What is Independent Verification and Validation? Why is it useful?
+4. List and explain the six phases of STLC.
+5. Explain the Waterfall model with one advantage and one limitation.
+6. Explain the V-Model and list its advantages and limitations.
+7. Compare the Incremental and Iterative models.
+8. Explain the phases of RAD.
+9. Explain the Prototype model and its feedback cycle.
+10. Differentiate application testing from product testing.
 
 ---
 
-# Unit 3: Feature Detection and Extraction
+# Module 2: Software Testing Techniques and User Interface Testing
 
-## 3.1 What is a Feature?
+## 2.1 Static testing
 
-A **feature** is a useful part of an image that helps a computer identify, compare, track, or understand a scene. Examples include edges, corners, blobs, distinctive points, textures, or object boundaries.
+**Static testing** finds defects without executing the software. A tester or reviewer examines requirements, design documents, code, or other work products. The slides emphasize that teams can use static testing early in development and reduce the cost of fixing errors.
 
-A flat region such as a clear sky usually gives few distinctive clues. A sharp corner or a distinctive texture is more useful because the system may recognize it again in another image.
+Examples from the ideas in the slides include reviewing a requirements document for unclear wording and examining code without running it.
 
-### Properties of a good feature
+**Main purpose:** Catch problems early, before they move into later development or testing stages.
 
-| Property | Simple explanation | Why it matters |
-|---|---|---|
-| Repeatability | The system finds the same physical feature in different images of the same scene | Matching requires the same feature to be detected more than once |
-| Distinctiveness | The feature looks different from other features | Reduces ambiguous or incorrect matches |
-| Locality | The feature describes a small part of the image | Can survive when another part of the scene is hidden |
-| Quantity | The image contains enough useful features | More reliable estimation often needs enough points |
-| Accuracy | The system locates each feature precisely | Poor location estimates can cause downstream geometry errors |
-| Efficiency | Detection and description finish fast enough | Important for real-time use and limited hardware |
+## 2.2 Dynamic testing
 
-## 3.2 Feature-Based Vision Pipeline
+**Dynamic testing** evaluates software by executing its code. The tester supplies inputs and checks the system's actual behaviour.
 
-Classical feature-based vision generally follows four stages:
+The slides connect dynamic testing with:
 
-1. **Detection:** locate candidate interest points or regions. Harris is an example for corner detection.
-2. **Description / extraction:** convert the neighborhood around each point into a numerical descriptor.
-3. **Matching:** compare descriptors from different images using a distance or similarity measure.
-4. **Geometric verification and application:** remove inconsistent matches, often with RANSAC, then use the valid matches for tasks such as image alignment, panorama stitching, tracking, or 3D reconstruction.
+- **Positive testing:** Provide valid inputs that the requirements say the system should accept.
+- **Negative testing:** Provide invalid or disallowed inputs and check that the system handles them correctly.
 
-**Key distinction:** A detector answers **where is the interesting point?** A descriptor answers **what does the local pattern look like?** A matcher answers **which point in the other image is most likely the same feature?**
+For example, entering a valid email address in a registration form is a positive test. Entering an invalid email address and checking that the system rejects it with a clear message is a negative test.
 
-## 3.3 Edge Detection as Feature Extraction
+| Static testing | Dynamic testing |
+|---|---|
+| Does not execute the code | Executes the software |
+| Examines requirements, design, or code | Checks behaviour using inputs and observed outputs |
+| Can identify issues early | Reveals problems that appear during execution |
+| Helps reduce later correction cost | Checks whether the running application behaves correctly |
 
-Edges mark sharp intensity changes and provide clues about object boundaries. Roberts, Prewitt, and Sobel approximate image gradients using kernels. Canny adds smoothing, non-maximum suppression, double thresholding, and edge tracking to obtain cleaner edge maps.
+## 2.3 Black-box testing
 
-The main use of edge detection in a feature pipeline is to identify boundaries and structural changes. It does not by itself identify an object such as a car or a face.
+**Black-box testing** checks a system against its requirements without needing to understand its internal code. The tester supplies inputs and checks outputs or visible behaviour.
 
-## 3.4 Harris Corner Detector
+The tester asks questions such as: “If the user enters a valid password, does login succeed?” and “If the user enters an invalid password, does the system reject it correctly?”
 
-### What is a corner?
+The slides describe the tester as analyzing the software against requirements, identifying defects, and reporting them to the development team.
 
-A corner is a point where two edges or directions of intensity change meet. It can be located more precisely than an arbitrary point along a straight edge.
+## 2.4 White-box testing
 
-Imagine moving a small image window:
+**White-box testing** examines the internal working structure of the system. The slides also call it clear-box, glass-box, structural, or open-box testing.
 
-- **Flat region:** moving the window in any direction changes its contents very little.
-- **Edge:** moving across the edge changes the contents a lot, but moving along the edge changes them little.
-- **Corner:** moving in almost any direction changes the contents significantly.
+The tester considers the internal code or structure, rather than treating the software as a closed box. The slides list these advantages:
 
-This window-shift test is the basic idea behind Harris corner detection.
+- It can begin at early development stages.
+- It can reveal hidden defects.
+- It can help with code optimization.
 
-### Main mathematical idea
+### Black-box vs white-box testing
 
-Harris uses local intensity gradients to measure how much the image changes when a window moves. It calculates a local structure matrix, often called the second-moment matrix or structure tensor. The matrix summarizes horizontal changes, vertical changes, and their relationship.
+| Black-box testing | White-box testing |
+|---|---|
+| Focuses on requirements, inputs, and outputs | Focuses on internal code and structure |
+| Does not require knowledge of the internal code | Requires knowledge of the internal implementation |
+| Example: submit a login form and inspect the result | Example: inspect the code path handling login failure |
+| Checks externally visible behaviour | Checks internal paths and implementation behaviour |
 
-The Harris response is commonly expressed as:
+## 2.5 User Interface (UI) testing
 
-`R = det(M) - k(trace(M))^2`
+**UI testing** checks the software through its graphical user interface (GUI). It verifies that forms, input fields, controls, messages, and interactions behave as expected.
 
-Here `M` is the local structure matrix and `k` is a sensitivity constant. A large positive response indicates a likely corner; a small response suggests a flat area; a negative response commonly indicates an edge-like area.
+The slides divide UI testing into form testing, field testing, and dependency testing.
 
-### Steps of the Harris detector
+### Form-level validation
 
-1. Calculate horizontal and vertical image derivatives, often using Sobel.
-2. Calculate the local products `Ix²`, `Iy²`, and `IxIy`.
-3. Sum or smooth those products over a small window to form the structure matrix `M`.
-4. Calculate the response `R` for each position.
-5. Keep responses above a selected threshold.
-6. Apply non-maximum suppression so nearby responses do not mark the same corner repeatedly.
+**Form validation** checks whether the data submitted through a form is accurate, complete, consistent, and consistent with predefined rules. When a form contains invalid data, the system should reject the submission or ask the user to correct the problem.
 
-### Advantages and limitations
+Form validation matters for three reasons:
 
-- Harris finds well-localized corners and works well for tracking, camera calibration, and matching.
-- It is computationally practical for many classical-vision tasks.
-- It is not naturally scale-invariant, so a corner can be harder to match if the image size changes greatly.
+1. **Data accuracy:** The application receives complete and correctly formatted information.
+2. **Security:** Validation helps prevent harmful or unexpected inputs from passing through the form. It is only one part of security, not a replacement for other security controls.
+3. **User experience:** Clear feedback tells the user what needs correction and avoids unnecessary frustration.
 
-### Related detectors
+The slides identify two approaches:
 
-- **Harris-Laplace:** adds scale selection to Harris-style corner detection.
-- **FAST:** checks a circle of surrounding pixels for a contiguous group that is sufficiently brighter or darker than the candidate pixel. It is very fast and is used inside ORB.
+- **Before submission / inline validation:** The page checks the input while the user fills in the form, such as after the user leaves a field.
+- **After submission validation:** The system checks the form when the user submits it and reports invalid or missing information.
 
-Applications include camera calibration, video stabilization, motion capture, visual SLAM, and structure-from-motion.
+### Inter-form dependencies
 
-## 3.5 Feature Descriptors
+**Inter-form dependencies** describe a relationship between different forms or between steps of a larger workflow. The provided slides mention this topic in the outline and discuss dependent behaviour more fully under inter-field dependencies. They do not provide a detailed standalone treatment of inter-form dependency testing.
 
-A feature descriptor stores a numerical summary of the appearance around a detected keypoint. A good descriptor should be distinctive but should also remain useful when the image changes in scale, rotation, brightness, or viewpoint.
+### Field-level validation
 
-The three descriptors in the lecture are **SIFT, SURF, and ORB**.
+**Field-level validation** applies rules to a single input field. It checks whether the field's value follows the required type, format, range, and other rules.
 
-### SIFT: Scale-Invariant Feature Transform
+Important checks listed in the slides include:
 
-SIFT aims to detect and describe keypoints that remain recognizable across scale and rotation changes.
+- **Data type and format:** An email field should accept valid email formats; a date field should accept valid dates.
+- **Required vs optional:** Required fields must contain values, while optional fields may remain empty.
+- **Range checks:** A numeric value must fall within the permitted range.
+- **Allowed characters:** The field should accept permitted characters and reject disallowed ones.
+- **Length checks:** A field may require a minimum or maximum number of characters.
+- **Default values and placeholders:** They should display the intended guidance or initial value.
+- **Read-only and disabled fields:** They should behave as specified.
+- **Focus, tab order, and cursor behaviour:** Keyboard navigation should work sensibly.
+- **Boundary values:** Test values near the limits of a permitted range.
 
-**Stage 1: Detect scale-space extrema**
+The slides recommend giving immediate feedback, often when the user leaves a field, rather than always waiting for the final submission.
 
-- Blur the image at different scales.
-- Compute Difference-of-Gaussians (DoG) images.
-- Find candidate points that are local maxima or minima compared with nearby points across the current and neighboring scales.
+### Inter-field dependencies
 
-**Stage 2: Localize keypoints**
+**Inter-field dependencies** control how the value or selection in one field affects another field. They guide users toward valid combinations of data.
 
-- Refine the candidate position and scale.
-- Reject weak low-contrast points.
-- Reject unstable edge-like points that are poorly localized along the edge.
+Examples from the slides:
 
-**Stage 3: Assign orientation**
+- Selecting an insurance type controls the available insurance subtype options.
+- A “Reason for Leaving” field appears only when the employment status is “Inactive.”
+- Selecting “Country = India” enables the State dropdown.
+- Selecting “Credit Card” as the payment method reveals card-detail fields.
+- The Submit button remains disabled until the user accepts the terms and conditions.
 
-- Examine gradients around the keypoint.
-- Build an orientation histogram.
-- Use the dominant orientation to give the keypoint a consistent direction.
+Tests should check that dependent fields appear, disappear, become enabled or disabled, become required, and update correctly. If a user changes a parent field, the system should clear or update dependent values when necessary.
 
-**Stage 4: Build the descriptor**
+### Error-message validation
 
-- Rotate the local region to align with the selected orientation.
-- Divide the region into a 4 × 4 grid of subregions.
-- Build an 8-bin gradient-orientation histogram in each subregion.
-- Combine the histograms into `4 × 4 × 8 = 128` values.
-- Normalize the descriptor to reduce the effect of some illumination changes.
+An error message should explain the problem clearly enough for the user to correct it. A generic error may confirm that validation failed but still leave the user unsure about what to do next.
 
-**Strengths:** strong scale and rotation robustness, distinctive descriptors, useful for image matching and 3D reconstruction.
+The slides discuss custom error messages for regular-expression validation and script-based single-field or multi-field validation.
 
-**Limitations:** more computationally expensive than ORB and some other alternatives.
+**Example from the slides:** If a customer number must contain seven digits followed by two letters, a useful message says that the number must follow the “7 digits followed by 2 letters” format and asks the user to try again.
 
-**Common use cases:** panorama stitching, matching a product across images, and matching features across photographs for structure-from-motion.
+A useful error message should:
 
-### SURF: Speeded-Up Robust Features
+- Identify which field has a problem.
+- Explain the expected format or rule.
+- Avoid vague wording when a specific explanation is possible.
+- Appear close enough to the field that the user can connect the message with the error.
+- Avoid exposing sensitive internal details.
 
-SURF was designed to provide robust feature detection and description with less computation than SIFT.
+## 2.6 UI test checklist
 
-- It detects blob-like features using an approximation to the Hessian-matrix response.
-- It uses box filters and integral images to make computation faster.
-- It estimates a dominant orientation using local responses.
-- It divides a descriptor region into a 4 × 4 grid and summarizes responses in each cell.
-- The standard descriptor in the source has `4 × 4 × 4 = 64` values; an extended 128-dimensional version also exists.
+### Form testing
 
-**Strengths:** balances speed and robustness and offers scale/rotation handling.
+Check that:
 
-**Limitations:** historically had patent and licensing restrictions; it is not as lightweight as ORB in the lecture's comparison.
+- Required fields are clearly marked.
+- Valid data submits successfully.
+- Missing or invalid values produce appropriate errors.
+- Reset and Clear buttons work.
+- The Enter key submits the form where appropriate.
+- Refresh and Back navigation do not create unexpected behaviour.
+- Form controls align and display correctly.
 
-**Common use cases:** robotic and embedded vision that needs a balance between matching quality and speed.
+Examples include registration, login, and feedback forms.
 
-### ORB: Oriented FAST and Rotated BRIEF
+### Field testing
 
-ORB combines fast keypoint detection with a binary descriptor and adds orientation handling.
+Check field types, minimum and maximum lengths, permitted characters, default values, placeholders, read-only and disabled states, focus behaviour, tab order, and boundary values.
 
-**Detection: FAST**
+### Dependency testing
 
-- Examine a circle of 16 surrounding pixels around a candidate point.
-- Check whether a sufficiently long contiguous arc is brighter or darker than the candidate by a threshold.
-- Rank candidates using a corner score and keep the most useful points.
+Check enable/disable rules, conditional visibility, parent-child dropdowns, conditional validation, and UI changes driven by data or API responses.
 
-**Orientation**
+### Common UI checks
 
-- Estimate the keypoint's orientation from the intensity distribution around it.
+The slides also list consistency in fonts, colours, and labels; responsiveness on desktop, tablet, and mobile; cross-browser compatibility; accessibility; keyboard navigation; and clear error-message placement.
 
-**Description: rotated BRIEF (rBRIEF)**
+The tools named in this area include manual UI testing, Selenium, Cypress, Playwright, Percy, and Applitools.
 
-- Compare the intensity of selected pixel pairs in a local patch.
-- Store the comparison results as a binary string.
-- Rotate the comparison pattern according to the keypoint orientation.
-- The source describes a typical descriptor as 256 bits.
+## 2.7 Basic automated test execution with Selenium
 
-**Strengths:** very fast, free/open, suitable for real-time applications, and efficient to match with Hamming distance.
+Selenium automates browser interactions, including clicking buttons, entering text, choosing dropdown options, and submitting forms.
 
-**Limitations:** scale handling is more limited than SIFT in the source's comparison, even though image pyramids can help.
+A simple workflow:
 
-**Common use cases:** mobile vision, real-time matching, robotics, and ORB-SLAM.
+1. Write a test script in a supported language such as Java, Python, or C#.
+2. Use WebDriver to start a browser.
+3. Find elements using locators such as ID, Name, XPath, or CSS Selector.
+4. Perform user actions.
+5. Use assertions to compare actual behaviour against expected behaviour. For example, verify that a successful login displays a dashboard page.
 
-**Memory aid:** FAST finds the point. BRIEF describes the point. ORB combines fast point detection and a rotation-aware binary descriptor.
+### Module 2 revision questions
 
-### SIFT, SURF, and ORB compared
+1. Define static testing and dynamic testing. Compare them.
+2. Explain black-box testing and white-box testing.
+3. What is form validation? Explain its importance.
+4. Differentiate inline validation from validation after submission.
+5. Explain field-level validation with examples.
+6. What are inter-field dependencies? Give three examples.
+7. What makes an error message useful?
+8. Write a UI testing checklist for a registration form.
+9. Describe the basic workflow of automated testing with Selenium.
 
-| Criterion | SIFT | SURF | ORB |
-|---|---|---|---|
-| Detector | Difference-of-Gaussians scale-space extrema | Hessian approximation using box filters | Oriented FAST |
-| Descriptor | Floating-point gradient histograms | Floating-point Haar-wavelet response summary | Binary string from rotated BRIEF |
-| Descriptor size in the notes | 128 dimensions | 64 dimensions, or 128 extended | Commonly 256 bits |
-| Match distance | Euclidean | Euclidean | Hamming |
-| Rotation handling | Yes | Yes | Yes |
-| Scale handling | Strong | Approximate | More limited; pyramid can help |
-| Speed | Slower | Faster than SIFT | Very fast in the comparison |
-| Best fit | Robust matching and offline reconstruction | Balanced speed and robustness | Real-time, mobile, embedded, SLAM |
+---
 
-## 3.6 Texture Analysis
+# Module 3: Software Testing Levels and Types
 
-**Texture** describes the visual pattern of a surface: how image intensities or structures repeat, vary, or form local patterns. Texture can distinguish objects that have similar colors but different surface patterns.
+## 3.1 Manual testing
+
+**Manual testing** means that a tester executes the test steps by hand without using automation tools to perform them.
+
+The slides identify these strengths:
+
+- It gives direct visual feedback and can reveal layout, design, text, and user-experience problems.
+- It can be cost-effective for small or short testing tasks because it does not require a dedicated automation setup.
+- It does not require programming knowledge for basic execution.
+- It can adapt quickly to frequent or unexpected changes.
+
+Manual testing still requires careful planning, clear test cases where appropriate, accurate observations, and reliable defect reports.
+
+## 3.2 Automation testing
+
+**Automation testing** uses scripts and tools to execute test cases. It is especially useful for repetitive and time-consuming tasks and can improve efficiency, consistency, and test coverage.
+
+Examples include rerunning a login test after every code change or checking the same workflow in multiple browsers.
+
+### Manual vs automated testing
+
+| Manual testing | Automation testing |
+|---|---|
+| A person performs the steps | A script or tool performs the steps |
+| Useful for exploratory, usability, and ad hoc checks | Useful for repetitive tests, regression, and data-driven tests |
+| Usually has lower initial setup cost | Requires initial script development and setup |
+| Can adapt easily to an unplanned change | Scripts require maintenance when the application changes |
+| Execution speed depends on the tester | Can rerun many tests quickly and repeatedly |
+| Human judgment helps assess look and feel | Automated visual tools can compare images, but need setup and suitable checks |
+
+Automation does not replace all manual testing. It reduces repetitive work so testers can spend more time investigating unusual behaviour, usability, and new risks.
+
+## 3.3 Functional testing
+
+**Functional testing** checks whether the application's features work according to specified requirements. It supplies inputs and verifies the expected outputs without needing to understand the internal code.
 
 Examples:
 
-- Smooth texture: painted wall, white paper, or calm water.
-- Rough texture: sand, stone, or brick.
-- Regular texture: floor tiles, a chessboard, or window grills.
-- Random texture: clouds, smoke, or foliage.
+- A valid username and password open the dashboard.
+- An invalid password produces the expected error.
+- A shopping cart adds the selected product and updates the cart count.
+- A payment operation follows the required business rules.
 
-### Why texture matters
+The focus is on **what the application does**.
 
-Texture helps distinguish road from footpath, healthy-looking from diseased tissue, or one fabric type from another. It also supports fingerprint recognition, surface inspection, agricultural analysis, and satellite-image classification.
+## 3.4 Non-functional testing
 
-### Important texture properties
+**Non-functional testing** evaluates how well the application operates. The slides list performance, usability, and reliability, and discuss how the system behaves under different loads and conditions.
 
-- **Contrast:** how different neighboring pixel values are.
-- **Homogeneity:** how similar neighboring pixel values are. Similar neighboring values indicate high homogeneity.
-- **Energy:** a measure related to repetition or order. Repeated patterns often produce higher energy.
-- **Entropy:** a measure of randomness. Highly irregular patterns tend to have higher entropy.
+The focus is on characteristics such as speed, stability, efficiency, scalability, and user experience, rather than only whether a feature produces the correct result.
 
-### Texture-analysis methods
+### Functional vs non-functional testing
 
-**1. Statistical methods**
-
-These calculate statistics from pixel values or relationships between neighboring pixels. They are useful when the texture can be described numerically rather than by a clear object shape.
-
-**2. Structural methods**
-
-These describe texture using repeated basic elements and the arrangement of those elements. They are suitable for patterns such as tiles, grids, and fabrics.
-
-**3. Transform-based methods**
-
-These transform image information into a different representation to reveal patterns at particular frequencies or scales. The source mentions Fourier and Wavelet transforms. Wavelets can indicate both the type of pattern and where it appears in the image.
-
-**4. Gray-Level Co-occurrence Matrix (GLCM)**
-
-GLCM records how often pairs of gray levels occur at a chosen distance and direction. From the matrix, a system can derive measures such as contrast, homogeneity, energy, entropy, and correlation. The chosen pixel distance and direction affect the result.
-
-**5. Local Binary Pattern (LBP)**
-
-LBP describes the local relationship between a center pixel and its neighbors.
-
-Steps:
-1. Select a center pixel.
-2. Compare each neighboring pixel with the center.
-3. Write `1` if the neighbor is greater than or equal to the center; otherwise write `0`.
-4. Read the binary pattern in the specified order, such as clockwise.
-5. Convert the binary pattern into a number for use as a texture descriptor.
-
-LBP is simple and fast, and the source highlights its use in face and texture recognition. It can be sensitive to changes in illumination and scale.
-
-**6. Gabor filter**
-
-A Gabor filter responds to patterns at particular orientations and frequencies. A collection of Gabor filters can help describe directional textures, such as stripes, fibers, or repeated surface patterns. The source notes its usefulness but also identifies it as slower than simpler methods.
-
-### Texture-method comparison
-
-| Method | Basic idea | Typical strength / use |
-|---|---|---|
-| Statistical | Calculate numerical properties of pixel values | Fast general texture description |
-| Structural | Describe repeating patterns and their arrangement | Tiles, fabrics, and regular surfaces |
-| GLCM | Count gray-level pairs at a chosen offset | Medical imaging and remote sensing |
-| LBP | Encode neighbor-versus-center intensity patterns | Fast face and texture recognition |
-| Gabor | Analyze selected orientations and frequencies | Directional or repeated texture patterns; more computation |
-
-## 3.7 Shape Representation
-
-**Shape representation** describes an object's outline or internal structure so that the system can compare, classify, or measure it.
-
-### Common techniques
-
-- **Contour representation:** stores the object's outer boundary. Useful for object counting and boundary comparison.
-- **Chain code:** represents the boundary as a sequence of directions. It is useful in document processing, OCR, and shape analysis.
-- **Polygon approximation:** replaces a detailed boundary with a smaller number of straight-line segments. It simplifies shapes and reduces the amount of data to process.
-- **Convex hull:** forms the tightest convex boundary that encloses the object. It can help describe overall shape and support gesture recognition.
-- **Skeleton representation:** reduces an object to a thinner centerline while preserving its basic structure. Useful for fingerprints, branching patterns, and structural analysis.
-- **Moments:** numerical measurements of a shape or region, such as area, centroid, and orientation. Useful for tracking and comparing objects.
-- **Fourier descriptors:** describe a boundary using its frequency components. Useful for shape matching, signature comparison, and logo recognition.
-
-| Technique | What it stores | Example use |
-|---|---|---|
-| Contour | Outer boundary | Object counting |
-| Chain code | Sequence of boundary directions | OCR and navigation |
-| Polygon approximation | A simplified polygon | Shape simplification |
-| Convex hull | Convex enclosing boundary | Gesture recognition |
-| Skeleton | Thin centerline / structure | Fingerprint analysis |
-| Moments | Numerical shape properties | Tracking and medical analysis |
-| Fourier descriptors | Frequency representation of boundary | Signature and shape matching |
-
-## 3.8 Feature Matching and Similarity Measures
-
-Feature matching identifies points in different images that probably correspond to the same physical location or object detail.
-
-### Feature-matching workflow
-
-1. Detect keypoints in Image A.
-2. Describe the neighborhood around each keypoint.
-3. Detect keypoints in Image B.
-4. Describe those keypoints.
-5. Compare descriptors with a distance or similarity measure.
-6. Select likely matches.
-7. Reject ambiguous or geometrically inconsistent matches where necessary.
-
-### Similarity measures
-
-**Euclidean distance** measures straight-line distance between numerical vectors. A smaller distance generally indicates more similar descriptors. SIFT and SURF use floating-point descriptors and commonly use Euclidean distance.
-
-**Hamming distance** counts the bit positions that differ between two binary descriptors. Fewer differing bits means a closer match. ORB and BRIEF commonly use Hamming distance.
-
-**Cosine similarity** compares the direction of two vectors. A value closer to 1 indicates that the vectors point in similar directions; values near 0 indicate weak directional similarity. The source associates this with deep feature vectors and image retrieval.
-
-### Matchers
-
-**Brute-force matcher (BFMatcher)** compares a descriptor with every candidate descriptor in the other image. It is straightforward and exhaustive, but becomes slow when the descriptor collection is large.
-
-**FLANN** means Fast Library for Approximate Nearest Neighbors. It searches for nearby descriptors using faster approximate methods. It is useful for larger collections and can be quicker than exhaustive matching, though the search is approximate.
-
-| BFMatcher | FLANN |
+| Functional testing | Non-functional testing |
 |---|---|
-| Compares all candidate descriptors | Uses approximate nearest-neighbor search |
-| Simple and exhaustive | Often faster on large collections |
-| Suitable for smaller problems | Useful for larger feature sets and speed-sensitive tasks |
+| Checks features and business rules | Checks quality characteristics and operating behaviour |
+| Example: valid login succeeds | Example: login completes within an acceptable response time |
+| Focuses on required outputs and actions | Focuses on speed, reliability, usability, or stability |
 
-### Lowe's ratio test
-The ratio test helps reject ambiguous matches. It compares the distance to the best candidate with the distance to the second-best candidate. If the best match is not clearly better than the second-best, the match may be ambiguous and should be rejected. The threshold controls how selective the test is. For example, distances of 12 and 13 are almost equal, so the best match is ambiguous; distances of 10 and 40 show a much clearer best match and are more likely to pass the test.
+## 3.5 Regression testing
 
-### RANSAC and geometric verification
-A descriptor match can be wrong even when the descriptors look similar. **RANSAC** estimates a geometric relationship from candidate matches and separates matches that agree with that relationship from outliers that do not. This makes image alignment and reconstruction more reliable.
+**Regression testing** checks that new code, a bug fix, or an enhancement has not broken features that worked previously.
 
-**Good match:** a distinctive descriptor match that also agrees with the scene's geometry.
-
-**Bad match:** a visually similar but incorrect descriptor match, or a match that contradicts the geometric relationship shared by the other matches.
-
----
-
-# Additional Lecture: Image Segmentation and Related Methods
-
-The supplied segmentation lecture also includes template matching, KNN, SVM, Haar Cascade face detection, and model-evaluation metrics. This section keeps those topics together as they appear in the source file.
-
-## 4.1 What is Image Segmentation?
-
-**Image segmentation** divides an image into meaningful regions or objects so that each region can be analyzed separately. It groups pixels that share properties such as brightness, color, texture, or local similarity.
-
-**Example:** In an image of an apple on a table, segmentation separates the apple from the table and background.
-
-### Why segmentation is useful
-
-- It focuses later processing on the object or region of interest.
-- It makes object measurement and shape analysis easier.
-- It supports medical-image analysis, road understanding, face-region analysis, satellite mapping, agriculture, and object counting.
-
-## 4.2 Thresholding
-
-Thresholding separates pixels based on intensity. Choose a threshold `T`, then compare each pixel with it. In the source's example, values greater than 128 become white (255), while values at or below 128 become black (0).
-
-For a threshold of 128:
-
-| Pixel value | Output |
-|---:|---|
-| 50 | Black |
-| 90 | Black |
-| 110 | Black |
-| 130 | White |
-| 170 | White |
-| 250 | White |
-
-Thresholding often turns a grayscale image into a binary image, making it easier to separate a foreground object from the background.
-
-### Global thresholding
-Global thresholding uses one threshold for the entire image.
-
-**Advantages:** simple, fast, and easy to implement.
-
-**Limitation:** a single threshold may fail when lighting varies across the image. For example, part of a photographed page may be bright while another part lies in shadow.
-
-### Adaptive thresholding
-Adaptive thresholding chooses a threshold separately for local regions. It handles uneven lighting better because each region can use a different threshold.
-
-**Advantages:** more suitable for shadows and non-uniform lighting.
-
-**Limitation:** requires more computation than a single global threshold.
-
-| Global thresholding | Adaptive thresholding |
-|---|---|
-| One threshold for the whole image | Different thresholds for different local areas |
-| Simple and fast | Better under uneven lighting |
-| Works well with reasonably uniform lighting | Useful for shadows and changing brightness |
-
-## 4.3 Region-Based Segmentation and Region Growing
-
-Region-based segmentation groups neighboring pixels that have similar properties, such as intensity, color, or texture.
-
-### Region-growing algorithm
-
-1. Choose a **seed pixel** inside the region to extract.
-2. Examine its neighboring pixels.
-3. Compare each neighbor with the region's similarity rule.
-4. Add pixels that meet the rule.
-5. Repeat the process using newly added pixels as part of the region.
-6. Stop when no neighboring pixel qualifies.
-
-**Example:** A seed pixel inside a tumor region may start a growing process. The method adds neighboring pixels with similar image values until the region boundary is reached.
-
-**Advantages:** creates connected regions and can give useful object boundaries.
-
-**Limitations:** the result depends on the seed location and the similarity criterion. A poor seed can produce the wrong region, and noisy images can make the boundary difficult to determine.
-
-## 4.4 K-Means Clustering for Segmentation
-
-**Clustering** groups similar data points without requiring a predefined class label for each point. **K-means** groups image pixels into `K` clusters based on similarity, often using intensity or color.
-
-- `K = 2` might separate an object from its background.
-- `K = 3` might divide an image into regions such as sky, trees, and road, depending on the pixel data.
-
-### K-means steps
-
-1. Choose the number of clusters, `K`.
-2. Initialize `K` cluster centers, called **centroids**.
-3. Assign each pixel to the nearest centroid.
-4. Calculate a new centroid for each cluster from the pixels assigned to it.
-5. Repeat assignment and centroid update until the centers stop changing or the stopping rule is met.
-
-**Advantages:** simple, reasonably fast, and useful for color-based segmentation and image compression.
-
-**Limitations:** the user must choose `K`; different initial centroids can produce different results; and K-means may not separate objects with irregular shapes when color or intensity alone does not distinguish them.
-
-## 4.5 Watershed Algorithm
-
-Watershed is used to separate objects that touch or overlap, such as touching cells or coins.
-
-### Basic idea
-Imagine an image as a landscape containing hills and valleys. Water begins filling the low areas. When water from two regions would meet, the algorithm builds a boundary between them. This boundary is the **watershed line**.
-
-### Workflow described in the lecture
-
-1. Convert the image into a binary representation.
-2. Identify the foreground or object region.
-3. Identify the background.
-4. Apply the watershed procedure.
-5. Use the resulting boundaries to separate objects.
-
-**Applications:** counting touching cells, separating overlapping coins, medical-image segmentation, and object counting.
-
-**Advantages:** helps separate touching objects and can produce clear boundaries.
-
-**Limitations:** noise may create unwanted regions, so preprocessing often improves results.
-
-## 4.6 Template Matching
-
-Template matching searches for a small reference image, called a **template**, inside a larger image.
-
-### Steps
-
-1. Select the larger image.
-2. Select the template patch.
-3. Slide the template across possible positions in the larger image.
-4. Calculate a similarity score at each position.
-5. Choose the position with the best score.
-
-Applications include finding logos, symbols, and known visual patterns in larger images, as well as some document or inspection tasks.
-
-**Advantages:** simple and useful when the target looks similar to the template.
-
-**Limitations:** it may fail when the object rotates, changes scale, becomes partially hidden, or changes appearance significantly.
-
-## 4.7 K-Nearest Neighbors (KNN)
-
-KNN classifies a new example by finding the `K` closest examples in the stored training data and using their labels to make a prediction. In a typical classification task, the class that receives the majority vote becomes the predicted class.
-
-### Working steps
-
-1. Store labelled training examples.
-2. Choose a value of `K`.
-3. Calculate the distance from the new example to known examples.
-4. Select the `K` nearest examples.
-5. Use their labels to determine the prediction.
-
-**Advantages:** easy to understand and requires little explicit model training.
-
-**Limitations:** prediction can be slow with a large dataset, the choice of `K` affects results, and features must be represented in a meaningful way for distance comparisons to work.
-
-Applications in the supplied notes include handwriting recognition, face recognition, medical classification, and recommendation systems.
-
-## 4.8 Support Vector Machine (SVM)
-
-A **Support Vector Machine** is a supervised learning method that classifies data by finding a decision boundary, called a **hyperplane**, that separates classes. Its central idea is to find a boundary with a large margin between the classes.
-
-**Advantages described in the notes:** can work well with high-dimensional features, can provide strong classification performance, and is useful when the dataset is not extremely large.
-
-**Limitations described in the notes:** it can be more complex than KNN, and training or scaling to very large datasets can become expensive.
-
-### KNN versus SVM
-
-| Point | KNN | SVM |
-|---|---|---|
-| Main idea | Predict from nearby labelled examples | Learn a decision boundary between classes |
-| Training | Little explicit training | Fits a model during training |
-| Prediction | Searches for neighbors | Uses the learned boundary/model |
-| Main consideration | Choosing `K` and a useful distance | Selecting a suitable boundary/model and handling training cost |
-
-## 4.9 Haar Cascade Face Detection
-
-**Face detection** locates faces in an image. It does not by itself identify the person.
-
-A Haar Cascade uses learned light-and-dark image patterns and a cascade of tests to scan windows across an image. It returns likely face regions, often drawn as rectangular boxes.
-
-### Basic workflow
-
-1. Read an image or video frame.
-2. Scan it at different positions and sizes.
-3. Apply the trained cascade to candidate windows.
-4. Reject windows that fail early tests.
-5. Return windows that pass the cascade as likely face locations.
-
-**Advantages:** relatively fast and suitable for some real-time applications.
-
-**Limitations described in the source:** performance can drop when faces turn sideways, lighting is poor, or faces are partly hidden.
-
-### Face detection versus face recognition
-
-- **Face detection:** “Where is a face?”
-- **Face recognition:** “Whose face is it?” or “Does this face match a claimed identity?”
-
-Recognition generally extracts facial features and compares them with stored data; detection first locates the face.
-
-## 4.10 Evaluation Metrics: Accuracy, Precision, and Recall
-
-Evaluation metrics describe different aspects of a classifier's performance. Learn the definitions as well as the formulas.
-
-- **True Positive (TP):** the model predicts positive and the example is actually positive.
-- **True Negative (TN):** the model predicts negative and the example is actually negative.
-- **False Positive (FP):** the model predicts positive, but the example is actually negative.
-- **False Negative (FN):** the model predicts negative, but the example is actually positive.
-
-### Accuracy
-Accuracy measures the share of all predictions that the model gets right.
-
-`Accuracy = (TP + TN) / (TP + TN + FP + FN)`
-
-### Precision
-Precision asks: **Of all the examples the model predicted as positive, how many were actually positive?**
-
-`Precision = TP / (TP + FP)`
-
-### Recall
-Recall asks: **Of all the examples that were actually positive, how many did the model find?**
-
-`Recall = TP / (TP + FN)`
-
-### Simple examples from the lecture
-
-- If a model predicts 100 examples and gets 90 correct, its accuracy is 90%.
-- If it labels 20 emails as spam and 18 really are spam, its precision is 18/20 = 90%.
-- If 25 emails are actually spam and the model detects 20 of them, its recall is 20/25 = 80%.
-
-**Exam distinction:** high precision means few false alarms among the positive predictions. High recall means the model misses fewer actual positive cases. Accuracy summarizes all correct predictions but can hide poor performance on a rare class.
-
----
-
-# Unit 5: Deep Learning in Computer Vision
-
-## 5.1 What is Deep Learning?
-
-**Deep Learning** is a part of Machine Learning that uses neural networks with multiple layers to learn patterns from data. In Computer Vision, it allows a model to learn visual features from images rather than requiring a person to design every feature manually.
-
-**Example:** Instead of manually writing rules for cat ears, eyes, and face shape, a model trains on many labelled cat and dog images and learns patterns that help distinguish the classes.
-
-## 5.2 Neural-Network Basics
-
-A neural network usually contains an input layer, one or more hidden layers, and an output layer.
-
-- **Input layer:** receives the input values, such as an image's pixel values.
-- **Hidden layers:** transform the input and learn patterns.
-- **Output layer:** produces the final prediction, such as class scores or probabilities.
-
-### Neuron
-A neuron receives input values, multiplies them by weights, adds a bias, and applies an activation function.
-
-`Output = Activation(weighted sum + bias)`
-
-- **Weight:** controls how strongly an input contributes.
-- **Bias:** shifts the calculated value.
-- **Activation function:** transforms the result and helps the network learn non-linear patterns.
-
-A neural network learns by adjusting its parameters during training so that its predictions better fit the training examples.
-
-## 5.3 Why use a Convolutional Neural Network (CNN)?
-
-A **Convolutional Neural Network (CNN)** is a neural network designed especially for images and other spatial data. Images contain local patterns: nearby pixels often form edges, corners, textures, and object parts. CNNs use filters to learn these patterns.
-
-A normal fully connected network can treat every image pixel as an individual input and may need a very large number of parameters. A CNN uses local filters and reuses the same filter across different image locations. This helps it detect patterns without learning a separate weight for every pixel position.
-
-CNNs are useful for image classification, face recognition, object detection, medical-image analysis, self-driving systems, handwritten-character recognition, and facial-expression analysis.
-
-## 5.4 Main CNN Components
-
-### Convolution layer
-A convolution layer moves small learnable filters, also called kernels, over the image or previous feature maps. Each filter responds to particular local patterns. Early layers may respond to simple edges or lines, while deeper layers can respond to more complex patterns.
-
-### Feature map
-A **feature map** is the output produced when a filter is applied to an image or an earlier feature map. Different filters produce different feature maps because each filter learns or responds to a different type of pattern.
-
-For example, one filter may respond strongly to vertical edges while another responds to horizontal edges or textures.
-
-### Activation function: ReLU
-ReLU means **Rectified Linear Unit**. It replaces negative values with zero and keeps positive values unchanged.
-
-`ReLU(x) = max(0, x)`
+Why it matters: a developer may correct one problem but accidentally affect another feature. Regression tests help catch such side effects before release.
 
 Examples:
 
-| Input | Output after ReLU |
-|---:|---:|
-| -5 | 0 |
-| 2 | 2 |
-| -3 | 0 |
-| 7 | 7 |
+- After changing the login page, rerun login, password reset, and session-related tests.
+- After modifying checkout, test the cart, price calculation, payment, order confirmation, and cancellation paths that the change may affect.
 
-ReLU adds non-linearity, which helps the network learn more complex patterns.
+The slides classify regression testing as a type of black-box testing and identify it as a key candidate for automation because teams may need to repeat it after many changes.
 
-### Pooling layer
-Pooling reduces the spatial size of feature maps, making later computations smaller. It aims to retain useful information while reducing the amount of data.
+## 3.6 Testing levels
 
-**Max pooling** selects the largest value within a small region. For example:
+Testing levels describe **how much of the system the team tests at a time** and how far it has progressed toward a complete product.
 
-```text
-Input region       Max-pooling output
-2  5               5
-1  3
-```
+### Unit testing
 
-For the source's larger example, a 2 × 2 max-pooling window applied without overlap produces the largest value from each 2 × 2 region. Pooling reduces the feature-map dimensions.
+**Unit testing** tests a small, individual part of the application, such as a function, method, or component. Developers commonly perform it. Tests usually isolate one unit from the rest of the system.
 
-**Worked 2 × 2 max-pooling example:** the lecture uses this 4 × 4 feature map and a non-overlapping 2 × 2 window.
+Example: Test a discount-calculation function with several prices and discount values.
 
-```text
-Input:                 Output after max pooling:
-1  3  2  4             6  4
-5  6  1  2             7  8
-7  2  8  3
-4  1  5  6
-```
+### Integration testing
 
-The four windows have maximum values 6, 4, 7, and 8. The operation reduces a 4 × 4 feature map to a 2 × 2 feature map.
+**Integration testing** checks whether different components work correctly together. It helps find problems in the way modules exchange data or call one another.
 
-**Why pooling helps:** the network may not need the exact location of every pixel-level response. It often needs to know that a useful feature appears within a region. Reducing spatial size also lowers computation.
+Example: The checkout service creates an order, the payment service confirms payment, and the inventory service decreases stock. Integration testing checks that the modules communicate correctly.
 
-### Flatten layer
-Flatten converts multi-dimensional feature maps into a one-dimensional vector. That vector can then enter a fully connected layer.
+### System testing
 
-### Fully connected layer
-A fully connected (FC) layer connects each neuron to all outputs from the previous layer. It uses the extracted features to produce a classification or prediction.
+**System testing** checks the fully integrated application as a whole. It evaluates overall functionality, performance, and compliance with the stated requirements. The slides place it after integration testing and before acceptance testing.
 
-### Output layer
-The output layer returns the model's final result, such as cat versus dog probabilities or scores.
+Example: Test a complete online shopping flow from login through checkout and order confirmation.
 
-## 5.5 Standard CNN Classification Pipeline
+### User Acceptance Testing (UAT)
 
-A simple CNN for image classification follows this structure:
+**User Acceptance Testing (UAT)** checks whether the system meets business requirements and is ready for deployment. Customers or intended users validate the product in realistic scenarios.
 
-```text
-Input Image
-    ↓
-Convolution
-    ↓
-ReLU
-    ↓
-Pooling
-    ↓
-Convolution
-    ↓
-ReLU
-    ↓
-Pooling
-    ↓
-Flatten
-    ↓
-Fully Connected Layer
-    ↓
-Output Classes
-```
+The slides list these benefits:
 
-### Example: cat-versus-dog classification
+- The team receives direct feedback from users.
+- Users can explain additional or unclear requirements.
+- User participation increases confidence in the product.
 
-1. **Input:** the model receives a cat or dog image.
-2. **First convolution:** filters respond to simple patterns such as edges, lines, and corners.
-3. **Deeper convolution:** later filters combine simpler patterns into shapes and object parts, such as eyes, ears, or noses.
-4. **Pooling:** the feature maps become smaller while retaining strong responses.
-5. **Flattening:** the remaining feature maps become a vector.
-6. **Fully connected layer:** the network uses the learned features for classification.
-7. **Output:** the model produces scores or probabilities for the classes. The highest prediction may be cat, for example.
+### Comparison of testing levels
 
-The hierarchical process is important: simple visual patterns can combine into more complex patterns in deeper layers.
-
-## 5.6 What each CNN layer does
-
-| Layer | Main purpose | Simple interpretation |
-|---|---|---|
-| Input | Receive image data | Take in the pixels |
-| Convolution | Detect learned patterns | Find edges, curves, textures, and shapes |
-| ReLU | Add non-linearity | Set negative activations to zero |
-| Pooling | Reduce spatial size | Keep strong local responses while shrinking the feature map |
-| Flatten | Change data shape | Turn feature maps into a vector |
-| Fully connected | Combine learned features | Make the class decision |
-| Output | Return prediction | Give class scores or probabilities |
-
-## 5.7 Automatic Feature Learning
-
-Traditional computer vision often requires a person to design features such as edge measures, textures, or shape descriptors. A CNN learns many of its useful features from training data.
-
-This does not mean a CNN needs no preparation or supervision. It still needs an appropriate dataset, training procedure, model design, and evaluation. The difference is that it learns internal image representations instead of relying entirely on manually specified features.
-
-## 5.8 Object Detection
-
-**Object detection** answers two questions:
-
-1. What objects appear in the image?
-2. Where does each object appear?
-
-Object detection combines classification with localization. A detector typically outputs a **class label**, a **bounding box**, and a **confidence score** for each detection.
-
-### Bounding boxes
-A bounding box is a rectangle around a detected object. It may be represented as `(x, y, width, height)` or by two corners `(x1, y1, x2, y2)`.
-
-### Classification versus detection
-
-- **Classification:** labels the whole image, such as “contains people.”
-- **Detection:** returns each detected object, its class, and its location. In a classroom image, it may return a separate box for every person.
-
-### General detection pipeline
-
-```text
-Input Image
-    ↓
-Feature Extraction
-    ↓
-Object / Region Prediction
-    ↓
-Predict Bounding Boxes and Classes
-    ↓
-Remove Duplicate Boxes
-    ↓
-Final Detections
-```
-
-## 5.9 The R-CNN Family
-
-R-CNN stands for **Regions with Convolutional Neural Network features**. The family uses candidate image regions to locate objects, but later versions improve the speed by reducing repeated computation.
-
-### Original R-CNN
-
-1. Receive an input image.
-2. Generate region proposals, approximately 2,000 per image in the lecture's example.
-3. Extract each proposed region.
-4. Run CNN feature extraction separately for each region.
-5. Classify the region.
-6. Refine the bounding box.
-7. Return the final detections.
-
-**Why original R-CNN is slow:** it runs the CNN separately on many region proposals. If the image produces around 2,000 proposals, the system may perform roughly 2,000 CNN passes for that image.
-
-### Fast R-CNN
-Fast R-CNN runs the CNN once on the full image and reuses the resulting feature map for the proposed regions. This removes much of the repeated CNN computation found in original R-CNN.
-
-### Faster R-CNN
-Faster R-CNN adds a learned **Region Proposal Network (RPN)** to generate candidate regions. This replaces the slower separate Selective Search proposal stage with a learned proposal mechanism.
-
-### R-CNN family summary
-
-| Method | Main idea | Main improvement or limitation |
-|---|---|---|
-| R-CNN | Generate proposals and run CNN features for each region | Accurate in the original design but slow because it repeats feature extraction |
-| Fast R-CNN | Run CNN once over the full image and reuse its feature map | Reduces repeated CNN work |
-| Faster R-CNN | Use a learned Region Proposal Network | Makes region-proposal generation faster |
-
-The lecture describes the R-CNN family as useful when detection quality matters, while noting that Faster R-CNN is not usually the first choice when very high real-time speed is the main requirement.
-
-## 5.10 YOLO: You Only Look Once
-
-YOLO is a single-stage object detector. It predicts object locations and classes directly from the image in one model pipeline rather than using a separate region-proposal stage.
-
-### Original grid idea
-In the original YOLO design, the image is divided into a grid. Each cell is responsible for predicting objects whose centers fall within it. Modern versions use more advanced designs, but the central idea remains direct prediction from one model pipeline.
-
-### What YOLO predicts
-
-- **Bounding box:** where the object is.
-- **Class:** what the object is, such as person, car, or dog.
-- **Confidence:** how strongly the model supports that detection.
-
-### Non-Maximum Suppression (NMS)
-A detector may predict several overlapping boxes around the same object. NMS compares those boxes and keeps a high-confidence result while removing redundant overlapping detections.
-
-### Advantages of YOLO
-
-- Fast enough for many real-time applications.
-- Detects multiple objects in one model pass.
-- Uses a direct detection pipeline.
-- Supports traffic monitoring, robotics, CCTV, vehicle and pedestrian detection, industrial inspection, and sports analysis.
-
-### Limitations noted in the source
-
-- Small objects can be harder to detect.
-- Crowded scenes can be challenging.
-- Speed and accuracy depend on model size and hardware.
-- Custom tasks require a suitable labelled dataset.
-
-## 5.11 R-CNN versus YOLO
-
-| Feature | R-CNN family, especially original R-CNN | YOLO |
-|---|---|---|
-| Main approach | Region proposals followed by region classification | Directly predicts object boxes and classes |
-| Processing | Multi-stage, with original R-CNN repeating CNN work per region | Single-stage model pipeline |
-| Speed | Original R-CNN is slow; later versions improve efficiency | Designed for speed and real-time use |
-| Region proposals | Uses proposals; Faster R-CNN learns them with an RPN | No separate region-proposal stage in the same sense |
-| Good fit | Detection pipelines where region-level processing is appropriate | Real-time detection such as traffic and surveillance |
-
-**Memory aid:** R-CNN first proposes regions, then classifies them. YOLO predicts object locations and classes directly in one pass.
-
-## 5.12 Transfer Learning and Fine-Tuning
-
-### Transfer learning
-**Transfer learning** reuses knowledge learned by a model on one task to help with a related task. A pretrained image model may already recognize general features such as edges, shapes, textures, and object parts. Those features can help it learn a new task, such as helmet versus no helmet.
-
-### Fine-tuning
-**Fine-tuning** starts with a pretrained model and continues training some or all of its weights on a new dataset. It adapts the model's learned features to the new task.
-
-### Example: cat-versus-dog classifier
-
-1. Load a pretrained image model.
-2. Replace or adapt its final classification layer for cat and dog classes.
-3. Train the new classifier on the cat/dog dataset.
-4. Optionally unfreeze selected earlier layers and continue training if task-specific adaptation is needed.
-
-### Feature extraction versus fine-tuning
-
-| Criterion | Feature extraction | Fine-tuning |
-|---|---|---|
-| Pretrained model | Used | Used |
-| Existing layers | Mostly frozen | Some layers are unfrozen and updated |
-| What trains? | Mainly the new task-specific layers | New layers plus selected existing layers |
-| Training time | Usually lower | Usually higher |
-| Flexibility | Lower, since pretrained features change less | Higher, since more of the model can adapt |
-| Data and compute | Often suitable when data or compute is limited | May benefit from more data and compute |
-
-### Benefits of transfer learning
-
-- Reduces training time.
-- Reduces the amount of labelled data often needed.
-- Can improve results on smaller datasets.
-- Lowers compute requirements compared with training from scratch.
-- Makes experimentation faster.
-
-**Important distinction:** Transfer learning is the overall idea of reusing previous knowledge. Fine-tuning is one way to adapt a pretrained model by continuing its training.
-
----
-
-# Unit 6: Motion Analysis and Applications
-
-## 6.1 What is Motion Analysis?
-
-**Motion Analysis** studies how objects move through a sequence of images or video frames. A single image shows what appears in a scene at one moment. A video adds information about what changes over time.
-
-**Example:** a road camera records a car at position A in the first frame, position B in the second, and position C in the third. Comparing the frames reveals movement.
-
-Motion analysis can help answer:
-
-- Is something moving?
-- Where is it moving?
-- In which direction is it moving?
-- How quickly is it moving?
-- Which object is moving?
-- Does the movement appear unusual?
-
-Applications include security, autonomous vehicles, traffic monitoring, sports analysis, medical imaging, human activity recognition, robotics, augmented reality, and industrial automation.
-
-## 6.2 Video and Video Processing
-
-A **video** is a sequence of images shown rapidly. Each individual image is a **frame**.
-
-**Frame rate**, measured in frames per second (FPS), states how many frames appear each second. Common examples in the lecture are 24 FPS, 30 FPS, and 60 FPS. A higher frame rate generally gives smoother motion, although it also means more frames to store or process.
-
-### Video-processing pipeline
-
-```text
-Video
-  ↓
-Read / Extract Frames
-  ↓
-Preprocessing
-  ↓
-Motion or Object Detection
-  ↓
-Tracking
-  ↓
-Motion / Behavior Analysis
-  ↓
-Output, Report, or Alert
-```
-
-Typical operations include reading video, extracting frames, resizing, removing noise, converting color spaces, detecting motion, detecting objects, tracking objects, classifying video, and saving or displaying the results.
-
-## 6.3 Motion Detection
-
-**Motion detection** identifies changes or movement between frames. It is commonly used by CCTV systems, automatic doors, traffic monitors, smart homes, and industrial monitoring systems.
-
-A simple motion-detection method compares consecutive frames. If some areas change enough, the system flags them as possible motion.
-
-### Frame differencing
-
-Let `Frame_t` be the current frame and `Frame_(t-1)` be the previous frame. The source expresses the difference as:
-
-`Difference = |Frame_t - Frame_(t-1)|`
-
-A large difference in a region suggests that something changed there. A threshold may be used to decide which differences count as motion.
-
-**Strength:** simple and fast.
-
-**Limitation:** lighting changes, shadows, camera movement, or other scene changes can look like object motion. A moving object may also be missed if its appearance barely changes from one frame to the next.
-
-## 6.4 Optical Flow
-
-**Optical Flow** estimates the apparent movement of image pixels or visual features between consecutive frames. It represents how image points appear to move from one frame to another.
-
-An **optical-flow vector** describes movement using direction and magnitude. A longer vector represents a larger estimated displacement between the frames, for the same time interval.
-
-### Sparse optical flow
-
-Sparse optical flow estimates motion only for selected points, usually distinctive features such as corners. It uses fewer points and therefore often requires less computation.
-
-### Dense optical flow
-
-Dense optical flow estimates movement for nearly every pixel. It provides a fuller picture of motion but usually needs more computation and may be more expensive to run.
-
-| Sparse optical flow | Dense optical flow |
-|---|---|
-| Tracks selected important points | Estimates motion across almost all pixels |
-| Lower computational load in many uses | More detailed motion field |
-| Useful for point tracking and camera-motion estimation | Useful when a dense motion description matters |
-
-## 6.5 Lucas-Kanade Optical Flow
-
-Lucas-Kanade is a popular local optical-flow method. It estimates how selected feature points move between frames by examining a small neighborhood around each point.
-
-### Main assumptions
-
-1. **Brightness constancy:** the brightness of a tracked point remains approximately the same between adjacent frames.
-2. **Small motion:** the point moves only a small distance between the frames being compared.
-3. **Similar motion nearby:** pixels in a small neighborhood are assumed to have approximately similar movement.
-
-### Workflow
-
-1. Read the video frames.
-2. Select feature points, such as corners.
-3. Compare a small neighborhood around each point across consecutive frames.
-4. Estimate how the point moved.
-5. Produce motion vectors.
-6. Continue tracking the points in later frames.
-
-### Applications
-
-- Tracking feature points on an object.
-- Estimating camera motion.
-- Video stabilization.
-- Gesture recognition.
-- Augmented reality.
-- Robot vision.
-
-**Limitations:** large movements, changing brightness, motion blur, and occlusion can violate its assumptions or make a point hard to track.
-
-## 6.6 Object Detection versus Object Tracking
-
-Detection and tracking are related, but they answer different questions.
-
-| Object detection | Object tracking |
-|---|---|
-| Finds and locates objects in a frame | Follows an object across a sequence of frames |
-| Answers “What is present, and where?” | Answers “Where did this object move?” |
-| Can work on each frame independently | Uses information from previous frames to maintain continuity |
-| Example: detect a car in a frame | Example: keep following the same car as it moves |
-
-A detector may find a car in each frame. A tracker associates those detections over time so the system can maintain the car's identity and estimate its path.
-
-## 6.7 Object-Tracking Techniques
-
-### Point tracking
-Tracks selected points or visual features on an object. Lucas-Kanade optical flow can estimate how these points move. Useful when distinctive points remain visible.
-
-### Kernel-based tracking
-Tracks a region or shape using its appearance. The lecture names **Mean Shift** and **CamShift**. They can work well when the object's appearance remains reasonably stable.
-
-### Bounding-box tracking
-Represents an object with a rectangle. The algorithm updates the box's position and often its size as the object moves.
-
-### Detection-based tracking
-A detector finds objects in each frame, and a tracking algorithm associates detections from one frame with detections in the next. The notes list **SORT**, **Deep SORT**, and **ByteTrack** as common examples for multi-object tracking.
-
-## 6.8 Background Subtraction
-
-**Background subtraction** separates moving foreground objects from a relatively stationary background. The system builds or stores a background model and compares each current frame against it.
-
-```text
-Current Frame
-      ↓
-Compare with Background Model
-      ↓
-Calculate Difference / Foreground Mask
-      ↓
-Identify Moving Foreground Objects
-```
-
-**Example:** in a parking-lot video, the road and buildings may form the background, while a moving person or vehicle becomes part of the foreground.
-
-### Background-subtraction methods in the lecture
-
-- **Simple background subtraction:** compares the current frame with one reference background image. It is easy to understand but can struggle if the background or lighting changes.
-- **MOG (Mixture of Gaussians):** models the background using multiple Gaussian distributions, which can represent variation at a pixel over time.
-- **MOG2:** an improved version that can adapt to changing backgrounds.
-- **KNN background subtraction:** uses a K-Nearest Neighbors idea to classify pixels as foreground or background.
-
-The source names OpenCV methods `createBackgroundSubtractorMOG2()` and `createBackgroundSubtractorKNN()` as examples of how these methods appear in a software library.
-
-### Limitations
-Shadows, moving leaves, changing illumination, rain, camera movement, and objects that remain stationary for a long time can confuse a background model.
-
-## 6.9 Video Analytics
-
-**Video analytics** automatically extracts useful information from video. Rather than relying on a person to watch every camera continuously, the system analyzes video and produces events, statistics, or alerts.
-
-It may detect people, vehicles, crowds, entry and exit events, unusual movement, objects left behind, or movement into restricted areas.
-
-### Video-analytics pipeline
-
-```text
-Video Camera
-     ↓
-Video Frames
-     ↓
-Preprocessing
-     ↓
-Object Detection
-     ↓
-Object Tracking
-     ↓
-Motion / Behavior Analysis
-     ↓
-Decision
-     ↓
-Alert or Report
-```
-
-## 6.10 Face Detection and Face Recognition
-
-- **Face detection** finds the location of a face in an image or video.
-- **Face recognition** identifies or verifies a person by using facial features.
-
-A simplified recognition workflow is:
-
-```text
-Camera Frame
-     ↓
-Face Detection
-     ↓
-Extract Facial Features
-     ↓
-Create Feature Representation
-     ↓
-Compare with Stored Data
-     ↓
-Identity / Verification Result
-```
-
-Applications include smartphone unlocking, attendance, access control, and security. Real deployments need careful attention to privacy, consent, error rates, and bias.
-
-## 6.11 Applications of Motion Analysis
-
-### Medical imaging
-Video and image sequences can show movement inside the body. Motion analysis can support heart-motion studies, blood-flow analysis, ultrasound video analysis, patient-movement monitoring, and rehabilitation tracking.
-
-**Example:** an ultrasound sequence shows the heart expanding and contracting across frames. Motion analysis helps quantify or study that repeated movement.
-
-### Autonomous vehicles
-Cameras and other sensors help a vehicle understand its surroundings. Motion analysis tracks cars and pedestrians, estimates direction, studies traffic flow, and can support prediction of possible paths or collisions.
-
-### Augmented reality
-An AR application needs to estimate camera and scene movement so that virtual objects remain in the correct place. Feature tracking and optical flow can help estimate motion.
-
-### Industrial surveillance
-Factories can monitor workers, vehicles, machines, safety zones, and production lines. The system can detect abnormal movement or a possible safety violation and generate an alert.
-
-### Smart surveillance
-Computer Vision can identify intrusions, unusual crowd sizes, abandoned objects, vehicle movements, and predefined suspicious activity. These systems reduce the need for continuous manual monitoring, but they still need appropriate design, testing, and oversight.
-
-## 6.12 Complete Motion-Analysis Pipeline
-
-```text
-Video
-  ↓
-Frame Extraction
-  ↓
-Preprocessing
-  ↓
-Motion Detection ─────── Object Detection
-  ↓                            ↓
-Background Subtraction      Object Tracking
-  └──────────────┬─────────────┘
-                 ↓
-          Motion Analysis
-                 ↓
-           Video Analytics
-                 ↓
-       Decision / Prediction
-                 ↓
-          Alert / Application
-```
-
-### Example: smart parking system
-
-1. A camera records the parking area.
-2. The system extracts video frames.
-3. Background subtraction separates likely moving objects from the static scene.
-4. Object detection identifies cars.
-5. Object tracking follows each car as it moves.
-6. Motion analysis estimates direction and movement pattern.
-7. Video analytics determines which parking spaces are occupied, as well as vehicle entry and exit.
-8. The system displays the results in a smart-parking application.
-
-## 6.13 Advantages and Challenges
-
-### Advantages
-
-- Automates repeated video monitoring.
-- Supports real-time analysis.
-- Follows objects across frames.
-- Helps identify unusual events and improve security monitoring.
-- Supports traffic analysis, healthcare, robotics, AR, and industrial automation.
-
-### Challenges
-
-- **Lighting changes:** brightness changes may look like motion.
-- **Camera movement:** moving the camera can make much of the scene appear to move.
-- **Occlusion:** another object may hide the target.
-- **Fast motion:** movement between frames may be too large to estimate reliably.
-- **Similar objects:** the tracker may confuse objects with similar appearance.
-- **Weather:** rain, snow, fog, and shadows can reduce performance.
-- **Computational cost:** dense flow and advanced tracking may require more processing power.
-
----
-
-# Comparison Tables for Fast Revision
-
-## 1. Classification, detection, segmentation, and tracking
-
-| Task | Unit of analysis | Main question | Typical output |
+| Level | Main focus | Typical performer in the slides | Example |
 |---|---|---|---|
-| Image classification | Whole image | What is in this image? | One label or class scores |
-| Object detection | Objects in a frame | What objects are present, and where? | Class, bounding box, confidence |
-| Semantic segmentation | Each pixel | Which class does each pixel belong to? | Per-pixel class map |
-| Instance segmentation | Individual object pixels | Which pixels belong to each separate object? | Separate object masks |
-| Object tracking | Objects over time | Where did this object move? | Locations and identities across frames |
+| Unit | One small unit in isolation | Usually developers | Discount function returns the correct value |
+| Integration | Communication between components | Testing/development team | Payment confirmation updates the order correctly |
+| System | The complete integrated application | Test team | Full shopping workflow behaves correctly |
+| UAT | Business needs and readiness for use | Customers or users | A user confirms that a business process works as expected |
 
-## 2. Thresholding and clustering
+**Memory sequence:** Unit → Integration → System → Acceptance.
 
-| Method | How it groups pixels | Best-known benefit | Main limitation |
-|---|---|---|---|
-| Global thresholding | One intensity threshold for the whole image | Fast and simple | Sensitive to uneven lighting |
-| Adaptive thresholding | Local thresholds | Handles shadows and changing brightness | More computation |
-| Region growing | Adds similar neighbors from a seed | Creates connected regions | Sensitive to seed and similarity rule |
-| K-means | Assigns pixels to the nearest of K centroids | Simple clustering of color/intensity | Must choose K; initialization affects results |
-| Watershed | Builds boundaries between connected catchment regions | Separates touching objects | Noise may create false boundaries |
-| Template matching | Slides a fixed template and scores similarity | Simple when appearance is stable | Sensitive to scale, rotation, and occlusion |
+## 3.7 Performance testing
 
-## 3. Important feature algorithms
+**Performance testing** checks whether the application behaves properly under its expected workload. The slides describe it as examining sensitivity, responsiveness, stability, speed, load capacity, and other performance characteristics under a particular workload.
 
-| Algorithm | Main job | Important concept to remember |
-|---|---|---|
-| Roberts | Edge detection | Fast 2 × 2 diagonal kernels; noise-sensitive |
-| Prewitt | Edge detection | 3 × 3 uniform gradient kernels |
-| Sobel | Edge detection | 3 × 3 kernels with extra center weighting |
-| Canny | Edge detection | Gaussian smoothing, gradients, thinning, double threshold, hysteresis |
-| Harris | Corner detection | Studies intensity change when a window shifts |
-| SIFT | Keypoint detection and description | Scale-space, orientation assignment, 128-D descriptor |
-| SURF | Keypoint detection and description | Hessian approximation, box filters, integral images |
-| ORB | Keypoint detection and description | FAST + rotated BRIEF; binary descriptor and Hamming distance |
-| GLCM | Texture analysis | Counts gray-level pairs at a distance and direction |
-| LBP | Texture analysis | Encodes local neighbor comparisons as a binary pattern |
-| Gabor | Texture analysis | Responds to selected orientations and frequencies |
+Performance testing helps a team identify performance problems, observe them, and decide what to improve.
 
-## 4. Smoothing versus sharpening
+## 3.8 Load testing
 
-| Smoothing | Sharpening |
+**Load testing** checks whether an application can handle the expected number of concurrent users or transactions without unacceptable performance degradation.
+
+For example, a ticket-booking website may need to support many users trying to book tickets at the same time. The team tests the expected workload to see whether the site continues to respond correctly.
+
+The slides classify load testing as a type of performance testing and as part of non-functional testing.
+
+## 3.9 Acceptance testing
+
+The slides have a separate acceptance-testing slide in addition to the UAT slide. They define acceptance testing as checking, often with customer involvement, whether the delivered product performs the required tasks. It helps identify user needs and increases customer confidence.
+
+For exam answers, explain the idea once, then mention UAT as the user-focused acceptance stage described earlier. Avoid treating the two slides as unrelated concepts unless the exam question defines a distinction.
+
+## 3.10 Other testing types named in the slides
+
+The Module 3 outline names several additional types. Some receive only a short definition in the supplied slides; others appear in the outline without a detailed explanation.
+
+### Localization testing
+
+**Localization testing** checks the quality of a product version prepared for a specific culture or locale. The slides say it applies to the localized version of the product and list lower overall testing cost, lower support cost, shorter testing time, flexibility, and scalability as benefits.
+
+Example: Test a localized version to ensure its displayed text and locale-specific information match that version's requirements.
+
+### Security testing
+
+Security testing appears in the module outline, and Module 6 classifies security defects as vulnerabilities that can allow unauthorized access. The slides give examples such as one user being able to view another user's order history, SQL injection risk, hardcoded passwords, and cross-site scripting (XSS). They name penetration testing in connection with security defects but do not provide a full security-testing procedure in Module 3.
+
+### Internationalization testing
+
+Internationalization testing appears in the Module 3 outline, but the slides provide a definition for localization testing rather than a separate detailed definition for internationalization testing. The provided material does not explain the distinction in detail.
+
+### Usability testing
+
+Usability testing appears in the outline. Module 6 describes a usability defect as a feature that works but confuses users, such as a “Next” button that looks disabled even though it is clickable. A detailed usability-testing procedure does not appear in the supplied Module 3 slides.
+
+### Exploratory testing
+
+The slides describe exploratory testing as **unscripted testing in which the tester explores freely**. They suggest it for new features and unclear requirements. It uses tester observation and investigation rather than relying only on a fixed set of steps.
+
+### Compatibility testing
+
+Compatibility testing appears in the outline, and Module 6 gives the example of checkout working in Chrome but failing in Safari. It checks whether the software works across relevant browsers, devices, operating systems, or environments. The supplied slides do not give a detailed compatibility-testing process.
+
+### Role-based access testing and mobility testing
+
+Both topics appear in the Module 3 outline. The provided slides do not explain their procedures in detail. The guide therefore does not add a course-specific workflow for either topic.
+
+### Module 3 revision questions
+
+1. Differentiate manual testing from automation testing.
+2. Explain functional, non-functional, and regression testing with examples.
+3. Explain unit, integration, system, and acceptance testing in sequence.
+4. Differentiate performance testing and load testing.
+5. What is UAT? State its advantages.
+6. Define localization testing and state its benefits.
+7. Explain exploratory testing using the slide's description.
+8. Give examples of security, usability, and compatibility defects from the lecture material.
+
+---
+
+# Module 4: Testing Process, Test Design, Defect Management, and CI/CD
+
+## 4.1 Test strategy vs test plan
+
+A **test strategy** is a high-level document that defines the overall testing approach. The slides say a QA Manager or Test Director creates it for an organization or program, and the organization may update it periodically. Example: “Automate all regression tests using Selenium and Jenkins.”
+
+A **test plan** describes how testing will work for one project or release. It covers the scope, schedule, resources, risks, and other project-specific details. The slides associate it with a Test Lead or Test Manager and refer to IEEE 829.
+
+| Test strategy | Test plan |
 |---|---|
-| Reduces local intensity variation | Emphasizes rapid intensity change |
-| Often reduces noise | Can amplify noise |
-| Can blur fine edges | Can make edges and details stand out |
-| Mean, weighted average, Gaussian, median | Laplacian, unsharp masking, high-boost, gradients |
+| High-level testing approach | Detailed plan for a particular project or release |
+| Organization or program scope | Single project/release scope |
+| Created by QA Manager/Test Director in the slides | Created by Test Lead/Test Manager in the slides |
+| Example: regression automation policy | Example: number of test cases, testers, and duration for a sprint |
 
-## 5. SIFT versus SURF versus ORB
+## 4.2 Test plan components (IEEE 829 list in the slides)
 
-| Point | SIFT | SURF | ORB |
-|---|---|---|---|
-| Main goal | Robust matching across scale and rotation | Robust features with improved speed | Very fast free feature extraction and matching |
-| Detection idea | Difference-of-Gaussians scale space | Hessian approximation with box filters | FAST corners |
-| Descriptor | 128-D floating point | 64-D or 128-D floating point | Binary, commonly 256 bits |
-| Distance | Euclidean | Euclidean | Hamming |
-| Typical fit | High-quality matching and reconstruction | Speed/robustness balance | Real-time, mobile, embedded, SLAM |
+The slides list 13 sections:
 
-## 6. KNN versus SVM
+1. **Test Plan Identifier:** Unique ID, version, and date.
+2. **Introduction:** Purpose and project overview.
+3. **Test Items:** Components that the team will test.
+4. **Features to Be Tested:** Features inside the testing scope.
+5. **Features Not to Be Tested:** Excluded features and the reason for exclusion.
+6. **Test Approach:** Manual or automated approach, tools, and techniques.
+7. **Pass/Fail Criteria:** Conditions that determine whether a test passes.
+8. **Entry and Exit Criteria:** Conditions for starting and stopping testing.
+9. **Test Deliverables:** Reports, logs, defect lists, and other outputs.
+10. **Test Environment:** Hardware, operating system, browsers, databases, and configuration.
+11. **Schedule:** Timeline and milestones.
+12. **Risks and Contingencies:** Possible problems and plans to reduce their impact.
+13. **Responsibilities:** Who performs each activity.
 
-| Point | KNN | SVM |
-|---|---|---|
-| Principle | Uses the labels of nearby examples | Learns a separating hyperplane with a large margin |
-| Training | Little explicit model fitting | Model fitting is required |
-| Prediction | Finds nearest stored examples | Applies the learned decision boundary |
-| Key issue | Choice of K and distance measure | Training and model selection can be more complex |
+## 4.3 Entry, exit, suspension, and resumption criteria
 
-## 7. CNN components
+**Entry criteria** define the conditions that must be met before a test phase begins. The slides list a build deployed to the QA environment, successful smoke tests, prepared test data, a configured environment, and reviewed/approved test cases.
 
-| Component | Role |
+**Exit criteria** define the conditions that must be met before the team finishes the phase. The example criteria in the slides are:
+
+- At least 95% of test cases executed.
+- A pass rate that meets the agreed threshold, such as 95%.
+- No open Critical or High severity defects.
+- Stakeholder sign-off on the Test Summary Report.
+
+**Suspension criteria** identify when the team should pause testing. The slides give an example: more than 30% of critical tests fail.
+
+**Resumption criteria** identify when testing can restart. The slides say to resume after the team deploys a new stable build.
+
+These percentages are examples from the slide deck. A real project should use the thresholds agreed in its own test plan.
+
+## 4.4 Understanding requirements before testing
+
+Requirements analysis is not just reading a document and immediately writing tests. A tester should identify unclear, missing, or conflicting requirements before designing test cases.
+
+The slides recommend:
+
+1. Read the SRS (Software Requirements Specification) or BRD (Business Requirements Document).
+2. Identify unclear, missing, or conflicting statements.
+3. Write down every question and doubt.
+4. Hold a review with relevant business analysts, developers, and project managers.
+5. Obtain approval for the clarified requirements.
+
+The slides state that many defects begin in the requirements phase and that a defect found in production costs far more to fix. The practical lesson is to resolve uncertainty early.
+
+## 4.5 Ambiguity reviews
+
+An **ambiguity review** is a structured review of requirements to find wording that is unclear, incomplete, open to multiple interpretations, or contradictory.
+
+Ambiguity reviews matter because unclear requirements can lead to incorrect test cases, incorrect implementation, and expensive rework.
+
+### Types of ambiguity
+
+#### 1. Lexical ambiguity
+
+A word or phrase has more than one possible meaning.
+
+Example: “The system should respond fast.” Does “fast” mean 100 milliseconds, one second, or ten seconds?
+
+**How to fix it:** Replace vague words with measurable definitions.
+
+#### 2. Syntactic ambiguity
+
+The sentence structure allows more than one interpretation.
+
+Example: “Test login with admin and user module.” Does the requirement mean testing the two modules together or separately?
+
+**How to fix it:** Rewrite the sentence using bullets, numbered conditions, and clear relationships between actions.
+
+#### 3. Semantic ambiguity
+
+The words are understandable, but the requirement lacks enough context.
+
+Example: “The system shall notify the user.” The requirement does not specify whether the system should use email, SMS, push notifications, or all three.
+
+**How to fix it:** Ask “How?”, “When?”, “What content?”, and “Which channel?”
+
+#### 4. Incomplete requirements
+
+The requirement does not describe important scenarios, especially error cases.
+
+Example: “Users can reset their password.” The requirement does not say what happens when the email address does not exist or the account is locked.
+
+**How to fix it:** Ask “What if...?” for each requirement, including failures, invalid inputs, timeouts, and unusual conditions.
+
+### Example: order confirmation
+
+The slides use the requirement “After placing an order, the user shall receive a confirmation.” A tester should ask:
+
+- Which channel delivers the confirmation: email, SMS, push, or more than one?
+- What should the message contain?
+- Should it appear after payment, after order creation, or after the restaurant accepts?
+- What happens if the user disables notifications?
+- What happens if the restaurant takes too long to accept?
+
+One vague statement can therefore lead to several precise requirements and better test cases.
+
+## 4.6 Test cases
+
+A **test case** is a documented set of conditions and steps used to check a particular behaviour. The slides list inputs, execution steps, preconditions, expected results, and postconditions as its components.
+
+### Properties of a good test case
+
+- **Atomic:** Tests one main thing at a time.
+- **Repeatable:** Produces a consistent result when the conditions are the same.
+- **Independent:** Does not rely unnecessarily on another test.
+- **Traceable:** Links to a requirement or user story.
+- **Clear:** Another tester can execute it without needing the author's explanation.
+
+### Test case template
+
+| Field | Purpose or example from the slides |
 |---|---|
-| Convolution | Finds local learned patterns |
-| Feature map | Stores the response from a filter |
-| ReLU | Replaces negative values with zero |
-| Pooling | Reduces spatial size and computation |
-| Flatten | Converts feature maps to a vector |
-| Fully connected | Uses extracted features for the final decision |
+| Test Case ID | Unique identifier, such as `TC_LOGIN_007` |
+| Title | Verify login with an invalid password |
+| Module | Authentication |
+| Linked Requirement | Requirement or user story under test |
+| Priority | Example: High |
+| Preconditions | Registered user, browser open, login page displayed |
+| Test Steps | Enter valid email, enter wrong password, click Login |
+| Test Data | Email and incorrect password |
+| Expected Result | Specific invalid-password message appears |
+| Actual Result | Filled in during execution |
+| Status | Pass, Fail, or Blocked |
+| Defect ID | Link to a defect if the test fails |
 
-## 8. R-CNN versus YOLO
+### Test case design techniques
 
-| Point | R-CNN family | YOLO |
+#### Equivalence Partitioning (EP)
+
+**Equivalence Partitioning** divides possible inputs into groups expected to behave in the same way. The tester selects representative values from each group instead of testing every possible value.
+
+Example from the slides: If a field accepts ages from 18 through 60:
+
+| Partition | Example value | Expected result |
+|---|---:|---|
+| Below minimum | 15 | Reject |
+| Valid range | 35 | Accept |
+| Above maximum | 65 | Reject |
+| Non-numeric input | `abc` | Reject |
+
+The purpose is to reduce the number of tests while still covering different classes of input.
+
+#### Boundary Value Analysis (BVA)
+
+**Boundary Value Analysis** concentrates on values at and around the edge of a valid range, because errors often occur at limits.
+
+Example from the slides: If a password must contain 8 to 16 characters:
+
+| Length | Position | Expected result |
+|---:|---|---|
+| 7 | Just below minimum | Fail |
+| 8 | Minimum valid boundary | Pass |
+| 16 | Maximum valid boundary | Pass |
+| 17 | Just above maximum | Fail |
+
+#### Decision table testing
+
+A **decision table** lists combinations of conditions and the expected action for each combination. Use it when business rules depend on several conditions.
+
+Example: A purchase discount might depend on membership status and order amount. A decision table helps ensure the team checks every relevant combination that the requirement defines.
+
+The slides name this technique but do not provide a full decision table example.
+
+#### State transition testing
+
+**State transition testing** checks how a system moves from one state to another after an event or action.
+
+Example: An order may move through states such as Placed, Confirmed, Preparing, Dispatched, and Delivered. Tests should check both permitted transitions and transitions that the system should reject.
+
+The slides recommend this technique for workflows and order status, but do not provide a complete transition diagram.
+
+#### Use-case or scenario testing
+
+**Use-case testing** checks an end-to-end user journey. The tester follows a complete scenario rather than only one isolated field or button. The slides associate it with acceptance testing.
+
+### Positive, negative, and edge cases
+
+- **Positive test:** Uses valid inputs the system should accept. Example: a valid email and password produce a successful login.
+- **Negative test:** Uses invalid inputs the system should reject gracefully. Example: a wrong password produces a clear message instead of a crash.
+- **Edge case:** Tests an extreme or boundary value. Example: a password with exactly 16 characters when 16 is the maximum.
+
+The slides give a rule of thumb: for each positive test, write at least two negative tests. This is guidance from the lecture, not a fixed rule for every test design.
+
+## 4.7 Test execution process
+
+The slides set out nine steps:
+
+1. Confirm that entry criteria have been met.
+2. Execute tests in priority order: Critical, High, Medium, then Low.
+3. Record the actual result of every test case.
+4. Compare actual results with expected results and mark Pass or Fail.
+5. For a failed test, capture evidence such as screenshots, logs, or video.
+6. Log the defect in a tracking tool such as JIRA or Azure DevOps.
+7. Update the execution report daily.
+8. Retest fixed defects and run regression tests for affected areas.
+9. When exit criteria are met, prepare the Test Summary Report and obtain sign-off.
+
+## 4.8 Types of test execution
+
+| Test type | Meaning in the slides | When to use it |
 |---|---|---|
-| Core approach | Region proposals and region processing | Direct prediction in one model pipeline |
-| Original speed | Original R-CNN is slow | Designed for fast detection |
-| Later change | Fast R-CNN shares image features; Faster R-CNN learns proposals | Modern versions improve multi-scale detection while retaining the direct approach |
-| Typical use | Region-based detection pipelines | Real-time detection |
+| Smoke testing | A short check of critical paths on a new build | Before starting full testing, to confirm basic stability |
+| Sanity testing | A focused check of a specific area after a fix | After a developer provides a fix |
+| Full regression testing | Run the complete regression suite | Before a major release or after significant changes |
+| Retesting | Repeat the failed test after the defect has been fixed | To verify the specific correction |
+| Exploratory testing | Tester explores without following only a fixed script | New features or vague requirements |
 
-## 9. Motion methods
+**Smoke vs sanity vs retesting:** Smoke testing asks whether the build is stable enough for more testing. Sanity testing checks a particular affected area. Retesting repeats a previously failed test to confirm a specific defect fix.
 
-| Technique | Main purpose | Main limitation or consideration |
+## 4.9 Defect management: basic idea
+
+**Defect management** is the organized process of identifying, logging, classifying, assigning, resolving, verifying, and closing defects. Each defect should be visible in a tracking system, assigned to an owner, fixed and verified, and formally closed with evidence.
+
+The slides define a defect life cycle and include statuses such as New, Assigned, Open, Fixed, Ready for Retest, In Retest, Verified/Closed, Reopened, Deferred, Rejected, Cannot Reproduce, Duplicate, and On Hold. Module 6 explains these terms in greater depth.
+
+## 4.10 Testing and reporting tools
+
+The slides group tools by purpose.
+
+| Tool | Purpose given in the slides |
+|---|---|
+| JIRA | Defect tracking and sprint management |
+| TestRail | Test case management and execution tracking |
+| Zephyr for JIRA | Test management inside JIRA |
+| HP ALM / Quality Center | Enterprise test management and compliance reporting |
+| Azure DevOps | Test/defect management integrated with repositories and pipelines |
+| Selenium WebDriver | Browser UI automation |
+| Appium | Mobile automation for iOS and Android |
+| Postman / Newman | API testing |
+| JMeter | Load and performance testing |
+| SonarQube | Code analysis for bugs, vulnerabilities, code smells, and coverage |
+| ESLint | JavaScript syntax and coding-practice checks |
+| Pylint | Python quality checks, including unused variables and style-related issues |
+| Checkstyle | Java coding-standard checks |
+| Allure Reports | HTML reports with screenshots, steps, and trend information |
+| Extent Reports | HTML reports and charts for test suites |
+
+## 4.11 Test data management
+
+**Test data** means the inputs used while executing test cases. Good test data helps a team test valid behaviour, invalid behaviour, edge cases, and realistic usage.
+
+### Types of test data
+
+- **Positive data:** Valid inputs that the system should accept.
+- **Negative data:** Invalid inputs that the system should reject.
+- **Boundary data:** Values at the edge of a permitted range.
+- **Special characters:** Inputs such as apostrophes or markup-like strings that can reveal handling problems or security risks.
+- **Empty or null data:** Missing values in fields that may require input.
+- **Volume data:** Large datasets used for performance-related tests.
+- **Production-like data:** Realistic data that has been anonymized or masked.
+
+### Test data challenges and solutions
+
+| Challenge | Solution shown in the slides |
+|---|---|
+| Data privacy | Mask sensitive names, card numbers, and identity details |
+| Stale data | Refresh the data before each testing cycle |
+| Tests depending on shared data | Use separate datasets and avoid shared mutable state |
+| Different Dev/QA/UAT environments | Maintain separate datasets for each environment |
+| Database state pollution | Use teardown scripts to reset the database to a known state |
+| Need for realistic volume | Use data-generation tools such as Faker |
+
+The slides also list manual data creation, Faker, anonymized production data, SQL seed scripts, and Excel/CSV files as data sources.
+
+## 4.12 Selenium in CI/CD
+
+**Continuous Integration (CI)** means each code commit triggers an automated build and tests. **Continuous Delivery (CD)** means the code can proceed through the delivery process after required checks pass. The slides place Selenium in the automated UI-regression layer.
+
+A Selenium CI/CD workflow follows this sequence:
+
+1. A developer pushes code to GitHub or another Git repository.
+2. A CI server such as Jenkins or GitHub Actions detects the push.
+3. The pipeline builds the application and runs unit tests.
+4. If the build passes, the pipeline runs the Selenium smoke suite.
+5. Selenium Grid can distribute tests across browsers such as Chrome, Firefox, and Edge.
+6. Failed tests capture evidence such as screenshots, video, and stack traces.
+7. The pipeline generates a report, such as an Allure HTML report.
+8. The team receives a notification through Slack or email.
+9. The team can block a merge when a critical test fails.
+10. If all required checks pass, the code moves to the next environment.
+
+### Execution layers shown in the slides
+
+| Suite | Approximate size shown | Trigger shown | Purpose |
+|---|---:|---|---|
+| Smoke suite | 30–50 critical-path tests | Every commit | Quick build validation |
+| Sanity suite | 150–200 feature tests | Each feature merge | Focused check of the changed area |
+| Full regression | 1,500–3,000 tests | Nightly | Broad check for regressions |
+| Performance suite | JMeter load tests | Weekly or before release | Check performance under workload |
+
+These sizes and durations are examples from the lecture slides rather than required values for every project.
+
+### Selenium Grid and parallel execution
+
+The slides describe a **Hub** that receives test requests and routes them to available **Nodes**. Nodes run browser instances and execute tests. Parallel execution allows different tests to run simultaneously across different browser and operating-system combinations.
+
+The slides mention Selenium Grid modes in version 4: Standalone, Hub-Node, and Distributed. They also name BrowserStack, LambdaTest, and Sauce Labs as cloud options.
+
+### CI/CD best practices from the slides
+
+- Use the Page Object Model to centralize page locators.
+- Prefer explicit waits over fixed sleeps.
+- Capture screenshots when tests fail.
+- Run headless Chrome when a visible browser is unnecessary in CI.
+- Tag tests by priority, such as smoke and regression.
+- Use parallel execution for larger test suites.
+- Keep test data in external files such as Excel or JSON rather than hardcoding every value.
+- Clean up browser sessions after test execution.
+- Investigate flaky tests instead of accepting inconsistent results.
+
+### Module 4 revision questions
+
+1. Differentiate test strategy and test plan.
+2. List and explain the 13 test-plan components shown in the slides.
+3. Explain entry, exit, suspension, and resumption criteria.
+4. Define ambiguity review and explain its four types.
+5. What is a test case? Explain the properties of a good test case.
+6. Explain Equivalence Partitioning and Boundary Value Analysis with the age/password examples.
+7. Explain decision table, state transition, and use-case testing.
+8. Differentiate smoke testing, sanity testing, retesting, and regression testing.
+9. Explain the steps of test execution.
+10. What is test data management? Explain its challenges and solutions.
+11. Explain how Selenium fits into a CI/CD pipeline.
+12. Explain the role of a Hub and Nodes in Selenium Grid.
+
+---
+
+# Module 5: Test Automation and Selenium Optimization
+
+## 5.1 What is test automation?
+
+**Test automation** uses software tools to run pre-written test scripts, compare actual results with expected results, and create reports without requiring a person to perform every action during execution.
+
+The key idea is simple: write a test once and run it repeatedly. Automation helps teams repeat the same tests quickly and consistently. It does not remove the need for manual testing; instead, it reduces repetitive work so testers can investigate new or unusual behaviours.
+
+## 5.2 Manual vs automated testing
+
+The slides compare testing methods across several dimensions:
+
+| Dimension | Manual testing | Automated testing |
 |---|---|---|
-| Frame differencing | Detect changes between consecutive frames | Sensitive to lighting or camera movement |
-| Sparse optical flow | Estimate motion of selected feature points | Tracks only selected points |
-| Dense optical flow | Estimate motion across nearly all pixels | More computation |
-| Lucas-Kanade | Estimate local motion of selected feature points | Assumes brightness constancy, small movement, and similar local motion |
-| Background subtraction | Separate foreground from background | Background changes and shadows cause errors |
-| Object detection | Locate objects in a frame | Does not by itself maintain identity over time |
-| Object tracking | Follow object locations and identities across frames | Occlusion and similar-looking objects cause difficulties |
-| Video analytics | Extract useful events and measurements from video | Depends on detection, tracking, data, and computing resources |
+| Speed | A person performs actions one at a time | A tool can execute many steps rapidly |
+| Consistency | Human fatigue or distraction can affect execution | The script repeats the same programmed steps |
+| Initial cost | Lower for a small task | Higher because scripts and setup take time |
+| Long-term effort | Repeated execution consumes tester time | Repeated runs can reduce effort after setup |
+| Good use cases | Exploratory, usability, ad hoc work | Regression, data-driven, cross-browser work |
+| Continuous execution | Depends on people being available | Can run during scheduled CI/CD jobs |
+| Maintenance | No script maintenance | Scripts need updates when the application changes |
 
----
+## 5.3 What should and should not be automated?
 
-# Important Formulas and Terms
+### Good candidates for automation
 
-| Topic | Formula or rule | Meaning |
+The slides recommend automating:
+
+- Regression suites that must run after code changes.
+- Smoke tests that quickly check a new build.
+- Data-driven tests that repeat one workflow with many sets of input data.
+- Cross-browser checks across Chrome, Firefox, Edge, and other supported browsers.
+- Load/performance tests using appropriate tools.
+- API tests that validate backend services.
+- Repetitive form submissions such as login, checkout, and registration.
+
+### Poor candidates for automation
+
+The slides advise against automating:
+
+- Exploratory testing that depends on human curiosity and intuition.
+- Usability tests that require observing real users.
+- One-time or rarely repeated tests when automation costs more than manual execution.
+- Interfaces that change constantly, causing scripts to break frequently.
+- Features with requirements that have not stabilized.
+
+The decision rule is practical: automate a test when repeated execution, consistency, and saved time justify the cost of writing and maintaining the script.
+
+## 5.4 Benefits of automation
+
+The slides list these benefits:
+
+1. **Speed:** Large suites can run much faster than manual execution.
+2. **Early defect detection:** Tests can run after each code change.
+3. **Broader coverage:** A team can test more datasets and browser/operating-system combinations.
+4. **Repeatability:** The same steps run consistently each time.
+5. **Continuous testing:** Scheduled runs can happen without a tester waiting at the computer.
+6. **Regression safety:** Automated tests help detect when new code breaks existing behaviour.
+7. **Reporting:** Tools can generate reports and metrics for the team.
+
+### The test pyramid example
+
+The slides use a test-pyramid example in which most tests sit at the unit level, fewer sit at the integration level, and the smallest proportion are end-to-end UI tests. The example shows 70% unit tests, 20% integration tests, and 10% end-to-end tests. Developers write unit tests; developers and QA share integration testing; QA engineers handle end-to-end tests such as those using Selenium.
+
+**Main lesson:** A suite should not rely only on slow end-to-end UI tests. Lower-level tests form a larger, faster base, while end-to-end tests check complete user journeys.
+
+The slides also give example claims about high deployment frequency and defect detection at Netflix. Treat the company-specific figures as examples used by the lecture, not as claims that every organization follows the exact same process.
+
+## 5.5 Selenium suite overview
+
+The slides describe Selenium as an open-source, vendor-neutral framework for browser automation, supporting Java, Python, C#, JavaScript, and Ruby.
+
+### Selenium IDE
+
+Selenium IDE is a record-and-playback browser tool. The slides describe it as point-and-click and not requiring code for basic recording.
+
+### Selenium WebDriver
+
+WebDriver controls browsers programmatically through code. The slides identify it as the industry-standard component for scripted browser automation.
+
+### Selenium Grid
+
+Grid distributes tests across multiple machines and browser instances so the team can run tests in parallel.
+
+### Selenium RC
+
+The slides identify Selenium RC as a legacy component that has been deprecated since 2016 and is no longer used in the described active Selenium suite.
+
+## 5.6 Selenium WebDriver architecture
+
+The slide deck explains WebDriver using four layers:
+
+1. **Test script:** Code written in Python, Java, C#, or another supported language.
+2. **Selenium WebDriver API:** The language interface through which the script sends browser commands.
+3. **Browser driver:** A component such as ChromeDriver, GeckoDriver, or EdgeDriver that connects the automation request to the selected browser.
+4. **Browser:** The actual browser instance that performs the action.
+
+### How a click command travels
+
+The slides explain the flow using `button.click()`:
+
+1. The test script asks WebDriver to click a button.
+2. WebDriver sends a command through its communication layer.
+3. The browser driver receives and interprets the command.
+4. The browser performs the click.
+5. The command result returns to the test script.
+
+The slides use HTTP/WebDriver communication and Chrome DevTools Protocol in the example. For an exam, focus on the four layers and the direction of the command flow.
+
+## 5.7 Browser drivers
+
+The slides list these examples:
+
+| Browser | Driver named in the slides |
+|---|---|
+| Google Chrome | ChromeDriver |
+| Mozilla Firefox | GeckoDriver |
+| Microsoft Edge | EdgeDriver |
+| Safari | SafariDriver |
+
+The slides warn that ChromeDriver and Chrome versions must be compatible. A version mismatch can produce a “session not created” error. They mention WebDriverManager for Java and `webdriver-manager` for Python as ways to manage driver versions.
+
+## 5.8 Selenium Grid
+
+**Selenium Grid** runs browser tests in parallel across multiple machines or browser instances.
+
+Its two core components are:
+
+- **Hub:** Receives test requests and routes them to available nodes.
+- **Node:** Runs browser instances and executes assigned tests.
+
+The slides list three Grid 4 modes:
+
+- **Standalone:** Hub and Node run on the same machine.
+- **Hub-Node:** The Hub and one or more Nodes run separately.
+- **Distributed:** Grid components run separately for larger deployments.
+
+The lecture compares Grid 3 and Grid 4 by architecture, node registration, protocol, monitoring, Docker support, and configuration. Grid 4 adds more deployment modes, automatic node registration, a richer console, Docker support, and more flexible configuration in the presentation.
+
+### Grid example from the slides
+
+The Myntra example describes one Hub and four Nodes containing Chrome, Firefox, and Edge sessions, for a total of 16 parallel sessions. The deck gives a test suite of 2,400 tests that took eight hours serially and 35 minutes with Grid parallel execution. This is an illustrative example of how parallel execution can reduce total wall-clock time.
+
+## 5.9 Locators
+
+A **locator** tells Selenium how to find a particular web element so the script can interact with it.
+
+The slides list eight built-in strategies:
+
+1. `By.ID`
+2. `By.NAME`
+3. `By.CLASS_NAME`
+4. `By.TAG_NAME`
+5. `By.LINK_TEXT`
+6. `By.PARTIAL_LINK_TEXT`
+7. `By.XPATH`
+8. `By.CSS_SELECTOR`
+
+The deck's general rule is to prefer a stable, specific locator, with ID as the first choice where available. It gives this simplified priority: ID, then Name, then CSS Selector, then XPath. It also warns that class names may be repeated and auto-generated class names may change.
+
+### ID locator
+
+Use an element's HTML `id` attribute. The slides call it the best choice when a meaningful, stable ID exists.
+
+```python
+driver.find_element(By.ID, "username").send_keys("testuser@mail.com")
+```
+
+### Name locator
+
+Use an element's HTML `name` attribute. This is common in form fields. Check uniqueness because multiple elements, such as radio buttons, may share a name.
+
+```python
+driver.find_element(By.NAME, "searchQuery").send_keys("Selenium WebDriver")
+```
+
+### CSS Selector
+
+CSS selectors identify elements by ID, class, attributes, or relationships in the document tree.
+
+| Pattern | Meaning | Example |
 |---|---|---|
-| Pixel transformation | `g(x, y) = a f(x, y) + b` | `a` changes contrast scaling; `b` shifts brightness |
-| Quantization levels | `2^b` | Number of representable levels with `b` bits |
-| Frame differencing | `D = |Frame_t - Frame_(t-1)|` | Measures pixel-wise change between consecutive frames |
-| ReLU | `ReLU(x) = max(0, x)` | Negative inputs become zero; positive inputs remain unchanged |
-| Harris response | `R = det(M) - k(trace(M))^2` | Corner response from the local structure matrix |
-| Accuracy | `(TP + TN) / (TP + TN + FP + FN)` | Share of all predictions that are correct |
-| Precision | `TP / (TP + FP)` | Share of positive predictions that are correct |
-| Recall | `TP / (TP + FN)` | Share of actual positives the model finds |
-| SIFT descriptor | `4 × 4 × 8 = 128` | Number of descriptor values |
-| SURF descriptor | `4 × 4 × 4 = 64` | Standard descriptor size in the lecture; an extended 128-D version exists |
-| Original R-CNN | About 2,000 region proposals per image | Illustrates why repeated CNN processing is expensive |
+| `#elementId` | Element with this ID | `#loginBtn` |
+| `.className` | Element with this class | `.error-message` |
+| `tag[attr="value"]` | Element matching an attribute | `input[type='submit']` |
+| `tag[attr*="text"]` | Attribute contains text | `a[href*='checkout']` |
+| `parent > child` | Direct child | `form#loginForm > button` |
+| `ancestor descendant` | Descendant anywhere below an ancestor | `div.card input` |
 
-## Important terms in plain language
+Examples:
 
-- **Pixel:** one picture element in a digital image.
-- **Resolution:** the image's pixel dimensions.
-- **Sampling:** selecting the discrete pixel positions.
-- **Quantization:** mapping pixel intensity to allowed discrete values.
-- **Kernel / mask:** a small matrix used to process a neighborhood.
-- **Feature map:** the output produced by applying a filter.
-- **Feature descriptor:** a numerical summary of a local image feature.
-- **Keypoint:** an important image location, often a corner or distinctive point.
-- **Bounding box:** a rectangle around a detected object.
-- **Centroid:** the center of a cluster or region, depending on the context.
-- **Foreground:** the objects or regions of interest.
-- **Background:** the surrounding or relatively stationary scene.
-- **Optical flow:** apparent movement of image points between frames.
-- **FPS:** frames per second.
-- **Fine-tuning:** continuing to train a pretrained model on a new task.
-- **Transfer learning:** reusing knowledge from a model trained on another task.
+```python
+driver.find_element(By.CSS_SELECTOR, "#submit-btn")
+driver.find_element(By.CSS_SELECTOR, ".error-text")
+driver.find_element(By.CSS_SELECTOR, "input[type='email']")
+```
+
+### XPath
+
+XPath navigates the document tree and can identify elements using attributes, text, siblings, parents, or position.
+
+- **Absolute XPath** starts at the root, commonly with `/html/...`. The slides say to avoid it because a change anywhere along the path can break the locator.
+- **Relative XPath** commonly starts with `//` and searches for a matching element without depending on every ancestor from the root. The slides prefer it.
+
+Examples from the slides:
+
+```python
+# Match an input by ID
+ driver.find_element(By.XPATH, '//input[@id="username"]')
+
+# Match a button by visible text
+ driver.find_element(By.XPATH, '//button[text()="Login"]')
+
+# Match an element whose text contains a phrase
+ driver.find_element(By.XPATH, '//button[contains(text(), "Add")]')
+```
+
+**Best-practice notes from the slides:** Avoid absolute XPath and auto-generated class names. Prefer meaningful IDs, stable attributes, or `data-testid` attributes when the application provides them.
+
+## 5.10 WebDriver navigation and element actions
+
+### Navigation commands
+
+| Python command | Purpose |
+|---|---|
+| `driver.get(url)` | Open a URL |
+| `driver.current_url` | Read the current URL |
+| `driver.title` | Read the page title |
+| `driver.back()` | Navigate backward |
+| `driver.forward()` | Navigate forward |
+| `driver.refresh()` | Reload the page |
+| `driver.close()` | Close the current window |
+| `driver.quit()` | Close all browser windows and end the driver session |
+| `driver.maximize_window()` | Maximize the window |
+
+### Web element commands
+
+| Command/property | Purpose |
+|---|---|
+| `.click()` | Click a button, link, checkbox, or other clickable element |
+| `.send_keys(text)` | Type text into an input field |
+| `.clear()` | Clear existing text in a field |
+| `.text` | Read visible text in Python |
+| `.get_attribute("attr")` | Read an HTML attribute, such as `href` or `src` |
+| `.is_displayed()` | Check whether an element is visible |
+| `.is_enabled()` | Check whether an element is enabled |
+| `.is_selected()` | Check whether a checkbox or similar control is selected |
+
+## 5.11 Handling dropdowns
+
+The slides use Selenium's `Select` class for HTML dropdowns.
+
+```python
+from selenium.webdriver.support.ui import Select
+
+select = Select(driver.find_element(By.ID, "country"))
+select.select_by_visible_text("India")
+```
+
+The selection methods listed in the slides are:
+
+- `select_by_visible_text("India")`: Select using the displayed text.
+- `select_by_value("IN")`: Select using the option's value attribute.
+- `select_by_index(0)`: Select by index position.
+
+Other listed methods include `options`, `first_selected_option`, and `deselect_all()` for multi-select dropdowns.
+
+## 5.12 Selenium waits
+
+Web pages often load elements asynchronously. If Selenium tries to interact with an element before it exists or becomes ready, the test may fail. Waits let the script wait for the condition it needs.
+
+### Types of waits
+
+- **Implicit wait:** Applies to element-finding calls globally. The slides advise using it with caution.
+- **Explicit wait:** Waits for a specific element or condition. The slides recommend this approach.
+- **Fluent wait:** Adds custom polling intervals and the ability to ignore selected exceptions. The slides describe it as an advanced option.
+
+The slides strongly discourage fixed delays such as `time.sleep(5)` because they always wait for the chosen duration, even if the page is ready earlier. They can also fail when the page takes longer than expected.
+
+### Important ExpectedConditions
+
+| Condition | What it waits for |
+|---|---|
+| `visibility_of_element_located` | The element exists in the DOM and is visible |
+| `element_to_be_clickable` | The element is visible and enabled |
+| `presence_of_element_located` | The element exists in the DOM, even if invisible |
+| `text_to_be_present_in_element` | An element contains specific text |
+| `url_contains` | The current URL contains a given substring |
+| `invisibility_of_element_located` | An element is hidden or removed, such as a loading spinner |
+| `alert_is_present` | A JavaScript alert or confirmation dialog appears |
+
+Example:
+
+```python
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+wait = WebDriverWait(driver, 10)
+button = wait.until(EC.element_to_be_clickable((By.ID, "loginBtn")))
+button.click()
+```
+
+## 5.13 Alerts, frames, and windows
+
+### JavaScript alerts
+
+The slides list these actions:
+
+- `driver.switch_to.alert`: Switch to the alert.
+- `alert.text`: Read the alert's text.
+- `alert.accept()`: Accept the alert, similar to clicking OK.
+- `alert.dismiss()`: Dismiss the alert, similar to clicking Cancel.
+- `alert.send_keys("input")`: Enter text in a prompt alert.
+
+### iFrames
+
+An iFrame contains a separate embedded browsing context. Selenium must switch into it before interacting with elements inside it.
+
+```python
+driver.switch_to.frame("iframeId")
+# Interact with elements in the frame.
+driver.switch_to.default_content()
+```
+
+The slides also show switching by index, such as `driver.switch_to.frame(0)`.
+
+### Multiple windows and tabs
+
+- `driver.window_handles` lists open window handles.
+- `driver.current_window_handle` identifies the current window.
+- `driver.switch_to.window(handle)` switches to a specific window.
+
+## 5.14 Example: simple Selenium login test
+
+The following example follows the login workflow shown in the slides. The URL, IDs, credentials, and page title are example values and would need to match the application under test.
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+driver = webdriver.Chrome()
+try:
+    driver.maximize_window()
+    driver.get("https://myapp.com/login")
+    wait = WebDriverWait(driver, 10)
+
+    wait.until(
+        EC.element_to_be_clickable((By.ID, "email"))
+    ).send_keys("admin@test.com")
+
+    driver.find_element(By.ID, "password").send_keys("Admin@123")
+    driver.find_element(By.ID, "loginBtn").click()
+
+    wait.until(EC.url_contains("dashboard"))
+    assert "Dashboard" in driver.title
+finally:
+    driver.quit()
+```
+
+### Explain the script in an exam
+
+1. Import WebDriver, locator support, and wait support.
+2. Start Chrome and open the login page.
+3. Wait until the email field becomes clickable.
+4. Enter the email and password.
+5. Click the login button.
+6. Wait until the URL contains `dashboard`.
+7. Assert that the page title includes `Dashboard`.
+8. Close the browser session with `driver.quit()`.
+
+An assertion compares the actual value with the expected condition. If the condition does not hold, the test reports a failure.
+
+## 5.15 Data-driven testing (DDT)
+
+**Data-driven testing** separates the test logic from the test data. One script runs repeatedly with different input values and expected results.
+
+**Core rule from the slides:** `1 test script + N data rows = N test cases`.
+
+Without data-driven testing, a team might create many nearly identical scripts for different login combinations. With DDT, the team keeps one script and adds rows to a data file. If the login workflow changes, the team can update one script instead of many copies.
+
+### Common data sources
+
+The slides list Excel, CSV, JSON, XML, databases, `pytest`'s `@parametrize`, and TestNG's `@DataProvider`.
+
+### Excel example structure
+
+| Username | Password | Expected result |
+|---|---|---|
+| `admin@test.com` | `Admin@123` | Dashboard |
+| `user@test.com` | `User@456` | Dashboard |
+| `wrong@test.com` | `WrongPass` | Invalid Login |
+| `admin@test.com` | Empty | Invalid Login |
+
+The slides show `openpyxl` loading an Excel file and looping through its rows. Each row supplies the username, password, and expected result for a test run.
+
+### `pytest` parameterization example
+
+```python
+import pytest
+
+@pytest.mark.parametrize("username, password, expected", [
+    ("admin@test.com", "Admin@123", "Dashboard"),
+    ("user@test.com", "User@456", "Dashboard"),
+    ("wrong@test.com", "WrongPass", "Invalid Login"),
+    ("admin@test.com", "", "Invalid Login"),
+])
+def test_login(username, password, expected):
+    # Open the page, enter the values, submit, and check the result.
+    # Each parameter row becomes a separate test case.
+    pass
+```
+
+This shows the idea of parameterization, not a complete runnable test. A real test must create and clean up its browser, interact with the application, and assert the expected result.
+
+### JSON example
+
+The slides show test data stored as JSON objects with `username`, `password`, and `expected` fields. Python's `json` library reads the file, after which the script loops through the objects.
+
+The deck recommends JSON when data needs to sit naturally alongside APIs or remain in version control, and when a CI server should not depend on Excel being installed.
+
+## 5.16 Page Object Model (POM)
+
+The **Page Object Model (POM)** is a design pattern that represents each web page as a separate class. The class stores locators and methods for the actions that a user can perform on that page.
+
+The test script calls page methods rather than repeating locator details throughout the test suite.
+
+### Why use POM?
+
+Without POM, locators and repeated actions can appear in many test files. If the UI changes, the team may need to update many places. With POM, the page class centralizes the locators and common actions, making the tests easier to read and maintain.
+
+The slides describe this difference as updating many test files without POM versus updating one place with POM.
+
+### POM structure shown in the slides
+
+A `LoginPage` class stores locators for the email field, password field, login button, and error message. It exposes a method such as `login(email, password)` that carries out the common login actions. A test calls that method and then checks the resulting page.
+
+```python
+class LoginPage:
+    EMAIL_FIELD = (By.ID, "email")
+    PASSWORD_FIELD = (By.ID, "password")
+    LOGIN_BUTTON = (By.ID, "loginBtn")
+    ERROR_MSG = (By.CSS_SELECTOR, ".error-alert")
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def login(self, email, password):
+        self.driver.find_element(*self.EMAIL_FIELD).send_keys(email)
+        self.driver.find_element(*self.PASSWORD_FIELD).send_keys(password)
+        self.driver.find_element(*self.LOGIN_BUTTON).click()
+```
+
+A test can then call `LoginPage(driver).login(...)` and verify the dashboard or an error message. The example focuses on structure; a complete project would also manage setup, waits, error handling, and teardown.
+
+## 5.17 Automation anti-patterns
+
+The slides list common mistakes and better alternatives:
+
+| Anti-pattern | Problem | Better practice from the slides |
+|---|---|---|
+| Fixed `time.sleep()` delays | Wastes time and can still be too short | Use explicit waits and ExpectedConditions |
+| Absolute XPath | Breaks when the page structure changes | Use stable relative XPath or CSS selectors |
+| No screenshot on failure | Makes CI failures harder to investigate | Capture failure evidence |
+| Serial execution of large suites | Takes too long | Use Selenium Grid or parallel test execution |
+| Hardcoded test data in scripts | Makes adding cases and maintenance difficult | Use Excel, JSON, or another external source |
+| No browser cleanup | Tests can interfere with one another | Always close the driver/session in teardown or `finally` |
+| Obfuscated auto-generated class names | May change between builds | Prefer stable IDs, attributes, or `data-testid` values |
+
+### Module 5 revision questions
+
+1. Define test automation and explain its benefits.
+2. Compare manual and automated testing.
+3. What should and should not be automated? Explain why.
+4. Explain the four layers of Selenium WebDriver architecture.
+5. Differentiate Selenium IDE, WebDriver, and Grid.
+6. Explain the roles of Hub and Node in Selenium Grid.
+7. Define locators and explain ID, Name, CSS Selector, and XPath with examples.
+8. Explain the difference between absolute and relative XPath.
+9. Explain WebDriver navigation and element-interaction commands.
+10. Differentiate implicit, explicit, and fluent waits.
+11. Explain how Selenium handles alerts, frames, and multiple windows.
+12. Explain data-driven testing and describe Excel, JSON, or parameterization approaches.
+13. What is Page Object Model? Explain its advantages.
+14. List common automation anti-patterns and their alternatives.
 
 ---
 
-# How to Write Strong Exam Answers
+# Module 6: Software Quality, Defect Management, Reporting, and Metrics
 
-Use these structures when a question asks you to explain a method. They help you write a complete answer without making the language complicated.
+## 6.1 What is software quality?
 
-## For an algorithm question
+**Software quality** describes how well a software product meets stated and implied needs when users operate it under specified conditions.
 
-1. **Definition:** state what the algorithm does in one or two sentences.
-2. **Principle:** explain the central idea in simple words.
-3. **Steps:** list the operations in the correct order.
-4. **Diagram, flowchart, or formula:** include one when the source provides it or the question asks for it.
-5. **Advantages and limitations:** explain what the method does well and where it struggles.
-6. **Applications:** connect it to one or two real tasks.
+The slides explain two dimensions:
 
-For example, a Canny answer should name all five stages in order. A Lucas-Kanade answer should state all three assumptions and then explain how the algorithm tracks selected points.
+- **Functional quality:** Does the software do what the user needs? This includes correctness, completeness, and accuracy of features.
+- **Structural quality:** Is the software built well? The slides connect this dimension with maintainability, security, performance, and reliability.
 
-## For a comparison question
+The module names ISO/IEC 25010, also called the SQuaRE model, and lists eight quality characteristics.
 
-Use a table with direct criteria such as purpose, input, working principle, output, advantages, limitations, and applications. Do not write two unrelated paragraphs and expect the difference to be clear.
+## 6.2 The eight quality characteristics in ISO 25010, as listed in the slides
 
-## For a diagram question
+| Characteristic | Simple explanation | Example from the slides |
+|---|---|---|
+| Functional suitability | The system provides the required functions | An ATM dispenses cash correctly and updates the balance |
+| Performance efficiency | Response time, throughput, and resource use are appropriate | Search results return in under half a second in the example |
+| Compatibility | The system works with other systems and relevant environments | The application works in Chrome, Firefox, and Safari |
+| Usability | Users can use the system easily and feel satisfied | A first-time user books an order without help |
+| Reliability | The system continues to work correctly over time | WhatsApp availability is used as an illustration in the slides |
+| Security | The system protects data against unauthorized access | Online banking uses encryption and two-factor authentication |
+| Maintainability | Developers can modify, update, and fix the system without excessive difficulty | A developer adds a payment method in a short period |
+| Portability | The system works across supported environments | An app runs across several Android versions |
 
-Draw the main stages from top to bottom, label every box, and explain what happens at each stage. A correct flowchart plus a brief explanation is usually clearer than a large paragraph.
+For exams, learn the eight names and be able to explain each in plain language. The examples above follow the slide deck.
 
-## For a numerical or formula question
+## 6.3 Quality Assurance (QA) vs Quality Control (QC)
 
-Write the formula, define each symbol, substitute the given values, show the calculation, and state the result with a short interpretation. For accuracy, precision, and recall, first identify TP, TN, FP, and FN before using a formula.
+**Quality Assurance (QA)** focuses on the process used to prevent defects. It is proactive and operates throughout the life cycle. Activities include audits, reviews, standards, and training.
 
-## For an applications question
+**Quality Control (QC)** focuses on finding defects in the product. It is more reactive and includes testing, inspection, and defect reporting.
 
-Avoid listing application names alone. Explain the link between the task and the technique. For example, background subtraction separates moving foreground objects from a relatively stationary background, which makes it useful in CCTV monitoring.
+| Quality Assurance (QA) | Quality Control (QC) |
+|---|---|
+| Focuses on process | Focuses on product |
+| Works to prevent defects | Works to find and remove defects |
+| Proactive | More reactive |
+| Applies throughout the life cycle | Often checks the developed product before release in the slides |
+| Example: review requirements before coding | Example: run test cases against the application |
+| The slides describe responsibility as shared across the team | The slides place primary responsibility with the QA/Test team |
+
+**Memory tip:** QA improves the process to stop defects being created. QC checks the product to find defects that exist.
+
+## 6.4 Error, fault, defect, and failure
+
+The slides teach the chain **Error → Fault → Defect → Failure**. These terms describe different stages in a problem's path from a human mistake to incorrect live behaviour.
+
+- **Error:** A human mistake made by a developer, analyst, or designer. Example: someone misreads “credit” as “debit” in a payment requirement.
+- **Fault (bug):** An incorrect item in code or a document that results from the error. Example: the code subtracts an amount from the receiver's balance when it should add it.
+- **Defect:** The incorrect behaviour becomes observable during testing. Example: a test shows that the receiver's balance decreases rather than increases.
+- **Failure:** The system shows incorrect behaviour in the live production environment. Example: a customer sees the wrong account balance and contacts the bank.
+
+The source sometimes uses “defect” more broadly in other slides. For the specific chain above, keep the four stages distinct as the module teaches them.
+
+### Why early detection matters
+
+A fault that survives code review and testing can reach users, where it may cost much more to diagnose and correct. The slides give the example of requirements fixes costing 1× and production fixes costing 100×.
+
+## 6.5 Case study: Ariane 5 rocket
+
+The slides use the 1996 Ariane 5 launch failure as an example of a defect escaping earlier checks.
+
+- **Error:** An engineer assumed that a horizontal velocity value would always fit into a 16-bit variable, based on the earlier Ariane 4 context.
+- **Fault:** The code did not handle overflow when converting a larger value to the smaller representation.
+- **Testing gap:** The relevant flight profile had not been tested.
+- **Failure:** The flight computer failed shortly after launch. The backup computer ran the same faulty code, and the rocket self-destructed.
+
+**Lesson from the slides:** Review should catch mistaken assumptions, and testing should cover the scenarios in which those assumptions may not hold.
+
+## 6.6 Where defects originate
+
+The slides state that defects can start during any SDLC phase. They provide the following fix-cost multipliers:
+
+| Phase | Example defect origin | Cost multiplier shown |
+|---|---|---:|
+| Requirements | Ambiguous, missing, or incorrect assumptions | 1× |
+| System design | Wrong architecture or missing module interactions | 5× |
+| Detailed design | Incorrect module specifications or missing error handling | 10× |
+| Coding | Logic errors, off-by-one errors, null pointers, or wrong APIs | 15× |
+| Unit testing | Environment issues or incorrect test data | 20× |
+| Integration testing | Interface mismatch between modules | 30× |
+| System testing | Performance issues or environment differences | 40× |
+| Production | Defects that escaped earlier checks | 100× |
+
+These multipliers come from the slides and serve to show the rising cost of late discovery.
+
+### Root causes and prevention
+
+| Root cause | Example in the slides | Prevention approach in the slides |
+|---|---|---|
+| Requirement problems | Ambiguous specifications and missing edge cases | Structured requirement reviews |
+| Design flaws | Poor module design or missing error handling | Architecture reviews |
+| Coding mistakes | Logic errors, hardcoded values, wrong algorithms | Code reviews and pair programming |
+| Environment issues | Works on a development machine but fails in production | Containerization, such as Docker |
+| Data problems | Unexpected formats, null values, special characters | Robust test data with edge cases |
+| Third-party integration | API changes or incompatible versions | Contract testing and API mocking |
+| Communication gaps | Developers and testers interpret requirements differently | Definition of Done and shared criteria |
+| Time pressure | Teams take shortcuts or skip tests | Risk-based testing and management support |
+
+## 6.7 Case study: IRCTC overload
+
+The slides describe a case in which the Tatkal booking website crashed because the requirements did not state a clear load requirement. The design expected around 5,000 concurrent users, while the example describes 10–15 lakh users arriving at roughly the same time.
+
+The slides list these improvements:
+
+- Add a specific performance requirement for concurrent users.
+- Make JMeter load testing mandatory before peak seasons.
+- Add CDN, caching, and horizontal scaling to the architecture.
+- Introduce a queue-based booking system.
+
+**Lesson:** A vague requirement such as “the site should handle ticket bookings” is not enough. The requirement should describe the expected workload and the system's behaviour under it.
+
+## 6.8 Defect taxonomy
+
+A **defect taxonomy** is a systematic way to classify defects. Classification makes it easier to communicate, prioritize fixes, identify recurring problems, and produce useful quality reports.
+
+The slides use three main dimensions:
+
+1. Severity.
+2. Priority.
+3. Defect type.
+
+### Classification by severity
+
+**Severity** measures the technical impact of a defect on the system. The slides say the tester sets severity.
+
+| Severity | Meaning in the slides | Example | Response described in the slides |
+|---|---|---|---|
+| Critical / Blocker | System is unusable and there is no workaround | Payment gateway fails and no orders can be placed | Fix within hours |
+| High / Major | A core feature is broken, but a workaround exists | Coupon code never applies the discount | Fix within 24 hours |
+| Medium / Moderate | A feature partially works and a reasonable workaround exists | Search results work but sort incorrectly | Fix in the current sprint |
+| Low / Minor | Cosmetic issue with no functional impact | Hover colour differs from the expected colour | Fix in a later sprint |
+
+### Classification by priority
+
+**Priority** measures the business urgency of fixing a defect. The slides assign this decision to the Project Manager or Product Owner.
+
+Severity and priority are related, but they are **not the same thing** and the slides emphasize that they can vary independently.
+
+| Combination | Example from the slides | Meaning |
+|---|---|---|
+| High severity + high priority | Login fails for every user | Serious technical impact and urgent business need |
+| High severity + low priority | Admin XML export crashes, but very few people use it | Serious technical impact, lower immediate business urgency |
+| Low severity + high priority | CEO photo caption contains a spelling error on the homepage | Small technical issue, but important to the business or brand |
+| Low severity + low priority | Slightly incorrect FAQ footer colour | Minor impact and low urgency |
+
+**Exam tip:** State who assigns each one: tester assigns severity; Project Manager/Product Owner assigns priority according to the slides.
+
+### Classification by defect type
+
+The slides identify these categories:
+
+- **Functional:** A feature does not behave as specified, such as login rejecting valid credentials.
+- **Performance:** The system is slow or uses too many resources, such as a product page that takes 12 seconds to load.
+- **Security:** A vulnerability permits unauthorized access, such as one user viewing another user's order history.
+- **UI/Cosmetic:** The interface has visual problems, such as text overflowing a button on mobile.
+- **Compatibility:** A feature works in one browser but not another.
+- **Data:** The system stores, retrieves, or displays incorrect values.
+- **Usability:** A feature works but confuses the user.
+- **Integration:** Two modules do not work together correctly.
+- **Regression:** Previously working functionality breaks after a code change.
+- **Documentation:** Help text or error messages contain incorrect information.
+
+## 6.9 Defect life cycle
+
+The **defect life cycle** is the sequence of states a defect passes through from discovery to closure. The slides emphasize that each status should have an owner, state changes should have comments and evidence, and every defect should receive appropriate action within the agreed process.
+
+### Normal flow
+
+**New → Assigned → Open → Fixed → Ready for Retest → In Retest → Verified/Closed**
+
+| Status | Meaning | Typical owner in the slides |
+|---|---|---|
+| New | Tester records the defect | Tester |
+| Assigned | Test lead assigns the defect to a developer | Test Lead |
+| Open | Developer investigates and works on the fix | Developer |
+| Fixed | Developer applies the fix and deploys it to QA | Developer |
+| Ready for Retest | The fix is waiting for tester verification | Developer/DevOps |
+| In Retest | Tester checks the fix | Tester |
+| Verified/Closed | Tester confirms the defect is fixed and closes it | Tester |
+| Reopened | The fix was incorrect, so the issue returns to active work | Tester |
+| Deferred | Business postpones the fix to a later release | Project Manager |
+| Rejected | Team decides the behaviour is not a defect | Developer and Lead in the slides |
+| Cannot Reproduce | Tester cannot reproduce the reported issue | Tester |
+| Duplicate | Another defect already records the same issue | Test Lead |
+| On Hold | Progress waits for an external dependency | Project Manager in the slides |
+
+### Exception paths
+
+- **Fix is incorrect:** In Retest → Reopened → Open → Fixed → Retest again.
+- **Not a defect:** Assigned → Rejected.
+- **Fix postponed:** Open → Deferred.
+- **Already reported:** New → Duplicate, linked to the existing report.
+- **Cannot reproduce:** New → Cannot Reproduce.
+- **External dependency blocks progress:** Open → On Hold → Open when the dependency is resolved.
+
+### Example: order-tracking bug
+
+The slides show an example in which a tester reports an order stuck at “Preparing.” The test lead assigns the issue, a developer finds that a WebSocket update drops on a particular Android version, the developer deploys a fix to QA, the tester verifies it, attaches evidence, and closes the defect.
+
+## 6.10 Defect management process and triage
+
+The slides present a seven-step defect management process:
+
+1. **Discovery:** A tester finds the problem during execution or review.
+2. **Logging:** The tester records the issue in a tracking tool.
+3. **Classification:** The team classifies its severity, priority, type, and module.
+4. **Assignment:** The test lead assigns it to the appropriate developer.
+5. **Fixing:** The developer investigates, corrects the issue, and deploys the fix to QA.
+6. **Verification:** The tester retests the fix and runs regression checks on affected areas.
+7. **Closure:** The team closes the defect when the fix works, or reopens it if the problem remains.
+
+### Defect triage meeting
+
+A **defect triage meeting** is a regular meeting in which relevant team members review newly reported defects and decide what to do next.
+
+The slides list these questions:
+
+- Is this a real defect or intended behaviour?
+- What severity and priority should it receive?
+- Who should fix it?
+- Does it block the sprint or release?
+- Should the team postpone it to a later release?
+
+The attendees named in the slides are the Test Lead, Development Lead, Project Manager, and Business Analyst. The slides suggest daily meetings during active testing sprints and twice-daily meetings near a release deadline.
+
+## 6.11 Defect tracking tools
+
+The slides list these defect-management tools:
+
+| Tool | Role described in the slides |
+|---|---|
+| JIRA | Defect tracking, workflow automation, dashboards, and Agile boards |
+| Bugzilla | Open-source issue tracking with notifications |
+| Azure DevOps | Integration with repositories and CI/CD pipelines |
+| MantisBT | Issue tracking and time tracking |
+| GitHub Issues | Links issues with code commits and pull requests |
+| HP ALM / Quality Center | Enterprise traceability, compliance, and reporting |
+
+## 6.12 Preparing a defect report
+
+A **defect report** describes a problem clearly enough for a developer to reproduce it, understand it, and fix it, even without being present when the tester found it.
+
+The slides emphasize this principle: **the steps to reproduce are the most important field**. Without clear steps, developers may not be able to recreate the problem and may waste time asking follow-up questions.
+
+### Properties of a good defect report
+
+- **Clear:** Every field uses unambiguous wording.
+- **Complete:** The report includes all required details.
+- **Concise:** It contains facts without unnecessary text.
+- **Reproducible:** Another person can follow the steps and see the same behaviour.
+- **Evidence-based:** It includes useful screenshots, videos, logs, or other evidence.
+
+### Mandatory information and template fields
+
+| Field | What it should contain |
+|---|---|
+| Defect ID | Unique ID, often generated by the tracking tool |
+| Title/Summary | One concise line explaining where, what, and impact |
+| Module/Feature | The affected part of the application |
+| Linked requirement | Requirement or user story that the behaviour violates |
+| Severity | Technical impact |
+| Priority | Business urgency |
+| Defect type | Functional, performance, UI, security, compatibility, or other category |
+| Environment | Operating system, browser, device, application version, and build |
+| Reported by/date | Tester and report date |
+| Steps to reproduce | Numbered, atomic actions beginning from a known state |
+| Expected result | What should happen according to the requirement |
+| Actual result | What happened, described factually |
+| Reproducibility | How consistently the tester can reproduce the issue |
+| Workaround | Temporary alternative, if one exists |
+| Attachments | Screenshots, video, logs, and other evidence |
+
+### Good vs bad defect titles
+
+The slides recommend this title pattern:
+
+**[Component] [Action] [fails/crashes] when [condition] on [platform]**
+
+Examples:
+
+- Weak: “Button not working.”
+- Strong: “Add to Cart button does not respond on iPhone 14 running iOS 17.”
+- Weak: “Login issue.”
+- Strong: “Login fails silently with valid credentials when VPN is active.”
+- Weak: “Error on payment.”
+- Strong: “UPI payment fails with `TXN_TIMEOUT` for amounts above ₹10,000.”
+
+A good title helps the developer understand the issue before opening the full report.
+
+### Advantages of good defect reports
+
+The slides list faster fixes, fewer clarification conversations, more accurate project tracking, better root-cause analysis, better defect prevention, stronger legal/compliance records, a searchable knowledge base, stakeholder confidence, and the ability to turn closed defects into regression tests.
+
+## 6.13 Defect prevention
+
+**Defect prevention** uses proactive steps to reduce the chance of introducing defects. The slides use a cost model of Prevention ($1) < Internal Failure ($10) < External Failure ($100) to illustrate why it is usually cheaper to prevent issues early than to correct them after release.
+
+### Techniques listed in the slides
+
+| Technique | Phase | How it helps |
+|---|---|---|
+| Requirements reviews | Requirements | Catch unclear or incomplete requirements early |
+| Ambiguity-review checklists | Requirements | Find vague statements and missing cases systematically |
+| Design reviews | Design | Identify architecture and interaction problems before coding |
+| Code reviews | Development | Find logic errors, security weaknesses, and bad practices |
+| Pair programming | Development | One developer writes code while another reviews continuously |
+| Static code analysis | Development | Tools inspect source code without executing it |
+| Test-Driven Development (TDD) | Development | Tests written before code help define expected behaviour |
+| Coding standards | Development | Consistent conventions reduce avoidable errors |
+| Defect Causal Analysis (DCA) | After defects occur | Identify root causes and prevent them from returning |
+| Definition of Done (DoD) | Sprint | Clear completion criteria stop unfinished work from being labelled done |
+| Automated regression tests | CI/CD | Catch previously fixed defects when changes reintroduce them |
+
+## 6.14 Five Whys analysis
+
+**Five Whys** is a root-cause analysis technique. The team asks “Why?” repeatedly until it reaches the underlying reason instead of stopping at the visible symptom.
+
+The slides use a delivery-status example:
+
+1. **Why did the order show “Delivered”?** The delivery agent marked it as delivered in the app.
+2. **Why could the agent mark it delivered without completing delivery?** GPS verification was bypassed during poor connectivity.
+3. **Why did poor connectivity bypass GPS verification?** A five-second timeout silently passed when verification failed.
+4. **Why did the timeout silently pass?** A developer assumed connectivity problems would be temporary.
+5. **Why was failure behaviour not defined?** The requirements did not explain what should happen when GPS verification failed.
+
+**Root cause in the slides:** A missing requirement for GPS-verification failure handling.
+
+**Prevention action:** Add a requirement-review checklist item that asks what the system should do when GPS is unavailable.
+
+## 6.15 Static code analysis: SonarQube
+
+The slides define **SonarQube** as a tool that analyzes source code for possible bugs, security vulnerabilities, and code-quality problems without executing the code.
+
+The slide lists these categories:
+
+- **Bugs:** Code likely to produce incorrect behaviour, such as a null-pointer dereference or unclosed resource.
+- **Vulnerabilities:** Security weaknesses such as SQL injection risk, hardcoded passwords, or XSS.
+- **Code smells:** Maintainability problems, such as overly long methods or duplicated code.
+- **Coverage:** How much code unit tests cover.
+- **Duplications:** Copy-pasted code that should be reviewed or refactored.
+- **Technical debt:** An estimate of the effort needed to fix accumulated code-quality problems.
+
+The slides give an example of a quality gate that blocks a merge when code coverage falls below a threshold. Treat the particular threshold as the lecture example, not a universal requirement.
+
+## 6.16 Test metrics and measurements
+
+**Test metrics** are numerical measures used to evaluate testing progress, product quality, process efficiency, and release readiness. They give the team evidence rather than relying only on opinions.
+
+The slides emphasize that metrics become more useful when the team follows trends over time. A single data point rarely explains the full quality picture.
+
+### Important formulas
+
+| Metric | Formula in the slides | Target or interpretation shown |
+|---|---|---|
+| Test coverage | (Tests executed ÷ Total planned tests) × 100 | At least 95% |
+| Requirement coverage | (Requirements with test cases ÷ Total requirements) × 100 | 100% |
+| Test pass rate | (Tests passed ÷ Tests executed) × 100 | At least 95% |
+| Test fail rate | (Tests failed ÷ Tests executed) × 100 | Less than 5% |
+| Defect density | Defects found ÷ size in KLOC | Decreasing trend |
+| Defect Removal Efficiency (DRE) | (Pre-release defects ÷ Total defects) × 100 | At least 95% |
+| Defect leakage | (Post-release defects ÷ Total defects) × 100 | Less than 5% |
+| Mean Time to Detect (MTTD) | Average time from defect introduction to detection | Decreasing trend |
+| Mean Time to Resolve (MTTR) | Average time from detection to closure | Decreasing trend |
+| Defect rejection rate | (Rejected defects ÷ Total logged defects) × 100 | Less than 10% |
+| Automation coverage | (Automated tests ÷ Total regression tests) × 100 | At least 80% |
+
+**KLOC** means thousand lines of code. The table reproduces the definitions and targets shown in the lecture slides.
+
+### Defect Removal Efficiency (DRE)
+
+DRE measures the percentage of all discovered defects that the team finds before release.
+
+**Formula:**
+
+`DRE = (Pre-release defects ÷ Total defects) × 100`
+
+The slides divide DRE into these broad ranges:
+
+- Below 85%: poor quality process, with many bugs reaching users.
+- 85%–94%: industry average in the lecture table.
+- 95%–99%: excellent quality process.
+- 100%: theoretical perfection, which the slides say is not realistic.
+
+The slide example has 950 defects found before release and 50 found after release, for a total of 1,000. It calculates DRE as `(950 ÷ 1,000) × 100 = 95%`, which the slides classify as excellent. The team should still analyze the 50 post-release defects to find patterns and determine whether its earlier testing could have caught them.
+
+### Defect leakage
+
+Defect leakage measures the proportion of defects found after release:
+
+`Defect leakage = (Post-release defects ÷ Total defects) × 100`
+
+The slides set a target below 5%. A lower leakage rate indicates that a smaller proportion of the defects reach users, although the team should also consider defect severity and impact.
+
+## 6.17 Test Summary Report
+
+A **Test Summary Report** describes the testing completed and helps stakeholders decide whether the product is ready for release.
+
+The slides list these sections:
+
+- Project name, release version, and testing cycle.
+- Planned, executed, passed, failed, and blocked test counts.
+- Pass rate.
+- Defect counts by severity.
+- Major open defects.
+- Requirement coverage.
+- DRE.
+- Quality risks.
+- Go/No-Go recommendation.
+- Status of exit criteria.
+
+### Important source inconsistency
+
+The slides show an example with 492 tests executed and 467 passed, then report a pass rate of 94.9%. Elsewhere on the same example, the exit-criteria line labels “pass rate ≥ 95%” as met. Those two statements do not agree: a reported 94.9% is below a 95% threshold. In an exam, explain that a report must compare the actual metric with the threshold accurately and must not mark an unmet criterion as met.
+
+## 6.18 Automation tools and defect reporting
+
+The slides explain that automation can improve how quickly teams detect, document, track, and prevent defects.
+
+| Tool | Contribution described in the slides |
+|---|---|
+| Selenium WebDriver | Detects UI defects and compares actual and expected behaviour |
+| Allure Reports | Adds step-by-step logs, screenshots, videos, environment details, and trends |
+| JIRA + Zephyr | Can link failures to tickets or create defect records from test results |
+| SonarQube | Finds potential code defects and vulnerabilities before runtime testing |
+| Postman / Newman | Tests APIs and records requests and responses |
+| JMeter | Detects performance issues using workload tests |
+| Applitools / Percy | Compare screenshots to find visual changes |
+| Slack / Teams webhooks | Notify the team when a test fails |
+
+### Allure report capabilities listed in the slides
+
+- Failure screenshots.
+- Step-by-step logs.
+- Test-history trends.
+- Categories that separate product bugs, automation bugs, and environment issues.
+- Links to existing defect tickets.
+- Environment details such as browser, operating system, and application version.
+- Timeline views that help identify slow tests and parallel-execution bottlenecks.
+- Identification of flaky tests with inconsistent pass/fail results.
+
+## 6.19 Automated defect workflow example
+
+The slides provide a workflow in which a developer pushes a change, a CI tool runs code analysis and unit tests, Selenium detects a failure, evidence is captured, Slack notifies the team, a JIRA defect is created, the developer inspects the report, fixes the root cause, and reruns the tests. The pipeline approves the merge after the tests pass.
+
+**Main lesson:** Automation is most useful when it connects execution, evidence, reporting, ownership, correction, and regression testing into one clear process.
+
+### Module 6 revision questions
+
+1. Define software quality. Explain the eight ISO 25010 characteristics listed in the slides.
+2. Differentiate QA and QC.
+3. Explain the Error → Fault → Defect → Failure chain with a banking example.
+4. Explain the Ariane 5 case study and its lesson for testing.
+5. Explain where defects originate and how their correction cost changes across the SDLC.
+6. Define defect taxonomy and explain severity, priority, and defect type.
+7. Differentiate severity from priority using all four combinations.
+8. Explain the normal defect life cycle and its exception paths.
+9. What is defect triage? List its decisions and attendees.
+10. Explain the fields and properties of a good defect report.
+11. Explain defect prevention techniques and the Five Whys method.
+12. What does SonarQube detect?
+13. Define test metrics and write the formulas for pass rate, DRE, defect leakage, and automation coverage.
+14. What does a Test Summary Report contain? Why must the report compare results with exit criteria accurately?
 
 ---
 
-# Final-Exam Practice Questions
+# Cross-Module Comparison and Quick Revision
 
-These questions follow the concepts and question styles in the supplied lecture notes. Practise writing complete answers without looking at the guide.
+## A. Testing concepts that are easy to confuse
 
-## Unit 1: Computer Vision Foundations
+| Concepts | Difference to remember |
+|---|---|
+| Verification vs validation | Verification checks work products against specifications; validation checks whether the product meets user needs |
+| Static vs dynamic testing | Static testing examines without running code; dynamic testing executes code |
+| Black-box vs white-box testing | Black-box focuses on observable behaviour and requirements; white-box examines internal structure |
+| Manual vs automation testing | Manual testing uses a person to execute actions; automation uses scripts and tools |
+| Functional vs non-functional testing | Functional checks what the system does; non-functional checks how well it operates |
+| Unit vs integration testing | Unit checks one component; integration checks interactions between components |
+| System vs acceptance testing | System testing checks the integrated system; acceptance testing checks whether it meets users' or business needs |
+| Smoke vs sanity testing | Smoke checks basic stability of a new build; sanity checks a focused area after a change |
+| Retesting vs regression testing | Retesting confirms a specific fix; regression testing checks that existing features still work after changes |
+| Test strategy vs test plan | Strategy defines the broad testing approach; plan defines the details for a project/release |
+| Test case vs test data | A test case contains steps and expected results; test data supplies the values used in those steps |
+| Severity vs priority | Severity measures technical impact; priority measures business urgency |
+| QA vs QC | QA improves the process to prevent defects; QC tests the product to find defects |
+| Error vs fault vs defect vs failure | Human mistake → incorrect artifact/code → observable incorrect behaviour during testing → live production failure |
+| Absolute vs relative XPath | Absolute XPath follows a path from the root; relative XPath searches by a matching expression and is preferred in the slides |
+| Implicit vs explicit wait | Implicit wait applies globally to element searches; explicit wait waits for a specific condition |
+| Selenium vs JMeter | The slides mainly use Selenium for browser/UI automation and JMeter for load/performance testing |
+| Data-driven testing vs POM | DDT separates test data from test logic; POM separates page locators/actions from test logic |
 
-1. Define Computer Vision. Explain why it is important and give suitable applications.
-2. Differentiate Image Processing and Computer Vision with examples.
-3. Compare human vision and Computer Vision.
-4. Explain the evolution of Computer Vision from hand-crafted features to deep learning.
-5. Explain image classification, object detection, semantic segmentation, instance segmentation, and object tracking.
-6. Describe low-level, mid-level, high-level, and cross-modal vision.
-7. Explain the main challenges in Computer Vision.
-8. Describe Computer Vision applications in healthcare and explain why validation and human oversight matter.
-9. Draw and explain a Computer Vision system's components.
-10. Explain the fruit-sorting example using the full vision-system pipeline.
-11. Define pixel, intensity, resolution, spatial resolution, and DPI.
-12. Compare RGB, grayscale, HSV, CMYK, and YCbCr color models.
-13. Describe a Computer Vision pipeline for a surveillance system.
-14. The lecture topic list names the pinhole camera model, but the supplied unit text provides no full derivation. Review the instructor's material if this is included in your exam.
+## B. Formulas to remember
 
-## Unit 2: Image Processing Fundamentals
+| Metric | Formula |
+|---|---|
+| Test coverage | `(Tests executed ÷ Total planned tests) × 100` |
+| Requirement coverage | `(Requirements with test cases ÷ Total requirements) × 100` |
+| Pass rate | `(Tests passed ÷ Tests executed) × 100` |
+| Fail rate | `(Tests failed ÷ Tests executed) × 100` |
+| Defect density | `Defects found ÷ KLOC` |
+| DRE | `(Pre-release defects ÷ Total defects) × 100` |
+| Defect leakage | `(Post-release defects ÷ Total defects) × 100` |
+| Defect rejection rate | `(Rejected defects ÷ Total logged defects) × 100` |
+| Automation coverage | `(Automated tests ÷ Total regression tests) × 100` |
 
-1. Define image representation, sampling, and quantization.
-2. Differentiate sampling and quantization with examples.
-3. Explain image enhancement and describe contrast enhancement, histogram equalization, denoising, and sharpening.
-4. Explain scaling, rotation, translation, affine transformation, and perspective transformation.
-5. Explain linear and non-linear pixel transformations.
-6. Define spatial-domain filtering and distinguish point processing from neighborhood processing.
-7. Explain how a kernel processes an image. Differentiate correlation and convolution.
-8. Explain zero, replicate, mirror, and crop handling at image borders.
-9. Compare mean, weighted-average, Gaussian, median, maximum, and minimum filters.
-10. Explain the Laplacian operator with the 4-neighbour and 8-neighbour masks.
-11. Explain unsharp masking and high-boost filtering step by step.
-12. Differentiate smoothing and sharpening filters.
-13. Explain the Fourier Transform and describe the frequency-domain filtering workflow.
-14. Compare low-pass, high-pass, band-pass, notch, and band-reject filters.
-15. Describe common image-noise types and suitable reduction methods.
-16. Compare Roberts, Prewitt, and Sobel edge detectors.
-17. Explain the five stages of the Canny edge detector.
-18. Define erosion and dilation. Explain their effects on foreground shapes.
+Remember: MTTD is the average time from defect introduction to detection. MTTR is the average time from detection to closure. The slides state that both should generally trend downward.
 
-## Unit 3: Feature Detection and Extraction
+## C. Main process sequences
 
-1. Define a feature and explain the properties of a good feature.
-2. Draw and explain the feature-based vision pipeline.
-3. Explain edge detection and its role in feature extraction.
-4. Explain the Harris corner detector, including flat, edge, and corner regions.
-5. Write the Harris response expression and explain its terms.
-6. Explain SIFT step by step.
-7. Explain SURF and how integral images and box filters support faster computation.
-8. Explain ORB and the roles of FAST and rotated BRIEF.
-9. Compare SIFT, SURF, and ORB.
-10. Define texture. Explain contrast, homogeneity, energy, and entropy.
-11. Explain GLCM and list texture properties derived from it.
-12. Explain the Local Binary Pattern (LBP) algorithm.
-13. Describe Gabor filters and their role in texture analysis.
-14. Explain contour, chain code, polygon approximation, convex hull, skeleton, moments, and Fourier descriptors.
-15. Define feature matching and explain its stages.
-16. Differentiate Euclidean distance, Hamming distance, and cosine similarity.
-17. Compare BFMatcher and FLANN.
-18. Explain Lowe's ratio test and RANSAC's role in rejecting incorrect matches.
+**STLC:** Requirements → Planning → Test Case Design → Environment Setup → Execution → Closure.
 
-## Image Segmentation and Related Methods
+**Test execution:** Check entry criteria → Run tests by priority → Record actual results → Compare with expected results → Capture evidence on failure → Log defect → Update reports → Retest and run regression → Meet exit criteria and sign off.
 
-1. Define image segmentation and explain its applications.
-2. Explain thresholding and distinguish global from adaptive thresholding.
-3. Explain region growing step by step, including the role of seed selection.
-4. Explain K-means clustering for image segmentation.
-5. Describe the watershed algorithm and explain how it separates touching objects.
-6. Explain template matching and discuss its limitations.
-7. Explain the KNN classification algorithm.
-8. Explain SVM and the meaning of a separating hyperplane and margin.
-9. Describe Haar Cascade face detection.
-10. Differentiate face detection from face recognition.
-11. Define TP, TN, FP, and FN.
-12. Explain accuracy, precision, and recall with their formulas and simple examples.
+**Defect life cycle:** New → Assigned → Open → Fixed → Ready for Retest → In Retest → Verified/Closed.
 
-## Unit 5: Deep Learning in Computer Vision
+**Selenium architecture:** Test Script → WebDriver API → Browser Driver → Browser.
 
-1. Define Deep Learning and explain the layers of a neural network.
-2. Define a neuron, weight, bias, and activation function.
-3. Explain why CNNs are suitable for image processing and classification.
-4. Explain convolution, feature maps, ReLU, pooling, flattening, fully connected layers, and output layers.
-5. Draw and explain a complete CNN for cat-versus-dog classification.
-6. Explain automatic feature learning in CNNs.
-7. Differentiate image classification and object detection.
-8. Define bounding boxes and confidence scores.
-9. Explain original R-CNN and why it is slow.
-10. Explain the changes from R-CNN to Fast R-CNN and Faster R-CNN.
-11. Explain YOLO, the original grid idea, and Non-Maximum Suppression.
-12. Compare R-CNN and YOLO.
-13. Define transfer learning and fine-tuning.
-14. Compare feature extraction and fine-tuning.
-15. List advantages, applications, and limitations of YOLO.
+**Selenium CI/CD:** Push code → CI build and unit tests → Smoke suite → Grid/browser execution → Capture failure evidence → Generate report → Notify team → Block or approve merge.
 
-## Unit 6: Motion Analysis and Applications
+**Defect prevention:** Review requirements → Review design → Review code → Use static analysis and coding standards → Test systematically → Analyze root causes → Add regression tests.
 
-1. Define motion analysis, video, frame, and frame rate.
-2. Draw and explain a video-processing pipeline.
-3. Explain motion detection and frame differencing.
-4. Define optical flow and explain its vector representation.
-5. Compare sparse and dense optical flow.
-6. Explain Lucas-Kanade optical flow and its three assumptions.
-7. Differentiate object detection and object tracking.
-8. Explain point, kernel-based, bounding-box, and detection-based tracking.
-9. Define background subtraction and explain simple subtraction, MOG, MOG2, and KNN background subtraction.
-10. Explain video analytics and draw its pipeline.
-11. Differentiate face detection and face recognition.
-12. Explain motion analysis applications in medical imaging, autonomous vehicles, augmented reality, industrial surveillance, and smart surveillance.
-13. Draw and explain the complete motion-analysis pipeline.
-14. List the advantages and challenges of motion analysis.
-15. Explain a smart-parking system using motion detection, background subtraction, object detection, tracking, and video analytics.
+## D. Short-answer practice
 
----
+Use these prompts to check whether you can explain the central terms without reading the guide.
 
-# Quick Revision Sheet
+1. What is software testing?
+2. What are verification and validation?
+3. What does STLC stand for?
+4. What is the main limitation of the Waterfall model in the slides?
+5. What does RAD stand for?
+6. What is static testing?
+7. What is black-box testing?
+8. What is field-level validation?
+9. What is regression testing?
+10. What does UAT check?
+11. What is a test strategy?
+12. What are entry and exit criteria?
+13. What is Equivalence Partitioning?
+14. What is Boundary Value Analysis?
+15. What is smoke testing?
+16. What is a locator in Selenium?
+17. What are the four WebDriver architecture layers?
+18. What is Selenium Grid?
+19. What does data-driven testing separate?
+20. What is Page Object Model?
+21. What are severity and priority?
+22. What is the defect life cycle?
+23. What is a good defect report's most important field?
+24. What is defect prevention?
+25. What does DRE measure?
 
-- **Computer Vision:** interprets visual data and returns meaningful information or decisions.
-- **Image Processing:** transforms or improves pixel data.
-- **Sampling:** chooses pixel locations; controls spatial resolution.
-- **Quantization:** chooses allowed pixel-intensity levels; controls intensity resolution.
-- **Smoothing:** reduces local variation and some noise, but may blur edges.
-- **Sharpening:** emphasizes boundaries and fine details, but may amplify noise.
-- **Canny:** Gaussian smoothing → gradients → non-maximum suppression → double threshold → hysteresis.
-- **Feature pipeline:** detect → describe → match → verify geometry → apply.
-- **Harris:** detects corners by checking intensity change when a window shifts.
-- **SIFT:** scale-space extrema, keypoint localization, orientation, 128-value descriptor.
-- **SURF:** Hessian approximation and fast box filters; standard descriptor has 64 values.
-- **ORB:** FAST detection + rotated BRIEF binary descriptor; Hamming distance.
-- **GLCM:** gray-level pair counts; **LBP:** local binary neighbor pattern; **Gabor:** orientation/frequency-sensitive texture filter.
-- **Global thresholding:** one threshold. **Adaptive thresholding:** local thresholds.
-- **Region growing:** seed plus similar neighboring pixels.
-- **K-means:** assign pixels to the nearest centroid and update centroids.
-- **Watershed:** uses boundaries between regions to separate touching objects.
-- **KNN:** predicts from nearby labelled examples. **SVM:** learns a separating hyperplane.
-- **Accuracy:** overall correctness. **Precision:** trustworthiness of positive predictions. **Recall:** fraction of actual positives found.
-- **CNN:** convolution → ReLU → pooling, repeated → flatten → fully connected → output.
-- **R-CNN:** region proposals and region processing. **YOLO:** direct, fast object detection in one model pipeline.
-- **Transfer learning:** reuse previously learned features. **Fine-tuning:** continue training some or all model weights for the new task.
-- **Motion detection:** identifies changes. **Optical flow:** estimates apparent point movement. **Tracking:** follows objects across frames.
-- **Lucas-Kanade:** local feature-point tracking under brightness-constancy, small-motion, and similar-local-motion assumptions.
-- **Background subtraction:** compares the current frame with a background model.
-- **Frame differencing:** compares consecutive frames.
+## E. Long-answer practice
+
+Prepare structured answers for these likely exam-style prompts:
+
+1. Explain the purpose of software testing and distinguish verification from validation.
+2. Explain the STLC phases and describe the output or purpose of each phase.
+3. Compare Waterfall, V-Model, Incremental, Iterative, RAD, Evolutionary, and Prototype models based on the material in Module 1.
+4. Explain static, dynamic, black-box, and white-box testing.
+5. Describe UI testing for a registration form, including field validation, dependent fields, error messages, and overall form behaviour.
+6. Compare manual and automated testing, including benefits, limitations, and suitable use cases.
+7. Explain unit, integration, system, and acceptance testing, in sequence, with examples.
+8. Explain test strategy, test plan, entry/exit criteria, ambiguity review, and test case design techniques.
+9. Explain Equivalence Partitioning and Boundary Value Analysis using the examples in the slides.
+10. Describe the test execution process and distinguish smoke, sanity, retesting, regression, and exploratory testing.
+11. Explain Selenium WebDriver architecture, locators, browser drivers, and Grid.
+12. Explain explicit waits, dropdown handling, alerts, iFrames, and windows in Selenium.
+13. Explain data-driven testing and Page Object Model, including how each improves maintainability.
+14. Explain the eight software quality characteristics listed in the ISO 25010 slide.
+15. Explain the defect life cycle, defect triage, and preparation of a good defect report.
+16. Explain defect severity versus priority with four examples.
+17. Explain defect prevention, Five Whys analysis, and static code analysis.
+18. Define and explain test coverage, pass rate, DRE, defect leakage, MTTD, MTTR, and automation coverage.
+19. Explain how automation tools improve the defect management workflow.
+
+## F. Source notes and coverage gaps
+
+This guide follows the content in the supplied module PDFs. The source slides have a few gaps or inconsistencies that are worth recognizing:
+
+1. **Agile and Spiral:** Module 1 lists these process models but the provided slide text does not explain them in detail. The guide does not add a full description beyond the list.
+2. **Some Module 3 outline topics:** Internationalization testing, role-based access testing, and mobility testing appear in the outline but the slides do not provide detailed procedures. Security, usability, and compatibility receive only limited examples across the supplied modules.
+3. **Selenium and performance testing:** Module 1 broadly mentions Selenium for performance testing. Modules 4 and 5 place browser/UI automation with Selenium and assign load/performance testing to JMeter. This guide makes that distinction explicit rather than concealing the inconsistency.
+4. **Test Summary Report example:** The slide reports 94.9% pass rate but also labels a ≥95% pass-rate exit criterion as met. These claims conflict. A correct report must not mark a threshold as met when the actual metric falls below it.
+5. **Numbers in examples:** Values such as 95% coverage, 80% automation coverage, defect-cost multipliers, and company-specific performance figures are presented as lecture examples or targets. A project should use criteria agreed for its own context.
+6. **Source wording:** A few slides use overlapping terms such as error, fault, bug, and defect. For questions specifically about the error-to-failure chain, use the distinct stages explained in Module 6.
+
+## Final revision strategy
+
+Start with definitions and comparisons, because they appear throughout the six modules. Then learn the sequences: STLC, test execution, defect life cycle, Selenium architecture, and CI/CD workflow. Practise test-case design with the age and password examples, and practise defect metrics using the formulas. Finally, rehearse long answers aloud using definition → purpose → steps/types → example → advantages/limitations. If you can explain each comparison table without memorizing its exact wording, you have a strong foundation for the final examination.
