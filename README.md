@@ -15,9 +15,13 @@ Correct answers are marked with **[CORRECT]**. For MSQ questions, multiple answe
 **Options:**
 
 A. Focus on practical skills and hands-on experience.
+
 B. Development of critical thinking and analytical abilities. **[CORRECT]**
+
 C. Preparation to guide others in pursuing a PhD.
+
 D. Completion of coursework and examinations.
+
 
 **Answer:** B
 
@@ -30,9 +34,13 @@ D. Completion of coursework and examinations.
 **Options:**
 
 A. Clear and defined boundaries throughout the degree program.
+
 B. Opportunities for continuous discovery and learning. **[CORRECT]**
+
 C. Graduation day marking the completion of the degree.
+
 D. Acquisition of expertise and recognition in a specific field.
+
 
 **Answer:** B
 
@@ -45,9 +53,13 @@ D. Acquisition of expertise and recognition in a specific field.
 **Options:**
 
 A. Having prior knowledge is the most important factor for a student to work towards a PhD.
+
 B. Advisors expect students to define their own research problems without any guidance.
+
 C. Students should choose advisors based on their reputation and availability.
+
 D. Attitude, inclination to learn, and effective communication with the advisor are crucial. **[CORRECT]**
+
 
 **Answer:** D
 
@@ -60,9 +72,13 @@ D. Attitude, inclination to learn, and effective communication with the advisor 
 **Options:**
 
 A. The need to handle routine work and drudgery.
+
 B. The sudden shift in patterns from coursework to research. **[CORRECT]**
+
 C. The discovery process involved in understanding the research process.
+
 D. The pressure to obtain a degree and complete the research process.
+
 
 **Answer:** B
 
@@ -75,9 +91,13 @@ D. The pressure to obtain a degree and complete the research process.
 **Options:**
 
 A. Research allows for changing initial assumptions and exploring different approaches. **[CORRECT]**
+
 B. Research ensures that failures are minimized and success is guaranteed.
+
 C. Research provides a predefined path to follow, for sure eliminating the possibility of failure.
+
 D. Research discourages any changes in assumptions or approaches to maintain consistency.
+
 
 **Answer:** A
 
@@ -90,9 +110,13 @@ D. Research discourages any changes in assumptions or approaches to maintain con
 **Options:**
 
 A. Each individual step will always lead to something significant.
+
 B. The familiarity with the area helps in building experiments, but the results are often insignificant.
+
 C. Day-to-day experiments and results are usually significant and groundbreaking.
+
 D. Small steps are taken, and over time they contribute to something significant. **[CORRECT]**
+
 
 **Answer:** D
 
@@ -105,7 +129,9 @@ D. Small steps are taken, and over time they contribute to something significant
 **Options:**
 
 A. True
+
 B. False **[CORRECT]**
+
 
 **Answer:** B
 
@@ -118,7 +144,9 @@ B. False **[CORRECT]**
 **Options:**
 
 A. True **[CORRECT]**
+
 B. False
+
 
 **Answer:** A
 
@@ -131,7 +159,9 @@ B. False
 **Options:**
 
 A. True
+
 B. False **[CORRECT]**
+
 
 **Answer:** B
 
@@ -144,7 +174,9 @@ B. False **[CORRECT]**
 **Options:**
 
 A. True **[CORRECT]**
+
 B. False
+
 
 **Answer:** A
 
@@ -159,9 +191,13 @@ B. False
 **Options:**
 
 A. True
+
 B. False **[CORRECT]**
+
 C. Sometimes
+
 D. Never
+
 
 **Answer:** B
 
@@ -174,9 +210,13 @@ D. Never
 **Options:**
 
 A. It helps in getting a summary of work that has been done till date in some particular research area **[CORRECT]**
+
 B. It is helpful in ensuring that a research work is not getting repeated **[CORRECT]**
+
 C. It is helpful in understanding the approaches taken by scientists and what are the gaps in the processes **[CORRECT]**
+
 D. It is helpful in clarifying the controversial results that one can get **[CORRECT]**
+
 
 **Answer:** A, B, C, D
 
@@ -189,9 +229,13 @@ D. It is helpful in clarifying the controversial results that one can get **[COR
 **Options:**
 
 A. Keyword based search followed by sorting by year of publication
+
 B. Citation based search followed by sorting by year of publication
+
 C. Keyword based search followed by sorting by citations
+
 D. Back reference based search following a keyword based search **[CORRECT]**
+
 
 **Answer:** D
 
@@ -204,9 +248,13 @@ D. Back reference based search following a keyword based search **[CORRECT]**
 **Options:**
 
 A. ISSN
+
 B. DOI **[CORRECT]**
+
 C. Page Number
+
 D. Volume Number
+
 
 **Answer:** B
 
@@ -219,9 +267,13 @@ D. Volume Number
 **Options:**
 
 A. Such journals are not peer reviewed
+
 B. Articles in such a journal are freely available for download **[CORRECT]**
+
 C. Such journals charge for publication of an article
+
 D. Such journals are of dubious reputation
+
 
 **Answer:** B
 
@@ -234,9 +286,13 @@ D. Such journals are of dubious reputation
 **Options:**
 
 A. Relevant publications actually referred to
+
 B. Latest publications by the editor of the journal **[CORRECT]**
+
 C. Original publications in the topic of the article
+
 D. Own publications referred in the article for further details
+
 
 **Answer:** B
 
@@ -249,9 +305,13 @@ D. Own publications referred in the article for further details
 **Options:**
 
 A. Total number of articles published
+
 B. Hirsch index of the author **[CORRECT]**
+
 C. Number of views of his/her latest article
+
 D. Number of downloads of all articles in a year
+
 
 **Answer:** B
 
@@ -264,9 +324,13 @@ D. Number of downloads of all articles in a year
 **Options:**
 
 A. Periodicals & research reports **[CORRECT]**
+
 B. Conference proceedings & official publications **[CORRECT]**
+
 C. Compilations & reviews
+
 D. Directories & year books
+
 
 **Answer:** A, B
 
@@ -279,9 +343,13 @@ D. Directories & year books
 **Options:**
 
 A. INSPEC and COMPENDEX **[CORRECT]**
+
 B. PubMed **[CORRECT]**
+
 C. Wikipedia
+
 D. Chemical Abstract (CA) service **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -294,9 +362,13 @@ D. Chemical Abstract (CA) service **[CORRECT]**
 **Options:**
 
 A. Only 1, 2 and 3
+
 B. Only 3, 5 and 6 **[CORRECT]**
+
 C. Only 3, 4 and 6
+
 D. Only 1, 2 and 5
+
 
 **Answer:** B
 
@@ -311,9 +383,13 @@ D. Only 1, 2 and 5
 **Options:**
 
 A. Sources of heat **[CORRECT]**
+
 B. Chemicals (Acids, Bases etc.) **[CORRECT]**
+
 C. Pressurized gas cylinders **[CORRECT]**
+
 D. Electricity and water source **[CORRECT]**
+
 
 **Answer:** A, B, C, D
 
@@ -326,9 +402,13 @@ D. Electricity and water source **[CORRECT]**
 **Options:**
 
 A. Mode
+
 B. Skewness
+
 C. Standard deviation **[CORRECT]**
+
 D. Median
+
 
 **Answer:** C
 
@@ -341,9 +421,13 @@ D. Median
 **Options:**
 
 A. Since data with different values were recorded, this increased the possibility of wide analysis thus very useful for our work
+
 B. The data obtained cannot be reliable because these are not true data from the system but the malfunctioned one **[CORRECT]**
+
 C. The data can be used as with good accuracy using the predictive type data analysis where we can assume the extent of error and finally subtract the error from final value
+
 D. None of these
+
 
 **Answer:** B
 
@@ -356,9 +440,13 @@ D. None of these
 **Options:**
 
 A. Measurements of atmospheric temperature
+
 B. A sine wave corrupted by a rectangular pulse **[CORRECT]**
+
 C. Estimates of signals from measurements
+
 D. None of the above
+
 
 **Answer:** B
 
@@ -371,9 +459,13 @@ D. None of the above
 **Options:**
 
 A. Linearization involves mere discarding of the non-linear terms in a model. **[CORRECT]**
+
 B. The standard Taylor's series-based linearized model changes with the nominal point of linearization.
+
 C. A non-linear model can never yield a zero-valued output to a non-zero input. **[CORRECT]**
+
 D. Estimates of linear models have smaller errors than those of non-linear models. **[CORRECT]**
+
 
 **Answer:** A, C, D
 
@@ -386,9 +478,13 @@ D. Estimates of linear models have smaller errors than those of non-linear model
 **Options:**
 
 A. Hilbert transform
+
 B. z-transform
+
 C. Fourier transform **[CORRECT]**
+
 D. All of the above
+
 
 **Answer:** C
 
@@ -401,9 +497,13 @@ D. All of the above
 **Options:**
 
 A. 3 : 10
+
 B. 5 : 1
+
 C. 10 : 3 **[CORRECT]**
+
 D. 10 : 0.9
+
 
 **Answer:** C
 
@@ -416,9 +516,13 @@ D. 10 : 0.9
 **Options:**
 
 A. It is in general close to the true value with high probability.
+
 B. When averaged across a million experimental records under same operating conditions, the estimate equals the true value.
+
 C. Least squares method always gives the estimate with lowest error.
+
 D. It is a mathematical function of the observations. **[CORRECT]**
+
 
 **Answer:** D
 
@@ -431,9 +535,13 @@ D. It is a mathematical function of the observations. **[CORRECT]**
 **Options:**
 
 A. Deterministic phenomena produce outcomes that can be predicted accurately.
+
 B. Random processes occur randomly.
+
 C. A process can produce a mix of deterministic and stochastic effects. **[CORRECT]**
+
 D. Signals that are random can never take negative values.
+
 
 **Answer:** C
 
@@ -446,9 +554,13 @@ D. Signals that are random can never take negative values.
 **Options:**
 
 A. The parameters can be estimated in the least possible time.
+
 B. The estimator provides accurate estimates with the smallest number of observations.
+
 C. Standard error in the parameter estimates is lowest when compared to that of all other estimators. **[CORRECT]**
+
 D. It estimates parameters accurately even in presence of outliers.
+
 
 **Answer:** C
 
@@ -463,9 +575,13 @@ D. It estimates parameters accurately even in presence of outliers.
 **Options:**
 
 A. Identifies the area of research clearly
+
 B. Indicates what is unique about the research
+
 C. Does not identify the area of the research clearly **[CORRECT]**
+
 D. Does not indicate what is unique about the research **[CORRECT]**
+
 
 **Answer:** C, D
 
@@ -478,9 +594,13 @@ D. Does not indicate what is unique about the research **[CORRECT]**
 **Options:**
 
 A. High magnification implies high resolution
+
 B. High magnification does not necessarily imply high resolution **[CORRECT]**
+
 C. Low magnification implies high resolution
+
 D. High resolution implies low magnification
+
 
 **Answer:** B
 
@@ -493,9 +613,13 @@ D. High resolution implies low magnification
 **Options:**
 
 A. Always
+
 B. Never
+
 C. Only when exact values need to be indicated **[CORRECT]**
+
 D. Only when trends in data need to be indicated
+
 
 **Answer:** C
 
@@ -508,9 +632,13 @@ D. Only when trends in data need to be indicated
 **Options:**
 
 A. Indicates how much you know
+
 B. Indicates how little you know
+
 C. Does not indicate anything about your knowledge **[CORRECT]**
+
 D. Does not indicate anything about the reader's knowledge **[CORRECT]**
+
 
 **Answer:** C, D
 
@@ -523,7 +651,9 @@ D. Does not indicate anything about the reader's knowledge **[CORRECT]**
 **Options:**
 
 A. True **[CORRECT]**
+
 B. False
+
 
 **Answer:** A
 
@@ -536,7 +666,9 @@ B. False
 **Options:**
 
 A. True **[CORRECT]**
+
 B. False
+
 
 **Answer:** A
 
@@ -549,9 +681,13 @@ B. False
 **Options:**
 
 A. Show the level of detail required for the discussion in the article **[CORRECT]**
+
 B. Have a marker bar indicating scale **[CORRECT]**
+
 C. Be in colour and not in black and white
+
 D. Be in black and white and not in colour
+
 
 **Answer:** A, B
 
@@ -564,9 +700,13 @@ D. Be in black and white and not in colour
 **Options:**
 
 A. Chronological strategy **[CORRECT]**
+
 B. Spatial strategy **[CORRECT]**
+
 C. Following a variable **[CORRECT]**
+
 D. Suspense strategy
+
 
 **Answer:** A, B, C
 
@@ -579,7 +719,9 @@ D. Suspense strategy
 **Options:**
 
 A. True
+
 B. False **[CORRECT]**
+
 
 **Answer:** B
 
@@ -592,7 +734,9 @@ B. False **[CORRECT]**
 **Options:**
 
 A. True
+
 B. False **[CORRECT]**
+
 
 **Answer:** B
 
@@ -607,9 +751,13 @@ B. False **[CORRECT]**
 **Options:**
 
 A. How one relates to the environment around them **[CORRECT]**
+
 B. How street smart they are **[CORRECT]**
+
 C. How well they come up with new theories
+
 D. How well they solve new problems
+
 
 **Answer:** A, B
 
@@ -622,9 +770,13 @@ D. How well they solve new problems
 **Options:**
 
 A. Yes, because they have collaborated and know each other
+
 B. No, all authors should know and agree with the publication **[CORRECT]**
+
 C. Yes, if the collaborators are junior to you
+
 D. No, only if the authors are senior to you
+
 
 **Answer:** B
 
@@ -637,9 +789,13 @@ D. No, only if the authors are senior to you
 **Options:**
 
 A. Drama
+
 B. Science fiction
+
 C. Engineering
+
 D. All of the above **[CORRECT]**
+
 
 **Answer:** D
 
@@ -652,7 +808,9 @@ D. All of the above **[CORRECT]**
 **Options:**
 
 A. True **[CORRECT]**
+
 B. False
+
 
 **Answer:** A
 
@@ -665,9 +823,13 @@ B. False
 **Options:**
 
 A. Hypo stressed
+
 B. Eustressed **[CORRECT]**
+
 C. Hyper stressed
+
 D. Distressed
+
 
 **Answer:** B
 
@@ -680,9 +842,13 @@ D. Distressed
 **Options:**
 
 A. Recognized by peers at an international level **[CORRECT]**
+
 B. Typically published in peer reviewed Journals **[CORRECT]**
+
 C. Mentioned in the campus magazine of the college
+
 D. Must be discussed in the Department meeting of the researcher's department
+
 
 **Answer:** A, B
 
@@ -695,9 +861,13 @@ D. Must be discussed in the Department meeting of the researcher's department
 **Options:**
 
 A. More likely to follow societal restrictions
+
 B. Less likely to follow societal restrictions **[CORRECT]**
+
 C. More likely to think within the limits of previous work in the area
+
 D. More likely to come up with a surprisingly new solution to a problem **[CORRECT]**
+
 
 **Answer:** B, D
 
@@ -710,9 +880,13 @@ D. More likely to come up with a surprisingly new solution to a problem **[CORRE
 **Options:**
 
 A. A specialist in one narrow area **[CORRECT]**
+
 B. A person who conducts experiments fast
+
 C. A person who has a wide knowledge in a wide range of topics
+
 D. A person who makes excellent sketches
+
 
 **Answer:** A
 
@@ -725,9 +899,13 @@ D. A person who makes excellent sketches
 **Options:**
 
 A. Have good communication skills **[CORRECT]**
+
 B. Have mastery over specific techniques **[CORRECT]**
+
 C. Have a line of investigation **[CORRECT]**
+
 D. Be aware of recent advances in the field **[CORRECT]**
+
 
 **Answer:** A, B, C, D
 
@@ -740,9 +918,13 @@ D. Be aware of recent advances in the field **[CORRECT]**
 **Options:**
 
 A. They have some fundamental concepts that their peers (international) might be interested in **[CORRECT]**
+
 B. They have command over their area **[CORRECT]**
+
 C. They are aware of the situation where they can make significant contribution **[CORRECT]**
+
 D. They work without focusing on literature in the area
+
 
 **Answer:** A, B, C
 
@@ -757,9 +939,13 @@ D. They work without focusing on literature in the area
 **Options:**
 
 A. An original set of ideas or research results **[CORRECT]**
+
 B. Ideas originating from real property
+
 C. Properties emanating from human creative labor **[CORRECT]**
+
 D. All of the above
+
 
 **Answer:** A, C
 
@@ -772,9 +958,13 @@ D. All of the above
 **Options:**
 
 A. Infringement **[CORRECT]**
+
 B. Casual penalties
+
 C. No big deal as we have license of fundamental rights to do whatever we want
+
 D. None of the above
+
 
 **Answer:** A
 
@@ -787,9 +977,13 @@ D. None of the above
 **Options:**
 
 A. Copyrights
+
 B. Patents
+
 C. Designs
+
 D. Geographical Indications **[CORRECT]**
+
 
 **Answer:** D
 
@@ -802,9 +996,13 @@ D. Geographical Indications **[CORRECT]**
 **Options:**
 
 A. Copyrights
+
 B. Trade Marks
+
 C. Patents **[CORRECT]**
+
 D. Trade Secret
+
 
 **Answer:** C
 
@@ -817,9 +1015,13 @@ D. Trade Secret
 **Options:**
 
 A. Deceit
+
 B. Fraud
+
 C. Negligence
+
 D. Passing off **[CORRECT]**
+
 
 **Answer:** D
 
@@ -832,9 +1034,13 @@ D. Passing off **[CORRECT]**
 **Options:**
 
 A. Right to file a suit in case of an infringement
+
 B. Right of excludability
+
 C. Right of commercial exploitation
+
 D. All of the above **[CORRECT]**
+
 
 **Answer:** D
 
@@ -847,9 +1053,13 @@ D. All of the above **[CORRECT]**
 **Options:**
 
 A. Patents
+
 B. Trade Marks **[CORRECT]**
+
 C. Trade dress
+
 D. Geographical Indications
+
 
 **Answer:** B
 
@@ -862,9 +1072,13 @@ D. Geographical Indications
 **Options:**
 
 A. The one who invented the invention first
+
 B. The one who commercialise the invention first
+
 C. The one who thought of the invention first
+
 D. The one who filed a patent application first **[CORRECT]**
+
 
 **Answer:** D
 
@@ -877,9 +1091,13 @@ D. The one who filed a patent application first **[CORRECT]**
 **Options:**
 
 A. 20 years **[CORRECT]**
+
 B. 25 years
+
 C. 10 years
+
 D. 15 years
+
 
 **Answer:** A
 
@@ -892,9 +1110,13 @@ D. 15 years
 **Options:**
 
 A. Tariff Related Aspects of Intellectual Properties
+
 B. Trade Related Aspects of Intellectual Property Science
+
 C. The Registration of Intellectual Property
+
 D. Trade Related Aspects of Intellectual Property Rights **[CORRECT]**
+
 
 **Answer:** D
 
@@ -909,9 +1131,13 @@ D. Trade Related Aspects of Intellectual Property Rights **[CORRECT]**
 **Options:**
 
 A. No control on external variables
+
 B. Less control on external variables
+
 C. Control on external variables by randomization **[CORRECT]**
+
 D. No use of randomization
+
 
 **Answer:** C
 
@@ -924,9 +1150,13 @@ D. No use of randomization
 **Options:**
 
 A. Before and after with control group design
+
 B. Factorial design
+
 C. One group before-after design **[CORRECT]**
+
 D. Latin Square design
+
 
 **Answer:** C
 
@@ -939,9 +1169,13 @@ D. Latin Square design
 **Options:**
 
 A. Error Sum of Squares is zero **[CORRECT]**
+
 B. Total Sum of Squares is zero
+
 C. Regression Sum of Squares is zero
+
 D. Regression Sum of Squares is same as Total Sum of Squares **[CORRECT]**
+
 
 **Answer:** A, D
 
@@ -954,9 +1188,13 @@ D. Regression Sum of Squares is same as Total Sum of Squares **[CORRECT]**
 **Options:**
 
 A. Probability of a phenomenon occurring in macro scale
+
 B. Probability of a phenomenon occurring in micro scale
+
 C. Distribution of probabilities in the continuous random variable domain **[CORRECT]**
+
 D. Distribution of probabilities in some particular set of undefined variables
+
 
 **Answer:** C
 
@@ -969,9 +1207,13 @@ D. Distribution of probabilities in some particular set of undefined variables
 **Options:**
 
 A. all positive
+
 B. all negative **[CORRECT]**
+
 C. all zero
+
 D. such that one is positive and the other is negative
+
 
 **Answer:** B
 
@@ -984,9 +1226,13 @@ D. such that one is positive and the other is negative
 **Options:**
 
 A. Verify scientific predictions
+
 B. Obtain trends when theory is not known
+
 C. Find effect of different variables on the desired response
+
 D. All of the above **[CORRECT]**
+
 
 **Answer:** D
 
@@ -999,7 +1245,9 @@ D. All of the above **[CORRECT]**
 **Options:**
 
 A. True **[CORRECT]**
+
 B. False
+
 
 **Answer:** A
 
@@ -1012,9 +1260,13 @@ B. False
 **Options:**
 
 A. Evaluation and comparison of basic design configurations
+
 B. Evaluation of material alternatives
+
 C. Evaluation of key product design parameters that impact performance
+
 D. Evaluation of correct process to develop the product **[CORRECT]**
+
 
 **Answer:** D
 
@@ -1027,9 +1279,13 @@ D. Evaluation of correct process to develop the product **[CORRECT]**
 **Options:**
 
 A. Standard deviation
+
 B. Median
+
 C. Mode
+
 D. All of the above **[CORRECT]**
+
 
 **Answer:** D
 
@@ -1042,9 +1298,13 @@ D. All of the above **[CORRECT]**
 **Options:**
 
 A. -1
+
 B. 0 **[CORRECT]**
+
 C. 1
+
 D. 3
+
 
 **Answer:** B
 
@@ -1059,9 +1319,13 @@ D. 3
 **Options:**
 
 A. Developing a research design
+
 B. Formulating a research question **[CORRECT]**
+
 C. Deciding about the data analysis procedure
+
 D. Formulating a research hypothesis
+
 
 **Answer:** B
 
@@ -1074,9 +1338,13 @@ D. Formulating a research hypothesis
 **Options:**
 
 A. It recognizes knowledge as power
+
 B. It is a collective process of inquiry
+
 C. It emphasizes people as experts
+
 D. Its sole purpose is the production of knowledge **[CORRECT]**
+
 
 **Answer:** D
 
@@ -1089,9 +1357,13 @@ D. Its sole purpose is the production of knowledge **[CORRECT]**
 **Options:**
 
 A. By research title
+
 B. By research duration
+
 C. By research objectives **[CORRECT]**
+
 D. By total expenditure on research
+
 
 **Answer:** C
 
@@ -1104,9 +1376,13 @@ D. By total expenditure on research
 **Options:**
 
 A. To over simplify the problem of research
+
 B. Integrating knowledge from multiple disciplines to solve a problem. **[CORRECT]**
+
 C. To create a new trend in research methodology
+
 D. To reduce the emphasis on a single subject in the research domain
+
 
 **Answer:** B
 
@@ -1119,7 +1395,9 @@ D. To reduce the emphasis on a single subject in the research domain
 **Options:**
 
 A. True **[CORRECT]**
+
 B. False
+
 
 **Answer:** A
 
@@ -1132,9 +1410,13 @@ B. False
 **Options:**
 
 A. Introduction; Data Collection; Data Analysis; Conclusions and Recommendations
+
 B. Executive Summary; Literature Review; Data Gathered; Conclusions; Bibliography
+
 C. Research Plan; Research Data; Analysis; References
+
 D. Introduction; Literature Review; Research Methodology; Results; Discussions and Conclusions **[CORRECT]**
+
 
 **Answer:** D
 
@@ -1147,9 +1429,13 @@ D. Introduction; Literature Review; Research Methodology; Results; Discussions a
 **Options:**
 
 A. By making it more valid
+
 B. By making it more reliable
+
 C. By making it more impartial
+
 D. All of the above **[CORRECT]**
+
 
 **Answer:** D
 
@@ -1162,9 +1448,13 @@ D. All of the above **[CORRECT]**
 **Options:**
 
 A. Reliability
+
 B. Useability
+
 C. Objectivity
+
 D. All of the above **[CORRECT]**
+
 
 **Answer:** D
 
@@ -1177,9 +1467,13 @@ D. All of the above **[CORRECT]**
 **Options:**
 
 A. Bibliography
+
 B. Directory
+
 C. Encyclopedia **[CORRECT]**
+
 D. Dictionary
+
 
 **Answer:** C
 
@@ -1192,9 +1486,13 @@ D. Dictionary
 **Options:**
 
 A. Pallavas **[CORRECT]**
+
 B. Mauryas
+
 C. Guptas
+
 D. Cholas
+
 
 **Answer:** A
 
@@ -1209,9 +1507,13 @@ D. Cholas
 **Options:**
 
 A. The research question may itself require extensive exploration before becoming well defined. **[CORRECT]**
+
 B. Experimental outcomes may deviate from expectations and require modification of the research approach. **[CORRECT]**
+
 C. The programme follows a highly predictable schedule with predefined learning outcomes for every stage.
+
 D. The researcher may repeatedly formulate new questions as insights emerge from previous work. **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1224,9 +1526,13 @@ D. The researcher may repeatedly formulate new questions as insights emerge from
 **Options:**
 
 A. Research requires researchers to work continuously under high pressure.
+
 B. Research consists of predictable stages followed by unavoidable examinations.
+
 C. Research involves alternating periods of progress, uncertainty, setbacks, breakthroughs, and renewed progress. **[CORRECT]**
+
 D. Research is primarily dependent on collaboration with a large number of researchers.
+
 
 **Answer:** C
 
@@ -1239,9 +1545,13 @@ D. Research is primarily dependent on collaboration with a large number of resea
 **Options:**
 
 A. Relationships with advisers and labmates **[CORRECT]**
+
 B. Emotional experiences and friendships **[CORRECT]**
+
 C. Availability and accessibility of research facilities **[CORRECT]**
+
 D. Support received from friends and family **[CORRECT]**
+
 
 **Answer:** A, B, C, D
 
@@ -1254,9 +1564,13 @@ D. Support received from friends and family **[CORRECT]**
 **Options:**
 
 A. Adequate sleep and physical activity **[CORRECT]**
+
 B. Taking time for recreation and renewal **[CORRECT]**
+
 C. Reflecting periodically on one's activities and decisions **[CORRECT]**
+
 D. Working continuously for extremely long hours whenever a problem arises
+
 
 **Answer:** A, B, C
 
@@ -1269,9 +1583,13 @@ D. Working continuously for extremely long hours whenever a problem arises
 **Options:**
 
 A. Respond immediately to the adviser to defend the research.
+
 B. Suppress the emotion completely and continue working without reflection.
+
 C. Pause, recognize the emotion, regulate it through techniques such as rhythmic breathing, and then respond with greater clarity. **[CORRECT]**
+
 D. Discuss the adviser's behaviour with all labmates immediately.
+
 
 **Answer:** C
 
@@ -1284,9 +1602,13 @@ D. Discuss the adviser's behaviour with all labmates immediately.
 **Options:**
 
 A. Practicing rhythmic breathing **[CORRECT]**
+
 B. Temporarily stepping away from the situation **[CORRECT]**
+
 C. Journaling what one is feeling **[CORRECT]**
+
 D. Immediately confronting the person responsible for the trigger
+
 
 **Answer:** A, B, C
 
@@ -1299,9 +1621,13 @@ D. Immediately confronting the person responsible for the trigger
 **Options:**
 
 A. Compare the two researchers and conclude that the labmate is more capable.
+
 B. Suppress the feeling of comparison without examining its cause.
+
 C. Convert the comparison into curiosity by investigating what the labmate did differently and identifying possible improvements in one's own approach. **[CORRECT]**
+
 D. Avoid interacting with the labmate until one's own paper is accepted.
+
 
 **Answer:** C
 
@@ -1314,9 +1640,13 @@ D. Avoid interacting with the labmate until one's own paper is accepted.
 **Options:**
 
 A. Research progress **[CORRECT]**
+
 B. Only the researcher's publication record
+
 C. Physical health **[CORRECT]**
+
 D. Friendships and social relationships **[CORRECT]**
+
 
 **Answer:** A, C, D
 
@@ -1329,9 +1659,13 @@ D. Friendships and social relationships **[CORRECT]**
 **Options:**
 
 A. It demonstrates insufficient commitment to independent research.
+
 B. Emotional isolation may worsen the situation and negatively affect research progress as well as personal well-being. **[CORRECT]**
+
 C. Long working hours always produce incorrect experimental results.
+
 D. Researchers should never attempt to solve difficult problems independently.
+
 
 **Answer:** B
 
@@ -1344,9 +1678,13 @@ D. Researchers should never attempt to solve difficult problems independently.
 **Options:**
 
 A. Adviser or supervisor **[CORRECT]**
+
 B. Labmates and friends **[CORRECT]**
+
 C. Mentor **[CORRECT]**
+
 D. Family or old friends **[CORRECT]**
+
 
 **Answer:** A, B, C, D
 
@@ -1361,9 +1699,13 @@ D. Family or old friends **[CORRECT]**
 **Options:**
 
 A. Well defined questions **[CORRECT]**
+
 B. Question paper patterns to be finalized in advance **[CORRECT]**
+
 C. Clarity on the “portions” for an exam **[CORRECT]**
+
 D. Questions outside the syllabus
+
 
 **Answer:** A, B, C
 
@@ -1376,9 +1718,13 @@ D. Questions outside the syllabus
 **Options:**
 
 A. A “poorly” defined question **[CORRECT]**
+
 B. Is a well defined question
+
 C. Is typically how a full question is framed in an exam
+
 D. Has a unique
+
 
 **Answer:** A
 
@@ -1391,9 +1737,13 @@ D. Has a unique
 **Options:**
 
 A. Helps you understand fundamentals **[CORRECT]**
+
 B. Teaches you to breakdown a problem to parts and solve them **[CORRECT]**
+
 C. Prepares you for a professional setting
+
 D. Teaches you to handle unexpected questions
+
 
 **Answer:** A, B
 
@@ -1406,9 +1756,13 @@ D. Teaches you to handle unexpected questions
 **Options:**
 
 A. Handle open ended questions **[CORRECT]**
+
 B. Solve “poorly” defined problems **[CORRECT]**
+
 C. Focus on syllabus
+
 D. Work within a question paper pattern
+
 
 **Answer:** A, B
 
@@ -1421,9 +1775,13 @@ D. Work within a question paper pattern
 **Options:**
 
 A. Prepare you for professional life **[CORRECT]**
+
 B. Focus only on well-defined problems
+
 C. Teach you to handle open ended problems **[CORRECT]**
+
 D. Follow the same approach used in school
+
 
 **Answer:** A, C
 
@@ -1436,9 +1794,13 @@ D. Follow the same approach used in school
 **Options:**
 
 A. Breakthrough research
+
 B. Incremental research **[CORRECT]**
+
 C. Transformational research
+
 D. Important contribution to research
+
 
 **Answer:** B
 
@@ -1451,9 +1813,13 @@ D. Important contribution to research
 **Options:**
 
 A. Systematic research **[CORRECT]**
+
 B. Transformational research
+
 C. Incremental research
+
 D. Breakthrough research
+
 
 **Answer:** A
 
@@ -1466,9 +1832,13 @@ D. Breakthrough research
 **Options:**
 
 A. First deployment of the landline
+
 B. First deployment of the cordless phone
+
 C. The improvement from cordless phone to mobile phone **[CORRECT]**
+
 D. Making the first-generation mobile phones smaller and more colorful
+
 
 **Answer:** C
 
@@ -1481,9 +1851,13 @@ D. Making the first-generation mobile phones smaller and more colorful
 **Options:**
 
 A. Improvement from wooden seat to cushioned seat
+
 B. Making the seat more ergonomic
+
 C. Adding a carrier
+
 D. Adding gears to a bicycle **[CORRECT]**
+
 
 **Answer:** D
 
@@ -1496,9 +1870,13 @@ D. Adding gears to a bicycle **[CORRECT]**
 **Options:**
 
 A. Designing fixed wings even though birds have flapping wings **[CORRECT]**
+
 B. Adding seats inside an airplane
+
 C. Creating a cargo version of the airplane
+
 D. Adding more engines to the airplane
+
 
 **Answer:** A
 
@@ -1513,9 +1891,13 @@ D. Adding more engines to the airplane
 **Options:**
 
 A. The machine was explicitly programmed with every possible checkers strategy.
+
 B. The machine learned through experience by repeatedly playing the game. **[CORRECT]**
+
 C. The example is associated with an early instance of reinforcement learning. **[CORRECT]**
+
 D. The example demonstrates that AI-based learning is a phenomenon that began only with generative AI.
+
 
 **Answer:** B, C
 
@@ -1528,9 +1910,13 @@ D. The example demonstrates that AI-based learning is a phenomenon that began on
 **Options:**
 
 A. Generative AI is the only appropriate approach for solving modern research problems.
+
 B. Classical AI methods can still provide effective solutions for domain-specific problems. **[CORRECT]**
+
 C. Researchers should select an AI approach according to the problem rather than assuming that generative AI must always be used. **[CORRECT]**
+
 D. Classical AI became irrelevant after the emergence of LLMs.
+
 
 **Answer:** B, C
 
@@ -1543,9 +1929,13 @@ D. Classical AI became irrelevant after the emergence of LLMs.
 **Options:**
 
 A. The probability of a token can depend on the preceding context. **[CORRECT]**
+
 B. A token with the highest probability must always be generated.
+
 C. Different contexts can result in different probability distributions for the next token. **[CORRECT]**
+
 D. The model can repeatedly predict tokens to construct a longer response. **[CORRECT]**
+
 
 **Answer:** A, C, D
 
@@ -1558,9 +1948,13 @@ D. The model can repeatedly predict tokens to construct a longer response. **[CO
 **Options:**
 
 A. Token size is related to the vocabulary of words or subwords that the model can generate. **[CORRECT]**
+
 B. Context size refers to the amount of previous token information considered by the model. **[CORRECT]**
+
 C. Parameter count refers to the number of tokens that can be stored in the prompt.
+
 D. Parameter count is related to how the learned probability distributions are represented in the model. **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1573,9 +1967,13 @@ D. Parameter count is related to how the learned probability distributions are r
 **Options:**
 
 A. A very large probability matrix can be represented through a comparatively smaller-dimensional vector space. **[CORRECT]**
+
 B. Different contexts may be projected to nearby locations in the vector space. **[CORRECT]**
+
 C. Such compression can contribute to variability and errors because information from different contexts may influence generation. **[CORRECT]**
+
 D. Every possible context is retained as a completely independent point with no overlap.
+
 
 **Answer:** A, B, C
 
@@ -1588,9 +1986,13 @@ D. Every possible context is retained as a completely independent point with no 
 **Options:**
 
 A. Alignment can modify model behaviour so that generated probabilities better correspond to desired outcomes. **[CORRECT]**
+
 B. Alignment may be directed towards objectives such as factuality, bias reduction or local context. **[CORRECT]**
+
 C. Alignment guarantees that all outputs produced by an LLM are factually correct.
+
 D. Reinforcement learning from human preferences is associated with the alignment process. **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1603,9 +2005,13 @@ D. Reinforcement learning from human preferences is associated with the alignmen
 **Options:**
 
 A. The approach is consistent with Retrieval-Augmented Generation (RAG). **[CORRECT]**
+
 B. The retrieved information provides additional context to the model. **[CORRECT]**
+
 C. The approach necessarily requires retraining the entire language model.
+
 D. Additional context can make the model's response more focused. **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1618,9 +2024,13 @@ D. Additional context can make the model's response more focused. **[CORRECT]**
 **Options:**
 
 A. Additional retrieved information can contextualize an otherwise ambiguous query. **[CORRECT]**
+
 B. The original question can be effectively shifted toward a more appropriate contextual representation. **[CORRECT]**
+
 C. RAG works primarily by increasing the number of parameters in the LLM.
+
 D. A richer context can increase the probability of producing the intended **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1633,9 +2043,13 @@ D. A richer context can increase the probability of producing the intended **[CO
 **Options:**
 
 A. A model may produce a plausible answer even when the generated information does not match the ground truth. **[CORRECT]**
+
 B. Hallucination can occur when the model has insufficiently represented information or context. **[CORRECT]**
+
 C. Hallucination can be reduced through techniques such as providing larger context, but it cannot necessarily be eliminated completely. **[CORRECT]**
+
 D. Hallucination means that the model has deliberately decided to provide false information.
+
 
 **Answer:** A, B, C
 
@@ -1648,9 +2062,13 @@ D. Hallucination means that the model has deliberately decided to provide false 
 **Options:**
 
 A. The problem is necessarily an example of hallucination.
+
 B. AI systems can potentially propagate misinformation present in their information sources. **[CORRECT]**
+
 C. A response may be misleading even when it is not simply an invented fact by the model. **[CORRECT]**
+
 D. Independent verification of important AI-generated information remains necessary. **[CORRECT]**
+
 
 **Answer:** B, C, D
 
@@ -1665,9 +2083,13 @@ D. Independent verification of important AI-generated information remains necess
 **Options:**
 
 A. Course-based education primarily deals with an existing body of knowledge, whereas PhD research is expected to create new knowledge. **[CORRECT]**
+
 B. A PhD programme follows a common prescribed syllabus and curriculum in the same way as a course-based degree.
+
 C. Course-based education generally has a prescribed syllabus and curriculum, whereas research-based education does not simply follow a fixed syllabus. **[CORRECT]**
+
 D. Knowledge acquired in course-based education and new knowledge generated through PhD research are evaluated in exactly the same way. **[CORRECT]**
+
 
 **Answer:** A, C, D
 
@@ -1680,9 +2102,13 @@ D. Knowledge acquired in course-based education and new knowledge generated thro
 **Options:**
 
 A. The scholar should recognize that PhD research involves substantially self-directed work. **[CORRECT]**
+
 B. The absence of a fixed syllabus means that the scholar does not need guidance from the research guide.
+
 C. The research guide can provide guidance and support when ambiguity or difficulty arises. **[CORRECT]**
+
 D. The scholar is expected to develop the ability to decide how the research should progress. **[CORRECT]**
+
 
 **Answer:** A, C, D
 
@@ -1695,9 +2121,13 @@ D. The scholar is expected to develop the ability to decide how the research sho
 **Options:**
 
 A. It should be an educated prediction rather than a statement already established as true. **[CORRECT]**
+
 B. It should allow a possibility of being disproved. **[CORRECT]**
+
 C. It should be protected from contradictory observations by adding explanations that cannot be tested.
+
 D. Its truth must be established before experiments or data collection begin.
+
 
 **Answer:** A, B
 
@@ -1710,9 +2140,13 @@ D. Its truth must be established before experiments or data collection begin.
 **Options:**
 
 A. Finding a black swan would provide an observation capable of disproving the hypothesis. **[CORRECT]**
+
 B. It is necessary to observe every swan in the world before the hypothesis can be scientifically examined.
+
 C. The possibility of disproving the hypothesis is central to the criterion discussed in the lecture. **[CORRECT]**
+
 D. The criterion discussed emphasizes the possibility of disproof rather than establishing the hypothesis as permanently true. **[CORRECT]**
+
 
 **Answer:** A, C, D
 
@@ -1725,9 +2159,13 @@ D. The criterion discussed emphasizes the possibility of disproof rather than es
 **Options:**
 
 A. Begin by formulating relevant questions about the topic and considering why the topic is important. **[CORRECT]**
+
 B. Start an unrestricted literature survey immediately and use it as the only route for identifying the research problem.
+
 C. Use literature exploration and observations to refine the initial questions through repeated cycles. **[CORRECT]**
+
 D. Formulate the final testable hypothesis immediately from the broad topic without further exploration.
+
 
 **Answer:** A, C
 
@@ -1740,9 +2178,13 @@ D. Formulate the final testable hypothesis immediately from the broad topic with
 **Options:**
 
 A. An anomaly can arise when observations do not match a commonly assumed explanation. **[CORRECT]**
+
 B. The observed influence of factors such as the amount of food offered can motivate further investigation. **[CORRECT]**
+
 C. The hypothesis was formulated directly from the broad topic without literature survey or observations.
+
 D. Identifying a missing link or contradiction can provide scope for further research and help generate a hypothesis. **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1755,9 +2197,13 @@ D. Identifying a missing link or contradiction can provide scope for further res
 **Options:**
 
 A. Remember, Understand and Apply are described as lower-order thinking levels. **[CORRECT]**
+
 B. Analyze, Evaluate and Create are described as higher-order thinking levels. **[CORRECT]**
+
 C. Create is placed below Remember because generating a new idea generally requires less cognitive effort.
+
 D. The taxonomy states that every individual experiences exactly the same difficulty across all six levels.
+
 
 **Answer:** A, B
 
@@ -1770,9 +2216,13 @@ D. The taxonomy states that every individual experiences exactly the same diffic
 **Options:**
 
 A. Analyze **[CORRECT]**
+
 B. Evaluate **[CORRECT]**
+
 C. Remember
+
 D. Create **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1785,9 +2235,13 @@ D. Create **[CORRECT]**
 **Options:**
 
 A. All six levels of thinking may be used during research problem solving. **[CORRECT]**
+
 B. The lecture identifies analysis as an important starting level in PhD research because researchers collect and analyze data. **[CORRECT]**
+
 C. The main intellectual focus of a PhD is memorizing information from the existing body of knowledge.
+
 D. Evaluation can involve considering alternate hypotheses and attempting to validate them. **[CORRECT]**
+
 
 **Answer:** A, B, D
 
@@ -1800,9 +2254,13 @@ D. Evaluation can involve considering alternate hypotheses and attempting to val
 **Options:**
 
 A. Creative thinking can be developed or improved through practice rather than being limited to an ability fixed at birth. **[CORRECT]**
+
 B. Functional fixedness can cause a person to perceive an object only through its conventional purpose and can hinder lateral thinking. **[CORRECT]**
+
 C. Complete knowledge of the existing body of knowledge guarantees the creation of something new.
+
 D. Functional fixedness helps researchers generate new approaches when facing unexpected or novel challenges.
+
 
 **Answer:** A, B
 
