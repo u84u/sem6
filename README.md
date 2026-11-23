@@ -1,2112 +1,1809 @@
-# React Native Semester 7 Exam Guide
+# Research Methodology - Course MCQ/MSQ Questions & Answers
 
-**Parul University · BCA (Honours) · Semester 7**  
-**Subject focus:** React Native and Mobile Application Development  
-**Source:** The five uploaded unit PDFs (`ch-1.pdf` to `ch-5.pdf`)
+This document contains all the Multiple Choice Questions (MCQ) and Multiple Select Questions (MSQ) from the 12 weekly assignments of the Research Methodology course (SWAYAM/NPTEL).
 
-> This guide follows the five supplied PDFs as its sole study source. It keeps their unit order, topics, terminology, examples, and level of coverage. Explanations use straightforward English. Code appears only where it helps explain a theory point. This is a study guide, not a replacement for the original PDFs.
-
-## How to use this guide
-
-1. Read the unit notes from top to bottom.
-2. Revise each unit's comparison tables and key points.
-3. Attempt the question bank without looking at the answers.
-4. Check your answers against the model answers and revise missing points.
-
-## Exam pattern supplied by the student
-
-| Question type | Number of questions | Marks each | Total |
-|---|---:|---:|---:|
-| Very short answer | 8 | 1 | 8 |
-| Short answer | 4 | 2 | 8 |
-| Long answer | 4 | 5 | 20 |
-| **Total** | **16** |  | **36** |
-
-Each unit contains its own practice bank in this exact structure: **8 one-mark questions, 4 two-mark questions, and 4 five-mark questions**. Every question has an exam-ready model answer.
-
-## Contents
-
-- [Unit 1 — Introduction to React Native Fundamentals](#unit-1--introduction-to-react-native-fundamentals)
-- [Unit 2 — Adaptive User Interface Design](#unit-2--adaptive-user-interface-design)
-- [Unit 3 — Navigation and State Management](#unit-3--navigation-and-state-management)
-- [Unit 4 — Data Handling and API Integration](#unit-4--data-handling-and-api-integration)
-- [Unit 5 — Authentication and Backend Integration](#unit-5--authentication-and-backend-integration)
-- [Final revision checklist](#final-revision-checklist)
+Correct answers are marked with **[CORRECT]**. For MSQ questions, multiple answers may be correct.
 
 ---
 
-# Unit 1 — Introduction to React Native Fundamentals
+## Week 1
 
-## 1. Mobile application development
+### Q1: What sets a PhD apart from other degrees?
 
-**Mobile application development** is the process of designing, creating, testing, and deploying software applications that run on mobile devices such as smartphones and tablets. The main platforms discussed in the notes are Android and iOS.
+**Type:** MCQ (Single Select)
 
-Mobile applications support many areas of everyday life:
+**Options:**
 
-- Communication
-- Banking
-- Education
-- Healthcare
-- Entertainment
-- E-commerce
-- Social media
+A. Focus on practical skills and hands-on experience.
+B. Development of critical thinking and analytical abilities. **[CORRECT]**
+C. Preparation to guide others in pursuing a PhD.
+D. Completion of coursework and examinations.
 
-The PDF gives WhatsApp, Instagram, Google Pay, Amazon, and YouTube as examples of mobile applications.
-
-## 2. Types of mobile applications
-
-### Native applications
-
-A **native application** targets one specific mobile platform and uses that platform's programming languages.
-
-| Platform | Languages listed in the notes |
-|---|---|
-| Android | Java or Kotlin |
-| iOS | Swift or Objective-C |
-
-**Advantages:** high performance, better user experience, and full access to device features.
-
-**Disadvantages:** Android and iOS need separate codebases, development costs more, and maintenance requires more effort.
-
-### Web applications
-
-A **web application** runs inside a browser. The notes list HTML, CSS, and JavaScript as its core technologies.
-
-**Advantages:** easy to develop and platform independent.
-
-**Disadvantages:** limited access to device hardware and lower performance compared with native apps.
-
-### Hybrid or cross-platform applications
-
-A **cross-platform application** uses one codebase to target multiple platforms. The notes list React Native, Flutter, Ionic, and Xamarin as popular frameworks.
-
-**Advantages:** faster development, reduced cost, and code reusability.
-
-**Disadvantages:** performance may be slightly lower than native applications, and some platform-specific limitations may remain.
-
-### Comparison of application types
-
-| Type | Where it runs / how it is built | Main strengths | Main limitations |
-|---|---|---|---|
-| Native | Built for one platform with its platform-specific language | High performance, strong user experience, full device-feature access | Separate platform codebases, higher cost and maintenance |
-| Web | Runs in a browser using HTML, CSS, and JavaScript | Easy development, platform independence | Limited hardware access, lower performance than native |
-| Hybrid / cross-platform | One codebase for multiple platforms | Reuse, faster development, reduced cost | Some performance and platform-specific limitations |
-
-### Why cross-platform development is needed
-
-Companies use cross-platform development because it can reduce development time, simplify maintenance, allow one team to work on Android and iOS, and help applications reach the market faster. React Native is presented as one of the popular frameworks for this approach.
-
-## 3. Introduction to React Native
-
-**React Native** is an open-source JavaScript framework developed by Meta (Facebook) for building mobile applications. It lets developers create Android and iOS applications using JavaScript and React. The notes emphasize that React Native uses native components rather than web components, helping it provide a native mobile user experience.
-
-### Main features
-
-1. **Cross-platform development:** one codebase can serve Android and iOS.
-2. **Component-based architecture:** applications use reusable building blocks such as buttons, headers, cards, and navigation bars.
-3. **Fast Refresh:** developers can see code changes quickly without rebuilding the entire application for every change.
-4. **Community support:** React Native has a developer community, libraries, and documentation.
-5. **Native performance:** React Native uses native UI components, which the notes contrast with traditional hybrid applications.
-
-### Advantages
-
-- Reusable code
-- Faster development
-- Reduced cost
-- Strong community support
-- Easier debugging
-- Large ecosystem
-
-### Limitations
-
-- Performance can be slightly lower than fully native applications.
-- Complex native modules may require platform-specific coding.
-- Dependency management can become difficult.
-
-## 4. React Native architecture
-
-The notes describe three main parts:
-
-1. **JavaScript Thread:** handles business logic, API calls, and state management.
-2. **Native Thread:** handles native UI rendering and device-hardware operations.
-3. **Bridge:** acts as the communication layer between JavaScript and native modules.
-
-The simplified flow shown in the PDF is:
-
-```text
-JavaScript Code  →  Bridge  →  Native Components
-```
-
-For an exam answer, define each part and state that the bridge connects the JavaScript side with native components.
-
-### Applications named in the notes
-
-The PDF lists Facebook, Instagram, Discord, Shopify, Walmart, and Bloomberg as examples of applications built using React Native.
-
-## 5. Installation and environment setup
-
-### Prerequisites
-
-Before installing React Native, the notes list these prerequisites:
-
-1. Node.js
-2. npm or Yarn
-3. Android Studio
-4. JDK (Java Development Kit)
-
-### Node.js installation check
-
-After installing Node.js, use these commands to verify Node.js and npm:
-
-```bash
-node -v
-npm -v
-```
-
-The PDF points to `https://nodejs.org` for Node.js.
-
-### Android Studio
-
-Android Studio supports:
-
-- Android emulator use
-- SDK management
-- Device testing
-
-Important components include the Android SDK, Android SDK Platform, and Android Virtual Device (AVD).
-
-### React Native CLI and Expo CLI
-
-| Feature | React Native CLI | Expo CLI |
-|---|---|---|
-| Full native control | Yes | Limited, as shown in the notes |
-| Ease of setup | Moderate | Easy |
-| Custom native modules | Supported | Limited, as shown in the notes |
-| Beginner friendly | Moderate | High |
-
-The notes present Expo as the easier starting option and React Native CLI as the option offering more native control.
-
-### Creating an app with Expo
-
-The PDF lists these commands:
-
-```bash
-npm install -g expo-cli
-npx create-expo-app MyApp
-npm start
-```
-
-### Creating an app with React Native CLI
-
-The PDF lists:
-
-```bash
-npx react-native init MyApp
-npx react-native run-android
-```
-
-## 6. React Native project structure
-
-A typical project shown in the PDF has this structure:
-
-```text
-MyApp/
-├── android/
-├── ios/
-├── node_modules/
-├── assets/
-├── components/
-├── screens/
-├── App.js
-└── package.json
-```
-
-| File or folder | Purpose |
-|---|---|
-| `App.js` | Main entry point of the application |
-| `components/` | Stores reusable UI components, such as `Header.js` and `Footer.js` |
-| `screens/` | Stores application screens or pages, such as `HomeScreen.js` and `LoginScreen.js` |
-| `assets/` | Stores images, fonts, and icons |
-| `package.json` | Contains dependencies, scripts, and project configuration |
-| `android/` and `ios/` | Platform-specific project folders |
-| `node_modules/` | Holds installed project dependencies |
-
-## 7. Components in React Native
-
-A **component** is a reusable building block of a React Native application. Components help developers divide an application into smaller, understandable parts.
-
-### Functional components
-
-A functional component is created using a JavaScript function. The notes describe functional components as simpler, more readable, and preferred in modern React.
-
-```jsx
-import React from 'react';
-import { Text } from 'react-native';
-
-const App = () => {
-  return <Text>Hello World</Text>;
-};
-
-export default App;
-```
-
-### Class components
-
-A class component uses an ES6 class and a `render()` method to return the UI.
-
-```jsx
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-
-class App extends Component {
-  render() {
-    return <Text>Hello World</Text>;
-  }
-}
-
-export default App;
-```
-
-### Functional versus class components
-
-| Functional component | Class component |
-|---|---|
-| Uses a JavaScript function | Uses an ES6 class |
-| Simpler syntax | More complex structure |
-| Uses Hooks in the modern approach | Uses lifecycle methods in the notes' comparison |
-| Presented as the preferred modern approach | Presented as the older approach |
-
-## 8. JSX syntax and rendering elements
-
-**JSX** stands for **JavaScript XML**. It allows developers to write HTML-like syntax inside JavaScript. React Native uses JSX to describe the interface that a component returns.
-
-Example:
-
-```jsx
-const element = <Text>Hello React Native</Text>;
-```
-
-### Main JSX rules
-
-1. **Use a single parent element:** wrap sibling elements inside one parent such as `<View>`.
-2. **Close every tag:** for example, write `<Image />` for a self-closing element.
-3. **Use curly braces for JavaScript expressions:** for example, `<Text>{name}</Text>`.
-
-A basic rendering example:
-
-```jsx
-import React from 'react';
-import { View, Text } from 'react-native';
-
-const App = () => {
-  return (
-    <View>
-      <Text>Welcome to React Native</Text>
-    </View>
-  );
-};
-
-export default App;
-```
-
-## 9. Styling in React Native
-
-The notes describe two styling approaches.
-
-### Inline styling
-
-Styles can be written directly inside the `style` prop:
-
-```jsx
-<Text style={{ color: 'blue', fontSize: 20 }}>
-  Hello
-</Text>
-```
-
-### StyleSheet API
-
-The `StyleSheet` API lets developers define styles separately and reuse them.
-
-```jsx
-import { StyleSheet, Text } from 'react-native';
-
-const styles = StyleSheet.create({
-  textStyle: {
-    color: 'red',
-    fontSize: 22,
-  },
-});
-
-<Text style={styles.textStyle}>Hello</Text>
-```
-
-**Advantages of StyleSheet API:** better readability, reusable styles, and improved performance, as stated in the PDF.
-
-## 10. Props and state
-
-### Props
-
-**Props** pass data from a parent component to a child component. The notes describe props as read-only data supplied from outside the component.
-
-```jsx
-const Student = (props) => {
-  return <Text>{props.name}</Text>;
-};
-
-<Student name="Rahul" />
-```
-
-### State
-
-**State** stores dynamic data inside a component. The value can change while the application runs. The PDF gives a counter state example:
-
-```jsx
-const [count, setCount] = useState(0);
-```
-
-### Props versus state
-
-| Props | State |
-|---|---|
-| Read-only from the receiving component's perspective | Mutable through the component's state update mechanism |
-| Passed from a parent | Managed inside the component |
-| External data | Internal component data |
-
-## 11. Event handling and user input
-
-Event handling lets an application respond to user actions.
-
-### Button component
-
-The `Button` component uses `onPress` to respond when the user presses it.
-
-```jsx
-<Button
-  title="Click Me"
-  onPress={() => alert('Button Pressed')}
-/>
-```
-
-### TextInput component
-
-`TextInput` accepts text entered by the user. The notes show a placeholder example:
-
-```jsx
-<TextInput placeholder="Enter Name" />
-```
-
-### Touchable components
-
-The notes list:
-
-- `TouchableOpacity`
-- `TouchableHighlight`
-- `TouchableWithoutFeedback`
-
-Example:
-
-```jsx
-<TouchableOpacity onPress={() => alert('Pressed')}>
-  <Text>Press Here</Text>
-</TouchableOpacity>
-```
-
-The PDF also demonstrates connecting a `TextInput` to state through `value` and `onChangeText`, then showing the entered name when the user presses a button. This demonstrates that input, state, and events work together.
-
-## 12. Debugging tools and common errors
-
-**Debugging** helps developers find errors, improve performance, and fix crashes.
-
-### Tools listed in the PDF
-
-1. **`console.log()`** — prints a message or value for inspection.
-2. **React Developer Tools** — helps inspect component hierarchy, state, and props.
-3. **Emulator testing** — checks the application with an Android Emulator or a physical device.
-
-### Common errors
-
-| Error | Reason given in the notes |
-|---|---|
-| Module not found | Missing dependency |
-| Undefined is not a function | Incorrect method usage |
-| Metro bundler issue | Cache problem |
-
-### Best practices
-
-- Use reusable components.
-- Keep code modular.
-- Use functional components.
-- Avoid unnecessary re-rendering.
-- Maintain a proper folder structure.
-- Write clean and readable code.
-- Use version control systems such as Git.
-
-## Unit 1 — Quick revision
-
-- Mobile applications target devices such as smartphones and tablets.
-- Native apps target one platform; web apps run in browsers; cross-platform apps share a codebase.
-- React Native is an open-source JavaScript framework developed by Meta.
-- The architecture topics are JavaScript Thread, Native Thread, and Bridge.
-- Environment setup includes Node.js, npm/Yarn, Android Studio, and JDK.
-- `App.js` is the main entry point in the shown project structure.
-- Components are reusable building blocks; JSX describes UI.
-- Props pass data into components; state stores changing internal data.
-- `onPress` handles button presses; `TextInput` accepts text.
-- Debugging tools include `console.log()`, React Developer Tools, and emulator testing.
-
-## Unit 1 — Question bank with model answers
-
-### A. One-mark questions (8 × 1)
-
-**1. What is mobile application development?**  
-It is the process of designing, creating, testing, and deploying software applications for mobile devices such as smartphones and tablets.
-
-**2. Name the two mobile platforms discussed in the unit.**  
-Android and iOS.
-
-**3. What is React Native?**  
-React Native is an open-source JavaScript framework developed by Meta for building mobile applications.
-
-**4. What does JSX stand for?**  
-JSX stands for JavaScript XML.
-
-**5. What is a component in React Native?**  
-A component is a reusable building block of a React Native application.
-
-**6. What is the main purpose of `App.js`?**  
-It acts as the main entry point of the application in the project structure shown in the notes.
-
-**7. What are props?**  
-Props are used to pass data from a parent component to a child component.
-
-**8. Name one debugging tool used in React Native.**  
-`console.log()`. (React Developer Tools and emulator testing are also valid.)
-
-### B. Two-mark questions (4 × 2)
-
-**1. State two advantages of native applications.**  
-Native applications provide high performance and a better user experience. They also offer full access to device features.
-
-**2. Write two features of React Native.**  
-React Native supports cross-platform development through a shared codebase. It also uses reusable components and provides Fast Refresh.
-
-**3. Differentiate between props and state.**  
-Props pass data from a parent component and are read-only to the receiving component. State stores dynamic data inside a component and can change during application execution.
-
-**4. Name any two prerequisites for React Native setup and state their purpose.**  
-Node.js provides the JavaScript runtime, while Android Studio provides tools such as the Android emulator and SDK management. npm/Yarn and JDK are also listed prerequisites.
-
-### C. Five-mark questions (4 × 5)
-
-**1. Explain the types of mobile applications with their advantages and disadvantages.**  
-Mobile applications are commonly grouped into three types:
-
-- **Native applications:** built for one platform using its specific language, such as Java/Kotlin for Android and Swift/Objective-C for iOS. They offer high performance, a better user experience, and full device-feature access. They need separate codebases, cost more, and require more maintenance.
-- **Web applications:** run in a browser using HTML, CSS, and JavaScript. They are easy to develop and platform independent, but have limited hardware access and lower performance than native applications.
-- **Hybrid/cross-platform applications:** use one codebase for multiple platforms. Frameworks named in the notes include React Native, Flutter, Ionic, and Xamarin. They reduce development time and cost and support code reuse, but may have slightly lower performance and some platform-specific limitations.
-
-**2. Define React Native and explain its features, advantages, and limitations.**  
-React Native is an open-source JavaScript framework developed by Meta for creating Android and iOS applications using JavaScript and React. Its important features are cross-platform development, component-based architecture, Fast Refresh, community support, and native UI components. Its advantages include reusable code, faster development, reduced cost, easier debugging, and a large ecosystem. Its limitations include slightly lower performance than native apps, platform-specific coding for complex native modules, and difficult dependency management.
-
-**3. Explain the architecture of React Native.**  
-The unit describes three main parts:
-
-1. **JavaScript Thread:** handles business logic, API calls, and state management.
-2. **Native Thread:** handles native UI rendering and device-hardware operations.
-3. **Bridge:** provides communication between JavaScript and native modules.
-
-The simplified flow is `JavaScript Code → Bridge → Native Components`. Thus, the JavaScript side communicates with native components through the bridge.
-
-**4. Explain the React Native project structure and the purpose of its important files and folders.**  
-A typical project includes `android/`, `ios/`, `node_modules/`, `assets/`, `components/`, `screens/`, `App.js`, and `package.json`. `App.js` is the main entry point. `components/` stores reusable UI parts such as headers and footers. `screens/` stores pages such as Home and Login. `assets/` stores images, fonts, and icons. `package.json` stores dependencies, scripts, and project configuration. The Android and iOS folders contain platform project files, while `node_modules/` contains installed dependencies.
+**Answer:** B
 
 ---
 
-# Unit 2 — Adaptive User Interface Design
+### Q2: What distinguishes a research-based degree from a typical undergraduate degree?
 
-## 1. Introduction to mobile UI/UX design
+**Type:** MCQ (Single Select)
 
-### UI design
+**Options:**
 
-**UI (User Interface) design** concerns the visual appearance and interactive elements of a mobile application. The PDF lists buttons, menus, icons, layouts, colors, and typography. Its main objective is to make the application visually attractive and easy to interact with.
+A. Clear and defined boundaries throughout the degree program.
+B. Opportunities for continuous discovery and learning. **[CORRECT]**
+C. Graduation day marking the completion of the degree.
+D. Acquisition of expertise and recognition in a specific field.
 
-### UX design
-
-**UX (User Experience) design** focuses on the user's overall experience while interacting with an application. It emphasizes ease of use, accessibility, performance, simple navigation, and user satisfaction. Good UX helps users complete tasks efficiently without confusion.
-
-### Importance of UI/UX
-
-Good UI/UX can improve engagement, satisfaction, accessibility, usability, and application popularity while reducing frustration. Poor UI/UX can cause confusion, uninstalls, negative reviews, and lower user retention.
-
-## 2. Principles of effective mobile UI/UX design
-
-1. **Simplicity:** keep the interface clean and understandable. Use clear buttons, minimal text, and an organized layout.
-2. **Consistency:** maintain consistent colors, fonts, buttons, and navigation styles. Consistency helps users become familiar with the application.
-3. **Responsiveness:** adapt the interface to different screen sizes, devices, and orientation changes.
-4. **Accessibility:** make the application usable for people with disabilities. The notes mention screen readers, voice feedback, and proper text contrast.
-5. **User feedback:** show users that an action has happened or is being processed. Examples include loading indicators, error messages, and success notifications.
-
-## 3. Responsive layouts using Flexbox
-
-**Flexbox** is a layout system used to arrange UI elements dynamically and responsively. React Native uses Flexbox by default. It helps align components, distribute space, and build layouts for different screen sizes.
-
-### Important Flexbox properties
-
-| Property | Purpose | Values or example in the notes |
-|---|---|---|
-| `flexDirection` | Sets the direction of child components | `row`, `column` |
-| `justifyContent` | Aligns children along the main axis | `flex-start`, `center`, `flex-end`, `space-between`, `space-around` |
-| `alignItems` | Aligns children along the cross axis | `flex-start`, `center`, `flex-end`, `stretch` |
-| `flex` | Determines how much space a component occupies | Example: `flex: 1` |
-
-Example of a row layout:
-
-```jsx
-<View style={{ flexDirection: 'row' }}>
-  <Text>Item 1</Text>
-  <Text>Item 2</Text>
-</View>
-```
-
-A responsive layout in the PDF places two child views inside a parent with `flex: 1` and `flexDirection: 'row'`. Each child uses `flex: 1`, so the two boxes share the available horizontal space.
-
-**Advantages of Flexbox:** easy responsive design, dynamic layouts, better alignment control, and support across multiple screen sizes.
-
-## 4. Working with the Dimensions API
-
-The **Dimensions API** gets the screen width and screen height. Developers can use these dimensions to create layouts that adapt to different devices.
-
-```jsx
-import { Dimensions } from 'react-native';
-
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
-```
-
-The PDF demonstrates displaying the screen width using a `Text` component. The stated importance of the API is that it supports dynamic layouts, improves responsiveness, and accommodates multiple device sizes.
-
-## 5. Platform-specific design
-
-React Native applications can run on Android and iOS, but some interface conventions differ.
-
-### Android versus iOS as shown in the notes
-
-| Feature | Android | iOS |
-|---|---|---|
-| Navigation style | Material Design | Cupertino Design |
-| Buttons | Elevated buttons | Flat buttons |
-| Fonts | Roboto | San Francisco |
-| Back navigation | Hardware button | Gesture-based |
-
-### Platform API
-
-React Native provides the `Platform` API. The PDF shows `Platform.OS` to check the current operating system:
-
-```jsx
-import { Platform } from 'react-native';
-
-if (Platform.OS === 'android') {
-  console.log('Android Device');
-}
-```
-
-### Platform-specific files
-
-Developers can create separate files such as `Home.android.js` and `Home.ios.js`. This allows them to implement platform-specific code. The notes list better user experience, native-like feel, and improved usability as advantages.
-
-## 6. Media queries and screen-orientation handling
-
-The notes explain that mobile devices commonly support **portrait** and **landscape** modes. Applications should adapt to both orientations.
-
-The PDF shows an orientation/dimension-change listener using the Dimensions API:
-
-```jsx
-Dimensions.addEventListener('change', ({ window }) => {
-  console.log(window.width);
-});
-```
-
-The responsive techniques named in the notes are Flexbox, percentage-based sizing, and dynamic dimensions. Handling orientation can improve readability, usability, and responsiveness.
-
-## 7. Theming and dark mode
-
-### Theming
-
-**Theming** allows an application to maintain a consistent set of colors, fonts, and UI styles.
-
-### Dark mode
-
-**Dark mode** changes the application appearance to darker colors. The PDF lists reduced eye strain, battery saving on OLED screens, and better night-time usability as benefits.
-
-### Appearance API
-
-React Native provides the Appearance API. The notes show how to read the current color scheme:
-
-```jsx
-import { Appearance } from 'react-native';
-
-const colorScheme = Appearance.getColorScheme();
-const isDarkMode = colorScheme === 'dark';
-```
-
-Dark mode can improve visual comfort, provide a modern appearance, and support user preferences.
-
-## 8. Custom fonts and icons
-
-### Custom fonts
-
-Custom fonts improve an application's appearance and branding. The PDF lists these steps:
-
-1. Create an `assets/fonts` folder.
-2. Add the font files.
-3. Configure `react-native.config.js`.
-4. Link the assets.
-
-A font can then be selected using the `fontFamily` style property:
-
-```jsx
-<Text style={{ fontFamily: 'Roboto' }}>
-  Welcome
-</Text>
-```
-
-### Icons
-
-Icons improve UI clarity and navigation. The notes name `react-native-vector-icons` as a popular library.
-
-```bash
-npm install react-native-vector-icons
-```
-
-Example usage:
-
-```jsx
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-<Icon name="home" size={30} color="blue" />
-```
-
-Custom fonts and icons can improve visual appeal, interaction, and professional design.
-
-## 9. Accessibility features
-
-**Accessibility** means designing applications so people with disabilities can use them.
-
-The PDF lists these React Native features:
-
-- **`accessibilityLabel`:** provides a description for screen readers. The example labels a button as “Login Button”.
-- **`accessible`:** marks an element as accessible, for example `<View accessible={true}>`.
-- **Screen readers:** TalkBack is listed for Android and VoiceOver for iOS.
-
-Accessibility supports inclusive applications, better usability, legal compliance, and user satisfaction.
-
-## 10. Best practices for user-friendly interface design
-
-The PDF recommends:
-
-1. Maintain consistent colors, fonts, and button styles.
-2. Keep navigation simple so users can move easily between screens.
-3. Use proper spacing and avoid overcrowded layouts.
-4. Optimize performance and avoid heavy UI rendering.
-5. Use readable fonts on different screen sizes.
-6. Provide feedback with alerts, loading indicators, and success messages.
-7. Design for small screens, large screens, and tablets.
-8. Improve accessibility through screen readers, voice commands, and proper color contrast.
-9. Test the UI on real devices to find layout, responsiveness, and performance issues.
-
-### Practical example: responsive login screen
-
-The PDF's example uses a parent `View` with `flex: 1`, centered content, and padding. It contains email and password `TextInput` elements and a Login button. The password field uses `secureTextEntry={true}`. The example demonstrates how layout styles and input components combine to form a simple login UI.
-
-## Unit 2 — Quick revision
-
-- UI concerns visual appearance and interactive elements; UX concerns the overall user experience.
-- The five principles are simplicity, consistency, responsiveness, accessibility, and user feedback.
-- Flexbox uses `flexDirection`, `justifyContent`, `alignItems`, and `flex` to arrange views.
-- The Dimensions API reads window width and height.
-- The Platform API and `.android.js` / `.ios.js` files support platform-specific design.
-- Mobile orientation includes portrait and landscape.
-- The Appearance API reads the color scheme for theming and dark mode.
-- Custom fonts and icons support visual identity and clarity.
-- `accessibilityLabel`, `accessible`, TalkBack, and VoiceOver support accessibility.
-- Test layouts on real devices and design for different screen sizes.
-
-## Unit 2 — Question bank with model answers
-
-### A. One-mark questions (8 × 1)
-
-**1. What is UI design?**  
-UI design concerns the visual appearance and interactive elements of a mobile application.
-
-**2. What is UX design?**  
-UX design focuses on the overall experience of users while they interact with an application.
-
-**3. What is Flexbox?**  
-Flexbox is a layout system used to arrange UI elements dynamically and responsively.
-
-**4. Name the two values of `flexDirection` given in the notes.**  
-`row` and `column`.
-
-**5. What does the Dimensions API provide?**  
-It provides screen width and screen height.
-
-**6. Name the React Native API used to detect the operating system.**  
-The Platform API.
-
-**7. What does dark mode do?**  
-It changes the application's appearance to darker colors.
-
-**8. Name the Android and iOS screen readers listed in the PDF.**  
-TalkBack for Android and VoiceOver for iOS.
-
-### B. Two-mark questions (4 × 2)
-
-**1. Differentiate between UI and UX design.**  
-UI design focuses on visual elements such as buttons, menus, icons, layouts, colors, and typography. UX design focuses on ease of use, accessibility, performance, navigation simplicity, and user satisfaction.
-
-**2. Explain `justifyContent` and `alignItems`.**  
-`justifyContent` controls alignment along the main axis. `alignItems` controls alignment along the cross axis.
-
-**3. State two benefits of responsive design.**  
-Responsive design allows an application to adapt to different screen sizes and devices. It also supports orientation changes and improves usability.
-
-**4. What is the purpose of `accessibilityLabel`?**  
-`accessibilityLabel` provides a description of an interface element for screen readers. For example, a button can have the label “Login Button”.
-
-### C. Five-mark questions (4 × 5)
-
-**1. Explain the principles of effective mobile UI/UX design.**  
-The PDF lists five principles:
-
-1. **Simplicity:** use a clean interface, clear buttons, minimal text, and an organized layout.
-2. **Consistency:** keep colors, fonts, buttons, and navigation styles consistent.
-3. **Responsiveness:** adapt the interface to different devices, screen sizes, and orientations.
-4. **Accessibility:** support users with disabilities through screen readers, voice feedback, and proper text contrast.
-5. **User feedback:** provide loading indicators, error messages, and success notifications so users understand the result of an action.
-
-**2. Explain the important Flexbox properties used in React Native.**  
-Flexbox arranges UI elements dynamically, and React Native uses it by default. `flexDirection` sets the child direction using `row` or `column`. `justifyContent` aligns children along the main axis with values such as `flex-start`, `center`, `flex-end`, `space-between`, and `space-around`. `alignItems` aligns children on the cross axis with values such as `flex-start`, `center`, `flex-end`, and `stretch`. `flex` determines how much space a component occupies. These properties help create responsive layouts.
-
-**3. Explain how React Native supports platform-specific design and screen orientation.**  
-Android and iOS use different interface conventions. The notes compare Material Design with Cupertino Design, elevated buttons with flat buttons, Roboto with San Francisco, and hardware back navigation with gesture-based navigation. The Platform API can identify the operating system through `Platform.OS`. Developers can also create files such as `Home.android.js` and `Home.ios.js`. For orientation, the notes identify portrait and landscape modes and show listening for dimension changes through the Dimensions API. Flexbox, percentage sizing, and dynamic dimensions help layouts adapt.
-
-**4. Explain theming, dark mode, and accessibility features in React Native.**  
-Theming maintains consistent colors, fonts, and UI styles. Dark mode changes the interface to darker colors and the PDF lists reduced eye strain, OLED battery saving, and better night-time usability as benefits. The Appearance API reads the current color scheme. Accessibility ensures that users with disabilities can use the application. React Native features listed include `accessibilityLabel` for screen-reader descriptions and `accessible` for marking an element accessible. The PDF names TalkBack on Android and VoiceOver on iOS as screen readers.
+**Answer:** B
 
 ---
 
-# Unit 3 — Navigation and State Management
+### Q3: What is the importance of attitude and communication in the student-advisor relationship?
 
-## 1. Navigation in mobile applications
+**Type:** MCQ (Single Select)
 
-**Navigation** is the process of moving between screens or pages in a mobile application. Examples include moving from Login to Home, opening Profile from a menu, and switching between Home, Search, and Settings tabs.
+**Options:**
 
-Good navigation provides easy access to features, better user experience, organized structure, faster interaction, and improved usability. Poor navigation can confuse users and reduce usability.
+A. Having prior knowledge is the most important factor for a student to work towards a PhD.
+B. Advisors expect students to define their own research problems without any guidance.
+C. Students should choose advisors based on their reputation and availability.
+D. Attitude, inclination to learn, and effective communication with the advisor are crucial. **[CORRECT]**
 
-The unit introduces three common types: stack navigation, tab navigation, and drawer navigation.
-
-## 2. React Navigation library
-
-**React Navigation** is a popular library used to implement navigation in React Native applications. It provides screen transitions, navigation containers, navigation stacks, tab navigation, and drawer navigation.
-
-The PDF lists these features:
-
-- Easy to use
-- Cross-platform support
-- Multiple navigation types
-- High customization
-- Strong community support
-
-### Installation steps shown in the notes
-
-```bash
-npm install @react-navigation/native
-npm install react-native-screens react-native-safe-area-context
-npm install @react-navigation/native-stack
-```
-
-### NavigationContainer
-
-`NavigationContainer` manages the navigation structure of the application. The navigators are placed inside it.
-
-## 3. Stack navigation
-
-**Stack navigation** works like a stack data structure. New screens are pushed onto the stack, and previous screens are popped from it.
-
-Common uses in the notes include login flows, product details, and multi-step forms.
-
-The PDF shows this installation command:
-
-```bash
-npm install @react-navigation/native-stack
-```
-
-A basic stack contains a `Stack.Navigator` and named `Stack.Screen` entries. A screen can move to another screen through `navigation.navigate('Profile')`.
-
-```jsx
-const Stack = createNativeStackNavigator();
-
-function HomeScreen({ navigation }) {
-  return (
-    <Button
-      title="Go to Profile"
-      onPress={() => navigation.navigate('Profile')}
-    />
-  );
-}
-
-<NavigationContainer>
-  <Stack.Navigator>
-    <Stack.Screen name="Home" component={HomeScreen} />
-    <Stack.Screen name="Profile" component={ProfileScreen} />
-  </Stack.Navigator>
-</NavigationContainer>
-```
-
-**Advantages:** simple implementation, smooth transitions, and suitability for sequential workflows.
-
-**Limitations:** can become difficult in complex applications and is not suitable for top-level navigation in the notes' comparison.
-
-## 4. Tab navigation
-
-**Tab navigation** lets users switch between screens using tabs at the top or bottom of the screen. The PDF names Instagram, WhatsApp, and Facebook as examples.
-
-Types:
-
-1. **Bottom Tab Navigation:** tabs appear at the bottom.
-2. **Material Top Tabs:** tabs appear at the top.
-
-The notes show this installation command:
-
-```bash
-npm install @react-navigation/bottom-tabs
-```
-
-A bottom tab navigator uses `createBottomTabNavigator()`, a `Tab.Navigator`, and named `Tab.Screen` entries. The PDF lists easy screen switching, better accessibility, and a user-friendly interface as advantages.
-
-## 5. Drawer navigation
-
-**Drawer navigation** displays a side menu that slides from the left or right side of the screen. The notes mention e-commerce applications, dashboard applications, and banking applications as common uses.
-
-Installation command:
-
-```bash
-npm install @react-navigation/drawer
-```
-
-A drawer navigator uses `createDrawerNavigator()`, a `Drawer.Navigator`, and named `Drawer.Screen` entries. The PDF lists saving screen space, organizing multiple screens, and easy access to features as advantages.
-
-## 6. Stack, tab, and drawer navigation compared
-
-| Navigation type | How it works | Common use / strength |
-|---|---|---|
-| Stack | Pushes new screens and pops previous screens | Login flows, product details, and multi-step forms |
-| Tab | Switches screens through top or bottom tabs | Frequent switching between main sections |
-| Drawer | Opens a side menu from the left or right | Menus for applications with several sections |
-
-## 7. Navigation lifecycle and screen management
-
-The notes explain three general screen lifecycle stages:
-
-1. **Mounting:** the screen is created.
-2. **Updating:** the screen changes as its data or state changes.
-3. **Unmounting:** the screen is removed.
-
-React Navigation events named in the PDF are:
-
-- `focus`
-- `blur`
-- `beforeRemove`
-
-Example listener:
-
-```jsx
-navigation.addListener('focus', () => {
-  console.log('Screen Focused');
-});
-```
-
-Good screen management can reduce memory usage, improve performance, and avoid unnecessary rendering.
-
-## 8. Passing parameters between screens
-
-Parameters transfer data from one screen to another. The PDF gives product IDs, usernames, and user profile details as examples.
-
-### Passing a parameter
-
-```jsx
-navigation.navigate('Profile', {
-  username: 'Rahul',
-});
-```
-
-### Receiving a parameter
-
-```jsx
-function ProfileScreen({ route }) {
-  const { username } = route.params;
-  return <Text>{username}</Text>;
-}
-```
-
-The stated benefits are dynamic data transfer, better interaction, and reusable screens.
-
-## 9. Nested navigation structures
-
-**Nested navigation** means combining multiple navigation types. Examples in the notes include a drawer containing tab navigation and a stack inside tab navigation.
-
-Example structure:
-
-```text
-Drawer Navigation
-├── Home Tabs
-│   ├── Feed Screen
-│   └── Profile Screen
-└── Settings Screen
-```
-
-Nested navigation supports better organization, scalable architecture, and large applications.
-
-## 10. Introduction to state management
-
-**State** is data that changes during application execution. The PDF gives login status, cart items, counter value, and theme mode as examples.
-
-State management helps share data between components, update the UI dynamically, and maintain application consistency.
-
-### Local state
-
-Local state is managed inside one component. The PDF gives this example:
-
-```jsx
-const [count, setCount] = useState(0);
-```
-
-### Global state
-
-Global state is shared across multiple components. Examples in the notes include user authentication, shopping cart, and application theme.
-
-## 11. Context API for global state management
-
-**Context API** is React's built-in state management solution for sharing data globally. It helps avoid **prop drilling**, which means repeatedly passing data through components that do not need to use it directly.
-
-The basic steps are:
-
-1. Create a context using `createContext()`.
-2. Provide a value through `Context.Provider`.
-3. Read the value in a child component using `useContext()`.
-
-```jsx
-import React, { createContext, useContext } from 'react';
-import { Text } from 'react-native';
-
-const UserContext = createContext();
-
-function Profile() {
-  const user = useContext(UserContext);
-  return <Text>{user}</Text>;
-}
-
-function App() {
-  return (
-    <UserContext.Provider value="Rahul">
-      <Profile />
-    </UserContext.Provider>
-  );
-}
-```
-
-**Advantages:** simple global state management, less prop drilling, and built-in availability in React.
-
-**Limitations:** not suitable for very large applications according to the notes, and frequent updates may reduce performance.
-
-## 12. Handling complex state
-
-Complex state becomes difficult when an application contains multiple screens, large datasets, or real-time updates.
-
-The PDF lists these common solutions:
-
-- Context API
-- Redux
-- Zustand
-- Recoil
-
-## 13. Performance optimization and avoiding unnecessary re-renders
-
-**Re-rendering** means updating the UI again when state or props change. Too many re-renders can reduce performance, increase memory usage, and slow down applications.
-
-The notes list these techniques:
-
-- **`React.memo()`:** helps prevent unnecessary rendering of a component.
-- **`useMemo()`:** optimizes expensive calculations.
-- **`useCallback()`:** optimizes functions.
-- **Lazy loading:** loads components only when needed.
-- **FlatList optimization:** use `FlatList` instead of `ScrollView` for large data.
-
-Example from the PDF:
-
-```jsx
-export default React.memo(MyComponent);
-
-const result = useMemo(() => {
-  return calculateValue();
-}, []);
-
-const handleClick = useCallback(() => {
-  console.log('Clicked');
-}, []);
-```
-
-The PDF also shows `FlatList` with `data` and `renderItem` properties.
-
-## Unit 3 — Quick revision
-
-- Navigation moves users between screens.
-- React Navigation supports stack, tab, and drawer navigation.
-- `NavigationContainer` manages the navigation structure.
-- Stack navigation pushes and pops screens.
-- Tab navigation switches through top or bottom tabs.
-- Drawer navigation opens a sliding side menu.
-- Lifecycle stages are mounting, updating, and unmounting.
-- Navigation events include `focus`, `blur`, and `beforeRemove`.
-- Screens exchange values through route parameters.
-- Nested navigation combines multiple navigator types.
-- Local state belongs to one component; global state is shared.
-- Context API uses `createContext`, `Provider`, and `useContext`.
-- `React.memo`, `useMemo`, `useCallback`, lazy loading, and FlatList optimization help performance.
-
-## Unit 3 — Question bank with model answers
-
-### A. One-mark questions (8 × 1)
-
-**1. What is navigation in a mobile application?**  
-Navigation is the process of moving between different screens or pages within a mobile application.
-
-**2. Name the library commonly used for navigation in React Native.**  
-React Navigation.
-
-**3. What is stack navigation?**  
-Stack navigation is a navigation method in which new screens are pushed onto a stack and previous screens are popped.
-
-**4. Where can tabs appear in tab navigation?**  
-Tabs can appear at the bottom or at the top of the screen.
-
-**5. What is drawer navigation?**  
-Drawer navigation displays a side menu that slides from the left or right side of the screen.
-
-**6. Name one navigation lifecycle event.**  
-`focus`. (`blur` and `beforeRemove` are also valid.)
-
-**7. What is local state?**  
-Local state is state managed inside a single component.
-
-**8. What is the purpose of Context API?**  
-Context API shares data globally across components and helps avoid prop drilling.
-
-### B. Two-mark questions (4 × 2)
-
-**1. State two advantages of React Navigation.**  
-It supports multiple navigation styles and cross-platform applications. It is also customizable and provides screen transitions.
-
-**2. Differentiate between tab navigation and drawer navigation.**  
-Tab navigation lets users switch between screens using tabs at the top or bottom. Drawer navigation opens a sliding side menu from the left or right.
-
-**3. What is nested navigation? Give one example.**  
-Nested navigation combines multiple navigation types in one application. One example is a drawer containing tab navigation.
-
-**4. State two limitations of Context API from the notes.**  
-The notes say Context API is not suitable for very large applications and frequent updates may reduce performance.
-
-### C. Five-mark questions (4 × 5)
-
-**1. Explain stack, tab, and drawer navigation.**  
-React Native uses React Navigation to implement different navigation styles:
-
-- **Stack navigation:** works like a stack data structure. New screens are pushed onto the stack and previous screens are popped. It suits login flows, product details, and multi-step forms.
-- **Tab navigation:** allows users to switch between screens using tabs at the bottom or top. Types named in the notes are Bottom Tab Navigation and Material Top Tabs.
-- **Drawer navigation:** displays a side menu that slides from the left or right. It is used in e-commerce, dashboards, and banking applications.
-
-Stack navigation supports sequential workflows, tab navigation provides quick switching, and drawer navigation organizes multiple sections.
-
-**2. Explain the navigation lifecycle and passing parameters between screens.**  
-The screen lifecycle contains mounting, updating, and unmounting. React Navigation provides events such as `focus`, `blur`, and `beforeRemove`. A screen can register a listener for a focus event. Parameters transfer data between screens. For example, `navigation.navigate('Profile', { username: 'Rahul' })` sends a username to the Profile screen. The receiving screen reads it through `route.params`. Parameter passing supports dynamic data transfer, user interaction, and reusable screens.
-
-**3. Explain state management and Context API.**  
-State is data that changes during application execution. Local state is managed inside one component, while global state is shared across multiple components. State management helps share information, update the UI dynamically, and maintain consistency. Context API is React's built-in solution for sharing data globally. Developers create a context with `createContext()`, provide a value through `Context.Provider`, and read it with `useContext()`. It reduces prop drilling and offers simple global state management. Its limitations in the notes are difficulty with very large applications and possible performance reduction with frequent updates.
-
-**4. Explain techniques for avoiding unnecessary re-renders and optimizing performance.**  
-Re-rendering updates the UI when state or props change. Too many re-renders can reduce performance, increase memory use, and slow an application. The notes list `React.memo()` to prevent unnecessary component rendering, `useMemo()` to optimize expensive calculations, and `useCallback()` to optimize functions. Lazy loading loads components only when needed. For large datasets, the notes recommend `FlatList` instead of `ScrollView`. These techniques help improve application performance.
+**Answer:** D
 
 ---
 
-# Unit 4 — Data Handling and API Integration
+### Q4: What makes research challenging for first-time researchers?
 
-## 1. Introduction to data handling
+**Type:** MCQ (Single Select)
 
-**Data handling** is the process of collecting data from users, processing it, validating information, sending data to servers, and receiving and displaying data.
+**Options:**
 
-Mobile applications interact with user inputs, APIs, databases, and local storage systems. Examples include login forms, registration forms, search systems, product listings, and chat applications.
+A. The need to handle routine work and drudgery.
+B. The sudden shift in patterns from coursework to research. **[CORRECT]**
+C. The discovery process involved in understanding the research process.
+D. The pressure to obtain a degree and complete the research process.
 
-### Importance of data handling
-
-Proper data handling improves application reliability, reduces errors, enhances user experience, protects sensitive information, and improves performance. Poor handling can cause invalid input, crashes, security vulnerabilities, and poor user experience.
-
-## 2. Handling and optimizing user inputs
-
-**User input** is information entered by a user into an application. The notes list these common input components:
-
-- `TextInput`
-- `Button`
-- `Switch`
-- `Picker`
-- `Checkbox`
-
-### TextInput component
-
-`TextInput` accepts text from a user. The PDF demonstrates connecting the field to state through `value` and `onChangeText`:
-
-```jsx
-const [name, setName] = useState('');
-
-<TextInput
-  placeholder="Enter Name"
-  value={name}
-  onChangeText={setName}
-/>
-```
-
-### Input optimization techniques
-
-Input optimization improves responsiveness, user experience, and data quality. The notes list:
-
-1. **Input validation:** check that users enter correct data, such as a valid email format or an adequately long password.
-2. **Limiting input length:** use `maxLength`, for example `maxLength={10}`.
-3. **Keyboard types:** choose a suitable keyboard for the field, such as `email-address` for email input.
-
-The PDF lists these keyboard types:
-
-| Keyboard type | Usage |
-|---|---|
-| `default` | General text |
-| `numeric` | Numbers |
-| `email-address` | Email addresses |
-| `phone-pad` | Phone numbers |
-
-## 3. Controlled and uncontrolled components
-
-### Controlled component
-
-A **controlled component** has its input value controlled by React state. The example uses `value` and `onChangeText` together.
-
-```jsx
-const [email, setEmail] = useState('');
-
-<TextInput
-  value={email}
-  onChangeText={setEmail}
-/>
-```
-
-Advantages listed in the PDF are better validation, easier data handling, and real-time updates.
-
-### Uncontrolled component
-
-An **uncontrolled component** handles the input value directly without state management. The PDF gives `defaultValue` as an example:
-
-```jsx
-<TextInput defaultValue="Hello" />
-```
-
-### Comparison
-
-| Controlled | Uncontrolled |
-|---|---|
-| Uses state | Does not use state management for the value |
-| Better validation | Simpler implementation |
-| Supports dynamic updates | Offers more limited control |
-
-## 4. Form handling techniques
-
-**Form handling** means managing forms that collect user input, such as login forms, registration forms, and feedback forms.
-
-A basic form in the notes uses state for username and password, `TextInput` for each field, and a Button to submit the form. The password field uses `secureTextEntry={true}`. The button's `onPress` handler calls a submission function.
-
-### Form handling libraries
-
-The PDF names:
-
-- Formik
-- React Hook Form
-
-The notes list simplified validation, better performance, and reduced code complexity as advantages of form libraries.
-
-## 5. Form validation
-
-**Form validation** checks whether user input is correct, complete, and properly formatted.
-
-### Types of validation
-
-1. **Client-side validation:** takes place before the application sends data to the server.
-2. **Server-side validation:** takes place on the server after the application submits data.
-
-### Examples from the PDF
-
-Manual check for an empty email:
-
-```jsx
-if (email === '') {
-  alert('Email Required');
-}
-```
-
-The PDF also shows an email regular expression:
-
-```jsx
-const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-```
-
-The password rules listed are minimum length, uppercase letters, numbers, and special characters.
-
-**Benefits:** validation prevents invalid data, improves security, and enhances user experience.
-
-## 6. Introduction to REST APIs
-
-**API** stands for **Application Programming Interface**. It allows communication between mobile applications, web servers, and databases.
-
-**REST** stands for **Representational State Transfer**. A REST API is a web service architecture used for communication over HTTP. The notes identify mobile applications, web applications, and cloud systems as common uses.
-
-### HTTP methods
-
-| Method | Purpose in the notes |
-|---|---|
-| GET | Retrieve data |
-| POST | Create data |
-| PUT | Update data |
-| DELETE | Remove data |
-
-Example URL from the PDF:
-
-`https://jsonplaceholder.typicode.com/posts`
-
-The notes list lightweight communication, fast communication, platform independence, and easy integration as REST API benefits.
-
-## 7. Making HTTP requests using the Fetch API
-
-The **Fetch API** communicates with servers and retrieves data. The notes describe it as built into JavaScript, easy to use, and based on promises.
-
-### GET request
-
-```jsx
-fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.log(error));
-```
-
-The response is converted to JSON, then the resulting data is handled. The catch handler handles an error.
-
-### POST request
-
-The PDF demonstrates a POST request with a method, JSON content-type header, and JSON-encoded body:
-
-```jsx
-fetch('https://jsonplaceholder.typicode.com/posts', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    title: 'React Native',
-  }),
-});
-```
-
-**Advantages:** built into JavaScript, easy to use, and supports promises.
-
-**Limitations in the notes:** complex error handling and no automatic request cancellation.
-
-## 8. Axios library
-
-**Axios** is an HTTP client library used for API communication.
-
-Installation:
-
-```bash
-npm install axios
-```
-
-GET request example:
-
-```jsx
-import axios from 'axios';
-
-axios.get('https://jsonplaceholder.typicode.com/posts')
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.log(error);
-  });
-```
-
-POST request example:
-
-```jsx
-axios.post('https://jsonplaceholder.typicode.com/posts', {
-  title: 'Mobile App',
-});
-```
-
-The PDF lists better error handling, cleaner syntax, request cancellation support, and automatic JSON conversion as Axios advantages.
-
-### Fetch API versus Axios
-
-| Fetch API | Axios |
-|---|---|
-| Built into JavaScript | External library |
-| Requires manual JSON parsing in the notes' comparison | Automatic JSON parsing in the notes' comparison |
-| Error handling is described as more complex | Error handling is described as simpler |
-
-## 9. Handling API responses and errors
-
-Applications should display retrieved data, manage loading states, and handle errors properly.
-
-### Common errors
-
-| Error | Cause listed in the notes |
-|---|---|
-| 404 | Resource not found |
-| 500 | Server error |
-| Network error | Internet issue |
-| Timeout | Slow server response |
-
-### Error-handling best practices
-
-1. Show meaningful error messages.
-2. Use loading indicators.
-3. Retry failed requests.
-4. Validate server responses.
-
-The PDF shows a loading state such as:
-
-```jsx
-const [loading, setLoading] = useState(true);
-```
-
-## 10. Loading indicators and user feedback
-
-Loading indicators tell users that the application is processing a request. Without them, users may think the application has frozen.
-
-The notes show React Native's `ActivityIndicator`:
-
-```jsx
-import { ActivityIndicator } from 'react-native';
-
-<ActivityIndicator size="large" />
-```
-
-Other user-feedback mechanisms listed are alerts, toast messages, success notifications, and error dialogs. The PDF gives this alert example:
-
-```jsx
-alert('Data Saved Successfully');
-```
-
-User feedback improves interaction, usability, and communication.
-
-## 11. Local storage using AsyncStorage
-
-**AsyncStorage** is a local storage system used to store data persistently inside a mobile application. The PDF gives login tokens, user preferences, and offline data as examples.
-
-Installation:
-
-```bash
-npm install @react-native-async-storage/async-storage
-```
-
-The notes show three main operations:
-
-```jsx
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// Store
-await AsyncStorage.setItem('username', 'Rahul');
-
-// Retrieve
-const value = await AsyncStorage.getItem('username');
-
-// Remove
-await AsyncStorage.removeItem('username');
-```
-
-**Advantages:** persistent storage, offline support, and simple implementation.
-
-**Limitations:** not suitable for large databases and limited security.
-
-## 12. Data caching and offline handling
-
-**Data caching** stores frequently used data temporarily to improve performance.
-
-Benefits include faster loading, reduced internet usage, and a better offline experience.
-
-Applications should continue to work when there is no internet connection. The notes give offline notes applications and cached news articles as examples.
-
-### Offline strategy
-
-1. Store data locally.
-2. Synchronize data when the internet connection returns.
-3. Show cached data while offline.
-
-The PDF's example workflow is:
-
-```text
-API Request
-    ↓
-Store Data in AsyncStorage
-    ↓
-Retrieve Cached Data Offline
-```
-
-## Unit 4 — Quick revision
-
-- Data handling covers collection, processing, validation, sending, receiving, and displaying data.
-- `TextInput` accepts user input; `value` and `onChangeText` connect a controlled field to state.
-- `maxLength` limits input length; `keyboardType` selects an appropriate keyboard.
-- Controlled components use state; uncontrolled components do not use state to control the value.
-- Form validation can be client-side or server-side.
-- REST uses HTTP; GET retrieves, POST creates, PUT updates, and DELETE removes data.
-- Fetch is built in; Axios is an external HTTP client library.
-- Applications should handle loading, errors, and user feedback.
-- AsyncStorage stores persistent local data through set, get, and remove operations.
-- Caching improves load time and supports offline access.
-
-## Unit 4 — Question bank with model answers
-
-### A. One-mark questions (8 × 1)
-
-**1. What is data handling?**  
-Data handling is the process of collecting, processing, validating, sending, receiving, and displaying data.
-
-**2. What is the purpose of the TextInput component?**  
-It accepts text input from users.
-
-**3. What is a controlled component?**  
-A controlled component is an input component whose value React state controls.
-
-**4. What does API stand for?**  
-Application Programming Interface.
-
-**5. What does REST stand for?**  
-Representational State Transfer.
-
-**6. Which HTTP method retrieves data?**  
-GET.
-
-**7. What is Axios?**  
-Axios is a popular HTTP client library used for API communication.
-
-**8. What is AsyncStorage?**  
-AsyncStorage is a local storage system used to store data persistently inside mobile applications.
-
-### B. Two-mark questions (4 × 2)
-
-**1. State two ways to optimize user input.**  
-Validate input to check correctness and use `maxLength` to limit the number of characters. Suitable keyboard types can also improve usability.
-
-**2. Differentiate between client-side and server-side validation.**  
-Client-side validation takes place before data is sent to the server. Server-side validation takes place on the server after the application submits the data.
-
-**3. State two differences between Fetch and Axios.**  
-Fetch is built into JavaScript, while Axios is an external library. The notes describe Fetch as requiring manual JSON parsing and Axios as providing automatic JSON conversion.
-
-**4. State two benefits of data caching.**  
-Caching improves loading speed and reduces internet usage. It also supports a better offline experience.
-
-### C. Five-mark questions (4 × 5)
-
-**1. Explain controlled and uncontrolled components with examples and differences.**  
-A controlled component uses React state to manage the input value. The notes show `value={email}` and `onChangeText={setEmail}` to connect a TextInput to state. This makes validation, data handling, and real-time updates easier. An uncontrolled component handles its value directly without state management; the PDF gives `defaultValue="Hello"` as an example. Controlled components offer better validation and dynamic updates, while uncontrolled components are simpler to implement but provide more limited control.
-
-**2. Explain form handling and form validation in React Native.**  
-Form handling manages user input forms such as login, registration, and feedback forms. A basic form can use TextInput fields for username and password, state to store their values, and a Button to submit. The password field can use `secureTextEntry={true}`. Form libraries named in the notes are Formik and React Hook Form. Form validation checks whether input is correct, complete, and properly formatted. Client-side validation occurs before submission to the server; server-side validation occurs after submission. Email format and password rules are examples. Validation prevents invalid data, improves security, and enhances user experience.
-
-**3. Explain REST APIs and compare Fetch API with Axios.**  
-An API enables communication between mobile applications, servers, and databases. REST means Representational State Transfer and describes a web service architecture that communicates over HTTP. GET retrieves data, POST creates data, PUT updates data, and DELETE removes data. Fetch is built into JavaScript and supports promises. A GET request can convert a response to JSON, and a POST request can send a JSON body. Axios is an external HTTP client library. The notes list cleaner syntax, better error handling, request cancellation support, and automatic JSON conversion as Axios advantages. Fetch is built in, while Axios must be installed as a package.
-
-**4. Explain AsyncStorage, data caching, and offline handling.**  
-AsyncStorage is a local storage system that stores data persistently inside a mobile application. It can store login tokens, user preferences, and offline data. The notes show `setItem()` to store a value, `getItem()` to retrieve it, and `removeItem()` to remove it. AsyncStorage is simple and supports persistent and offline storage, but it is not suitable for large databases and has limited security. Data caching temporarily stores frequently used data to improve performance. It speeds up loading and reduces internet use. An offline strategy stores data locally, displays cached data when the internet is unavailable, and synchronizes data when the connection returns.
+**Answer:** B
 
 ---
 
-# Unit 5 — Authentication and Backend Integration
+### Q5: What is one advantage of research when dealing with failure?
 
-## 1. Introduction to backend services
+**Type:** MCQ (Single Select)
 
-The **backend** is the server-side part of an application. It handles data storage, authentication, business logic, database operations, and API management. It communicates with the mobile application and processes user requests.
+**Options:**
 
-Backend services help mobile applications store user data, manage authentication, process API requests, synchronize data, and handle cloud storage. The PDF gives login systems, online shopping applications, chat applications, and banking systems as examples.
+A. Research allows for changing initial assumptions and exploring different approaches. **[CORRECT]**
+B. Research ensures that failures are minimized and success is guaranteed.
+C. Research provides a predefined path to follow, for sure eliminating the possibility of failure.
+D. Research discourages any changes in assumptions or approaches to maintain consistency.
 
-### Types of backend services
-
-1. **Traditional backend:** developers create their own server, APIs, and database systems. Technologies named in the notes include Node.js, PHP, Django, and Spring Boot.
-2. **Backend as a Service (BaaS):** a cloud platform provides ready-made backend services. Examples include Firebase, Supabase, and AWS Amplify.
-
-The notes list faster development, easy scalability, secure data handling, and real-time synchronization as advantages of backend services.
-
-## 2. Introduction to Firebase
-
-**Firebase** is a Backend as a Service (BaaS) platform developed by Google.
-
-### Firebase features
-
-1. **Authentication:** supports email/password, phone, Google, and Facebook login.
-2. **Realtime Database:** stores and synchronizes data in real time.
-3. **Firestore Database:** a modern NoSQL cloud database.
-4. **Cloud Storage:** stores images, videos, and documents.
-5. **Analytics:** tracks user activity and application performance.
-
-### Advantages
-
-- Easy integration
-- Real-time synchronization
-- Secure authentication
-- Cloud-based storage
-- Scalable infrastructure
-
-### Limitations
-
-- Vendor dependency
-- Limited customization
-- Pricing may increase for large-scale applications
-
-## 3. Firebase project setup and configuration
-
-The PDF lists these project creation steps:
-
-1. Open Firebase Console.
-2. Create a new project.
-3. Register the Android application.
-4. Download the configuration files.
-
-Install the Firebase package with:
-
-```bash
-npm install firebase
-```
-
-### Firebase configuration example
-
-The notes show importing `initializeApp`, creating a configuration object, and initializing the Firebase application:
-
-```jsx
-import { initializeApp } from 'firebase/app';
-
-const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_DOMAIN',
-  projectId: 'YOUR_PROJECT_ID',
-};
-
-const app = initializeApp(firebaseConfig);
-```
-
-Firebase Console supports database management, authentication settings, and monitoring application usage. Proper configuration supports secure communication, correct API integration, and a stable backend connection.
-
-## 4. User authentication
-
-**Authentication** is the process of verifying a user's identity. The PDF gives login systems, OTP verification, and biometric authentication as examples.
-
-### Types of authentication
-
-1. **Email and password authentication:** users sign in with an email address and password.
-2. **Phone authentication:** users verify their identity through OTP and SMS verification.
-3. **Social authentication:** users sign in through services such as Google Login or Facebook Login.
-
-Authentication helps protect user data, restrict unauthorized access, and maintain user privacy.
-
-## 5. Email and password authentication using Firebase
-
-The notes demonstrate three operations: account creation, login, and logout.
-
-### Creating a user account
-
-The PDF uses `createUserWithEmailAndPassword()` from `firebase/auth`:
-
-```jsx
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-} from 'firebase/auth';
-
-const auth = getAuth();
-
-createUserWithEmailAndPassword(
-  auth,
-  'user@gmail.com',
-  'password123'
-)
-  .then((userCredential) => {
-    console.log('User Created');
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
-```
-
-### User login
-
-The PDF uses `signInWithEmailAndPassword()`:
-
-```jsx
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
-signInWithEmailAndPassword(auth, 'user@gmail.com', 'password123')
-  .then((userCredential) => {
-    console.log('Login Successful');
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
-```
-
-### User logout
-
-The PDF uses `signOut()`:
-
-```jsx
-import { signOut } from 'firebase/auth';
-
-signOut(auth);
-```
-
-### Common authentication errors
-
-| Error | Reason given in the notes |
-|---|---|
-| Invalid email | Incorrect email format |
-| Weak password | Password too short |
-| User not found | Account does not exist |
-| Wrong password | Incorrect password |
-
-### Best practices
-
-- Use strong passwords.
-- Enable email verification.
-- Use secure token storage.
-- Implement session timeout.
-
-## 6. OTP and phone authentication
-
-**OTP** stands for **One-Time Password**. OTP authentication verifies users through temporary codes sent to their mobile numbers.
-
-### Workflow
-
-1. The user enters a phone number.
-2. The server sends an OTP.
-3. The user enters the OTP.
-4. The system verifies the OTP.
-5. Login succeeds after verification.
-
-Firebase supports SMS-based verification and automatic OTP detection, according to the PDF.
-
-**Advantages:** higher security, fast login, and less dependence on passwords.
-
-**Limitations:** requires network connectivity, SMS delivery may be delayed, and SIM swapping creates a risk.
-
-## 7. Firebase Realtime Database
-
-**Firebase Realtime Database** is a cloud-hosted NoSQL database. It stores data in JSON format and synchronizes data in real time.
-
-### Features
-
-- Real-time synchronization
-- Offline support
-- Cloud-hosted storage
-- Fast updates
-
-### Data structure
-
-The PDF shows a JSON-style structure:
-
-```json
-{
-  "users": {
-    "101": {
-      "name": "Rahul"
-    }
-  }
-}
-```
-
-### Writing data
-
-The notes use `getDatabase`, `ref`, and `set`:
-
-```jsx
-import { getDatabase, ref, set } from 'firebase/database';
-
-const db = getDatabase();
-
-set(ref(db, 'users/101'), {
-  name: 'Rahul',
-});
-```
-
-**Advantages:** instant updates, suitability for chat applications, and easy synchronization.
-
-**Limitations:** complex querying and limited scalability for structured data, as stated in the notes.
-
-## 8. Firestore Database
-
-**Firestore** is Firebase's modern cloud NoSQL database. It organizes data using **collections** and **documents**.
-
-The PDF illustrates a Users collection containing a user document with fields such as Name and Email.
-
-### Adding data to Firestore
-
-The notes use `getFirestore`, `collection`, and `addDoc`:
-
-```jsx
-import {
-  getFirestore,
-  collection,
-  addDoc,
-} from 'firebase/firestore';
-
-const db = getFirestore();
-
-addDoc(collection(db, 'users'), {
-  name: 'Rahul',
-});
-```
-
-The PDF lists better scalability, advanced querying, and structured data organization as Firestore advantages.
-
-### Firestore versus Realtime Database
-
-| Firestore | Realtime Database |
-|---|---|
-| Collection-based | JSON-tree structure |
-| Better scalability in the notes' comparison | Faster synchronization in the notes' comparison |
-| Advanced queries | Simpler structure |
-
-## 9. CRUD operations with Firebase
-
-**CRUD** stands for:
-
-- **Create:** add new data.
-- **Read:** retrieve existing data.
-- **Update:** modify existing data.
-- **Delete:** remove data.
-
-The PDF provides these Firestore examples:
-
-```jsx
-// Create
-addDoc(collection(db, 'users'), {
-  name: 'Amit',
-});
-
-// Read
-getDocs(collection(db, 'users'));
-
-// Update
-updateDoc(doc(db, 'users', id), {
-  name: 'Rahul',
-});
-
-// Delete
-deleteDoc(doc(db, 'users', id));
-```
-
-CRUD operations allow an application to manage user data, modify records, and remove unnecessary data.
-
-## 10. Secure data handling and Firebase authentication rules
-
-Mobile applications may handle passwords, personal information, and payment details. Poor security can lead to data theft, unauthorized access, and privacy violations.
-
-Firebase Security Rules allow developers to define who can access data. The notes give this example to allow access only when a user is authenticated:
-
-```text
-allow read, write: if request.auth != null;
-```
-
-### Best security practices
-
-1. Use HTTPS communication.
-2. Never store plain passwords.
-3. Validate user inputs.
-4. Restrict database access.
-5. Use secure authentication tokens.
-
-## 11. Token management and session handling
-
-A **token** is a secure digital key used for authentication and session validation.
-
-**Session handling** maintains a user's login status after authentication.
-
-### JWT
-
-**JWT** stands for **JSON Web Token**. The notes state that JWT is widely used for secure authentication. Its three parts are:
-
-1. Header
-2. Payload
-3. Signature
-
-### Benefits of token-based authentication
-
-- Secure communication
-- Stateless authentication
-- Better scalability
-
-The PDF lists AsyncStorage and secure storage libraries as token storage options.
-
-### Risks of poor token management
-
-- Session hijacking
-- Unauthorized access
-- Security vulnerabilities
-
-## 12. Testing mobile applications
-
-Testing checks application reliability, functionality, and performance.
-
-### Types of testing
-
-1. **Unit testing:** tests individual components or functions.
-2. **Manual testing:** users or testers test the application manually.
-3. **Integration testing:** tests communication between modules.
-4. **UI testing:** tests user-interface functionality.
-
-### Tools listed in the PDF
-
-- Jest
-- React Native Testing Library
-- Detox
-
-Testing can detect bugs early, improve application quality, and reduce crashes.
-
-## 13. Building APK and AAB for Android
-
-### APK
-
-**APK** stands for **Android Package Kit**. It is an installation file for Android applications.
-
-### AAB
-
-**AAB** stands for **Android App Bundle**. The notes describe it as the modern publishing format recommended by Google Play Store.
-
-The PDF shows this command for running on Android:
-
-```bash
-npx react-native run-android
-```
-
-For a release APK, the notes show:
-
-```bash
-cd android
-gradlew assembleRelease
-```
-
-The PDF gives this output folder:
-
-```text
-android/app/build/outputs/apk/release/
-```
-
-Release builds improve performance, reduce debugging information, and optimize application size.
-
-## 14. Deployment process overview
-
-The PDF lists these deployment steps:
-
-1. Generate a signed APK/AAB.
-2. Create a Google Play Console account.
-3. Upload the application.
-4. Add application details.
-5. Submit the application for review.
-
-### Information required for deployment
-
-- App name
-- Screenshots
-- Privacy policy
-- App icon
-- Description
-
-### Google Play Store review
-
-The notes state that Google checks security, privacy, and policy compliance.
-
-### Deployment challenges
-
-- Application crashes
-- Permission issues
-- Policy violations
-
-## Unit 5 — Quick revision
-
-- The backend handles data storage, authentication, business logic, database operations, and API management.
-- Traditional backends use custom servers, APIs, and databases; BaaS provides ready-made cloud services.
-- Firebase is Google's BaaS platform.
-- Firebase includes Authentication, Realtime Database, Firestore, Cloud Storage, and Analytics.
-- Authentication verifies user identity through email/password, phone/OTP, or social login.
-- Firebase Authentication examples use create, sign-in, and sign-out methods.
-- OTP uses a temporary code sent to a mobile number.
-- Realtime Database stores JSON data; Firestore organizes collections and documents.
-- CRUD means Create, Read, Update, and Delete.
-- Firebase Security Rules control data access.
-- JWT contains a header, payload, and signature.
-- Testing types include unit, manual, integration, and UI testing.
-- APK is an Android installation package; AAB is a publishing format.
-- Deployment includes signing, uploading, adding app details, and review.
-
-## Unit 5 — Question bank with model answers
-
-### A. One-mark questions (8 × 1)
-
-**1. What is a backend?**  
-The backend is the server-side part of an application that handles data storage, authentication, business logic, database operations, and API management.
-
-**2. What does BaaS stand for?**  
-Backend as a Service.
-
-**3. Who developed Firebase?**  
-Google.
-
-**4. What is authentication?**  
-Authentication is the process of verifying a user's identity.
-
-**5. What does OTP stand for?**  
-One-Time Password.
-
-**6. What data format does Firebase Realtime Database use?**  
-JSON format.
-
-**7. What does CRUD stand for?**  
-Create, Read, Update, and Delete.
-
-**8. What does JWT stand for?**  
-JSON Web Token.
-
-### B. Two-mark questions (4 × 2)
-
-**1. Differentiate between a traditional backend and BaaS.**  
-A traditional backend requires developers to create a custom server, APIs, and database systems. BaaS provides ready-made backend services through a cloud platform.
-
-**2. State two advantages and two limitations of Firebase.**  
-Advantages include easy integration and real-time synchronization. Limitations include vendor dependency and limited customization. The notes also mention that costs may increase for large-scale applications.
-
-**3. Explain the OTP authentication process.**  
-The user enters a phone number, the server sends an OTP, and the user enters the received code. The system verifies the code and allows login after successful verification.
-
-**4. What are the four types of mobile application testing listed in the PDF?**  
-Unit testing, manual testing, integration testing, and UI testing.
-
-### C. Five-mark questions (4 × 5)
-
-**1. Explain Firebase and its main features, advantages, and limitations.**  
-Firebase is Google's Backend as a Service platform. Its features include Authentication for user login, Realtime Database for real-time data synchronization, Firestore as a NoSQL cloud database, Cloud Storage for images/videos/documents, and Analytics for tracking user activity and application performance. Its advantages include easy integration, real-time synchronization, secure authentication, cloud storage, and scalable infrastructure. Its limitations include vendor dependency, limited customization, and potentially higher pricing for large-scale applications.
-
-**2. Explain the different authentication methods and the Firebase email/password authentication process.**  
-Authentication verifies a user's identity. The notes list email/password authentication, phone authentication using OTP/SMS, and social authentication such as Google or Facebook Login. In Firebase email/password authentication, `createUserWithEmailAndPassword()` creates a user account. `signInWithEmailAndPassword()` logs a user in. `signOut()` logs a user out. The notes also list common errors such as invalid email, weak password, user not found, and wrong password. Best practices include strong passwords, email verification, secure token storage, and session timeout.
-
-**3. Compare Firebase Realtime Database and Firestore, and explain CRUD operations.**  
-Realtime Database is a cloud-hosted NoSQL database that stores data in JSON format and synchronizes it in real time. Firestore is a modern NoSQL database that organizes data into collections and documents. The PDF compares Realtime Database as a simpler JSON tree with faster synchronization, while Firestore provides better scalability and advanced queries. CRUD operations mean Create, Read, Update, and Delete. In the notes, Create uses `addDoc()`, Read uses `getDocs()`, Update uses `updateDoc()`, and Delete uses `deleteDoc()`. These operations manage, retrieve, modify, and remove application records.
-
-**4. Explain secure data handling, token management, testing, and deployment.**  
-Mobile applications may store passwords, user information, and payment details, so security matters. The PDF recommends HTTPS, never storing plain passwords, validating user input, restricting database access, and using secure authentication tokens. A token is a digital key for authentication and session validation. JWT contains a header, payload, and signature. Poor token handling can cause session hijacking and unauthorized access. Testing includes unit, manual, integration, and UI testing, using tools such as Jest, React Native Testing Library, and Detox. Android deployment involves generating a signed APK/AAB, uploading it to Google Play Console, entering app details, and submitting it for review. Google checks security, privacy, and policy compliance.
+**Answer:** A
 
 ---
 
-# Final revision checklist
+### Q6: When conducting experiments and analysing results in research:
 
-Use this checklist to make sure you have revised all five source units.
+**Type:** MCQ (Single Select)
 
-## Unit 1 — Fundamentals
+**Options:**
 
-- [ ] Define mobile application development.
-- [ ] Compare native, web, and cross-platform applications.
-- [ ] Explain why cross-platform development is needed.
-- [ ] Define React Native and list its features.
-- [ ] Explain advantages and limitations of React Native.
-- [ ] Explain JavaScript Thread, Native Thread, and Bridge.
-- [ ] List setup prerequisites and compare Expo CLI with React Native CLI.
-- [ ] Explain the project structure.
-- [ ] Compare functional and class components.
-- [ ] Define JSX and explain its rules.
-- [ ] Compare inline styling and StyleSheet API.
-- [ ] Differentiate props and state.
-- [ ] Explain event handling, user input, and debugging tools.
+A. Each individual step will always lead to something significant.
+B. The familiarity with the area helps in building experiments, but the results are often insignificant.
+C. Day-to-day experiments and results are usually significant and groundbreaking.
+D. Small steps are taken, and over time they contribute to something significant. **[CORRECT]**
 
-## Unit 2 — Adaptive UI
-
-- [ ] Differentiate UI and UX.
-- [ ] Explain the five UI/UX principles.
-- [ ] Explain Flexbox and its four important properties.
-- [ ] Describe the Dimensions API.
-- [ ] Compare Android and iOS design conventions from the notes.
-- [ ] Explain Platform API and platform-specific files.
-- [ ] Explain portrait/landscape handling.
-- [ ] Describe theming, dark mode, and Appearance API.
-- [ ] Explain custom fonts and icons.
-- [ ] Explain accessibilityLabel, accessible, TalkBack, and VoiceOver.
-- [ ] Revise user-friendly interface best practices.
-
-## Unit 3 — Navigation and state
-
-- [ ] Define navigation and React Navigation.
-- [ ] Compare stack, tab, and drawer navigation.
-- [ ] Explain NavigationContainer.
-- [ ] Explain mounting, updating, unmounting, and navigation events.
-- [ ] Explain passing and receiving screen parameters.
-- [ ] Define nested navigation.
-- [ ] Differentiate local and global state.
-- [ ] Explain Context API and prop drilling.
-- [ ] Name solutions for complex state.
-- [ ] Explain React.memo, useMemo, useCallback, lazy loading, and FlatList optimization.
-
-## Unit 4 — Data and APIs
-
-- [ ] Define data handling and explain its importance.
-- [ ] Explain TextInput and input optimization.
-- [ ] Compare controlled and uncontrolled components.
-- [ ] Explain form handling and validation.
-- [ ] Differentiate client-side and server-side validation.
-- [ ] Define API and REST API.
-- [ ] Memorize GET, POST, PUT, and DELETE purposes.
-- [ ] Explain Fetch and Axios; compare them.
-- [ ] Explain loading states, errors, and user feedback.
-- [ ] Explain AsyncStorage operations and limitations.
-- [ ] Explain caching and offline strategy.
-
-## Unit 5 — Backend and deployment
-
-- [ ] Define backend and compare traditional backend with BaaS.
-- [ ] Define Firebase and list its services.
-- [ ] Explain Firebase setup and configuration.
-- [ ] Explain email/password, phone/OTP, and social authentication.
-- [ ] Explain Firebase account creation, login, and logout.
-- [ ] Explain Realtime Database and Firestore structures.
-- [ ] Compare Realtime Database with Firestore.
-- [ ] Explain CRUD operations.
-- [ ] Explain Firebase Security Rules and security practices.
-- [ ] Explain tokens, sessions, and JWT structure.
-- [ ] Explain testing types and tools.
-- [ ] Differentiate APK and AAB.
-- [ ] Memorize the deployment steps and common challenges.
+**Answer:** D
 
 ---
 
-## Source coverage and notes
+### Q7: Technologies in use today have life span of decades
 
-This guide draws from the uploaded PDFs in their supplied order:
+**Type:** MCQ (Single Select)
 
-| Unit | Source PDF | Unit title in the PDF |
-|---|---|---|
-| 1 | `ch-1.pdf` | Introduction to React Native Fundamentals |
-| 2 | `ch-2.pdf` | Adaptive User Interface Design |
-| 3 | `ch-3.pdf` | Navigation & State Management |
-| 4 | `ch-4.pdf` | Data Handling & API Integration |
-| 5 | `ch-5.pdf` | Authentication & Backend Integration |
+**Options:**
 
-The unit notes preserve the topics and comparisons in these PDFs. The model answers reorganize the supplied material into exam-answer form. Where the source gives only a brief code example or short definition, this guide does not add unrelated syllabus topics.
+A. True
+B. False **[CORRECT]**
+
+**Answer:** B
+
+---
+
+### Q8: Engineers aim to reduce the number of parts in a product
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True **[CORRECT]**
+B. False
+
+**Answer:** A
+
+---
+
+### Q9: Global warming is only a theoretical phenomenon
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True
+B. False **[CORRECT]**
+
+**Answer:** B
+
+---
+
+### Q10: Carbon dioxide in the atmosphere contributes to global warming
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True **[CORRECT]**
+B. False
+
+**Answer:** A
+
+---
+
+## Week 2
+
+### Q1: Experimental data generated from a setup must validate the theoretical predictions or models designed for that setup
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True
+B. False **[CORRECT]**
+C. Sometimes
+D. Never
+
+**Answer:** B
+
+---
+
+### Q2: Literature survey is important because
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. It helps in getting a summary of work that has been done till date in some particular research area **[CORRECT]**
+B. It is helpful in ensuring that a research work is not getting repeated **[CORRECT]**
+C. It is helpful in understanding the approaches taken by scientists and what are the gaps in the processes **[CORRECT]**
+D. It is helpful in clarifying the controversial results that one can get **[CORRECT]**
+
+**Answer:** A, B, C, D
+
+---
+
+### Q3: Which of the following methods of searching for literature is suitable to identify the earliest contributor of a scientific outcome?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Keyword based search followed by sorting by year of publication
+B. Citation based search followed by sorting by year of publication
+C. Keyword based search followed by sorting by citations
+D. Back reference based search following a keyword based search **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q4: Which of the following bibliographic details is a sufficient and unique piece of information to locate an article in an archival journal?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. ISSN
+B. DOI **[CORRECT]**
+C. Page Number
+D. Volume Number
+
+**Answer:** B
+
+---
+
+### Q5: Which of the following is always true for an open access journal?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Such journals are not peer reviewed
+B. Articles in such a journal are freely available for download **[CORRECT]**
+C. Such journals charge for publication of an article
+D. Such journals are of dubious reputation
+
+**Answer:** B
+
+---
+
+### Q6: Which of the following is NOT a recommended practice to identify publications that need to be listed under references of an article?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Relevant publications actually referred to
+B. Latest publications by the editor of the journal **[CORRECT]**
+C. Original publications in the topic of the article
+D. Own publications referred in the article for further details
+
+**Answer:** B
+
+---
+
+### Q7: Which of the following indices is considered as a measure of the impact of a particular author in its area of his/her specialization?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Total number of articles published
+B. Hirsch index of the author **[CORRECT]**
+C. Number of views of his/her latest article
+D. Number of downloads of all articles in a year
+
+**Answer:** B
+
+---
+
+### Q8: The following are categorized as primary source for literature survey
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Periodicals & research reports **[CORRECT]**
+B. Conference proceedings & official publications **[CORRECT]**
+C. Compilations & reviews
+D. Directories & year books
+
+**Answer:** A, B
+
+---
+
+### Q9: The abstracting databases for systematic manual searches include
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. INSPEC and COMPENDEX **[CORRECT]**
+B. PubMed **[CORRECT]**
+C. Wikipedia
+D. Chemical Abstract (CA) service **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q10: <div class="question-html-content">Consider that you have collected the following resources towards your research:<br><br>(1) A reference in a journal article that you have not referred yet<br>(2) A link to the website of a professional society<br>(3) A published article with journal, year, volume and page number<br>(4) An article from a newly launched journal with volume number, page number but year and ISSN number are due<br>(5) A newly accepted journal article with DOI link<br>(6) A book with an ISBN number available<br><br>Which of the following can be considered as archival (valuable record) references for inclusion in a publication?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Only 1, 2 and 3
+B. Only 3, 5 and 6 **[CORRECT]**
+C. Only 3, 4 and 6
+D. Only 1, 2 and 5
+
+**Answer:** B
+
+---
+
+## Week 3
+
+### Q1: Safety must be the most important discipline of our routine when we are in laboratory or industrial environment. The common sources which have potential to cause damage, available in our lab towards which we need to be careful are-
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Sources of heat **[CORRECT]**
+B. Chemicals (Acids, Bases etc.) **[CORRECT]**
+C. Pressurized gas cylinders **[CORRECT]**
+D. Electricity and water source **[CORRECT]**
+
+**Answer:** A, B, C, D
+
+---
+
+### Q2: Which of the following statistics is used to quantify errors in parameter estimates?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Mode
+B. Skewness
+C. Standard deviation **[CORRECT]**
+D. Median
+
+**Answer:** C
+
+---
+
+### Q3: A temperature sensor is installed at the bottom of the cooling tower storage tank to measure the temperature of outlet water. The sensor did not function properly for some time and gave data with higher temperature values. The conclusion we can draw from the process is-
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Since data with different values were recorded, this increased the possibility of wide analysis thus very useful for our work
+B. The data obtained cannot be reliable because these are not true data from the system but the malfunctioned one **[CORRECT]**
+C. The data can be used as with good accuracy using the predictive type data analysis where we can assume the extent of error and finally subtract the error from final value
+D. None of these
+
+**Answer:** B
+
+---
+
+### Q4: Which of the following can be treated as deterministic signals?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Measurements of atmospheric temperature
+B. A sine wave corrupted by a rectangular pulse **[CORRECT]**
+C. Estimates of signals from measurements
+D. None of the above
+
+**Answer:** B
+
+---
+
+### Q5: Identify the incorrect statement(s) among the following w.r.t. non-linear models.
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Linearization involves mere discarding of the non-linear terms in a model. **[CORRECT]**
+B. The standard Taylor's series-based linearized model changes with the nominal point of linearization.
+C. A non-linear model can never yield a zero-valued output to a non-zero input. **[CORRECT]**
+D. Estimates of linear models have smaller errors than those of non-linear models. **[CORRECT]**
+
+**Answer:** A, C, D
+
+---
+
+### Q6: Which of the following transforms are used to detect periodic (oscillatory) components in a signal?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Hilbert transform
+B. z-transform
+C. Fourier transform **[CORRECT]**
+D. All of the above
+
+**Answer:** C
+
+---
+
+### Q7: The ratio of errors in parameter estimates of a model from two data sets with SNR 9 and 100 is
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. 3 : 10
+B. 5 : 1
+C. 10 : 3 **[CORRECT]**
+D. 10 : 0.9
+
+**Answer:** C
+
+---
+
+### Q8: Which of the following is true concerning a parameter estimate?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. It is in general close to the true value with high probability.
+B. When averaged across a million experimental records under same operating conditions, the estimate equals the true value.
+C. Least squares method always gives the estimate with lowest error.
+D. It is a mathematical function of the observations. **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q9: Which of the following statements is true?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Deterministic phenomena produce outcomes that can be predicted accurately.
+B. Random processes occur randomly.
+C. A process can produce a mix of deterministic and stochastic effects. **[CORRECT]**
+D. Signals that are random can never take negative values.
+
+**Answer:** C
+
+---
+
+### Q10: An estimator is said to be most efficient when
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. The parameters can be estimated in the least possible time.
+B. The estimator provides accurate estimates with the smallest number of observations.
+C. Standard error in the parameter estimates is lowest when compared to that of all other estimators. **[CORRECT]**
+D. It estimates parameters accurately even in presence of outliers.
+
+**Answer:** C
+
+---
+
+## Week 4
+
+### Q1: The title of a paper is ‘Battery design and its impact’. This title
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Identifies the area of research clearly
+B. Indicates what is unique about the research
+C. Does not identify the area of the research clearly **[CORRECT]**
+D. Does not indicate what is unique about the research **[CORRECT]**
+
+**Answer:** C, D
+
+---
+
+### Q2: In images
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. High magnification implies high resolution
+B. High magnification does not necessarily imply high resolution **[CORRECT]**
+C. Low magnification implies high resolution
+D. High resolution implies low magnification
+
+**Answer:** B
+
+---
+
+### Q3: Tables are preferred over graphs
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Always
+B. Never
+C. Only when exact values need to be indicated **[CORRECT]**
+D. Only when trends in data need to be indicated
+
+**Answer:** C
+
+---
+
+### Q4: The length of a document
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Indicates how much you know
+B. Indicates how little you know
+C. Does not indicate anything about your knowledge **[CORRECT]**
+D. Does not indicate anything about the reader's knowledge **[CORRECT]**
+
+**Answer:** C, D
+
+---
+
+### Q5: The title of a paper should indicate the area of work as well as what is unique about the work.
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True **[CORRECT]**
+B. False
+
+**Answer:** A
+
+---
+
+### Q6: In scientific documents sentences should be relatively short and to the point.
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True **[CORRECT]**
+B. False
+
+**Answer:** A
+
+---
+
+### Q7: In an article, the image of a car engine must
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Show the level of detail required for the discussion in the article **[CORRECT]**
+B. Have a marker bar indicating scale **[CORRECT]**
+C. Be in colour and not in black and white
+D. Be in black and white and not in colour
+
+**Answer:** A, B
+
+---
+
+### Q8: Strategies one can use in the middle of a document include
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Chronological strategy **[CORRECT]**
+B. Spatial strategy **[CORRECT]**
+C. Following a variable **[CORRECT]**
+D. Suspense strategy
+
+**Answer:** A, B, C
+
+---
+
+### Q9: While working with electricity only the voltage poses a danger to the users
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True
+B. False **[CORRECT]**
+
+**Answer:** B
+
+---
+
+### Q10: “Pouring rain results in clogged drains, and slippery roads. These clogged drains spill further water on to the roads.” Use of the word ‘these’ in the previous sentence is ambiguous.
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True
+B. False **[CORRECT]**
+
+**Answer:** B
+
+---
+
+## Week 5
+
+### Q1: According to Sternberg's theories of intelligence practical intelligence relates to-
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. How one relates to the environment around them **[CORRECT]**
+B. How street smart they are **[CORRECT]**
+C. How well they come up with new theories
+D. How well they solve new problems
+
+**Answer:** A, B
+
+---
+
+### Q2: Few research scholars collaborated to work on some specific area. They generated some data and analysed the results. Some of them published the result independently since they were the first to type it up. Is it ethical to do so?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Yes, because they have collaborated and know each other
+B. No, all authors should know and agree with the publication **[CORRECT]**
+C. Yes, if the collaborators are junior to you
+D. No, only if the authors are senior to you
+
+**Answer:** B
+
+---
+
+### Q3: Creativity is seen in
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Drama
+B. Science fiction
+C. Engineering
+D. All of the above **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q4: A good researcher is often well read in many areas
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True **[CORRECT]**
+B. False
+
+**Answer:** A
+
+---
+
+### Q5: We can work to the best of our potential when we are —
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Hypo stressed
+B. Eustressed **[CORRECT]**
+C. Hyper stressed
+D. Distressed
+
+**Answer:** B
+
+---
+
+### Q6: The measure of a successful researcher is that the work of the researcher should be
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Recognized by peers at an international level **[CORRECT]**
+B. Typically published in peer reviewed Journals **[CORRECT]**
+C. Mentioned in the campus magazine of the college
+D. Must be discussed in the Department meeting of the researcher's department
+
+**Answer:** A, B
+
+---
+
+### Q7: Creative people are
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. More likely to follow societal restrictions
+B. Less likely to follow societal restrictions **[CORRECT]**
+C. More likely to think within the limits of previous work in the area
+D. More likely to come up with a surprisingly new solution to a problem **[CORRECT]**
+
+**Answer:** B, D
+
+---
+
+### Q8: A PhD usually makes you
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. A specialist in one narrow area **[CORRECT]**
+B. A person who conducts experiments fast
+C. A person who has a wide knowledge in a wide range of topics
+D. A person who makes excellent sketches
+
+**Answer:** A
+
+---
+
+### Q9: To become a good researcher, one must usually
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Have good communication skills **[CORRECT]**
+B. Have mastery over specific techniques **[CORRECT]**
+C. Have a line of investigation **[CORRECT]**
+D. Be aware of recent advances in the field **[CORRECT]**
+
+**Answer:** A, B, C, D
+
+---
+
+### Q10: The followings can be attributed to a fully professional researcher-
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. They have some fundamental concepts that their peers (international) might be interested in **[CORRECT]**
+B. They have command over their area **[CORRECT]**
+C. They are aware of the situation where they can make significant contribution **[CORRECT]**
+D. They work without focusing on literature in the area
+
+**Answer:** A, B, C
+
+---
+
+## Week 6
+
+### Q1: Which of the following falls in the category of intellectual property?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. An original set of ideas or research results **[CORRECT]**
+B. Ideas originating from real property
+C. Properties emanating from human creative labor **[CORRECT]**
+D. All of the above
+
+**Answer:** A, C
+
+---
+
+### Q2: Violations of Intellectual Property Rights leads to
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Infringement **[CORRECT]**
+B. Casual penalties
+C. No big deal as we have license of fundamental rights to do whatever we want
+D. None of the above
+
+**Answer:** A
+
+---
+
+### Q3: In order to obtain legal protection, you don't have to register which of the following types of intellectual property rights?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Copyrights
+B. Patents
+C. Designs
+D. Geographical Indications **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q4: A person invents a new process to capture musical performance on tape, he/she will most likely apply for—
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Copyrights
+B. Trade Marks
+C. Patents **[CORRECT]**
+D. Trade Secret
+
+**Answer:** C
+
+---
+
+### Q5: Use of an unregistered trade mark of a competitor shall amount to a tort of—
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Deceit
+B. Fraud
+C. Negligence
+D. Passing off **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q6: What does an IP right entitle a person?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Right to file a suit in case of an infringement
+B. Right of excludability
+C. Right of commercial exploitation
+D. All of the above **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q7: The Reebok Delta symbol and Hyundai Logo are protected by—
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Patents
+B. Trade Marks **[CORRECT]**
+C. Trade dress
+D. Geographical Indications
+
+**Answer:** B
+
+---
+
+### Q8: Under the Patents Act, 1970, the person entitled to receive a patent on a new invention is—
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. The one who invented the invention first
+B. The one who commercialise the invention first
+C. The one who thought of the invention first
+D. The one who filed a patent application first **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q9: What is the term of a Patent in India?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. 20 years **[CORRECT]**
+B. 25 years
+C. 10 years
+D. 15 years
+
+**Answer:** A
+
+---
+
+### Q10: What is the full form of TRIPS?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Tariff Related Aspects of Intellectual Properties
+B. Trade Related Aspects of Intellectual Property Science
+C. The Registration of Intellectual Property
+D. Trade Related Aspects of Intellectual Property Rights **[CORRECT]**
+
+**Answer:** D
+
+---
+
+## Week 7
+
+### Q1: In the true experimental research design:
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. No control on external variables
+B. Less control on external variables
+C. Control on external variables by randomization **[CORRECT]**
+D. No use of randomization
+
+**Answer:** C
+
+---
+
+### Q2: Which of the following is an incomplete experimental research design?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Before and after with control group design
+B. Factorial design
+C. One group before-after design **[CORRECT]**
+D. Latin Square design
+
+**Answer:** C
+
+---
+
+### Q3: Coefficient of Determination is said to be unity when -
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Error Sum of Squares is zero **[CORRECT]**
+B. Total Sum of Squares is zero
+C. Regression Sum of Squares is zero
+D. Regression Sum of Squares is same as Total Sum of Squares **[CORRECT]**
+
+**Answer:** A, D
+
+---
+
+### Q4: The probability density function describes the following -
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Probability of a phenomenon occurring in macro scale
+B. Probability of a phenomenon occurring in micro scale
+C. Distribution of probabilities in the continuous random variable domain **[CORRECT]**
+D. Distribution of probabilities in some particular set of undefined variables
+
+**Answer:** C
+
+---
+
+### Q5: During Response Surface Methodology's Canonical Analysis involving two factors, maximum response is said to be achieved when the eigen values of the B matrix are
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. all positive
+B. all negative **[CORRECT]**
+C. all zero
+D. such that one is positive and the other is negative
+
+**Answer:** B
+
+---
+
+### Q6: Experiments are conducted in laboratories to
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Verify scientific predictions
+B. Obtain trends when theory is not known
+C. Find effect of different variables on the desired response
+D. All of the above **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q7: SPC and Design of Experiments are very closely interrelated.
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True **[CORRECT]**
+B. False
+
+**Answer:** A
+
+---
+
+### Q8: Which of these is not an application of experimental design in the field of Engineering design?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Evaluation and comparison of basic design configurations
+B. Evaluation of material alternatives
+C. Evaluation of key product design parameters that impact performance
+D. Evaluation of correct process to develop the product **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q9: The average estimated from a data collection is 50 cm. The quantity (quantities) which has the same units as the data is (are)
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Standard deviation
+B. Median
+C. Mode
+D. All of the above **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q10: Sample collected from an instrument giving binary data has the following values {1, -1, -1, 1, 1, -1} Mean of the above data set is
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. -1
+B. 0 **[CORRECT]**
+C. 1
+D. 3
+
+**Answer:** B
+
+---
+
+## Week 8
+
+### Q1: In order to pursue the research, which of the following is priorly required?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Developing a research design
+B. Formulating a research question **[CORRECT]**
+C. Deciding about the data analysis procedure
+D. Formulating a research hypothesis
+
+**Answer:** B
+
+---
+
+### Q2: Which one among the following statements is false in the context of participatory research?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. It recognizes knowledge as power
+B. It is a collective process of inquiry
+C. It emphasizes people as experts
+D. Its sole purpose is the production of knowledge **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q3: How to judge the depth of any research?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. By research title
+B. By research duration
+C. By research objectives **[CORRECT]**
+D. By total expenditure on research
+
+**Answer:** C
+
+---
+
+### Q4: What is the main aim of interdisciplinary research?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. To over simplify the problem of research
+B. Integrating knowledge from multiple disciplines to solve a problem. **[CORRECT]**
+C. To create a new trend in research methodology
+D. To reduce the emphasis on a single subject in the research domain
+
+**Answer:** B
+
+---
+
+### Q5: Electron microscopes can be used in reverse to write in extremely small areas
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. True **[CORRECT]**
+B. False
+
+**Answer:** A
+
+---
+
+### Q6: What are the core elements of a dissertation?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Introduction; Data Collection; Data Analysis; Conclusions and Recommendations
+B. Executive Summary; Literature Review; Data Gathered; Conclusions; Bibliography
+C. Research Plan; Research Data; Analysis; References
+D. Introduction; Literature Review; Research Methodology; Results; Discussions and Conclusions **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q7: How can we enhance the research objective?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. By making it more valid
+B. By making it more reliable
+C. By making it more impartial
+D. All of the above **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q8: A common test in research demands much priority on
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Reliability
+B. Useability
+C. Objectivity
+D. All of the above **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q9: An appropriate source to find out descriptive information is
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Bibliography
+B. Directory
+C. Encyclopedia **[CORRECT]**
+D. Dictionary
+
+**Answer:** C
+
+---
+
+### Q10: Mahabalipuram in south-east India, pre-eminently testimony to the __________ civilization
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Pallavas **[CORRECT]**
+B. Mauryas
+C. Guptas
+D. Cholas
+
+**Answer:** A
+
+---
+
+## Week 9
+
+### Q1: Which of the following characteristics distinguish a research programme from a regular curriculum-oriented academic programme?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. The research question may itself require extensive exploration before becoming well defined. **[CORRECT]**
+B. Experimental outcomes may deviate from expectations and require modification of the research approach. **[CORRECT]**
+C. The programme follows a highly predictable schedule with predefined learning outcomes for every stage.
+D. The researcher may repeatedly formulate new questions as insights emerge from previous work. **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q2: The lecture compares the research journey to a roller-coaster ride primarily because:
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Research requires researchers to work continuously under high pressure.
+B. Research consists of predictable stages followed by unavoidable examinations.
+C. Research involves alternating periods of progress, uncertainty, setbacks, breakthroughs, and renewed progress. **[CORRECT]**
+D. Research is primarily dependent on collaboration with a large number of researchers.
+
+**Answer:** C
+
+---
+
+### Q3: According to the lecture, which factors can contribute to the overall research experience of a scholar in a laboratory?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Relationships with advisers and labmates **[CORRECT]**
+B. Emotional experiences and friendships **[CORRECT]**
+C. Availability and accessibility of research facilities **[CORRECT]**
+D. Support received from friends and family **[CORRECT]**
+
+**Answer:** A, B, C, D
+
+---
+
+### Q4: Which practices are presented in the lecture as useful for maintaining a sustainable rhythm in research life?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Adequate sleep and physical activity **[CORRECT]**
+B. Taking time for recreation and renewal **[CORRECT]**
+C. Reflecting periodically on one's activities and decisions **[CORRECT]**
+D. Working continuously for extremely long hours whenever a problem arises
+
+**Answer:** A, B, C
+
+---
+
+### Q5: A researcher receives harsh feedback from an adviser and immediately feels angry and personally inadequate. Based on the lecture, what should be the most appropriate immediate response?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Respond immediately to the adviser to defend the research.
+B. Suppress the emotion completely and continue working without reflection.
+C. Pause, recognize the emotion, regulate it through techniques such as rhythmic breathing, and then respond with greater clarity. **[CORRECT]**
+D. Discuss the adviser's behaviour with all labmates immediately.
+
+**Answer:** C
+
+---
+
+### Q6: Which of the following strategies are specifically discussed in the lecture as ways of processing or reducing intense anger?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Practicing rhythmic breathing **[CORRECT]**
+B. Temporarily stepping away from the situation **[CORRECT]**
+C. Journaling what one is feeling **[CORRECT]**
+D. Immediately confronting the person responsible for the trigger
+
+**Answer:** A, B, C
+
+---
+
+### Q7: A research scholar feels discouraged after a labmate's paper is accepted while their own paper remains unpublished. Which response best reflects the approach advocated in the lecture?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Compare the two researchers and conclude that the labmate is more capable.
+B. Suppress the feeling of comparison without examining its cause.
+C. Convert the comparison into curiosity by investigating what the labmate did differently and identifying possible improvements in one's own approach. **[CORRECT]**
+D. Avoid interacting with the labmate until one's own paper is accepted.
+
+**Answer:** C
+
+---
+
+### Q8: According to the lecture, prolonged emotional distress or isolation can negatively affect which aspects of a researcher's life?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Research progress **[CORRECT]**
+B. Only the researcher's publication record
+C. Physical health **[CORRECT]**
+D. Friendships and social relationships **[CORRECT]**
+
+**Answer:** A, C, D
+
+---
+
+### Q9: A researcher becomes stuck on a difficult problem and begins working for very long hours while withdrawing from friends and labmates. According to the lecture, what is the primary concern with this response?
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. It demonstrates insufficient commitment to independent research.
+B. Emotional isolation may worsen the situation and negatively affect research progress as well as personal well-being. **[CORRECT]**
+C. Long working hours always produce incorrect experimental results.
+D. Researchers should never attempt to solve difficult problems independently.
+
+**Answer:** B
+
+---
+
+### Q10: Which of the following constitute potential support systems for a research scholar according to the lecture?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Adviser or supervisor **[CORRECT]**
+B. Labmates and friends **[CORRECT]**
+C. Mentor **[CORRECT]**
+D. Family or old friends **[CORRECT]**
+
+**Answer:** A, B, C, D
+
+---
+
+## Week 10
+
+### Q1: Students in schools typically expect
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Well defined questions **[CORRECT]**
+B. Question paper patterns to be finalized in advance **[CORRECT]**
+C. Clarity on the “portions” for an exam **[CORRECT]**
+D. Questions outside the syllabus
+
+**Answer:** A, B, C
+
+---
+
+### Q2: From the perspective of a school student the question “How long will it take to go from Chennai to Kolkata” is
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. A “poorly” defined question **[CORRECT]**
+B. Is a well defined question
+C. Is typically how a full question is framed in an exam
+D. Has a unique
+
+**Answer:** A
+
+---
+
+### Q3: The format of exams in schools
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Helps you understand fundamentals **[CORRECT]**
+B. Teaches you to breakdown a problem to parts and solve them **[CORRECT]**
+C. Prepares you for a professional setting
+D. Teaches you to handle unexpected questions
+
+**Answer:** A, B
+
+---
+
+### Q4: A typical professional workplace requires you to
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Handle open ended questions **[CORRECT]**
+B. Solve “poorly” defined problems **[CORRECT]**
+C. Focus on syllabus
+D. Work within a question paper pattern
+
+**Answer:** A, B
+
+---
+
+### Q5: Learning in college is expected to
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Prepare you for professional life **[CORRECT]**
+B. Focus only on well-defined problems
+C. Teach you to handle open ended problems **[CORRECT]**
+D. Follow the same approach used in school
+
+**Answer:** A, C
+
+---
+
+### Q6: Applying a known theory to one additional new situation is most likely
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Breakthrough research
+B. Incremental research **[CORRECT]**
+C. Transformational research
+D. Important contribution to research
+
+**Answer:** B
+
+---
+
+### Q7: Use of a series of Experimental techniques to study the same phenomenon across different samples is typically an example of:
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Systematic research **[CORRECT]**
+B. Transformational research
+C. Incremental research
+D. Breakthrough research
+
+**Answer:** A
+
+---
+
+### Q8: In the development of phones, which of the following can be considered transformational
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. First deployment of the landline
+B. First deployment of the cordless phone
+C. The improvement from cordless phone to mobile phone **[CORRECT]**
+D. Making the first-generation mobile phones smaller and more colorful
+
+**Answer:** C
+
+---
+
+### Q9: In the development of bicycles, which of the following can be considered transformational
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Improvement from wooden seat to cushioned seat
+B. Making the seat more ergonomic
+C. Adding a carrier
+D. Adding gears to a bicycle **[CORRECT]**
+
+**Answer:** D
+
+---
+
+### Q10: In the development of airplanes, we can associate imagination with
+
+**Type:** MCQ (Single Select)
+
+**Options:**
+
+A. Designing fixed wings even though birds have flapping wings **[CORRECT]**
+B. Adding seats inside an airplane
+C. Creating a cargo version of the airplane
+D. Adding more engines to the airplane
+
+**Answer:** A
+
+---
+
+## Week 11
+
+### Q1: The lecture uses the example of Arthur Samuel's checkers program to illustrate an early form of learning by machines. Which of the following statements are correct?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. The machine was explicitly programmed with every possible checkers strategy.
+B. The machine learned through experience by repeatedly playing the game. **[CORRECT]**
+C. The example is associated with an early instance of reinforcement learning. **[CORRECT]**
+D. The example demonstrates that AI-based learning is a phenomenon that began only with generative AI.
+
+**Answer:** B, C
+
+---
+
+### Q2: Which of the following statements correctly reflect the lecture's discussion of classical AI and generative AI?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Generative AI is the only appropriate approach for solving modern research problems.
+B. Classical AI methods can still provide effective solutions for domain-specific problems. **[CORRECT]**
+C. Researchers should select an AI approach according to the problem rather than assuming that generative AI must always be used. **[CORRECT]**
+D. Classical AI became irrelevant after the emergence of LLMs.
+
+**Answer:** B, C
+
+---
+
+### Q3: Consider an LLM that predicts the next token from the context provided to it. Which of the following statements are correct?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. The probability of a token can depend on the preceding context. **[CORRECT]**
+B. A token with the highest probability must always be generated.
+C. Different contexts can result in different probability distributions for the next token. **[CORRECT]**
+D. The model can repeatedly predict tokens to construct a longer response. **[CORRECT]**
+
+**Answer:** A, C, D
+
+---
+
+### Q4: Which of the following correctly distinguish token size, context size, and parameter count in an LLM?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Token size is related to the vocabulary of words or subwords that the model can generate. **[CORRECT]**
+B. Context size refers to the amount of previous token information considered by the model. **[CORRECT]**
+C. Parameter count refers to the number of tokens that can be stored in the prompt.
+D. Parameter count is related to how the learned probability distributions are represented in the model. **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q5: Which statements correctly describe the role of vector representations in the LLM framework explained in the lecture?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. A very large probability matrix can be represented through a comparatively smaller-dimensional vector space. **[CORRECT]**
+B. Different contexts may be projected to nearby locations in the vector space. **[CORRECT]**
+C. Such compression can contribute to variability and errors because information from different contexts may influence generation. **[CORRECT]**
+D. Every possible context is retained as a completely independent point with no overlap.
+
+**Answer:** A, B, C
+
+---
+
+### Q6: Which of the following statements are consistent with the lecture's explanation of alignment?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Alignment can modify model behaviour so that generated probabilities better correspond to desired outcomes. **[CORRECT]**
+B. Alignment may be directed towards objectives such as factuality, bias reduction or local context. **[CORRECT]**
+C. Alignment guarantees that all outputs produced by an LLM are factually correct.
+D. Reinforcement learning from human preferences is associated with the alignment process. **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q7: A researcher asks a small language model a question whose meaning is ambiguous. Relevant information is retrieved from an internal repository and added to the original question before generating the answer. Which statements correctly describe this approach?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. The approach is consistent with Retrieval-Augmented Generation (RAG). **[CORRECT]**
+B. The retrieved information provides additional context to the model. **[CORRECT]**
+C. The approach necessarily requires retraining the entire language model.
+D. Additional context can make the model's response more focused. **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q8: The lecture uses the example of the 2011 ICC World Cup to explain the effect of retrieval-augmented generation. Which of the following correctly captures the idea?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Additional retrieved information can contextualize an otherwise ambiguous query. **[CORRECT]**
+B. The original question can be effectively shifted toward a more appropriate contextual representation. **[CORRECT]**
+C. RAG works primarily by increasing the number of parameters in the LLM.
+D. A richer context can increase the probability of producing the intended **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q9: Which of the following statements about hallucination are correct according to the lecture?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. A model may produce a plausible answer even when the generated information does not match the ground truth. **[CORRECT]**
+B. Hallucination can occur when the model has insufficiently represented information or context. **[CORRECT]**
+C. Hallucination can be reduced through techniques such as providing larger context, but it cannot necessarily be eliminated completely. **[CORRECT]**
+D. Hallucination means that the model has deliberately decided to provide false information.
+
+**Answer:** A, B, C
+
+---
+
+### Q10: A language model produces a misleading recommendation because a false or deliberately misleading article was present in information from which the model learned. Which statements are appropriate?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. The problem is necessarily an example of hallucination.
+B. AI systems can potentially propagate misinformation present in their information sources. **[CORRECT]**
+C. A response may be misleading even when it is not simply an invented fact by the model. **[CORRECT]**
+D. Independent verification of important AI-generated information remains necessary. **[CORRECT]**
+
+**Answer:** B, C, D
+
+---
+
+## Week 12
+
+### Q1: Which of the following statements correctly distinguish course-based education from research-based education as discussed in the lecture?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Course-based education primarily deals with an existing body of knowledge, whereas PhD research is expected to create new knowledge. **[CORRECT]**
+B. A PhD programme follows a common prescribed syllabus and curriculum in the same way as a course-based degree.
+C. Course-based education generally has a prescribed syllabus and curriculum, whereas research-based education does not simply follow a fixed syllabus. **[CORRECT]**
+D. Knowledge acquired in course-based education and new knowledge generated through PhD research are evaluated in exactly the same way. **[CORRECT]**
+
+**Answer:** A, C, D
+
+---
+
+### Q2: A research scholar is beginning a PhD and expects the research guide to provide a complete step-by-step procedure for the entire research programme. Which responses are consistent with the lecture?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. The scholar should recognize that PhD research involves substantially self-directed work. **[CORRECT]**
+B. The absence of a fixed syllabus means that the scholar does not need guidance from the research guide.
+C. The research guide can provide guidance and support when ambiguity or difficulty arises. **[CORRECT]**
+D. The scholar is expected to develop the ability to decide how the research should progress. **[CORRECT]**
+
+**Answer:** A, C, D
+
+---
+
+### Q3: A researcher proposes a hypothesis based on existing knowledge and experience. Which conditions, according to the lecture, are relevant to treating it as a scientific hypothesis?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. It should be an educated prediction rather than a statement already established as true. **[CORRECT]**
+B. It should allow a possibility of being disproved. **[CORRECT]**
+C. It should be protected from contradictory observations by adding explanations that cannot be tested.
+D. Its truth must be established before experiments or data collection begin.
+
+**Answer:** A, B
+
+---
+
+### Q4: Consider the hypothesis: “All swans are white.” Based on the falsifiability example in the lecture, which statements are correct?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Finding a black swan would provide an observation capable of disproving the hypothesis. **[CORRECT]**
+B. It is necessary to observe every swan in the world before the hypothesis can be scientifically examined.
+C. The possibility of disproving the hypothesis is central to the criterion discussed in the lecture. **[CORRECT]**
+D. The criterion discussed emphasizes the possibility of disproof rather than establishing the hypothesis as permanently true. **[CORRECT]**
+
+**Answer:** A, C, D
+
+---
+
+### Q5: A student starts a PhD after being given a broad research topic. According to the lecture, which actions are appropriate before arriving at a testable hypothesis?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Begin by formulating relevant questions about the topic and considering why the topic is important. **[CORRECT]**
+B. Start an unrestricted literature survey immediately and use it as the only route for identifying the research problem.
+C. Use literature exploration and observations to refine the initial questions through repeated cycles. **[CORRECT]**
+D. Formulate the final testable hypothesis immediately from the broad topic without further exploration.
+
+**Answer:** A, C
+
+---
+
+### Q6: In the obesity and eating-habit example, observations from the literature and study were used to identify an anomaly and develop a hypothesis. Which statements are supported by the lecture?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. An anomaly can arise when observations do not match a commonly assumed explanation. **[CORRECT]**
+B. The observed influence of factors such as the amount of food offered can motivate further investigation. **[CORRECT]**
+C. The hypothesis was formulated directly from the broad topic without literature survey or observations.
+D. Identifying a missing link or contradiction can provide scope for further research and help generate a hypothesis. **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q7: According to the Revised Bloom’s Taxonomy discussed in the lecture, which statements are correct?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Remember, Understand and Apply are described as lower-order thinking levels. **[CORRECT]**
+B. Analyze, Evaluate and Create are described as higher-order thinking levels. **[CORRECT]**
+C. Create is placed below Remember because generating a new idea generally requires less cognitive effort.
+D. The taxonomy states that every individual experiences exactly the same difficulty across all six levels.
+
+**Answer:** A, B
+
+---
+
+### Q8: A PhD scholar collects experimental data, examines unfamiliar patterns, considers alternative hypotheses, and develops a new research idea. Which Bloom’s levels are most directly represented by these activities?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Analyze **[CORRECT]**
+B. Evaluate **[CORRECT]**
+C. Remember
+D. Create **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q9: Which statements correctly reflect the lecture’s discussion of the role of higher-order thinking in PhD research?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. All six levels of thinking may be used during research problem solving. **[CORRECT]**
+B. The lecture identifies analysis as an important starting level in PhD research because researchers collect and analyze data. **[CORRECT]**
+C. The main intellectual focus of a PhD is memorizing information from the existing body of knowledge.
+D. Evaluation can involve considering alternate hypotheses and attempting to validate them. **[CORRECT]**
+
+**Answer:** A, B, D
+
+---
+
+### Q10: Which statements are consistent with the lecture’s discussion of creativity and functional fixedness?
+
+**Type:** MSQ (Multiple Select)
+
+**Options:**
+
+A. Creative thinking can be developed or improved through practice rather than being limited to an ability fixed at birth. **[CORRECT]**
+B. Functional fixedness can cause a person to perceive an object only through its conventional purpose and can hinder lateral thinking. **[CORRECT]**
+C. Complete knowledge of the existing body of knowledge guarantees the creation of something new.
+D. Functional fixedness helps researchers generate new approaches when facing unexpected or novel challenges.
+
+**Answer:** A, B
+
+---
